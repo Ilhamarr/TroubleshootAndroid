@@ -10,12 +10,12 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/SplashScreen"
         android:layout_width="220dp"
         android:layout_height="220dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/invertlogo" />
+        app:srcCompat="@mipmap/invertlogo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

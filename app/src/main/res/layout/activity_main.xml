@@ -51,6 +51,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textHello"
             app:tint="@color/colordivider" />
+        <TextView
+            android:id="@+id/Trbdashboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="5dp"
+            android:text="Selamat Datang di Troubleshoot.id"
+            android:textColor="@color/colordivider"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/textHello"
+            app:layout_constraintTop_toBottomOf="@id/textUsername" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,7 +74,7 @@
             android:background="@drawable/white_rectangle_background"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageMenu">
+            app:layout_constraintTop_toBottomOf="@id/Trbdashboard">
 
             <EditText
                 android:layout_width="0dp"
@@ -102,83 +114,52 @@
         app:srcCompat="@drawable/teamwork" />
     <!--    End banner-->
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/ourService"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/imageBanner"
-        app:layout_constraintVertical_bias="0.287"
-        tools:layout_editor_absoluteX="-16dp">
+        android:layout_marginTop="64dp">
 
-        <!--  kotak hardware service-->
-        <LinearLayout
-            android:id="@+id/layoutHardware"
-            android:layout_width="0dp"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/white_rectangle_background"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="15dp"
-            app:layout_constraintDimensionRatio="H,1:1"
-            app:layout_constraintEnd_toStartOf="@id/layoutSoftware"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:text="Pesan Layanan"
+            android:textAlignment="center"
+            />
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="8dp"
-                android:contentDescription="@string/app_name"
-                android:padding="8dp"
-                android:src="@drawable/logotrb" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Hardware Service"
-                android:textColor="@color/colortrb"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-        <!--  end kotak hardware service-->
-
-        <!--  kotak software service-->
-        <LinearLayout
-            android:id="@+id/layoutSoftware"
-            android:layout_width="0dp"
+        <Button
+            android:layout_marginTop="16dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/white_rectangle_background"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="15dp"
-            app:layout_constraintDimensionRatio="H,1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/layoutHardware"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_width="320dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_rounded"
+            android:text="Pesan Sekarang"
+            android:textColor="@color/colordivider"
+            android:padding="5dp"
+            android:letterSpacing="0.15"/>
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="8dp"
-                android:contentDescription="@string/app_name"
-                android:padding="8dp"
-                android:src="@drawable/logotrb" />
+        <TextView
+            android:layout_marginTop="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="konsultasi"
+            android:textAlignment="center"
+            />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Software Service"
-                android:textColor="@color/colortrb"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-        <!--  end kotak software service-->
+        <Button
+            android:layout_marginTop="16dp"
+            android:layout_height="wrap_content"
+            android:layout_width="320dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_wa"
+            android:text="konsultasikan Sekarang"
+            android:textColor="@color/colordivider"
+            android:padding="5dp"
+            android:letterSpacing="0.15"/>
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
@@ -191,6 +172,8 @@
         app:layout_constraintVertical_bias="0.985"
         android:background="@color/colordivider"
         app:menu="@menu/navigation_menu"/>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
