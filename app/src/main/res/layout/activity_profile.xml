@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/teamwork"
+                />
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="-74dp"
+                android:src="@mipmap/invertlogo" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/changepicture"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:src="@color/colorPrimaryDark"
+                android:layout_marginTop="-54dp"
+                android:layout_marginLeft="134dp"
+                />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/editprofile"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:src="@color/colorPrimaryDark"
+                android:layout_marginTop="-64dp"
+                android:layout_marginLeft="360dp"
+                />
+
+
+            <TextView
+                android:id="@+id/nama_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="32dp"
+                android:text="ILHAM ARROSYID"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/telepon_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="4dp"
+                android:text="081288795069"
+                android:textSize="14dp"
+                />
+
+            <TextView
+                android:id="@+id/email_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="2dp"
+                android:text="ilhamarr40@gmail.com"
+                android:textSize="14dp"
+                />
+            <TextView
+                android:id="@+id/alamat_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="2dp"
+                android:text="Universitas Negeri Jakarta, Jl. Rawamangun Muka"
+                android:textSize="14dp"
+                android:drawableBottom="@color/colorPrimaryDark"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="44dp"
+                android:text="Account"
+                android:textSize="18dp"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/colortrb"
+                />
+            <view
+                android:layout_marginTop="12dp"
+                android:src="@color/colordivider"
+                style="@style/divider"
+                />
+
+            <TextView
+                android:id="@+id/orderhistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_dorder"
+                android:text="Order History"
+                android:drawableRight="@drawable/ic_chevron_right_"
+                android:layout_marginLeft="8dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                />
+
+            <view
+                style="@style/stick_divider"
+                />
+
+            <TextView
+                android:id="@+id/voucher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_local_offer"
+                android:text="My Voucher"
+                android:drawableRight="@drawable/ic_chevron_right_"
+                android:layout_marginLeft="8dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                />
+            <view
+                style="@style/stick_divider"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_g_translate"
+                android:text="  Change Language"
+                android:drawableRight="@drawable/ic_chevron_right_"
+                android:layout_marginLeft="8dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                />
+            <view
+                style="@style/stick_divider"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_help_outline"
+                android:text="Help"
+                android:drawableRight="@drawable/ic_chevron_right_"
+                android:layout_marginLeft="8dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                />
+            <view
+                style="@style/stick_divider"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="44dp"
+                android:text="General"
+                android:textSize="18dp"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/colortrb"
+                android:drawableBottom="@color/colorPrimaryDark"
+                />
+            <view
+                android:layout_marginTop="12dp"
+                android:src="@color/colordivider"
+                style="@style/divider"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_security"
+                android:text="Privacy Policy"
+                android:drawableRight="@drawable/ic_chevron_right_"
+                android:layout_marginLeft="8dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                />
+            <view
+                style="@style/stick_divider"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_star_border_"
+                android:text="Rate Troubleshoot.id"
+                android:drawableRight="@drawable/ic_chevron_right_"
+                android:layout_marginLeft="8dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                />
+            <view
+                style="@style/stick_divider"
+                android:layout_marginBottom="24dp"
+                />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+
+</RelativeLayout>
