@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colortrb"
-    android:fitsSystemWindows="true"
-    tools:context=".Activity.SplashActivity">
+    tools:context=".Activity.KategoriPemesananActivity">
 
-
-    <ImageView
-        android:id="@+id/SplashScreen"
-        android:layout_width="220dp"
-        android:layout_height="220dp"
+    <Spinner
+        android:id="@+id/spKategoriKerusakan"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="194dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="513dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/invertlogo" />
+        app:layout_constraintTop_toTopOf="parent"></Spinner>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

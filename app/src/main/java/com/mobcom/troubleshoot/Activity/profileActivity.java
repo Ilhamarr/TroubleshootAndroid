@@ -1,8 +1,10 @@
-package com.mobcom.troubleshoot;
+package com.mobcom.troubleshoot.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.mobcom.troubleshoot.R;
 
 public class profileActivity extends AppCompatActivity {
 

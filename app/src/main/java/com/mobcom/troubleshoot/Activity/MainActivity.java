@@ -1,13 +1,19 @@
-package com.mobcom.troubleshoot;
+package com.mobcom.troubleshoot.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+
+import com.mobcom.troubleshoot.R;
 
 public class MainActivity extends AppCompatActivity {
+  private Button btnPesan;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -21,5 +27,13 @@ public class MainActivity extends AppCompatActivity {
               WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
     }
     //end remove status bar backgroud
+    btnPesan = findViewById(R.id.btnPesanSekarang);
+    btnPesan.setOnClickListener(new View.OnClickListener(){
+      @Override
+      public void onClick(View view) {
+        startActivity(new Intent(MainActivity.this, KategoriPemesananActivity.class));
+      }
+    });
+
   }
 }
