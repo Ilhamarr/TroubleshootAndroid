@@ -15,5 +15,6 @@ Semua list kegiatan dalam sprint terekam pada link di bawah ini:<br>
 https://docs.google.com/spreadsheets/d/1l3uG52OoAbAXDz2HFyEmODxLGKXyCd1aa_SbZJHBkXs/edit#gid=1386834576
 
 ## Mockup wireframe:
-
+mockup mobile apps Troubleshoot.id:
+https://github.com/Ilhamarr/Troubleshoot_Design/blob/master/Documentation.md
 
