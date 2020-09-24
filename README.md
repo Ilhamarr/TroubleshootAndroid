@@ -1,6 +1,10 @@
 # TroubleshootAndroid
 This is a mobile application of Troubeshoot.id
 
+## Product Backlog:
+Semua list kegiatan dalam sprint terekam pada link di bawah ini:<br>
+https://docs.google.com/spreadsheets/d/1l3uG52OoAbAXDz2HFyEmODxLGKXyCd1aa_SbZJHBkXs/edit#gid=1386834576
+
 ## REST API
 Membuat Rest API:
 yang sudah dilakukan
