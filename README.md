@@ -11,7 +11,7 @@ for a startup computer service, it can be make client trust about this businness
 
 
 ## Product Backlog:
-Semua list kegiatan dalam sprint terekam pada link di bawah ini:
+Semua list kegiatan dalam sprint terekam pada link di bawah ini:<br>
 https://docs.google.com/spreadsheets/d/1l3uG52OoAbAXDz2HFyEmODxLGKXyCd1aa_SbZJHBkXs/edit#gid=1386834576
 
 ## Mockup wireframe:
