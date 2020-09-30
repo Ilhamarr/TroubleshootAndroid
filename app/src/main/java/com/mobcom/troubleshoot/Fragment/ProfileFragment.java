@@ -16,7 +16,7 @@ import com.mobcom.troubleshoot.SessionManager;
 public class ProfileFragment extends Fragment {
   private SessionManager sessionManager;
   private TextView tvNamaUser, tvTeleponUser, tvEmailUser, tvAlamatUser;
-  private String firstName, lastName, telepon, email, alamat, fullName;
+  private String firstName, lastName, telepon, email, alamat, fullName, role;
 
   public ProfileFragment() {
     // Required empty public constructor
@@ -41,10 +41,10 @@ public class ProfileFragment extends Fragment {
     email = sessionManager.getUserDetail().get(SessionManager.EMAIL);
     alamat = sessionManager.getUserDetail().get(SessionManager.ALAMAT);
     fullName = firstName + " " +lastName;
-
+    role = sessionManager.getUserDetail().get(SessionManager.ROLE);
     tvNamaUser.setText(fullName);
     tvEmailUser.setText(email);
     tvAlamatUser.setText(alamat);
-    Toast.makeText(getActivity(), email, Toast.LENGTH_SHORT).show();
+    Toast.makeText(getActivity(), role, Toast.LENGTH_SHORT).show();
   }
 }

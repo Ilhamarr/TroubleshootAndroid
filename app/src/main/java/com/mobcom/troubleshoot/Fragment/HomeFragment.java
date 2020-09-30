@@ -1,6 +1,6 @@
 package com.mobcom.troubleshoot.Fragment;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.mobcom.troubleshoot.Activity.KategoriPemesananActivity;
+import com.mobcom.troubleshoot.Activity.LoginActivity;
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.SessionManager;
 
@@ -20,6 +22,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
   private Button btnKonsul;
   private TextView tvFirstName;
   private String firstName;
+  private Intent intent;
 
   public HomeFragment() {
     // Required empty public constructor
@@ -46,6 +49,22 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
   @Override
   public void onClick(View v) {
+    switch (v.getId()) {
+      case R.id.btnPesanSekarang:
+        intent = new Intent(getActivity(), KategoriPemesananActivity.class);
+        startActivity(intent);
+        break;
+      case R.id.btnKonsul:
+        sessionManager.logoutSession();
+        moveToLogin();
+        break;
+    }
+  }
 
+  private void moveToLogin() {
+    Intent intent = new Intent(getActivity(), LoginActivity.class);
+    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
+    startActivity(intent);
+    getActivity().finish();
   }
 }
