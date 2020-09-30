@@ -18,13 +18,9 @@ public class SplashActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_splash);
 
-    //remove status bar backgroud (biar transparant)
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
-      Window w = getWindow();
-      w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-              WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-    }
-    //end remove status bar backgroud
+    //    status bar hide start
+    getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    //    status bar hide end
 
     // add handler start
     new Handler().postDelayed(new Runnable() {

@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    tools:context=".Fragment.ProfileFragment">
+
     <ScrollView
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,34 +22,14 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:src="@drawable/teamwork"
-                />
+                android:src="@drawable/teamwork" />
 
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="-74dp"
-                android:src="@mipmap/invertlogo" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/changepicture"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
-                android:src="@color/colorPrimaryDark"
-                android:layout_marginTop="-54dp"
-                android:layout_marginLeft="134dp"
-                />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/editprofile"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
-                android:src="@color/colorPrimaryDark"
-                android:layout_marginTop="-64dp"
-                android:layout_marginLeft="360dp"
-                />
-
+                android:src="@drawable/invertlogos" />
 
             <TextView
                 android:id="@+id/nama_user"
@@ -55,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="28dp"
                 android:layout_marginTop="32dp"
-                android:text="ILHAM ARROSYID"
+                android:text="@string/FullName"
                 android:textSize="22dp"
                 android:textStyle="bold" />
 
@@ -65,9 +47,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="28dp"
                 android:layout_marginTop="4dp"
-                android:text="081288795069"
-                android:textSize="14dp"
-                />
+                android:text="@string/Telepon"
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/email_user"
@@ -75,160 +56,114 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="28dp"
                 android:layout_marginTop="2dp"
-                android:text="ilhamarr40@gmail.com"
-                android:textSize="14dp"
-                />
+                android:text="@string/email"
+                android:textSize="14dp" />
+
             <TextView
                 android:id="@+id/alamat_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="28dp"
                 android:layout_marginTop="2dp"
-                android:text="Universitas Negeri Jakarta, Jl. Rawamangun Muka"
-                android:textSize="14dp"
                 android:drawableBottom="@color/colorPrimaryDark"
-                />
-
+                android:text="@string/Alamat"
+                android:textSize="14dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="44dp"
-                android:text="Account"
-                android:textSize="18dp"
                 android:fontFamily="sans-serif-medium"
+                android:text="Account"
                 android:textColor="@color/colortrb"
-                />
-            <view
-                android:layout_marginTop="12dp"
-                android:src="@color/colordivider"
-                style="@style/divider"
-                />
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/orderhistory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_dorder"
-                android:text="Order History"
-                android:drawableRight="@drawable/ic_chevron_right_"
                 android:layout_marginLeft="8dp"
-                android:textSize="16dp"
-                android:textStyle="bold"
                 android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/ic_dorder"
+                android:drawableRight="@drawable/ic_chevron_right_"
                 android:padding="8dp"
-                />
-
-            <view
-                style="@style/stick_divider"
-                />
+                android:text="Order History"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/voucher"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
                 android:drawableLeft="@drawable/ic_local_offer"
+                android:drawableRight="@drawable/ic_chevron_right_"
+                android:padding="8dp"
                 android:text="My Voucher"
-                android:drawableRight="@drawable/ic_chevron_right_"
-                android:layout_marginLeft="8dp"
                 android:textSize="16dp"
-                android:textStyle="bold"
-                android:layout_marginTop="8dp"
-                android:padding="8dp"
-                />
-            <view
-                style="@style/stick_divider"
-                />
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
                 android:drawableLeft="@drawable/ic_g_translate"
-                android:text="  Change Language"
                 android:drawableRight="@drawable/ic_chevron_right_"
-                android:layout_marginLeft="8dp"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:layout_marginTop="8dp"
                 android:padding="8dp"
-                />
-            <view
-                style="@style/stick_divider"
-                />
+                android:text="  Change Language"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_help_outline"
-                android:text="Help"
-                android:drawableRight="@drawable/ic_chevron_right_"
                 android:layout_marginLeft="8dp"
-                android:textSize="16dp"
-                android:textStyle="bold"
                 android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/ic_help_outline"
+                android:drawableRight="@drawable/ic_chevron_right_"
                 android:padding="8dp"
-                />
-            <view
-                style="@style/stick_divider"
-                />
-
+                android:text="Help"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="44dp"
-                android:text="General"
-                android:textSize="18dp"
-                android:fontFamily="sans-serif-medium"
-                android:textColor="@color/colortrb"
                 android:drawableBottom="@color/colorPrimaryDark"
-                />
-            <view
-                android:layout_marginTop="12dp"
-                android:src="@color/colordivider"
-                style="@style/divider"
-                />
+                android:fontFamily="sans-serif-medium"
+                android:text="General"
+                android:textColor="@color/colortrb"
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
                 android:drawableLeft="@drawable/ic_security"
-                android:text="Privacy Policy"
                 android:drawableRight="@drawable/ic_chevron_right_"
-                android:layout_marginLeft="8dp"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:layout_marginTop="8dp"
                 android:padding="8dp"
-                />
-            <view
-                style="@style/stick_divider"
-                />
+                android:text="Privacy Policy"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_star_border_"
-                android:text="Rate Troubleshoot.id"
-                android:drawableRight="@drawable/ic_chevron_right_"
                 android:layout_marginLeft="8dp"
-                android:textSize="16dp"
-                android:textStyle="bold"
                 android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/ic_star_border_"
+                android:drawableRight="@drawable/ic_chevron_right_"
                 android:padding="8dp"
-                />
-            <view
-                style="@style/stick_divider"
-                android:layout_marginBottom="24dp"
-                />
+                android:text="Rate Troubleshoot.id"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
-
-
     </ScrollView>
-
-
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,7 @@ public class ResponseKerusakanModel {
   private String Status;
 
   @SerializedName("data")
-  private List<KerusakanModel> dataKerusakan;
+  private List<KerusakanModel> listKerusakan;
 
   public String getStatus() {
     return Status;
@@ -19,12 +19,12 @@ public class ResponseKerusakanModel {
     Status = status;
   }
 
-  public List<KerusakanModel> getDataKerusakan() {
-    return dataKerusakan;
+  public List<KerusakanModel> getListKerusakan() {
+    return listKerusakan;
   }
 
-  public void setDataKerusakan(List<KerusakanModel> dataKerusakan) {
-    this.dataKerusakan = dataKerusakan;
+  public void setListKerusakan(List<KerusakanModel> listKerusakan) {
+    this.listKerusakan = listKerusakan;
   }
 }
 
