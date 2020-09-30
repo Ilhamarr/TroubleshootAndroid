@@ -19,7 +19,6 @@ import com.mobcom.troubleshoot.SessionManager;
 public class HomeFragment extends Fragment implements View.OnClickListener {
   private SessionManager sessionManager;
   private Button btnPesan;
-  private Button btnKonsul;
   private TextView tvFirstName;
   private String firstName;
   private Intent intent;
@@ -39,12 +38,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
   public void onViewCreated(View view, Bundle savedInstanceState) {
     sessionManager = new SessionManager(getActivity());
     btnPesan = (Button) view.findViewById(R.id.btnPesanSekarang);
-    btnKonsul = (Button) view.findViewById(R.id.btnKonsul);
     tvFirstName = (TextView) view.findViewById(R.id.tvfirstNameHome);
     firstName = sessionManager.getUserDetail().get(SessionManager.FIRST_NAME);
     tvFirstName.setText(firstName);
     btnPesan.setOnClickListener(this);
-    btnKonsul.setOnClickListener(this);
   }
 
   @Override
@@ -54,17 +51,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         intent = new Intent(getActivity(), KategoriPemesananActivity.class);
         startActivity(intent);
         break;
-      case R.id.btnKonsul:
-        sessionManager.logoutSession();
-        moveToLogin();
-        break;
     }
-  }
-
-  private void moveToLogin() {
-    Intent intent = new Intent(getActivity(), LoginActivity.class);
-    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
-    startActivity(intent);
-    getActivity().finish();
   }
 }
