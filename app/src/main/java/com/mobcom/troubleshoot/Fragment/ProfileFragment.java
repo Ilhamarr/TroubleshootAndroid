@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.SessionManager;
@@ -38,11 +39,12 @@ public class ProfileFragment extends Fragment {
     firstName = sessionManager.getUserDetail().get(SessionManager.FIRST_NAME);
     lastName = sessionManager.getUserDetail().get(SessionManager.LAST_NAME);
     email = sessionManager.getUserDetail().get(SessionManager.EMAIL);
-    alamat = sessionManager.getUserDetail().get(SessionManager.LOCALE);
+    alamat = sessionManager.getUserDetail().get(SessionManager.ALAMAT);
     fullName = firstName + " " +lastName;
 
     tvNamaUser.setText(fullName);
     tvEmailUser.setText(email);
     tvAlamatUser.setText(alamat);
+    Toast.makeText(getActivity(), email, Toast.LENGTH_SHORT).show();
   }
 }

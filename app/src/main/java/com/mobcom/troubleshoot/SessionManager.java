@@ -7,7 +7,6 @@ import android.preference.PreferenceManager;
 import com.mobcom.troubleshoot.Model.Login.LoginData;
 
 import java.util.HashMap;
-import java.util.Locale;
 
 public class SessionManager {
 
@@ -20,7 +19,7 @@ public class SessionManager {
   public static final String FIRST_NAME = "firstname";
   public static final String LAST_NAME = "lastname";
   public static final String EMAIL = "email";
-  public static final String LOCALE = "locale";
+  public static final String ALAMAT = "alamat";
 
   public SessionManager (Context context){
     this._context = context;
@@ -34,7 +33,7 @@ public class SessionManager {
     editor.putString(FIRST_NAME, user.getFirstName());
     editor.putString(LAST_NAME, user.getLastName());
     editor.putString(EMAIL, user.getEmail());
-    editor.putString(LOCALE, user.getLocale());
+    editor.putString(ALAMAT, user.getLocale());
     editor.commit();
   }
 
@@ -44,7 +43,7 @@ public class SessionManager {
     user.put(FIRST_NAME, sharedPreferences.getString(FIRST_NAME,null));
     user.put(LAST_NAME, sharedPreferences.getString(LAST_NAME,null));
     user.put(EMAIL, sharedPreferences.getString(EMAIL,null));
-    user.put(LOCALE, sharedPreferences.getString(LOCALE,null));
+    user.put(ALAMAT, sharedPreferences.getString(ALAMAT,null));
     return user;
   }
 
