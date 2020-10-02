@@ -29,10 +29,11 @@ In this Sprint we start the project with a discussion about business process of 
 #### SPRINT 2 :
 In this Sprint 2 after we designing the mockup and update the database, we continue to implementing many layout to android studio and make REST API to connecting the application with a database. 
 The layout that have to implement in this sprint :
-1.
-2.
-3.
-4.
+1. Layout Splash Screen
+2. Layout Login
+3. Layout Sign Up
+4. Layout Dashboard
+5. layout Profil
 
 
 
