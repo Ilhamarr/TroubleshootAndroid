@@ -25,15 +25,27 @@ When we make this application, every sunday we have a meeting to discuss that al
 
 #### SPRINT 1 :
 In this Sprint we start the project with a discussion about business process of the app. Then, we share about the task that we have to do in a week. the task is a make a mockup and update the database of the movile application.
+| Story         | TASK              | CONTRIBUTOR | STATUS   |
+|---------------|-------------------|-------------|----------|
+| Mockup        | Mockup in Adobe XS     | Ilham       | Complete |
+| Database      | Upgrade Database  | Ilham       | Complete |
+
+
+
+
+
 
 #### SPRINT 2 :
 In this Sprint 2 after we designing the mockup and update the database, we continue to implementing many layout to android studio and make REST API to connecting the application with a database.<br>
-The layout that have to implement in this sprint :
-1. Layout Splash Screen
-2. Layout Login
-3. Layout Sign Up
-4. Layout Dashboard
-5. layout Profil
+The task on second week:
+| Story         | TASK              | CONTRIBUTOR | STATUS   |
+|---------------|-------------------|-------------|----------|
+| Home Dasboard | Layout Home       | Ilham       | Complete |
+|               | Bottom Navigation | Ilham       | Complete |
+|               | Splash Screen     | Vivi        | Complete |
+| Login SignUp  | Layout Login      | Ilham       | Complete |
+|               | Layout SignUp     | Ilham       | Complete |
+| API           | Rest API PHP      | Bagus       | Complete |
 
 
 
