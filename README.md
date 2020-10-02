@@ -54,27 +54,28 @@ The task on second week:
 
 #### SPRINT 3 :
 in Sprint 3, we continue the task, focusing the activity login-signup-logout and ordering activity.
-| Story             | TASK                                      | CONTRIBUTOR | STATUS   |   |
-|-------------------|-------------------------------------------|-------------|----------|---|
-| Sign In Activity  | Logical Sign in \(Create Session\)        | Bagus       | Complete |   |
-|                   | Connection to Database \(Chechk\)         | Bagus       | Complete |   |
-| Sign Up Activity  | Logical Signup                            | Bagus       | Complete |   |
-|                   | Connection to Database \(Store Data\)     | Bagus       | Complete |   |
-| Sign Out Activity | Check Session User in application         | Bagus       | Complete |   |
-| Order Activity    | Make Order Layout                         | Ilham       | Progress |   |
-|                   | Make Confirm Order Layout                 | Ilham       | Progress |   |
-|                   | Logical add to Cart                       | Bagus       | Progress |   |
-|                   | Logical to get time with time picker      | Bagus       | Progress |   |
-|                   | Logical to get date with date picker      | Bagus       | Progress |   |
-|                   | Logical to get location with place picker | Bagus       | Progress |   |
-|                   | Store and get data from database          | Bagus       | Progress |   |
-| Payment Activity  | Make Payment Method Layout                | Vivi        | Progress |   |
-|                   | Make Confirmation Payment Layout          | Vivi        | Progress |   |
+| Story             | TASK                                      | CONTRIBUTOR | STATUS   |
+|-------------------|-------------------------------------------|-------------|----------|
+| Sign In Activity  | Logical Sign in \(Create Session\)        | Bagus       | Complete |
+|                   | Connection to Database \(Chechk\)         | Bagus       | Complete |
+| Sign Up Activity  | Logical Signup                            | Bagus       | Complete |
+|                   | Connection to Database \(Store Data\)     | Bagus       | Complete |
+| Sign Out Activity | Check Session User in application         | Bagus       | Complete |
+| Order Activity    | Make Order Layout                         | Ilham       | Progress |
+|                   | Make Confirm Order Layout                 | Ilham       | Progress |
+|                   | Logical add to Cart                       | Bagus       | Progress |
+|                   | Logical to get time with time picker      | Bagus       | Progress |
+|                   | Logical to get date with date picker      | Bagus       | Progress |
+|                   | Logical to get location with place picker | Bagus       | Progress |
+|                   | Store and get data from database          | Bagus       | Progress |
+| Payment Activity  | Make Payment Method Layout                | Vivi        | Progress |
+|                   | Make Confirmation Payment Layout          | Vivi        | Progress |
 
 
 
 
-all the detail task to do from begin, on sprint until deploy, it is on this link : <br>
+
+all the detail of product backlocg are in this link below : <br>
 https://docs.google.com/spreadsheets/d/1l3uG52OoAbAXDz2HFyEmODxLGKXyCd1aa_SbZJHBkXs/edit#gid=1386834576
 
 
