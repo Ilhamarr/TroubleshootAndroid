@@ -43,8 +43,8 @@ The task on second week:
 | Home Dasboard | Layout Home       | Ilham       | Complete |
 |               | Bottom Navigation | Ilham       | Complete |
 |               | Splash Screen     | Vivi        | Complete |
-| Login SignUp  | Layout Login      | Ilham       | Complete |
-|               | Layout SignUp     | Ilham       | Complete |
+| Login         | Layout Login      | Ilham       | Complete |
+| SignUp        | Layout SignUp     | Ilham       | Complete |
 | API           | Rest API PHP      | Bagus       | Complete |
 
 
