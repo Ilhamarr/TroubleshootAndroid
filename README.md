@@ -24,11 +24,14 @@ When we make this application, every sunday we have a meeting to discuss that al
 
 
 #### SPRINT 1 :
-In this Sprint we start the project with a discussion
+In this Sprint we start the project with a discussion about business process of the app. Then, we share about the task that we have to do in a week. the task is a make a mockup and update the database of the movile application.
+
 
 
 all the detail task to do from begin, on sprint until deploy, it is on this link :
 https://docs.google.com/spreadsheets/d/1l3uG52OoAbAXDz2HFyEmODxLGKXyCd1aa_SbZJHBkXs/edit#gid=1386834576
+
+
 
 ## Mockup wireframe:
 mockup mobile apps Troubleshoot.id:
