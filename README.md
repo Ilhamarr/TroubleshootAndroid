@@ -27,7 +27,7 @@ When we make this application, every sunday we have a meeting to discuss that al
 In this Sprint we start the project with a discussion about business process of the app. Then, we share about the task that we have to do in a week. the task is a make a mockup and update the database of the movile application.
 | Story         | TASK              | CONTRIBUTOR | STATUS   |
 |---------------|-------------------|-------------|----------|
-| Mockup        | Mockup in Adobe XS     | Ilham       | Complete |
+| Mockup        | Mockup in Adobe XD     | Ilham       | Complete |
 | Database      | Upgrade Database  | Ilham       | Complete |
 
 
