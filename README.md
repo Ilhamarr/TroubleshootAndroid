@@ -61,8 +61,8 @@ in Sprint 3, we continue the task, focusing the activity login-signup-logout and
 | Sign Up Activity  | Logical Signup                            | Bagus       | Complete |
 |                   | Connection to Database \(Store Data\)     | Bagus       | Complete |
 | Sign Out Activity | Check Session User in application         | Bagus       | Complete |
-| Order Activity    | Make Order Layout                         | Ilham       | Progress |
-|                   | Make Confirm Order Layout                 | Ilham       | Progress |
+| Order Activity    | Make Order Layout                         | Ilham       | Complete |
+|                   | Make Confirm Order Layout                 | Ilham       | Complete |
 |                   | Logical add to Cart                       | Bagus       | Progress |
 |                   | Logical to get time with time picker      | Bagus       | Progress |
 |                   | Logical to get date with date picker      | Bagus       | Progress |
