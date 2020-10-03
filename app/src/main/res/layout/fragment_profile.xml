@@ -132,6 +132,7 @@
                 android:drawableRight="@drawable/ic_chevron_right_"
                 android:padding="8dp"
                 android:text="Logout"
+                android:textColor="#D44638"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:focusable="true" />
