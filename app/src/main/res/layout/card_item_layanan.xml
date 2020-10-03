@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="12dp"
+=======
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+>>>>>>> b067012e6cd4c6e46a37face2393a4f0049ec4e5
     android:layout_margin="6dp">
 
     <LinearLayout
@@ -60,6 +68,7 @@
                 android:layout_marginBottom="4dp"
                 android:background="?android:attr/listDivider" />
 
+<<<<<<< HEAD
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -83,6 +92,17 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
+=======
+            <TextView
+                android:id="@+id/tv_HargaLayanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Rp 20000"
+                android:textColor="@color/colortrb"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+>>>>>>> b067012e6cd4c6e46a37face2393a4f0049ec4e5
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

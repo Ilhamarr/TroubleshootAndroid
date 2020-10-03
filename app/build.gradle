@@ -44,7 +44,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+<<<<<<< HEAD
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
+=======
+>>>>>>> b067012e6cd4c6e46a37face2393a4f0049ec4e5
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

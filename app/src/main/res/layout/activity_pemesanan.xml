@@ -224,6 +224,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+<<<<<<< HEAD
+=======
+                    android:gravity=""
+>>>>>>> b067012e6cd4c6e46a37face2393a4f0049ec4e5
                     android:orientation="vertical"
                     android:padding="16dp">
 
@@ -306,11 +310,14 @@
 
                     </LinearLayout>
 
+<<<<<<< HEAD
                     <com.google.android.gms.maps.MapView
                         android:layout_marginTop="4dp"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"/>
 
+=======
+>>>>>>> b067012e6cd4c6e46a37face2393a4f0049ec4e5
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -402,6 +409,7 @@
 
     </ScrollView>
 
+<<<<<<< HEAD
     <androidx.cardview.widget.CardView
         android:layout_width="360dp"
         android:layout_height="wrap_content"
@@ -493,5 +501,7 @@
 
     </androidx.cardview.widget.CardView>
 
+=======
+>>>>>>> b067012e6cd4c6e46a37face2393a4f0049ec4e5
 
 </androidx.constraintlayout.widget.ConstraintLayout>

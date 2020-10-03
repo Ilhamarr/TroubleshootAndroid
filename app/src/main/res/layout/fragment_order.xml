@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         tools:listitem="@layout/card_item_layanan" />
 
+<<<<<<< HEAD
     <androidx.cardview.widget.CardView
         android:layout_width="360dp"
         android:layout_height="wrap_content"
@@ -104,6 +105,8 @@
 
     </androidx.cardview.widget.CardView>
 
+=======
+>>>>>>> b067012e6cd4c6e46a37face2393a4f0049ec4e5
     <ProgressBar
         android:id="@+id/pb_data_layanan"
         android:layout_width="wrap_content"
