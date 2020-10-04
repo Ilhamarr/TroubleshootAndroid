@@ -68,8 +68,8 @@ in Sprint 3, we continue the task, focusing the activity login-signup-logout and
 |                   | Logical to get date with date picker      | Bagus       | Progress |
 |                   | Logical to get location with place picker | Bagus       | Progress |
 |                   | Store and get data from database          | Bagus       | Progress |
-| Payment Activity  | Make Payment Method Layout                | Vivi        | Progress |
-|                   | Make Confirmation Payment Layout          | Vivi        | Progress |
+| Payment Activity  | Make Payment Method Layout                | Vivi        | Complete |
+|                   | Make Confirmation Payment Layout          | Vivi        | Complete |
 
 
 
