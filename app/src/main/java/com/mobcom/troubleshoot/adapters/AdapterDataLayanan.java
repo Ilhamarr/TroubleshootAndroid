@@ -1,4 +1,4 @@
-package com.mobcom.troubleshoot.Adapter;
+package com.mobcom.troubleshoot.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

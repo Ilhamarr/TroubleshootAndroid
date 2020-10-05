@@ -1,4 +1,4 @@
-package com.mobcom.troubleshoot.Adapter;
+package com.mobcom.troubleshoot.adapters;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -12,8 +12,10 @@ import com.mobcom.troubleshoot.databinding.CardItemLayananBinding;
 
 public class ServiceListAdapter extends ListAdapter<ServiceModel, ServiceListAdapter.ServiceViewHolder> {
 
-  public ServiceListAdapter() {
+  ServiceInterface serviceInterface;
+  public ServiceListAdapter(ServiceInterface serviceInterface) {
     super(ServiceModel.itemCallback);
+    this.serviceInterface = serviceInterface;
   }
 
   @NonNull
@@ -21,6 +23,7 @@ public class ServiceListAdapter extends ListAdapter<ServiceModel, ServiceListAda
   public ServiceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
     CardItemLayananBinding cardItemLayananBinding = CardItemLayananBinding.inflate(layoutInflater, parent, false);
+    cardItemLayananBinding.setServiceInterface(serviceInterface);
     return new ServiceViewHolder(cardItemLayananBinding);
   }
 
@@ -28,6 +31,7 @@ public class ServiceListAdapter extends ListAdapter<ServiceModel, ServiceListAda
   public void onBindViewHolder(@NonNull ServiceViewHolder holder, int position) {
     ServiceModel service = getItem(position);
     holder.cardItemLayananBinding.setService(service);
+    holder.cardItemLayananBinding.executePendingBindings();
   }
 
   class ServiceViewHolder extends RecyclerView.ViewHolder {

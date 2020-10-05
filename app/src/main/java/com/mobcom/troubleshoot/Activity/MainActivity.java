@@ -3,39 +3,35 @@ package com.mobcom.troubleshoot.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Menu;
+import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mobcom.troubleshoot.Fragment.HomeFragment;
-import com.mobcom.troubleshoot.Fragment.OrderFragment;
 import com.mobcom.troubleshoot.Fragment.OrderHistoryFragment;
 import com.mobcom.troubleshoot.Fragment.ProfileFragment;
 import com.mobcom.troubleshoot.Fragment.ServiceFragment;
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.SessionManager;
+import com.mobcom.troubleshoot.models.CartItem;
+import com.mobcom.troubleshoot.viewmodels.ServiceViewModel;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+  private static final String TAG = "MainActivity";
   SessionManager sessionManager;
   Intent intent;
   BottomNavigationView bottomNavigationView;
   FrameLayout frameLayout;
-  NavController navController;
+  ServiceViewModel serviceViewModel;
 
 
   @Override
@@ -44,13 +40,18 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     //    getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-    navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-    //NavigationUI.setupActionBarWithNavController(this, navController);
-
     sessionManager = new SessionManager(MainActivity.this);
     if (!sessionManager.isLoggedin()) {
       moveToLogin();
     }
+
+    serviceViewModel = new ViewModelProvider(this).get(ServiceViewModel.class);
+    serviceViewModel.getCart().observe(this, new Observer<List<CartItem>>() {
+      @Override
+      public void onChanged(List<CartItem> cartItems) {
+        Log.d(TAG, "onChanged: " + cartItems.size());
+      }
+    });
 
     bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
     bottomNavigationView.setOnNavigationItemSelectedListener(navigation);

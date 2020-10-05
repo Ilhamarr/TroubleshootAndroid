@@ -31,4 +31,12 @@
     <string name="FullName">fullName</string>
     <string name="Telepon">telepon</string>
     <string name="Alamat">alamat</string>
+
+    <string-array name="quantity_string_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5(max)</item>
+    </string-array>
 </resources>
