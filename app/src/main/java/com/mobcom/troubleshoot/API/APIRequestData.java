@@ -1,10 +1,10 @@
 package com.mobcom.troubleshoot.API;
 
-import com.mobcom.troubleshoot.Model.Login.Login;
-import com.mobcom.troubleshoot.Model.Register.Register;
-import com.mobcom.troubleshoot.Model.ResponseKerusakanModel;
+import com.mobcom.troubleshoot.models.Login.Login;
+import com.mobcom.troubleshoot.models.Register.Register;
+import com.mobcom.troubleshoot.models.ResponseServiceModel;
 
-import com.mobcom.troubleshoot.Model.ResponseLaptopModel;
+import com.mobcom.troubleshoot.models.ResponseLaptopModel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -14,7 +14,7 @@ import retrofit2.http.POST;
 
 public interface APIRequestData {
   @GET("kerusakan")
-  Call<ResponseKerusakanModel> ambillistKerusakan();
+  Call<ResponseServiceModel> ambillistLayanan();
 
   @GET("laptop")
   Call<ResponseLaptopModel> ambilListLaptop();

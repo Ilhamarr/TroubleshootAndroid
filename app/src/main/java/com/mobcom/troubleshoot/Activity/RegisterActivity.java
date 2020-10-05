@@ -3,22 +3,16 @@ package com.mobcom.troubleshoot.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.mobcom.troubleshoot.API.APIRequestData;
 import com.mobcom.troubleshoot.API.RetroServer;
-import com.mobcom.troubleshoot.Model.Register.Register;
+import com.mobcom.troubleshoot.models.Register.Register;
 import com.mobcom.troubleshoot.R;
 
 import retrofit2.Call;
@@ -38,8 +32,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     setContentView(R.layout.activity_register);
 
     //    status bar hide start
-    getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//    status bar hide end
+    //getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    //    status bar hide end
 
     etFirstName = findViewById(R.id.etFirstNameReg);
     etLastName = findViewById(R.id.etLastNameReg);

@@ -16,8 +16,8 @@ import android.widget.Toast;
 import com.mobcom.troubleshoot.API.APIRequestData;
 import com.mobcom.troubleshoot.API.RetroServer;
 import com.mobcom.troubleshoot.Adapter.AdapterDataLayanan;
-import com.mobcom.troubleshoot.Model.KerusakanModel;
-import com.mobcom.troubleshoot.Model.ResponseKerusakanModel;
+import com.mobcom.troubleshoot.models.ServiceModel;
+import com.mobcom.troubleshoot.models.ResponseServiceModel;
 import com.mobcom.troubleshoot.R;
 
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class OrderFragment extends Fragment {
     private RecyclerView rvDataLayanan;
     private RecyclerView.Adapter adDataLayanan;
     private RecyclerView.LayoutManager lmDatalayanan;
-    private List<KerusakanModel> listData = new ArrayList<>();
+    private List<ServiceModel> listData = new ArrayList<>();
     private SwipeRefreshLayout srlData;
     private ProgressBar pbData;
 
@@ -60,13 +60,13 @@ public class OrderFragment extends Fragment {
         pbData.setVisibility(View.VISIBLE);
 
         APIRequestData ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
-        Call<ResponseKerusakanModel> tampilDataLayanan = ardData.ambillistKerusakan();
+        Call<ResponseServiceModel> tampilDataLayanan = ardData.ambillistLayanan();
 
-        tampilDataLayanan.enqueue(new Callback<ResponseKerusakanModel>() {
+        tampilDataLayanan.enqueue(new Callback<ResponseServiceModel>() {
             @Override
-            public void onResponse(Call<ResponseKerusakanModel> call, Response<ResponseKerusakanModel> response) {
+            public void onResponse(Call<ResponseServiceModel> call, Response<ResponseServiceModel> response) {
                 String status = response.body().getStatus();
-                listData = response.body().getListKerusakan();
+                listData = response.body().getListService();
 
                 adDataLayanan = new AdapterDataLayanan(getContext(),listData);
                 rvDataLayanan.setAdapter(adDataLayanan);
@@ -75,7 +75,7 @@ public class OrderFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponseKerusakanModel> call, Throwable t) {
+            public void onFailure(Call<ResponseServiceModel> call, Throwable t) {
                 Toast.makeText(getActivity(), "Gagal Menghubungi Server", Toast.LENGTH_SHORT).show();
                 pbData.setVisibility(View.INVISIBLE);
             }

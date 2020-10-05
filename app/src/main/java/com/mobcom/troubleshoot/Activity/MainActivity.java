@@ -3,6 +3,9 @@ package com.mobcom.troubleshoot.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Build;
@@ -22,6 +25,7 @@ import com.mobcom.troubleshoot.Fragment.HomeFragment;
 import com.mobcom.troubleshoot.Fragment.OrderFragment;
 import com.mobcom.troubleshoot.Fragment.OrderHistoryFragment;
 import com.mobcom.troubleshoot.Fragment.ProfileFragment;
+import com.mobcom.troubleshoot.Fragment.ServiceFragment;
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.SessionManager;
 
@@ -31,14 +35,17 @@ public class MainActivity extends AppCompatActivity {
   Intent intent;
   BottomNavigationView bottomNavigationView;
   FrameLayout frameLayout;
+  NavController navController;
 
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    //    getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-//    getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+    navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+    //NavigationUI.setupActionBarWithNavController(this, navController);
 
     sessionManager = new SessionManager(MainActivity.this);
     if (!sessionManager.isLoggedin()) {
@@ -49,23 +56,8 @@ public class MainActivity extends AppCompatActivity {
     bottomNavigationView.setOnNavigationItemSelectedListener(navigation);
 
     getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new HomeFragment()).commit();
-
-//
   }
 
-  //  @Override
-//  public void onClick(View v) {
-//    switch (v.getId()) {
-//      case R.id.btnPesanSekarang:
-//        intent = new Intent(MainActivity.this, KategoriPemesananActivity.class);
-//        startActivity(intent);
-//        break;
-//      case R.id.btnKonsul:
-//        sessionManager.logoutSession();
-//        moveToLogin();
-//        break;
-//    }
-//  }
   private BottomNavigationView.OnNavigationItemSelectedListener navigation =
           new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -78,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                   selectedFragment = new HomeFragment();
                   break;
                 case R.id.menuOrder:
-                  selectedFragment = new OrderFragment();
+                  selectedFragment = new ServiceFragment();
                   break;
                 case R.id.menuOrderHistory:
                   selectedFragment = new OrderHistoryFragment();

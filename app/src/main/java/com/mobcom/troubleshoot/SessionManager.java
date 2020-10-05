@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.mobcom.troubleshoot.Model.Login.LoginData;
+import com.mobcom.troubleshoot.models.Login.LoginData;
 
 import java.util.HashMap;
 

@@ -3,26 +3,19 @@ package com.mobcom.troubleshoot.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.mobcom.troubleshoot.API.APIRequestData;
 import com.mobcom.troubleshoot.API.RetroServer;
-import com.mobcom.troubleshoot.Model.Login.Login;
-import com.mobcom.troubleshoot.Model.Login.LoginData;
+import com.mobcom.troubleshoot.models.Login.Login;
+import com.mobcom.troubleshoot.models.Login.LoginData;
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.SessionManager;
-
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,8 +35,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     setContentView(R.layout.activity_login);
 
     //    status bar hide start
-    getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//    status bar hide end
+    //getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    //    status bar hide end
 
     etEmail = findViewById(R.id.etEmailLogin);
     etPassword = findViewById(R.id.etPasswordLogin);

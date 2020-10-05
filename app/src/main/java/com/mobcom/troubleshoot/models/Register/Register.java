@@ -1,4 +1,4 @@
-package com.mobcom.troubleshoot.Model.Register;
+package com.mobcom.troubleshoot.models.Register;
 
 import com.google.gson.annotations.SerializedName;
 

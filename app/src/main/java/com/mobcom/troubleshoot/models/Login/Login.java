@@ -1,4 +1,4 @@
-package com.mobcom.troubleshoot.Model.Login;
+package com.mobcom.troubleshoot.models.Login;
 
 import com.google.gson.annotations.SerializedName;
 

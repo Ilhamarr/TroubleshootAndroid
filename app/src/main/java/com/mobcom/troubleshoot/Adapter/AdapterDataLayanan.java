@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobcom.troubleshoot.Model.KerusakanModel;
+import com.mobcom.troubleshoot.models.ServiceModel;
 import com.mobcom.troubleshoot.R;
 
 import java.util.List;
@@ -17,11 +17,11 @@ import java.util.List;
 public class AdapterDataLayanan extends RecyclerView.Adapter<AdapterDataLayanan.HolderData> {
   private Context ctx;
   // declar list data layanan
-  private List<KerusakanModel> listData;
+  private List<ServiceModel> listData;
   // id data layanan
   private int idLayanan;
 
-  public AdapterDataLayanan(Context ctx, List<KerusakanModel> listData) {
+  public AdapterDataLayanan(Context ctx, List<ServiceModel> listData) {
     this.ctx = ctx;
     this.listData = listData;
   }
@@ -37,7 +37,7 @@ public class AdapterDataLayanan extends RecyclerView.Adapter<AdapterDataLayanan.
 
   @Override
   public void onBindViewHolder(@NonNull HolderData holder, int position) {
-    KerusakanModel km = listData.get(position);
+    ServiceModel km = listData.get(position);
     holder.tvId.setText(String.valueOf(km.getKerusakan_id()));
     holder.tvNamaLayanan.setText(km.getNama_kerusakan());
     holder.tvDeskripsiLayanan.setText(km.getJenis());
