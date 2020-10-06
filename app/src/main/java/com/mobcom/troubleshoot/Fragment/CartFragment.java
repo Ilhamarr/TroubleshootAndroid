@@ -27,6 +27,7 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
   private static final String TAG = "CartFragment";
   ServiceViewModel serviceViewModel;
   FragmentCartBinding fragmentCartBinding;
+  private int cartQuantity = 0;
 
   public CartFragment() {
     // Required empty public constructor
@@ -53,6 +54,14 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
       @Override
       public void onChanged(List<CartItem> cartItems) {
         cartListAdapter.submitList(cartItems);
+        fragmentCartBinding.CheckoutButton.setEnabled(cartItems.size() > 0);
+        int quantity = 0;
+        for (CartItem cartItem: cartItems) {
+          quantity += cartItem.getQuantity();
+        }
+        cartQuantity = quantity;
+
+        fragmentCartBinding.TxtTotalProdukSeluruh.setText(String.valueOf(cartQuantity));
       }
     });
 

@@ -19,6 +19,7 @@ import android.widget.Button;
 import com.google.android.material.snackbar.Snackbar;
 import com.mobcom.troubleshoot.adapters.ServiceListAdapter;
 import com.mobcom.troubleshoot.R;
+import com.mobcom.troubleshoot.models.CartItem;
 import com.mobcom.troubleshoot.models.ServiceModel;
 import com.mobcom.troubleshoot.viewmodels.ServiceViewModel;
 import com.mobcom.troubleshoot.databinding.FragmentServiceBinding;
@@ -32,6 +33,7 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
   private ServiceListAdapter serviceListAdapter;
   private ServiceViewModel serviceViewModel;
   Button btnShowCart;
+  private int cartQuantity = 0;
 
   public ServiceFragment() {
     // Required empty public constructor
@@ -59,7 +61,26 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
         serviceListAdapter.submitList(service);
       }
     });
+    serviceViewModel.getCart().observe(getViewLifecycleOwner(), new Observer<List<CartItem>>() {
+      @Override
+      public void onChanged(List<CartItem> cartItems) {
+        fragmentServiceBinding.cart.setEnabled(cartItems.size() > 0);
+        int quantity = 0;
+        for (CartItem cartItem: cartItems) {
+          quantity += cartItem.getQuantity();
+        }
+        cartQuantity = quantity;
 
+        fragmentServiceBinding.TxtJumlahProduk.setText(String.valueOf(cartQuantity));
+      }
+    });
+
+    serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+      @Override
+      public void onChanged(Integer integer) {
+        fragmentServiceBinding.TxtHarga.setText(integer.toString());
+      }
+    });
     btnShowCart = (Button) view.findViewById(R.id.cart);
     btnShowCart.setOnClickListener(this);
   }
