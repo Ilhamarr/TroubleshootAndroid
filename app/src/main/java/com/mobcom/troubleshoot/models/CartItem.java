@@ -52,14 +52,15 @@ public class CartItem {
   }
 
   @BindingAdapter("android:setVal")
-  public static void getSelectedSpinnerValue(Spinner spinner, int quantity){
+  public static void getSelectedSpinnerValue(Spinner spinner, int quantity) {
     spinner.setSelection(quantity - 1, true);
   }
 
   public static DiffUtil.ItemCallback<CartItem> itemCallback = new DiffUtil.ItemCallback<CartItem>() {
     @Override
     public boolean areItemsTheSame(@NonNull CartItem oldItem, @NonNull CartItem newItem) {
-      return oldItem.getService().equals(newItem.getService());
+      //return oldItem.getService().equals(newItem.getService());
+      return oldItem.getQuantity() == newItem.getQuantity();
     }
 
     @Override

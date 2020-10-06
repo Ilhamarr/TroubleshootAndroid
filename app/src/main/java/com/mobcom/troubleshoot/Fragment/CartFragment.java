@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,7 @@ import com.mobcom.troubleshoot.viewmodels.ServiceViewModel;
 
 import java.util.List;
 
-public class CartFragment extends Fragment {
+public class CartFragment extends Fragment implements CartListAdapter.CartInterface {
 
   private static final String TAG = "CartFragment";
   ServiceViewModel serviceViewModel;
@@ -43,7 +44,7 @@ public class CartFragment extends Fragment {
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    CartListAdapter cartListAdapter = new CartListAdapter();
+    CartListAdapter cartListAdapter = new CartListAdapter(this);
     fragmentCartBinding.cartRecyclerView.setAdapter(cartListAdapter);
     fragmentCartBinding.cartRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
 
@@ -55,5 +56,15 @@ public class CartFragment extends Fragment {
       }
     });
 
+  }
+
+  @Override
+  public void deleteItem(CartItem cartItem) {
+    serviceViewModel.removeItemFromCart(cartItem);
+  }
+
+  @Override
+  public void changeQuantity(CartItem cartItem, int quantity) {
+    serviceViewModel.changeQuantity(cartItem, quantity);
   }
 }

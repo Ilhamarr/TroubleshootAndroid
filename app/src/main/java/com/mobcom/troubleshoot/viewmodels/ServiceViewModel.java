@@ -37,4 +37,14 @@ public class ServiceViewModel extends ViewModel {
   public boolean addItemToCart(ServiceModel service) {
     return cartRepo.addItemToCart(service);
   }
+
+  public void removeItemFromCart(CartItem cartItem){
+    cartRepo.removeItemFromCart(cartItem);
+  }
+
+  public void changeQuantity(CartItem cartItem, int quantity){
+    cartRepo.changeQuantity(cartItem, quantity);
+  }
+
+  
 }

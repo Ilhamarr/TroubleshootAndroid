@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.mobcom.troubleshoot.adapters.ServiceListAdapter;
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.models.ServiceModel;
@@ -68,7 +69,6 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
   public void addItem(ServiceModel service) {
     //Log.d(TAG, "addItem: " + service.toString());
     boolean isAdded = serviceViewModel.addItemToCart(service);
-    Log.d(TAG, "addItem: " + service.getNama_kerusakan()+" " + isAdded);
   }
 
   @Override

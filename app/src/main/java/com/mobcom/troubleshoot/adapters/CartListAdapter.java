@@ -3,6 +3,7 @@ package com.mobcom.troubleshoot.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
@@ -15,8 +16,11 @@ import com.mobcom.troubleshoot.models.CartItem;
 
 public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartVH> {
 
-  public CartListAdapter() {
+  private CartInterface cartInterface;
+
+  public CartListAdapter(CartInterface cartInterface) {
     super(CartItem.itemCallback);
+    this.cartInterface = cartInterface;
   }
 
   @NonNull
@@ -36,9 +40,34 @@ public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartV
   class CartVH extends RecyclerView.ViewHolder {
 
     CartRowBinding cartRowBinding;
+
     public CartVH(@NonNull CartRowBinding cartRowBinding) {
       super(cartRowBinding.getRoot());
       this.cartRowBinding = cartRowBinding;
+
+      cartRowBinding.deleteProductButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          cartInterface.deleteItem(getItem(getAdapterPosition()));
+        }
+      });
+
+      // fungsi spinner (next ganti)
+      cartRowBinding.quantitySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+          int quantity = position + 1;
+          if (quantity == getItem(getAdapterPosition()).getQuantity()) {
+            return;
+          }
+          cartInterface.changeQuantity(getItem(getAdapterPosition()), quantity);
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+      });
     }
   }
 
