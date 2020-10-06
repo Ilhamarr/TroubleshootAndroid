@@ -46,5 +46,7 @@ public class ServiceViewModel extends ViewModel {
     cartRepo.changeQuantity(cartItem, quantity);
   }
 
-  
+  public LiveData<Integer> getTotalPrice() {
+    return cartRepo.getTotalPrice();
+  }
 }

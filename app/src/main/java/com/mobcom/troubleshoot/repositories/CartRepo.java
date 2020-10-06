@@ -12,6 +12,7 @@ import java.util.List;
 public class CartRepo {
 
   private MutableLiveData<List<CartItem>> mutableCart = new MutableLiveData<>();
+  private MutableLiveData<Integer> mutableTotalPrice = new MutableLiveData<>();
 
   public LiveData<List<CartItem>> getCart() {
     if (mutableCart.getValue() == null) {
@@ -22,6 +23,7 @@ public class CartRepo {
 
   public void initCart() {
     mutableCart.setValue(new ArrayList<CartItem>());
+    calculateCartTotal();
   }
 
   public boolean addItemToCart(ServiceModel service) {
@@ -39,13 +41,14 @@ public class CartRepo {
         cartItemList.set(index, cartItem);
 
         mutableCart.setValue(cartItemList);
-
+        calculateCartTotal();
         return true;
       }
     }
     CartItem cartItem = new CartItem(service, 1);
     cartItemList.add(cartItem);
     mutableCart.setValue(cartItemList);
+    calculateCartTotal();
     return true;
   }
 
@@ -56,16 +59,32 @@ public class CartRepo {
     List<CartItem> cartItemList = new ArrayList<>(mutableCart.getValue());
     cartItemList.remove(cartItem);
     mutableCart.setValue(cartItemList);
+    calculateCartTotal();
   }
 
   public void changeQuantity(CartItem cartItem, int quantity) {
     if (mutableCart.getValue() == null) return;
-
     List<CartItem> cartItemList = new ArrayList<>(mutableCart.getValue());
-
     CartItem updatedItem = new CartItem(cartItem.getService(), quantity);
     cartItemList.set(cartItemList.indexOf(cartItem), updatedItem);
-
     mutableCart.setValue(cartItemList);
+    calculateCartTotal();
+  }
+
+  private void calculateCartTotal() {
+    if (mutableCart.getValue() == null) return;
+    int total = 0;
+    List<CartItem> cartItemList = mutableCart.getValue();
+    for (CartItem cartItem: cartItemList) {
+      total += cartItem.getService().getBiaya() * cartItem.getQuantity();
+    }
+    mutableTotalPrice.setValue(total);
+  }
+
+  public LiveData<Integer> getTotalPrice() {
+    if (mutableTotalPrice.getValue() == null){
+      mutableTotalPrice.setValue(0);
+    }
+    return mutableTotalPrice;
   }
 }
