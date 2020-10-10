@@ -28,7 +28,11 @@ In this Sprint we start the project with a discussion about business process of 
 | Story         | TASK              | CONTRIBUTOR | STATUS   |
 |---------------|-------------------|-------------|----------|
 | Mockup        | Mockup in Adobe XD     | Ilham       | Complete |
+<<<<<<< HEAD
 | Database      | Upgrade Database  | Ilham       | Complete |
+=======
+| Database      | Upgrade Database  | Bagus      | Complete |
+>>>>>>> b0eaa03b4517c40169b8c59795344aae88f62a20
 
 
 
@@ -63,21 +67,46 @@ in Sprint 3, we continue the task, focusing the activity login-signup-logout and
 | Sign Out Activity | Check Session User in application         | Bagus       | Complete |
 | Order Activity    | Make Order Layout                         | Ilham       | Complete |
 |                   | Make Confirm Order Layout                 | Ilham       | Complete |
+<<<<<<< HEAD
 |                   | Logical add to Cart                       | Bagus       | Complete |
 |                   | Logical to get time with time picker      | Bagus       | Progress |
 |                   | Logical to get date with date picker      | Bagus       | To Do |
 |                   | Logical to get location with place picker | Bagus       | To Do |
 |                   | Store and get data from database          | Bagus       | Complete |
+=======
+|                   | Choose Product                              | Bagus       | Progress | 
+|                   | Add to cart                                 | Bagus       | To Do | 
+|                   | Fill form order                             | Bagus       | To Do|   |
+|                   | pick date and time picker                   | Bagus       | To Do    |  
+|                   | Checkout                                    | Bagus       | To Do    | 
+>>>>>>> b0eaa03b4517c40169b8c59795344aae88f62a20
 | Payment Activity  | Make Payment Method Layout                | Vivi        | Complete |
 |                   | Make Confirmation Payment Layout          | Vivi        | Complete |
 
 
 #### SPRINT4:
 this sprint, we focused on order flow, how to push the prooduct to cart, and give more information to ordering.
+<<<<<<< HEAD
 we usually discus about our project task in the first day of the week, below is the record of our meeting
 <figure class="video_container">
   <iframe src="https://youtu.be/TZcxWRS6IcQ" frameborder="0" allowfullscreen="true"> </iframe>
 </figure>
+=======
+we usually discus about our project task in the first day of the week, below is the record of our meeting <br>
+* [MEETING VIDEO - START SPRINT4](https://youtu.be/TZcxWRS6IcQ) 
+* [MEETING VIDEO - END SPRINT4](https://youtu.be/NHC1xL2pDXM)
+
+focus work sprint 4:
+| Story         | TASK                                        | CONTRIBUTOR | STATUS   |   
+|---------------|---------------------------------------------|-------------|----------|
+| Order History | Choose Product                              | Bagus       | Complete |   
+|               | Add to cart                                 | Bagus       | Complete |   
+|               | Fill form order                             | Bagus       | Progress |   
+|               | pick date and time picker                   | Bagus       | To Do    |   
+|               | Checkout                                    | Bagus       | To Do    |   
+|               | Revision Bottom Navigation                  | Ilham       | Complete |   
+| Complete      | Make Detail History Layout \(Bottom Sheet\) | Vivi        | Complete |   
+>>>>>>> b0eaa03b4517c40169b8c59795344aae88f62a20
 
 
 
