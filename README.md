@@ -9,7 +9,7 @@ for a startup computer service, it can be make client trust about this businness
 |----|----------------|------------|---------------------|
 | 1  | Vivi Rofiah    | 1313617001 | Front End Developer |
 | 2  | Bagus Nugraha  | 1313617002 | Back End Developer  |
-| 3  | Ilham Arrosyid | 1313617018 | Scrum Master        |
+| 3  | Ilham Arrosyid | 1313617018 | Project Leader       |
 
 
 
