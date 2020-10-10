@@ -70,7 +70,7 @@ in Sprint 3, we continue the task, focusing the activity login-signup-logout and
 |                   | Store and get data from database          | Bagus       | Complete |
 | Payment Activity  | Make Payment Method Layout                | Vivi        | Complete |
 |                   | Make Confirmation Payment Layout          | Vivi        | Complete |
-
+|    History        | Make History Layout          | Vivi        | Complete |
 
 
 
