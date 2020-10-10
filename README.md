@@ -75,9 +75,7 @@ in Sprint 3, we continue the task, focusing the activity login-signup-logout and
 #### SPRINT4:
 this sprint, we focused on order flow, how to push the prooduct to cart, and give more information to ordering.
 we usually discus about our project task in the first day of the week, below is the record of our meeting
-<figure class="video_container">
-  <iframe src="https://youtu.be/TZcxWRS6IcQ" frameborder="0" allowfullscreen="true"> </iframe>
-</figure>
+[MEETING VIDEO](https://youtu.be/TZcxWRS6IcQ)
 
 
 
