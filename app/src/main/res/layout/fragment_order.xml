@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Fragment.OrderFragment">
 
 
     <ImageView
@@ -306,10 +307,10 @@
 
                     </LinearLayout>
 
-<!--                    <com.google.android.gms.maps.MapView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="160dp"-->
-<!--                        android:layout_marginTop="4dp" />-->
+                    <!--                    <com.google.android.gms.maps.MapView-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="160dp"-->
+                    <!--                        android:layout_marginTop="4dp" />-->
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -406,8 +407,7 @@
         android:id="@+id/cardView2"
         android:layout_width="360dp"
         android:layout_height="68dp"
-        android:background="@color/colortrb"
-        app:cardBackgroundColor="@color/colortrb"
+        app:cardBackgroundColor="@color/darkblue"
         app:cardCornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -489,7 +489,7 @@
                 android:padding="8dp"
                 android:text="Lanjutkan"
                 android:textAllCaps="false"
-                android:textColor="@color/colortrb" />
+                android:textColor="@color/darkgreen" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

@@ -8,6 +8,10 @@
     <color name="colordivider">#FFFFFF</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="google">#D44638</color>
+    <color name="darkblue">#18414E</color>
+    <color name="yellow">#F3e03b</color>
+    <color name="green">#008754</color>
+    <color name="darkgreen">#005d4c</color>
     <color name="colorDarkGrey">#B6B1B1</color>
 
 </resources>

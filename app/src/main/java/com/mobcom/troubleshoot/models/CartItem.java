@@ -51,10 +51,10 @@ public class CartItem {
             getService().equals(cartItem.getService());
   }
 
-  @BindingAdapter("android:setVal")
-  public static void getSelectedSpinnerValue(Spinner spinner, int quantity) {
-    spinner.setSelection(quantity - 1, true);
-  }
+//  @BindingAdapter("android:setVal")
+////  public int getQuantityTextViewValue() {
+////    return quantity;
+////  }
 
   public static DiffUtil.ItemCallback<CartItem> itemCallback = new DiffUtil.ItemCallback<CartItem>() {
     @Override

@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,10 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
   private static final String TAG = "MainActivity";
   SessionManager sessionManager;
-  Intent intent;
   BottomNavigationView bottomNavigationView;
-  FrameLayout frameLayout;
   ServiceViewModel serviceViewModel;
+  NavController navController;
 
 
   @Override
@@ -40,11 +42,14 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     //    getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
+    // cek apakah user login apa engga
+    // klo belom login, bakal di lempar ke login activity
     sessionManager = new SessionManager(MainActivity.this);
     if (!sessionManager.isLoggedin()) {
       moveToLogin();
     }
 
+    // cek cart item
     serviceViewModel = new ViewModelProvider(this).get(ServiceViewModel.class);
     serviceViewModel.getCart().observe(this, new Observer<List<CartItem>>() {
       @Override
@@ -53,38 +58,11 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
+    // bottom navigasi
     bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
-    bottomNavigationView.setOnNavigationItemSelectedListener(navigation);
-
-    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new HomeFragment()).commit();
+    navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+    NavigationUI.setupWithNavController(bottomNavigationView, navController);
   }
-
-  private BottomNavigationView.OnNavigationItemSelectedListener navigation =
-          new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-              Fragment selectedFragment = null;
-
-              switch (item.getItemId()) {
-                case R.id.menuHome:
-                  selectedFragment = new HomeFragment();
-                  break;
-                case R.id.menuOrder:
-                  selectedFragment = new ServiceFragment();
-                  break;
-                case R.id.menuOrderHistory:
-                  selectedFragment = new OrderHistoryFragment();
-                  break;
-                case R.id.menuProfile:
-                  selectedFragment = new ProfileFragment();
-                  break;
-              }
-              getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, selectedFragment).commit();
-              return true;
-            }
-          };
-
 
   private void moveToLogin() {
     Intent intent = new Intent(MainActivity.this, LoginActivity.class);

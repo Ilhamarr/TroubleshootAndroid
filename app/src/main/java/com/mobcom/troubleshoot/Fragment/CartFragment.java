@@ -83,4 +83,14 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
   public void changeQuantity(CartItem cartItem, int quantity) {
     serviceViewModel.changeQuantity(cartItem, quantity);
   }
+
+  @Override
+  public void addQuantity(CartItem cartItem) {
+    serviceViewModel.addQuantity(cartItem);
+  }
+
+  @Override
+  public void decreaseQuantity(CartItem cartItem) {
+    serviceViewModel.decreaseQuantity(cartItem);
+  }
 }

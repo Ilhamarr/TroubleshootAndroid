@@ -43,6 +43,28 @@ public class LoginData {
 	@SerializedName("email")
 	private String email;
 
+	@SerializedName("nomor")
+	private String nomor_hp;
+
+	@SerializedName("alamat")
+	private String alamat;
+
+	public String getNomor_hp() {
+		return nomor_hp;
+	}
+
+	public void setNomor_hp(String nomor_hp) {
+		this.nomor_hp = nomor_hp;
+	}
+
+	public String getAlamat() {
+		return alamat;
+	}
+
+	public void setAlamat(String alamat) {
+		this.alamat = alamat;
+	}
+
 	public void setRole(String role){
 		this.role = role;
 	}

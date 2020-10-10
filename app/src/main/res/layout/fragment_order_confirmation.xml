@@ -337,8 +337,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="360dp"
         android:layout_height="68dp"
-        android:background="@color/colortrb"
-        app:cardBackgroundColor="@color/colortrb"
+        app:cardBackgroundColor="@color/darkblue"
         app:cardCornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -349,9 +348,9 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="horizontal"
-            android:padding="8dp"
-            android:layout_gravity="center">
+            android:padding="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -420,7 +419,7 @@
                 android:padding="8dp"
                 android:text="Lanjutkan"
                 android:textAllCaps="false"
-                android:textColor="@color/colortrb" />
+                android:textColor="@color/green" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

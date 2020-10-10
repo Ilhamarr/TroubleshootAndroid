@@ -44,11 +44,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
     lastName = sessionManager.getUserDetail().get(SessionManager.LAST_NAME);
     email = sessionManager.getUserDetail().get(SessionManager.EMAIL);
     alamat = sessionManager.getUserDetail().get(SessionManager.ALAMAT);
+    telepon = sessionManager.getUserDetail().get(SessionManager.NOMOR_HP);
 
     fullName = firstName + " " +lastName;
     tvNamaUser.setText(fullName);
     tvEmailUser.setText(email);
     tvAlamatUser.setText(alamat);
+    tvTeleponUser.setText(telepon);
 
     tvLogout.setOnClickListener(this);
   }

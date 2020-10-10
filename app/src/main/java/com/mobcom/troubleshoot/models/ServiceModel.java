@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.DiffUtil;
 import com.bumptech.glide.Glide;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 public class  ServiceModel {
   @SerializedName("kerusakan_id")
   private String kerusakan_id;
@@ -21,6 +23,28 @@ public class  ServiceModel {
 
   @SerializedName("nama_kerusakan")
   private String nama_kerusakan;
+
+  @SerializedName("keterangan")
+  private String keterangan;
+
+  @SerializedName("image")
+  private String image;
+
+  public String getKeterangan() {
+    return keterangan;
+  }
+
+  public void setKeterangan(String keterangan) {
+    this.keterangan = keterangan;
+  }
+
+  public String getImage() {
+    return image;
+  }
+
+  public void setImage(String image) {
+    this.image = image;
+  }
 
   public ServiceModel(String kerusakan_id, int biaya, String jenis, String nama_kerusakan) {
     this.kerusakan_id = kerusakan_id;
@@ -68,6 +92,8 @@ public class  ServiceModel {
             ", biaya=" + biaya +
             ", jenis='" + jenis + '\'' +
             ", nama_kerusakan='" + nama_kerusakan + '\'' +
+            ", keterangan='" + keterangan + '\'' +
+            ", image='" + image + '\'' +
             '}';
   }
 
@@ -76,10 +102,12 @@ public class  ServiceModel {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ServiceModel that = (ServiceModel) o;
-    return getKerusakan_id() == that.getKerusakan_id() &&
-            getBiaya() == that.getBiaya() &&
+    return getBiaya() == that.getBiaya() &&
+            getKerusakan_id().equals(that.getKerusakan_id()) &&
             getJenis().equals(that.getJenis()) &&
-            getNama_kerusakan().equals(that.getNama_kerusakan());
+            getNama_kerusakan().equals(that.getNama_kerusakan()) &&
+            getKeterangan().equals(that.getKeterangan()) &&
+            getImage().equals(that.getImage());
   }
 
   public static DiffUtil.ItemCallback<ServiceModel> itemCallback = new DiffUtil.ItemCallback<ServiceModel>() {

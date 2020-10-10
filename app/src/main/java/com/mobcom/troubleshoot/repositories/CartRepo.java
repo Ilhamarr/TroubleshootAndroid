@@ -33,7 +33,8 @@ public class CartRepo {
     List<CartItem> cartItemList = new ArrayList<>(mutableCart.getValue());
     for (CartItem cartItem : cartItemList) {
       if (cartItem.getService().getKerusakan_id().equals(service.getKerusakan_id())) {
-        if (cartItem.getQuantity() == 5) {
+
+        if (cartItem.getQuantity() == 1) {
           return false;
         }
         int index = cartItemList.indexOf(cartItem);
@@ -69,6 +70,38 @@ public class CartRepo {
     cartItemList.set(cartItemList.indexOf(cartItem), updatedItem);
     mutableCart.setValue(cartItemList);
     calculateCartTotal();
+  }
+
+  public void addQuantity(CartItem cartItem) {
+    if (mutableCart.getValue() == null){
+      return;
+    }
+    List<CartItem> cartItemList = new ArrayList<>(mutableCart.getValue());
+    CartItem updatedItem = new CartItem(cartItem.getService(), cartItem.getQuantity() + 1);
+    cartItemList.set(cartItemList.indexOf(cartItem), updatedItem);
+    mutableCart.setValue(cartItemList);
+    calculateCartTotal();
+  }
+
+  public void decreaseQuantity(CartItem cartItem) {
+    if (mutableCart.getValue() == null) {
+      return;
+    }
+
+    List<CartItem> cartItemList = new ArrayList<>(mutableCart.getValue());
+
+    if (cartItem.getQuantity() == 1){
+      cartItemList.remove(cartItem);
+      mutableCart.setValue(cartItemList);
+      calculateCartTotal();
+    }
+    else{
+      CartItem updatedItem = new CartItem(cartItem.getService(), cartItem.getQuantity() - 1);
+      cartItemList.set(cartItemList.indexOf(cartItem), updatedItem);
+      mutableCart.setValue(cartItemList);
+      calculateCartTotal();
+    }
+    
   }
 
   private void calculateCartTotal() {

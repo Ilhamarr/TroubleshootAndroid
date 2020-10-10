@@ -31,6 +31,7 @@
     <string name="FullName">fullName</string>
     <string name="Telepon">telepon</string>
     <string name="Alamat">alamat</string>
+    <string name="order_service">Order Service</string>
 
     <string-array name="quantity_string_array">
         <item>1</item>
