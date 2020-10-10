@@ -74,8 +74,19 @@ in Sprint 3, we continue the task, focusing the activity login-signup-logout and
 
 #### SPRINT4:
 this sprint, we focused on order flow, how to push the prooduct to cart, and give more information to ordering.
-we usually discus about our project task in the first day of the week, below is the record of our meeting
-[MEETING VIDEO](https://youtu.be/TZcxWRS6IcQ)
+we usually discus about our project task in the first day of the week, below is the record of our meeting <br>
+[MEETING VIDEO - START SPRINT4](https://youtu.be/TZcxWRS6IcQ)
+
+focus work sprint 4:
+| Story         | TASK                                        | CONTRIBUTOR | STATUS   |   |
+|---------------|---------------------------------------------|-------------|----------|---|
+| Order History | Choose Product                              | Bagus       | Complete |   |
+|               | Add to cart                                 | Bagus       | Complete |   |
+|               | Fill form order                             | Bagus       | Progress |   |
+|               | pick date and time picker                   | Bagus       | To Do    |   |
+|               | Checkout                                    | Bagus       | To Do    |   |
+|               | Revision Bottom Navigation                  | Ilham       | Complete |   |
+| Complete      | Make Detail History Layout \(Bottom Sheet\) | Vivi        | Complete |   |
 
 
 
