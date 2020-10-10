@@ -63,11 +63,11 @@ in Sprint 3, we continue the task, focusing the activity login-signup-logout and
 | Sign Out Activity | Check Session User in application         | Bagus       | Complete |
 | Order Activity    | Make Order Layout                         | Ilham       | Complete |
 |                   | Make Confirm Order Layout                 | Ilham       | Complete |
-|                   | Logical add to Cart                       | Bagus       | Complete |
-|                   | Logical to get time with time picker      | Bagus       | Progress |
-|                   | Logical to get date with date picker      | Bagus       | To Do |
-|                   | Logical to get location with place picker | Bagus       | To Do |
-|                   | Store and get data from database          | Bagus       | Complete |
+|                   | Choose Product                              | Bagus       | Progress | 
+|                   | Add to cart                                 | Bagus       | To Do | 
+|                   | Fill form order                             | Bagus       | To Do|   |
+|                   | pick date and time picker                   | Bagus       | To Do    |  
+|                   | Checkout                                    | Bagus       | To Do    | 
 | Payment Activity  | Make Payment Method Layout                | Vivi        | Complete |
 |                   | Make Confirmation Payment Layout          | Vivi        | Complete |
 
