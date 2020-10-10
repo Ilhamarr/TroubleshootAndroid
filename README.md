@@ -79,15 +79,15 @@ we usually discus about our project task in the first day of the week, below is 
 * [MEETING VIDEO - END SPRINT4](https://youtu.be/NHC1xL2pDXM)
 
 focus work sprint 4:
-| Story         | TASK                                        | CONTRIBUTOR | STATUS   |   |
-|---------------|---------------------------------------------|-------------|----------|---|
-| Order History | Choose Product                              | Bagus       | Complete |   |
-|               | Add to cart                                 | Bagus       | Complete |   |
-|               | Fill form order                             | Bagus       | Progress |   |
-|               | pick date and time picker                   | Bagus       | To Do    |   |
-|               | Checkout                                    | Bagus       | To Do    |   |
-|               | Revision Bottom Navigation                  | Ilham       | Complete |   |
-| Complete      | Make Detail History Layout \(Bottom Sheet\) | Vivi        | Complete |   |
+| Story         | TASK                                        | CONTRIBUTOR | STATUS   |   
+|---------------|---------------------------------------------|-------------|----------|
+| Order History | Choose Product                              | Bagus       | Complete |   
+|               | Add to cart                                 | Bagus       | Complete |   
+|               | Fill form order                             | Bagus       | Progress |   
+|               | pick date and time picker                   | Bagus       | To Do    |   
+|               | Checkout                                    | Bagus       | To Do    |   
+|               | Revision Bottom Navigation                  | Ilham       | Complete |   
+| Complete      | Make Detail History Layout \(Bottom Sheet\) | Vivi        | Complete |   
 
 
 
