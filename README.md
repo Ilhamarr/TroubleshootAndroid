@@ -28,7 +28,7 @@ In this Sprint we start the project with a discussion about business process of 
 | Story         | TASK              | CONTRIBUTOR | STATUS   |
 |---------------|-------------------|-------------|----------|
 | Mockup        | Mockup in Adobe XD     | Ilham       | Complete |
-| Database      | Upgrade Database  | Ilham       | Complete |
+| Database      | Upgrade Database  | Bagus      | Complete |
 
 
 
