@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_serviceFragment"
-            app:destination="@id/serviceFragment" />
+            app:destination="@id/serviceFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/serviceFragment"
@@ -21,7 +25,18 @@
         tools:layout="@layout/fragment_service" >
         <action
             android:id="@+id/action_serviceFragment_to_cartFragment"
-            app:destination="@id/cartFragment" />
+            app:destination="@id/cartFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_serviceFragment_to_orderFragment"
+            app:destination="@id/orderFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/orderHistoryFragment"
@@ -40,7 +55,11 @@
         tools:layout="@layout/fragment_cart" >
         <action
             android:id="@+id/action_cartFragment_to_orderFragment"
-            app:destination="@id/orderFragment" />
+            app:destination="@id/orderFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/orderFragment"
@@ -49,7 +68,11 @@
         tools:layout="@layout/fragment_order" >
         <action
             android:id="@+id/action_orderFragment_to_orderConfirmationFragment"
-            app:destination="@id/orderConfirmationFragment" />
+            app:destination="@id/orderConfirmationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/orderConfirmationFragment"
@@ -58,6 +81,61 @@
         tools:layout="@layout/fragment_order_confirmation" >
         <action
             android:id="@+id/action_orderConfirmationFragment_to_serviceFragment"
-            app:destination="@id/serviceFragment" />
+            app:destination="@id/serviceFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="merkLaptop"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="seriLaptop"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="detail"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="tanggal"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="jam"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="alamat"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="nama"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="phone"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="idLaptop"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="tipeLaptop"
+            app:argType="string"
+            android:defaultValue="default" />
+        <action
+            android:id="@+id/action_orderConfirmationFragment_to_orderFragment"
+            app:destination="@id/orderFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 </navigation>

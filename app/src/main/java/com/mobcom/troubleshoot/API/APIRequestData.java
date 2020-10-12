@@ -2,6 +2,8 @@ package com.mobcom.troubleshoot.API;
 
 import com.mobcom.troubleshoot.models.Login.Login;
 import com.mobcom.troubleshoot.models.Register.Register;
+import com.mobcom.troubleshoot.models.ResponseHeaderOrder;
+import com.mobcom.troubleshoot.models.ResponseOrder;
 import com.mobcom.troubleshoot.models.ResponseServiceModel;
 
 import com.mobcom.troubleshoot.models.ResponseLaptopModel;
@@ -35,4 +37,29 @@ public interface APIRequestData {
           @Field("password") String password
   );
 
+  @FormUrlEncoded
+  @POST("headerorder")
+  Call<ResponseHeaderOrder> HeaderOrderResponse(
+          @Field("account_id") String account_id,
+          @Field("merk_laptop") String merk_laptop,
+          @Field("keterangan") String keterangan,
+          @Field("nomor_hp") String nomor_hp,
+          @Field("tanggal_pengambilan") String tanggal_pengambilan,
+          @Field("jam_pengambilan") String jam_pengambilan,
+          @Field("tempat_bertemu") String tempat_bertemu,
+          @Field("tipe_laptop") String tipe_laptop,
+          @Field("biaya_tota") String biaya_tota,
+          @Field("tracking_key") String tracking_key
+          );
+
+  @FormUrlEncoded
+  @POST("order")
+  Call<ResponseOrder> OrderResponse(
+          @Field("account_id") String account_id,
+          @Field("tracking_key") String tracking_key,
+          @Field("kerusakan_id") String kerusakan_id,
+          @Field("harga") String harga,
+          @Field("jumlah") String jumlah,
+          @Field("total_harga") String total_harga
+  );
 }

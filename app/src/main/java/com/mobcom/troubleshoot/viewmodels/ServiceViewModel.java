@@ -19,7 +19,7 @@ public class ServiceViewModel extends ViewModel {
   MutableLiveData<ServiceModel> mutableService = new MutableLiveData<>();
 
   public LiveData<List<ServiceModel>> getServices() {
-    return serviceRepo.getService();
+      return serviceRepo.getService();
   }
 
   public void setService(ServiceModel service) {

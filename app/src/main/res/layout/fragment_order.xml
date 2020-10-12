@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Fragment.OrderFragment">
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="177dp"
@@ -27,8 +26,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="36dp"
         android:text="Pemesanan"
         android:textStyle="bold"
@@ -38,14 +39,16 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="560dp"
+        android:layout_height="500dp"
+        android:layout_margin="8dp"
+        android:paddingTop="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.421">
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -164,36 +167,19 @@
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <!--                  <LinearLayout-->
-                    <!--                      android:layout_width="match_parent"-->
-                    <!--                      android:layout_height="wrap_content"-->
-                    <!--                      android:orientation="horizontal"-->
-                    <!--                      android:paddingTop="8dp">-->
-                    <!--                      <TextView-->
-                    <!--                          android:layout_width="match_parent"-->
-                    <!--                          android:layout_height="wrap_content"-->
-                    <!--                          android:layout_weight="1"-->
-                    <!--                          android:text="Tanggal"-->
-                    <!--                          android:textAlignment="center"/>-->
-                    <!--                      <TextView-->
-                    <!--                          android:layout_width="match_parent"-->
-                    <!--                          android:layout_height="wrap_content"-->
-                    <!--                          android:layout_weight="1"-->
-                    <!--                          android:text="Jam"-->
-                    <!--                          android:textAlignment="center"/>-->
-                    <!--                  </LinearLayout>-->
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginTop="16dp"
                         android:orientation="horizontal">
 
-                        <EditText
+                        <TextView
                             android:id="@+id/Edt_Tanggal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:clickable="true"
                             android:hint="Tanggal"
                             android:textAlignment="center" />
 
@@ -203,11 +189,12 @@
                             android:layout_height="match_parent"
                             android:background="@color/colortrb" />
 
-                        <EditText
+                        <TextView
                             android:id="@+id/Edt_Jam"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:clickable="true"
                             android:hint="Jam"
                             android:textAlignment="center" />
                     </LinearLayout>
@@ -243,36 +230,49 @@
                         android:gravity="center"
                         android:orientation="horizontal">
 
-                        <Button
-                            android:id="@+id/btn_AntarJemput"
-                            android:layout_width="wrap_content"
-                            android:layout_height="32dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/btn_rounded"
-                            android:clickable="true"
-                            android:text="Antar Jemput"
-                            android:textAlignment="center"
-                            android:textColor="@color/colordivider"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
+                        <RadioGroup
+                            android:id="@+id/rgTempatBertemu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
-                        <!--                        <View-->
-                        <!--                            android:id="@+id/divider"-->
-                        <!--                            android:layout_width="1dp"-->
-                        <!--                            android:layout_height="match_parent"-->
-                        <!--                            android:background="?android:attr/listDivider" />-->
+                            <RadioButton
+                                android:id="@+id/btn_AntarJemput"
+                                android:layout_width="wrap_content"
+                                android:layout_height="32dp"
+                                android:layout_margin="16dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/radio_selector"
+                                android:button="@android:color/transparent"
+                                android:clickable="true"
+                                android:elevation="4dp"
+                                android:gravity="center"
+                                android:padding="6dp"
+                                android:text="Antar Jemput"
+                                android:textAlignment="center"
+                                android:textColor="@drawable/text_color_radio"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
 
-                        <Button
-                            android:id="@+id/btn_DatangSendiri"
-                            android:layout_width="wrap_content"
-                            android:layout_height="32dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/btn_white"
-                            android:clickable="true"
-                            android:text="Datang Sendiri"
-                            android:textAlignment="center"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
+                            <RadioButton
+                                android:id="@+id/btn_DatangSendiri"
+                                android:layout_width="wrap_content"
+                                android:layout_height="32dp"
+                                android:layout_margin="16dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/radio_selector"
+                                android:button="@android:color/transparent"
+                                android:clickable="true"
+                                android:elevation="4dp"
+                                android:gravity="center"
+                                android:padding="6dp"
+                                android:text="Datang Sendiri"
+                                android:textAlignment="center"
+                                android:textColor="@drawable/text_color_radio"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </RadioGroup>
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -284,6 +284,7 @@
                         <ImageView
                             android:layout_width="26dp"
                             android:layout_height="32dp"
+                            android:layout_gravity="center"
                             android:src="@drawable/ic_baseline_location_on_24" />
 
                         <TextView
@@ -296,6 +297,7 @@
                             android:visibility="gone" />
 
                         <EditText
+                            android:id="@+id/alamatTempatBertemu"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="12dp"
@@ -306,12 +308,6 @@
                             android:visibility="visible" />
 
                     </LinearLayout>
-
-                    <!--                    <com.google.android.gms.maps.MapView-->
-                    <!--                        android:layout_width="match_parent"-->
-                    <!--                        android:layout_height="160dp"-->
-                    <!--                        android:layout_marginTop="4dp" />-->
-
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -357,7 +353,6 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/Edt_EmailPemesanan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -369,7 +364,7 @@
                             android:src="@drawable/ic_baseline_email_24" />
 
                         <EditText
-                            android:id="@+id/Edt_NomorTelepon"
+                            android:id="@+id/Edt_Email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="12sp"
@@ -389,6 +384,7 @@
                             android:src="@drawable/ic_baseline_local_phone_24" />
 
                         <EditText
+                            android:id="@+id/Edt_NomorTelepon"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="12sp"
@@ -413,7 +409,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.963">
+        app:layout_constraintVertical_bias="0.976">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -439,7 +435,7 @@
                         android:textColor="@color/colordivider" />
 
                     <TextView
-                        android:id="@+id/Txt"
+                        android:id="@+id/TxtTotalProdukSeluruh"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
@@ -468,6 +464,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/orderTotalTextView"
                         android:layout_width="112dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"

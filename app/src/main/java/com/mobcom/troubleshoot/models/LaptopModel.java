@@ -38,6 +38,6 @@ public class LaptopModel {
 
   @Override
   public String toString() {
-    return merk;
+    return merk + " ("+tipe+")";
   }
 }

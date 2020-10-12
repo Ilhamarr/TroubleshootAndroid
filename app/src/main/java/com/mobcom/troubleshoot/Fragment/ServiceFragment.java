@@ -29,13 +29,11 @@ import com.mobcom.troubleshoot.databinding.FragmentServiceBinding;
 import java.util.List;
 
 public class ServiceFragment extends Fragment implements ServiceListAdapter.ServiceInterface {
-
   private static final String TAG = "ServiceFragment";
   FragmentServiceBinding fragmentServiceBinding;
   private ServiceListAdapter serviceListAdapter;
   private ServiceViewModel serviceViewModel;
   private NavController navController;
-  Button btnShowCart;
   private int cartQuantity = 0;
 
   public ServiceFragment() {
@@ -56,7 +54,6 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
 
     serviceListAdapter = new ServiceListAdapter(this);
     fragmentServiceBinding.serviceRecyclerView.setAdapter(serviceListAdapter);
-
     serviceViewModel = new ViewModelProvider(requireActivity()).get(ServiceViewModel.class);
     serviceViewModel.getServices().observe(getViewLifecycleOwner(), new Observer<List<ServiceModel>>() {
       @Override
@@ -67,7 +64,7 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
     serviceViewModel.getCart().observe(getViewLifecycleOwner(), new Observer<List<CartItem>>() {
       @Override
       public void onChanged(List<CartItem> cartItems) {
-        fragmentServiceBinding.cart.setEnabled(cartItems.size() > 0);
+        fragmentServiceBinding.checkoutButton.setEnabled(cartItems.size() > 0);
         int quantity = 0;
         for (CartItem cartItem: cartItems) {
           quantity += cartItem.getQuantity();
@@ -88,6 +85,13 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
     });
     fragmentServiceBinding.cart.setOnClickListener((v) -> {
       navController.navigate(R.id.action_serviceFragment_to_cartFragment);
+    });
+
+    fragmentServiceBinding.checkoutButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        navController.navigate(R.id.action_serviceFragment_to_orderFragment);
+      }
     });
   }
 

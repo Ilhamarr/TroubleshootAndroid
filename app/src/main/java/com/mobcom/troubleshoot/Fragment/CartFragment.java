@@ -7,20 +7,31 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
+import com.mobcom.troubleshoot.Activity.KategoriPemesananActivity;
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.adapters.CartListAdapter;
 import com.mobcom.troubleshoot.databinding.FragmentCartBinding;
 import com.mobcom.troubleshoot.models.CartItem;
+import com.mobcom.troubleshoot.models.LaptopModel;
+import com.mobcom.troubleshoot.models.ResponseLaptopModel;
 import com.mobcom.troubleshoot.viewmodels.ServiceViewModel;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CartFragment extends Fragment implements CartListAdapter.CartInterface {
 
@@ -28,6 +39,7 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
   ServiceViewModel serviceViewModel;
   FragmentCartBinding fragmentCartBinding;
   private int cartQuantity = 0;
+  private NavController navController;
 
   public CartFragment() {
     // Required empty public constructor
@@ -48,29 +60,23 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
     CartListAdapter cartListAdapter = new CartListAdapter(this);
     fragmentCartBinding.cartRecyclerView.setAdapter(cartListAdapter);
     fragmentCartBinding.cartRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
-
+    navController = Navigation.findNavController(view);
     serviceViewModel = new ViewModelProvider(requireActivity()).get(ServiceViewModel.class);
-    serviceViewModel.getCart().observe(getViewLifecycleOwner(), new Observer<List<CartItem>>() {
-      @Override
-      public void onChanged(List<CartItem> cartItems) {
-        cartListAdapter.submitList(cartItems);
-        fragmentCartBinding.CheckoutButton.setEnabled(cartItems.size() > 0);
-        int quantity = 0;
-        for (CartItem cartItem: cartItems) {
-          quantity += cartItem.getQuantity();
-        }
-        cartQuantity = quantity;
-
-        fragmentCartBinding.TxtTotalProdukSeluruh.setText(String.valueOf(cartQuantity));
+    serviceViewModel.getCart().observe(getViewLifecycleOwner(), cartItems -> {
+      cartListAdapter.submitList(cartItems);
+      fragmentCartBinding.CheckoutButton.setEnabled(cartItems.size() > 0);
+      int quantity = 0;
+      for (CartItem cartItem: cartItems) {
+        quantity += cartItem.getQuantity();
       }
+      cartQuantity = quantity;
+
+      fragmentCartBinding.TxtTotalProdukSeluruh.setText(String.valueOf(cartQuantity));
     });
 
-    serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), new Observer<Integer>() {
-      @Override
-      public void onChanged(Integer integer) {
-        fragmentCartBinding.orderTotalTextView.setText(integer.toString());
-      }
-    });
+    serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), integer -> fragmentCartBinding.orderTotalTextView.setText(integer.toString()));
+
+    fragmentCartBinding.CheckoutButton.setOnClickListener(v -> navController.navigate(R.id.action_cartFragment_to_orderFragment));
 
   }
 
@@ -93,4 +99,5 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
   public void decreaseQuantity(CartItem cartItem) {
     serviceViewModel.decreaseQuantity(cartItem);
   }
+
 }

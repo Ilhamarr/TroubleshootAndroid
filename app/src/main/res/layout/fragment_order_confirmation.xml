@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Fragment.OrderConfirmationFragment">
 
     <ImageView
         android:id="@+id/imageView"
@@ -25,8 +26,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="36dp"
         android:text="Konfirmasi Pemesanan"
         android:textStyle="bold"
@@ -36,15 +39,17 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="580dp"
         android:foregroundGravity="center"
+        android:layout_margin="8dp"
+        android:paddingTop="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.344">
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -78,14 +83,23 @@
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
-                        <Button
-                            android:layout_width="64dp"
-                            android:layout_height="28dp"
-                            android:layout_marginLeft="112dp"
-                            android:background="@drawable/btn_rounded"
-                            android:text="Ubah"
-                            android:textColor="@color/colordivider"
-                            android:textSize="12sp" />
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:orientation="horizontal">
+                            <Button
+                                android:id="@+id/ubah_detail_pesanan"
+                                android:layout_width="64dp"
+                                android:layout_height="28dp"
+                                android:layout_gravity="right"
+                                android:layout_marginRight="10dp"
+                                android:background="@drawable/btn_rounded"
+                                android:text="Ubah"
+                                android:textColor="@color/colordivider"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -241,14 +255,22 @@
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
-                        <Button
-                            android:layout_width="64dp"
-                            android:layout_height="28dp"
-                            android:layout_marginLeft="112dp"
-                            android:background="@drawable/btn_rounded"
-                            android:text="Ubah"
-                            android:textColor="@color/colordivider"
-                            android:textSize="12sp" />
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:orientation="horizontal">
+                            <Button
+                                android:id="@+id/ubah_layanan"
+                                android:layout_width="64dp"
+                                android:layout_height="28dp"
+                                android:layout_gravity="right"
+                                android:layout_marginRight="10dp"
+                                android:background="@drawable/btn_rounded"
+                                android:text="Ubah"
+                                android:textColor="@color/colordivider"
+                                android:textSize="12sp" />
+                        </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
@@ -265,8 +287,10 @@
                             android:layout_height="wrap_content">
 
                             <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvKonfirmasiPemesanan"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                                 tools:listitem="@layout/item_listpesanan" />
                         </ScrollView>
                     </LinearLayout>
@@ -300,6 +324,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:id="@+id/tvorderTotalTextView"
                                 android:layout_width="75dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="148dp"
@@ -369,7 +394,7 @@
                         android:textColor="@color/colordivider" />
 
                     <TextView
-                        android:id="@+id/Txt"
+                        android:id="@+id/TxtTotalProdukSeluruh"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
@@ -398,6 +423,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/orderTotalTextView"
                         android:layout_width="112dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
@@ -410,14 +436,14 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/Lanjut_Pembayaran"
+                android:id="@+id/buat_pesanan"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="56dp"
                 android:background="@drawable/btn_white"
                 android:padding="8dp"
-                android:text="Lanjutkan"
+                android:text="Buat Pesanan"
                 android:textAllCaps="false"
                 android:textColor="@color/green" />
         </LinearLayout>
