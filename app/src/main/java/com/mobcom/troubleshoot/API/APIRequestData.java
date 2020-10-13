@@ -48,7 +48,7 @@ public interface APIRequestData {
           @Field("jam_pengambilan") String jam_pengambilan,
           @Field("tempat_bertemu") String tempat_bertemu,
           @Field("tipe_laptop") String tipe_laptop,
-          @Field("biaya_tota") String biaya_tota,
+          @Field("biaya_total") String biaya_total,
           @Field("tracking_key") String tracking_key
           );
 
