@@ -57,7 +57,7 @@ public class OrderFragment extends Fragment {
   FragmentOrderBinding fragmentOrderBinding;
   ServiceViewModel serviceViewModel;
   private int cartQuantity = 0;
-  private String account_id, firstname, lastname, email, phone, fullname, laptop_Id, merkLaptop, tipeLaptop;
+  private String account_id, firstname, lastname, email, phone, fullname, laptop_Id, laptop_Merk;
   List<LaptopModel> listLaptop = new ArrayList<>();
 
   public OrderFragment() {
@@ -113,8 +113,7 @@ public class OrderFragment extends Fragment {
         String laptop_merk = selectedLaptop.getMerk();
         String laptop_tipe = selectedLaptop.getTipe();
         laptop_Id = laptop_id;
-        merkLaptop = laptop_merk;
-        tipeLaptop = laptop_tipe;
+        laptop_Merk = laptop_merk;
         //Toast.makeText(getContext(), laptop_id + ". " + laptop_merk + " " + laptop_tipe, Toast.LENGTH_SHORT).show();
       }
 
@@ -180,8 +179,7 @@ public class OrderFragment extends Fragment {
       //pass all data to next fragment
       OrderFragmentDirections.ActionOrderFragmentToOrderConfirmationFragment action = OrderFragmentDirections.actionOrderFragmentToOrderConfirmationFragment();
       action.setIdLaptop(laptop_Id);
-      action.setMerkLaptop(merkLaptop);
-      action.setTipeLaptop(tipeLaptop);
+      action.setMerkLaptop(laptop_Merk);
       action.setSeriLaptop(seriLaptop);
       action.setDetail(detailPermasalahan);
       action.setTanggal(tanggal);

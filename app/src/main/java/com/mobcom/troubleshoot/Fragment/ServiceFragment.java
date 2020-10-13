@@ -87,12 +87,7 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
       navController.navigate(R.id.action_serviceFragment_to_cartFragment);
     });
 
-    fragmentServiceBinding.checkoutButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        navController.navigate(R.id.action_serviceFragment_to_orderFragment);
-      }
-    });
+    fragmentServiceBinding.checkoutButton.setOnClickListener(v -> navController.navigate(R.id.action_serviceFragment_to_orderFragment));
   }
 
   // add to cart ada disini

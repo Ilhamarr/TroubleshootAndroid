@@ -41,10 +41,11 @@
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:fillViewport="true"
         android:paddingTop="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cardView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
@@ -60,7 +61,6 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 app:cardCornerRadius="8dp">
 
                 <LinearLayout
@@ -403,13 +403,14 @@
         android:id="@+id/cardView2"
         android:layout_width="360dp"
         android:layout_height="68dp"
+        android:layout_marginBottom="20dp"
         app:cardBackgroundColor="@color/darkblue"
         app:cardCornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976">
+        app:layout_constraintTop_toBottomOf="@id/scrollView"
+        app:layout_constraintVertical_bias="0.963">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -486,7 +487,7 @@
                 android:padding="8dp"
                 android:text="Lanjutkan"
                 android:textAllCaps="false"
-                android:textColor="@color/darkgreen" />
+                android:textColor="@color/green" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

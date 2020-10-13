@@ -48,17 +48,19 @@
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toStartOf="@+id/cardView"
         app:layout_constraintTop_toTopOf="@+id/cardView"
-        app:layout_constraintVertical_bias="1.0" />
-
+        app:layout_constraintVertical_bias="0.47000003" />
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="580dp"
+        android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:fillViewport="true"
+        android:foregroundGravity="center"
         android:paddingTop="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.0">
@@ -66,7 +68,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/serviceRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:layout_editor_absoluteX="-65dp"
             tools:layout_editor_absoluteY="-59dp"
@@ -76,27 +79,30 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="320dp"
-        android:layout_height="64dp"
+        android:layout_height="68dp"
         android:layout_marginStart="72dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="20dp"
         android:padding="8dp"
         app:cardBackgroundColor="@color/darkblue"
         app:cardCornerRadius="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976">
+        app:layout_constraintTop_toBottomOf="@id/scrollView"
+        app:layout_constraintVertical_bias="0.963">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="8dp">
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -155,14 +161,13 @@
                 android:id="@+id/checkoutButton"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_marginTop="3dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="24dp"
+                android:layout_marginLeft="56dp"
                 android:background="@drawable/btn_white"
                 android:padding="8dp"
                 android:text="Pesan Sekarang"
                 android:textAllCaps="false"
-                android:textColor="@color/colortrb"
+                android:textColor="@color/green"
                 android:textSize="12dp" />
         </LinearLayout>
 
