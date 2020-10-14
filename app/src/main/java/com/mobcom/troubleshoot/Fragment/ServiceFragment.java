@@ -49,7 +49,7 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
   }
 
   @Override
-  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+  public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
     serviceListAdapter = new ServiceListAdapter(this);

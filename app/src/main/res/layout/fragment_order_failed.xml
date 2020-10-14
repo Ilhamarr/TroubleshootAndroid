@@ -5,22 +5,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.OrderSuccessFragment">
+    tools:context=".Fragment.OrderFailedFragment">
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="414dp"
-        android:layout_height="730dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/splashscreen_pemesanan"/>
+        app:srcCompat="@drawable/splashscreen_error"/>
 
 
     <TextView
-        android:id="@+id/Txt_SplashPemesananBerhasil"
+        android:id="@+id/Txt_SplashPemesananGagal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"

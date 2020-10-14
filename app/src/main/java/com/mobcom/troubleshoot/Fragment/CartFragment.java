@@ -54,7 +54,7 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
   }
 
   @Override
-  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+  public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
     CartListAdapter cartListAdapter = new CartListAdapter(this);

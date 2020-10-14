@@ -39,7 +39,6 @@ import retrofit2.Response;
 public class OrderConfirmationFragment extends Fragment {
   FragmentOrderConfirmationBinding fragmentOrderConfirmationBinding;
   String account_id, laptop_Id, mereklaptop, tipeLaptop, seriLaptop, detail, tanggal, jam, tempat, nama, email, phone, totalHarga;
-  Boolean orderSuccess;
   ServiceViewModel serviceViewModel;
   private int cartQuantity = 0;
   private NavController navController;
@@ -59,7 +58,7 @@ public class OrderConfirmationFragment extends Fragment {
   }
 
   @Override
-  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+  public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
     CartListConfirmAdapter cartListConfirmAdaptertAdapter = new CartListConfirmAdapter();
@@ -121,18 +120,34 @@ public class OrderConfirmationFragment extends Fragment {
 
     fragmentOrderConfirmationBinding.buatPesanan.setOnClickListener(v -> {
       String trackKey = tracking_key(account_id,mereklaptop);
-      headerOrder(account_id, laptop_Id, detail,phone,tanggal,jam,tempat,seriLaptop,totalHarga,trackKey);
-      serviceViewModel.getCart().observe(getViewLifecycleOwner(), cartItems -> {
-        for (CartItem cartItem : cartItems) {
-          String kerusakanId = cartItem.getService().getKerusakan_id();
-          String jumlah = String.valueOf(cartItem.getQuantity());
-          String harga = String.valueOf(cartItem.getService().getBiaya());
-          String totalHarga = String.valueOf(cartItem.getQuantity() * cartItem.getService().getBiaya());
-          order(account_id,trackKey,kerusakanId,harga,jumlah,totalHarga);
+      //headerOrder(account_id, laptop_Id, detail,phone,tanggal,jam,tempat,seriLaptop,totalHarga,trackKey);
+      ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
+      Call<ResponseHeaderOrder> headerOrderCall = ardData.HeaderOrderResponse(account_id, laptop_Id, detail,phone,tanggal,jam,tempat,seriLaptop,totalHarga,trackKey);
+      headerOrderCall.enqueue(new Callback<ResponseHeaderOrder>() {
+        @Override
+        public void onResponse(Call<ResponseHeaderOrder> call, Response<ResponseHeaderOrder> response) {
+          if (response.body() != null && response.isSuccessful()) {
+            serviceViewModel.getCart().observe(getViewLifecycleOwner(), cartItems -> {
+              for (CartItem cartItem : cartItems) {
+                String kerusakanId = cartItem.getService().getKerusakan_id();
+                String jumlah = String.valueOf(cartItem.getQuantity());
+                String harga = String.valueOf(cartItem.getService().getBiaya());
+                String totalHarga = String.valueOf(cartItem.getQuantity() * cartItem.getService().getBiaya());
+                order(account_id,trackKey,kerusakanId,harga,jumlah,totalHarga);
+              }
+            });
+            serviceViewModel.resetCart();
+            navController.navigate(R.id.action_orderConfirmationFragment_to_orderSuccessFragment);
+          } else {
+            navController.navigate(R.id.action_orderConfirmationFragment_to_orderFailedFragment);
+          }
+        }
+
+        @Override
+        public void onFailure(Call<ResponseHeaderOrder> call, Throwable t) {
+          navController.navigate(R.id.action_orderConfirmationFragment_to_orderFailedFragment);
         }
       });
-
-      navController.navigate(R.id.action_orderConfirmationFragment_to_orderSuccessFragment);
     });
 
 
@@ -144,16 +159,10 @@ public class OrderConfirmationFragment extends Fragment {
     orderCall.enqueue(new Callback<ResponseOrder>() {
       @Override
       public void onResponse(Call<ResponseOrder> call, Response<ResponseOrder> response) {
-        if (response.body() != null && response.isSuccessful()) {
-          Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-        } else {
-          Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-        }
       }
 
       @Override
       public void onFailure(Call<ResponseOrder> call, Throwable t) {
-        Toast.makeText(getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
       }
     });
 
@@ -175,7 +184,6 @@ public class OrderConfirmationFragment extends Fragment {
       @Override
       public void onFailure(Call<ResponseHeaderOrder> call, Throwable t) {
         Toast.makeText(getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-        orderSuccess = false;
       }
     });
   }
