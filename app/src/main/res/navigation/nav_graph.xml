@@ -148,6 +148,10 @@
         <action
             android:id="@+id/action_orderConfirmationFragment_to_orderFailedFragment"
             app:destination="@id/orderFailedFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
@@ -170,6 +174,10 @@
         tools:layout="@layout/fragment_order_failed" >
         <action
             android:id="@+id/action_orderFailedFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 </navigation>

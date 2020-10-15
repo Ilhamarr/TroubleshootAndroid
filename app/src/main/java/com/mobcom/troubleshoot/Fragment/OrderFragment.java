@@ -4,46 +4,31 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import android.text.Editable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.RadioGroup;
-import android.widget.Switch;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.mobcom.troubleshoot.API.APIRequestData;
 import com.mobcom.troubleshoot.API.RetroServer;
-import com.mobcom.troubleshoot.Activity.KategoriPemesananActivity;
-import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.SessionManager;
 import com.mobcom.troubleshoot.databinding.FragmentOrderBinding;
 import com.mobcom.troubleshoot.models.CartItem;
 import com.mobcom.troubleshoot.models.LaptopModel;
 import com.mobcom.troubleshoot.models.ResponseLaptopModel;
-import com.mobcom.troubleshoot.repositories.LaptopRepo;
-import com.mobcom.troubleshoot.viewmodels.LaptopViewModel;
 import com.mobcom.troubleshoot.viewmodels.ServiceViewModel;
 
-import java.text.SimpleDateFormat;
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -165,6 +150,11 @@ public class OrderFragment extends Fragment {
 
     //tombol lanjut
     fragmentOrderBinding.LanjutPembayaran.setOnClickListener(v -> {
+
+      if(!validateSeriLaptop() | !validateDetail() | !validateTanggal() | !validateJam() | !validateTempat() | !validateNama() | !validateEmail() | !validatePhone()){
+        return;
+      }
+
       //get all data in this fragment
       String seriLaptop = fragmentOrderBinding.EdtSeriLaptop.getText().toString();
       String detailPermasalahan = fragmentOrderBinding.EdtDetailPemesanan.getText().toString();
@@ -175,6 +165,8 @@ public class OrderFragment extends Fragment {
       String email = fragmentOrderBinding.EdtEmail.getText().toString();
       String phone = fragmentOrderBinding.EdtNomorTelepon.getText().toString();
       //end get all data
+
+
 
       //pass all data to next fragment
       OrderFragmentDirections.ActionOrderFragmentToOrderConfirmationFragment action = OrderFragmentDirections.actionOrderFragmentToOrderConfirmationFragment();
@@ -237,6 +229,73 @@ public class OrderFragment extends Fragment {
 
     DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), (view, year, month, dayOfMonth) -> fragmentOrderBinding.EdtTanggal.setText(dayOfMonth + "-" + (month + 1) + "-" + year), YEAR, MONTH, Day);
     datePickerDialog.show();
+  }
+
+  private Boolean validateSeriLaptop (){
+    String val = fragmentOrderBinding.EdtSeriLaptop.getText().toString();
+    if (val.isEmpty()) {
+      fragmentOrderBinding.EdtSeriLaptop.setError("Field cannot be empty");
+      return false;
+    }
+    return true;
+  }
+
+  private Boolean validateDetail (){
+    String val = fragmentOrderBinding.EdtDetailPemesanan.getText().toString();
+    if(val.isEmpty()){
+      fragmentOrderBinding.EdtDetailPemesanan.setError("Field cannot be empty");
+      return false;
+    }
+    return true;
+  }
+
+  private Boolean validateTanggal(){
+    String val = fragmentOrderBinding.EdtTanggal.getText().toString();
+    if(val.isEmpty()){
+      fragmentOrderBinding.EdtTanggal.setError("Field cannot be empty");
+      return false;
+    }
+    return true;
+  }
+  private Boolean validateJam (){
+    String val = fragmentOrderBinding.EdtJam.getText().toString();
+    if(val.isEmpty()){
+      fragmentOrderBinding.EdtJam.setError("Field cannot be empty");
+      return false;
+    }
+    return true;
+  }
+  private Boolean validateTempat (){
+    String val = fragmentOrderBinding.alamatTempatBertemu.getText().toString();
+    if(val.isEmpty()){
+      fragmentOrderBinding.alamatTempatBertemu.setError("Field cannot be empty");
+      return false;
+    }
+    return true;
+  }
+  private Boolean validateNama (){
+    String val = fragmentOrderBinding.EdtNama.getText().toString();
+    if(val.isEmpty()){
+      fragmentOrderBinding.EdtNama.setError("Field cannot be empty");
+      return false;
+    }
+    return true;
+  }
+  private Boolean validateEmail (){
+    String val = fragmentOrderBinding.EdtEmail.getText().toString();
+    if(val.isEmpty()){
+      fragmentOrderBinding.EdtEmail.setError("Field cannot be empty");
+      return false;
+    }
+    return true;
+  }
+  private Boolean validatePhone (){
+    String val = fragmentOrderBinding.EdtNomorTelepon.getText().toString();
+    if(val.isEmpty()){
+      fragmentOrderBinding.EdtNomorTelepon.setError("Field cannot be empty");
+      return false;
+    }
+    return true;
   }
 
 }

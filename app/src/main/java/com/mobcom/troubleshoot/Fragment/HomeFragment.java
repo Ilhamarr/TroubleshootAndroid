@@ -1,6 +1,5 @@
 package com.mobcom.troubleshoot.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,15 +9,10 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
-import com.mobcom.troubleshoot.Activity.KategoriPemesananActivity;
-import com.mobcom.troubleshoot.Activity.LoginActivity;
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.SessionManager;
 import com.mobcom.troubleshoot.databinding.FragmentHomeBinding;
-import com.mobcom.troubleshoot.databinding.FragmentServiceBinding;
 
 public class HomeFragment extends Fragment {
   private SessionManager sessionManager;

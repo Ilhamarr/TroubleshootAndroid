@@ -112,7 +112,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:hint="A450cc"
+                        android:hint="Seri Laptop"
                         android:textSize="14sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -142,7 +142,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:hint="A450cc"
+                        android:hint="Detail Permasalahan"
                         android:textSize="14sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -174,13 +174,15 @@
                         android:layout_marginTop="16dp"
                         android:orientation="horizontal">
 
-                        <TextView
+                        <EditText
                             android:id="@+id/Edt_Tanggal"
+                            android:focusable="false"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:clickable="true"
                             android:hint="Tanggal"
+                            android:textSize="14sp"
                             android:textAlignment="center" />
 
                         <View
@@ -189,13 +191,15 @@
                             android:layout_height="match_parent"
                             android:background="@color/colortrb" />
 
-                        <TextView
+                        <EditText
                             android:id="@+id/Edt_Jam"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:focusable="false"
                             android:layout_weight="1"
                             android:clickable="true"
                             android:hint="Jam"
+                            android:textSize="14sp"
                             android:textAlignment="center" />
                     </LinearLayout>
 
@@ -302,7 +306,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="12dp"
                             android:drawableRight="@drawable/ic_search"
-                            android:hint="search Location"
+                            android:hint="Alamat Lengkap"
                             android:textAlignment="textStart"
                             android:textSize="14sp"
                             android:visibility="visible" />
@@ -401,8 +405,10 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="360dp"
+        android:layout_width="0dp"
         android:layout_height="68dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         app:cardBackgroundColor="@color/darkblue"
         app:cardCornerRadius="12dp"
@@ -413,16 +419,17 @@
         app:layout_constraintVertical_bias="0.963">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="horizontal"
             android:padding="8dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="10dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -477,17 +484,26 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <Button
-                android:id="@+id/Lanjut_Pembayaran"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="56dp"
-                android:background="@drawable/btn_white"
-                android:padding="8dp"
-                android:text="Lanjutkan"
-                android:textAllCaps="false"
-                android:textColor="@color/green" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:paddingRight="10dp">
+
+                <Button
+                    android:id="@+id/Lanjut_Pembayaran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="56dp"
+                    android:background="@drawable/btn_white"
+                    android:padding="10dp"
+                    android:text="Lanjutkan"
+                    android:textAllCaps="false"
+                    android:textColor="@color/green" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

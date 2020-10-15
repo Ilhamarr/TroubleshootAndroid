@@ -2,36 +2,20 @@ package com.mobcom.troubleshoot.Fragment;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.DividerItemDecoration;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
-import com.mobcom.troubleshoot.Activity.KategoriPemesananActivity;
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.adapters.CartListAdapter;
 import com.mobcom.troubleshoot.databinding.FragmentCartBinding;
 import com.mobcom.troubleshoot.models.CartItem;
-import com.mobcom.troubleshoot.models.LaptopModel;
-import com.mobcom.troubleshoot.models.ResponseLaptopModel;
 import com.mobcom.troubleshoot.viewmodels.ServiceViewModel;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class CartFragment extends Fragment implements CartListAdapter.CartInterface {
 

@@ -2,7 +2,11 @@ package com.mobcom.troubleshoot.Fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +18,7 @@ import com.mobcom.troubleshoot.databinding.FragmentOrderSuccessBinding;
 public class OrderSuccessFragment extends Fragment {
 
   FragmentOrderSuccessBinding fragmentOrderSuccessBinding;
+  private NavController navController;
 
   public OrderSuccessFragment() {
     // Required empty public constructor
@@ -25,5 +30,18 @@ public class OrderSuccessFragment extends Fragment {
     // Inflate the layout for this fragment
     fragmentOrderSuccessBinding = FragmentOrderSuccessBinding.inflate(inflater, container, false);
     return fragmentOrderSuccessBinding.getRoot();
+  }
+
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+    navController = Navigation.findNavController(view);
+
+    fragmentOrderSuccessBinding.TxtSplashPemesananBerhasil.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        navController.navigate(R.id.action_orderSuccessFragment_to_homeFragment);
+      }
+    });
   }
 }
