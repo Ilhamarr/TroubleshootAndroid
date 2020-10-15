@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragment.HomeFragment">
+
+    <!-- HEADER  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="136dp"
+        android:background="@drawable/header_background"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textHello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:text="Hello"
+            android:textColor="@color/colordivider"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvfirstNameHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/firstName"
+            android:textColor="@color/colordivider"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/textHello"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageMenu"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="15dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_notification"
+            app:layout_constraintBottom_toBottomOf="@id/textHello"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textHello"
+            app:tint="@color/colordivider" />
+
+        <TextView
+            android:id="@+id/Trbdashboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="5dp"
+            android:text="Selamat Datang di Troubleshoot.id"
+            android:textColor="@color/colordivider"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/textHello"
+            app:layout_constraintTop_toBottomOf="@id/tvfirstNameHome" />
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="15dp"-->
+        <!--            android:layout_marginTop="15dp"-->
+        <!--            android:layout_marginEnd="15dp"-->
+        <!--            android:layout_marginBottom="10dp"-->
+        <!--            android:background="@drawable/white_rectangle_background"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/Trbdashboard">-->
+
+        <!--            <EditText-->
+        <!--                android:layout_width="0dp"-->
+        <!--                android:layout_height="40dp"-->
+        <!--                android:layout_weight="1"-->
+        <!--                android:background="@null"-->
+        <!--                android:hint="Search Elements"-->
+        <!--                android:imeOptions="actionSearch"-->
+        <!--                android:importantForAutofill="no"-->
+        <!--                android:inputType="text"-->
+        <!--                android:paddingStart="15dp"-->
+        <!--                android:paddingEnd="15dp"-->
+        <!--                android:textColor="@color/colorAccent"-->
+        <!--                android:textSize="16sp" />-->
+
+        <!--            <ImageView-->
+        <!--                android:layout_width="40dp"-->
+        <!--                android:layout_height="40dp"-->
+        <!--                android:background="@drawable/search_icon_background"-->
+        <!--                android:padding="6dp"-->
+        <!--                android:src="@drawable/ic_search"-->
+        <!--                app:tint="@color/colortrb" />-->
+        <!--        </LinearLayout>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- End HEADER-->
+
+    <!-- Banner-->
+    <!--    End banner-->
+
+    <ImageView
+        android:id="@+id/imageBanner"
+        android:layout_width="309dp"
+        android:layout_height="184dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutHeader"
+        app:srcCompat="@drawable/teamworks" />
+
+    <LinearLayout
+        android:id="@+id/ourService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageBanner"
+        app:layout_constraintVertical_bias="0.322">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pesan Layanan"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/btnPesanSekarang"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_rounded"
+            android:letterSpacing="0.15"
+            android:padding="5dp"
+            android:text="Pesan Sekarang"
+            android:textColor="@color/colordivider" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="konsultasi"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/btnKonsul"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_wa"
+            android:letterSpacing="0.15"
+            android:padding="5dp"
+            android:text="konsultasikan Sekarang"
+            android:textColor="@color/colordivider" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

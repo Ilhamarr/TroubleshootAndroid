@@ -1,0 +1,206 @@
+package com.mobcom.troubleshoot.Fragment;
+
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.mobcom.troubleshoot.API.APIRequestData;
+import com.mobcom.troubleshoot.API.RetroServer;
+import com.mobcom.troubleshoot.Activity.RegisterActivity;
+import com.mobcom.troubleshoot.R;
+import com.mobcom.troubleshoot.SessionManager;
+import com.mobcom.troubleshoot.adapters.CartListConfirmAdapter;
+import com.mobcom.troubleshoot.databinding.FragmentOrderConfirmationBinding;
+import com.mobcom.troubleshoot.models.CartItem;
+import com.mobcom.troubleshoot.models.ResponseHeaderOrder;
+import com.mobcom.troubleshoot.models.ResponseOrder;
+import com.mobcom.troubleshoot.viewmodels.ServiceViewModel;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class OrderConfirmationFragment extends Fragment {
+  FragmentOrderConfirmationBinding fragmentOrderConfirmationBinding;
+  String account_id, laptop_Id, mereklaptop, tipeLaptop, seriLaptop, detail, tanggal, jam, tempat, nama, email, phone, totalHarga;
+  Boolean orderSuccess;
+  ServiceViewModel serviceViewModel;
+  private int cartQuantity = 0;
+  private NavController navController;
+  private SessionManager sessionManager;
+  APIRequestData ardData;
+
+  public OrderConfirmationFragment() {
+    // Required empty public constructor
+  }
+
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                           Bundle savedInstanceState) {
+    // Inflate the layout for this fragment
+    fragmentOrderConfirmationBinding = FragmentOrderConfirmationBinding.inflate(inflater, container, false);
+    return fragmentOrderConfirmationBinding.getRoot();
+  }
+
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+
+    CartListConfirmAdapter cartListConfirmAdaptertAdapter = new CartListConfirmAdapter();
+    fragmentOrderConfirmationBinding.rvKonfirmasiPemesanan.setAdapter(cartListConfirmAdaptertAdapter);
+    sessionManager = new SessionManager(getActivity());
+    navController = Navigation.findNavController(view);
+    serviceViewModel = new ViewModelProvider(requireActivity()).get(ServiceViewModel.class);
+    account_id = sessionManager.getUserDetail().get(SessionManager.ACCOUNT_ID);
+
+    //get data from previous fragment
+    if (getArguments() != null){
+      OrderConfirmationFragmentArgs args = OrderConfirmationFragmentArgs.fromBundle(getArguments());
+      laptop_Id = args.getIdLaptop();
+      mereklaptop = args.getMerkLaptop();
+      tipeLaptop = args.getSeriLaptop();
+      nama = args.getNama();
+      email = args.getEmail();
+      phone = args.getPhone();
+      seriLaptop = args.getSeriLaptop();
+      detail = args.getDetail();
+      tanggal = args.getTanggal();
+      jam = args.getJam();
+      tempat = args.getAlamat();
+    }
+    //end get data
+
+    //view data
+    fragmentOrderConfirmationBinding.TxtTanggal.setText(tanggal);
+    fragmentOrderConfirmationBinding.TxtJam.setText(jam);
+    fragmentOrderConfirmationBinding.TxtNamaLengkap.setText(nama);
+    fragmentOrderConfirmationBinding.TxtEmail.setText(email);
+    fragmentOrderConfirmationBinding.TxtNomorTelepom.setText(phone);
+    fragmentOrderConfirmationBinding.TxtAlamat.setText(tempat);
+    //end view data
+
+    //get banyaknya item di cart dan total harga
+    serviceViewModel.getCart().observe(getViewLifecycleOwner(), cartItems -> {
+      cartListConfirmAdaptertAdapter.submitList(cartItems);
+      int quantity = 0;
+      for (CartItem cartItem : cartItems) {
+        quantity += cartItem.getQuantity();
+      }
+      cartQuantity = quantity;
+      fragmentOrderConfirmationBinding.TxtTotalProdukSeluruh.setText(String.valueOf(cartQuantity));
+    });
+    serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+      @Override
+      public void onChanged(Integer integer) {
+        totalHarga = integer.toString();
+        fragmentOrderConfirmationBinding.orderTotalTextView.setText(integer.toString());
+        fragmentOrderConfirmationBinding.tvorderTotalTextView.setText(integer.toString());
+      }
+    });
+    //end
+
+    fragmentOrderConfirmationBinding.ubahDetailPesanan.setOnClickListener(v -> navController.navigate(R.id.action_orderConfirmationFragment_to_orderFragment));
+
+    fragmentOrderConfirmationBinding.ubahLayanan.setOnClickListener(v -> navController.navigate(R.id.action_orderConfirmationFragment_to_serviceFragment));
+
+    fragmentOrderConfirmationBinding.buatPesanan.setOnClickListener(v -> {
+      String trackKey = tracking_key(account_id,mereklaptop);
+      headerOrder(account_id, laptop_Id, detail,phone,tanggal,jam,tempat,seriLaptop,totalHarga,trackKey);
+      serviceViewModel.getCart().observe(getViewLifecycleOwner(), cartItems -> {
+        for (CartItem cartItem : cartItems) {
+          String kerusakanId = cartItem.getService().getKerusakan_id();
+          String jumlah = String.valueOf(cartItem.getQuantity());
+          String harga = String.valueOf(cartItem.getService().getBiaya());
+          String totalHarga = String.valueOf(cartItem.getQuantity() * cartItem.getService().getBiaya());
+          order(account_id,trackKey,kerusakanId,harga,jumlah,totalHarga);
+        }
+      });
+
+      navController.navigate(R.id.action_orderConfirmationFragment_to_orderSuccessFragment);
+    });
+
+
+  }
+
+  public void order(String accountId, String trackingKey, String kerusakanId, String harga, String jumlah, String totalHarga){
+    ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
+    Call<ResponseOrder> orderCall = ardData.OrderResponse(accountId,trackingKey,kerusakanId,harga,jumlah,totalHarga);
+    orderCall.enqueue(new Callback<ResponseOrder>() {
+      @Override
+      public void onResponse(Call<ResponseOrder> call, Response<ResponseOrder> response) {
+        if (response.body() != null && response.isSuccessful()) {
+          Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+        } else {
+          Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+        }
+      }
+
+      @Override
+      public void onFailure(Call<ResponseOrder> call, Throwable t) {
+        Toast.makeText(getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+      }
+    });
+
+  }
+
+  public void headerOrder (String accountId, String merekLaptop, String Detail, String phone, String tanggal, String jam, String tempat, String tipeLaptop, String biayaTotal, String trackingKey){
+    ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
+    Call<ResponseHeaderOrder> headerOrderCall = ardData.HeaderOrderResponse(accountId,merekLaptop,Detail,phone,tanggal,jam,tempat,tipeLaptop,biayaTotal,trackingKey);
+    headerOrderCall.enqueue(new Callback<ResponseHeaderOrder>() {
+      @Override
+      public void onResponse(Call<ResponseHeaderOrder> call, Response<ResponseHeaderOrder> response) {
+        if (response.body() != null && response.isSuccessful()) {
+          Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+        } else {
+          Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+        }
+      }
+
+      @Override
+      public void onFailure(Call<ResponseHeaderOrder> call, Throwable t) {
+        Toast.makeText(getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+        orderSuccess = false;
+      }
+    });
+  }
+
+  public String tracking_key(String accountId, String merekLaptop){
+    String randStr = getRandomString();
+    // accountid + date dmY + merk + random
+    SimpleDateFormat formatter = new SimpleDateFormat("ddMMyy");
+    Date date = new Date();
+    String dmY = formatter.format(date);
+    return accountId + dmY + merekLaptop + randStr;
+  }
+
+  public String getRandomString(){
+    int leftLimit = 97; // letter 'a'
+    int rightLimit = 122; // letter 'z'
+    int targetStringLength = 8;
+    Random random = new Random();
+    StringBuilder buffer = new StringBuilder(targetStringLength);
+    for (int i = 0; i < targetStringLength; i++) {
+      int randomLimitedInt = leftLimit + (int)
+              (random.nextFloat() * (rightLimit - leftLimit + 1));
+      buffer.append((char) randomLimitedInt);
+    }
+    String generatedString = buffer.toString();
+    return generatedString.toUpperCase();
+  }
+}
