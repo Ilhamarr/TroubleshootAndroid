@@ -147,7 +147,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+<<<<<<< HEAD
         android:layout_marginTop="28dp"
+=======
+        android:layout_marginTop="15dp"
+>>>>>>> d5b3afc5f4ba8834dd5b2c586fa14b54b5b5216d
         android:layout_marginEnd="32dp"
         android:clickable="true"
         android:text="Already Have an Account?"
