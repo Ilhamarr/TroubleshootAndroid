@@ -223,8 +223,8 @@ public class OrderFragment extends Fragment {
         fragmentOrderBinding.EdtJam.setText(hourOfDay + ":" + minute);
       }
     },HOUR,Minute,true);
-    tpd.setMinTime(10,0,0);
-    tpd.setMaxTime(17,0,0);
+    tpd.setMinTime(8,0,0);
+    tpd.setMaxTime(15,0,0);
     tpd.show(getFragmentManager(),"");
   }
 
