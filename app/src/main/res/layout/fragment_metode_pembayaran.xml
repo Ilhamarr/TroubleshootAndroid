@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="177dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/logosampling"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_baseline_arrow_back_ios_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="36dp"
+        android:text="Metode Pembayaran"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="365dp"
+            android:layout_height="165dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="25dp"
+            app:cardCornerRadius="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hardware Service"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="14dp"/>
+
+            <TextView
+                android:id="@+id/txt_tanggalservis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jum'at, 2 Jan 20 | 13.00 - 15.00"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="0dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Maintenance Laptop/PC"
+                    android:textSize="15dp"
+                    android:layout_marginTop="90dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp" />
+
+                <TextView
+                    android:id="@+id/txt_hargabarang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp 100.000"
+                    android:textSize="15dp"
+                    android:layout_marginStart="90dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="90dp"/>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pembersihan laptop + penggunaan thermal paste"
+                android:textSize="11dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="114dp"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="365dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginLeft="25dp"
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="#E4E4E4">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estimasi Harga"
+                    android:textColor="#000000"
+                    android:textSize="18dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="13dp"/>
+
+                <TextView
+                    android:id="@+id/txt_jumlahbayar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp 100.000"
+                    android:textSize="18dp"
+                    android:layout_marginStart="120dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="13dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="365dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginLeft="16dp"
+            app:cardCornerRadius="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Metode Pembayaran"
+                android:textSize="16dp"
+                android:textColor="#000"
+                android:layout_marginTop="13dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="0dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/logo_duit"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tunai"
+                    android:textSize="17dp"
+                    android:layout_marginTop="52dp"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginLeft="70dp" />
+
+                <RadioButton
+                    android:id="@+id/btn_bayartunai"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="52dp"
+                    android:layout_marginStart="150dp"
+                    android:layout_marginLeft="0dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="ATM"
+                    android:textColor="#000"
+                    android:textSize="20dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="118dp"
+                    android:layout_marginLeft="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Transfer Bank"
+                    android:textSize="17dp"
+                    android:layout_marginTop="115dp"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginLeft="70dp" />
+
+                <RadioButton
+                    android:id="@+id/btn_transferbank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="118dp"
+                    android:layout_marginStart="85dp"
+                    android:layout_marginLeft="0dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/danalogo"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="180dp"
+                    android:layout_marginLeft="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Transfer Dana"
+                    android:textSize="17dp"
+                    android:layout_marginTop="188dp"
+                    android:layout_marginStart="52dp"
+                    android:layout_marginLeft="70dp" />
+
+                <RadioButton
+                    android:id="@+id/btn_transferdana"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="187dp"
+                    android:layout_marginStart="85dp"
+                    android:layout_marginLeft="0dp"/>
+
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="                                                                           "
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="65dp"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="                                                                           "
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="130dp"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:layout_width="365dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="35dp"
+            android:text="Bayar Sekarang"
+            android:textColor="#fff"
+            android:background="@drawable/btn_rounded"
+            android:layout_marginLeft="25dp" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
