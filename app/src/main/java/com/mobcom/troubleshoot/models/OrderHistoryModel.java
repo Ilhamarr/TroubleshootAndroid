@@ -1,8 +1,11 @@
 package com.mobcom.troubleshoot.models;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+
 import com.google.gson.annotations.SerializedName;
 
-public class HeaderOderModel {
+public class OrderHistoryModel {
 
 	@SerializedName("tipe_laptop")
 	private String tipeLaptop;
@@ -23,7 +26,7 @@ public class HeaderOderModel {
 	private String createdAt;
 
 	@SerializedName("jam_pengembalian")
-	private Object jamPengembalian;
+	private String jamPengembalian;
 
 	@SerializedName("header_order_id")
 	private String headerOrderId;
@@ -35,7 +38,7 @@ public class HeaderOderModel {
 	private String tanggalPengambilan;
 
 	@SerializedName("tanggal_pengembalian")
-	private Object tanggalPengembalian;
+	private String tanggalPengembalian;
 
 	@SerializedName("biaya_total")
 	private String biayaTotal;
@@ -75,6 +78,33 @@ public class HeaderOderModel {
 
 	@SerializedName("merk_laptop")
 	private String merkLaptop;
+
+	public OrderHistoryModel(String tipeLaptop, String totalItem, String keterangan, String merk, String teknisi, String createdAt, String jamPengembalian, String headerOrderId, String trackingKey, String tanggalPengambilan, String tanggalPengembalian, String biayaTotal, String tempatBertemu, String statusPayment, String accountId, String statusTracking, String nama, String imageOrder, String jamPengambilan, String modifiedAt, String email, String trackingId, String nomorHp, String merkLaptop) {
+		this.tipeLaptop = tipeLaptop;
+		this.totalItem = totalItem;
+		this.keterangan = keterangan;
+		this.merk = merk;
+		this.teknisi = teknisi;
+		this.createdAt = createdAt;
+		this.jamPengembalian = jamPengembalian;
+		this.headerOrderId = headerOrderId;
+		this.trackingKey = trackingKey;
+		this.tanggalPengambilan = tanggalPengambilan;
+		this.tanggalPengembalian = tanggalPengembalian;
+		this.biayaTotal = biayaTotal;
+		this.tempatBertemu = tempatBertemu;
+		this.statusPayment = statusPayment;
+		this.accountId = accountId;
+		this.statusTracking = statusTracking;
+		this.nama = nama;
+		this.imageOrder = imageOrder;
+		this.jamPengambilan = jamPengambilan;
+		this.modifiedAt = modifiedAt;
+		this.email = email;
+		this.trackingId = trackingId;
+		this.nomorHp = nomorHp;
+		this.merkLaptop = merkLaptop;
+	}
 
 	public void setTipeLaptop(String tipeLaptop){
 		this.tipeLaptop = tipeLaptop;
@@ -124,11 +154,11 @@ public class HeaderOderModel {
 		return createdAt;
 	}
 
-	public void setJamPengembalian(Object jamPengembalian){
+	public void setJamPengembalian(String jamPengembalian){
 		this.jamPengembalian = jamPengembalian;
 	}
 
-	public Object getJamPengembalian(){
+	public String getJamPengembalian(){
 		return jamPengembalian;
 	}
 
@@ -156,11 +186,11 @@ public class HeaderOderModel {
 		return tanggalPengambilan;
 	}
 
-	public void setTanggalPengembalian(Object tanggalPengembalian){
+	public void setTanggalPengembalian(String tanggalPengembalian){
 		this.tanggalPengembalian = tanggalPengembalian;
 	}
 
-	public Object getTanggalPengembalian(){
+	public String getTanggalPengembalian(){
 		return tanggalPengembalian;
 	}
 
@@ -298,4 +328,48 @@ public class HeaderOderModel {
 			",merk_laptop = '" + merkLaptop + '\'' + 
 			"}";
 		}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		OrderHistoryModel that = (OrderHistoryModel) o;
+		return getTipeLaptop().equals(that.getTipeLaptop()) &&
+						getTotalItem().equals(that.getTotalItem()) &&
+						getKeterangan().equals(that.getKeterangan()) &&
+						getMerk().equals(that.getMerk()) &&
+						getTeknisi().equals(that.getTeknisi()) &&
+						getCreatedAt().equals(that.getCreatedAt()) &&
+						getJamPengembalian().equals(that.getJamPengembalian()) &&
+						getHeaderOrderId().equals(that.getHeaderOrderId()) &&
+						getTrackingKey().equals(that.getTrackingKey()) &&
+						getTanggalPengambilan().equals(that.getTanggalPengambilan()) &&
+						getTanggalPengembalian().equals(that.getTanggalPengembalian()) &&
+						getBiayaTotal().equals(that.getBiayaTotal()) &&
+						getTempatBertemu().equals(that.getTempatBertemu()) &&
+						getStatusPayment().equals(that.getStatusPayment()) &&
+						getAccountId().equals(that.getAccountId()) &&
+						getStatusTracking().equals(that.getStatusTracking()) &&
+						getNama().equals(that.getNama()) &&
+						getImageOrder().equals(that.getImageOrder()) &&
+						getJamPengambilan().equals(that.getJamPengambilan()) &&
+						getModifiedAt().equals(that.getModifiedAt()) &&
+						getEmail().equals(that.getEmail()) &&
+						getTrackingId().equals(that.getTrackingId()) &&
+						getNomorHp().equals(that.getNomorHp()) &&
+						getMerkLaptop().equals(that.getMerkLaptop());
+	}
+
+	public static DiffUtil.ItemCallback<OrderHistoryModel> itemCallback = new DiffUtil.ItemCallback<OrderHistoryModel>() {
+		@Override
+		public boolean areItemsTheSame(@NonNull OrderHistoryModel oldItem, @NonNull OrderHistoryModel newItem) {
+			return oldItem.getHeaderOrderId().equals(newItem.getHeaderOrderId());
+		}
+
+		@Override
+		public boolean areContentsTheSame(@NonNull OrderHistoryModel oldItem, @NonNull OrderHistoryModel newItem) {
+			return oldItem.equals(newItem);
+		}
+	};
+
 }

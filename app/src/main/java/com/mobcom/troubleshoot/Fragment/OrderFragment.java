@@ -212,6 +212,14 @@ public class OrderFragment extends Fragment {
     });
   }
 
+  private String convertTime(int input){
+    if(input >= 10){
+      return String.valueOf(input);
+    } else {
+      return "0" + String.valueOf(input);
+    }
+  }
+
   private void openTimePicker() {
     Calendar calendar = Calendar.getInstance();
     int HOUR = calendar.get(Calendar.HOUR_OF_DAY);
@@ -220,7 +228,7 @@ public class OrderFragment extends Fragment {
     TimePickerDialog tpd = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
       @Override
       public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
-        fragmentOrderBinding.EdtJam.setText(hourOfDay + ":" + minute);
+        fragmentOrderBinding.EdtJam.setText(convertTime(hourOfDay) + ":" + convertTime(minute));
       }
     },HOUR,Minute,true);
     tpd.setMinTime(8,0,0);
@@ -233,7 +241,7 @@ public class OrderFragment extends Fragment {
     int YEAR = calendar.get(Calendar.YEAR);
     int MONTH = calendar.get(Calendar.MONTH);
     int Day = calendar.get(Calendar.DAY_OF_MONTH);
-    long now = calendar.getTimeInMillis();
+    int Hour = calendar.get(Calendar.HOUR_OF_DAY);
 
     DatePickerDialog dpd = DatePickerDialog.newInstance(new DatePickerDialog.OnDateSetListener() {
       @Override
@@ -246,7 +254,7 @@ public class OrderFragment extends Fragment {
     // restrict to weekdays only
     ArrayList<Calendar> weekdays = new ArrayList<Calendar>();
     for (int i=0; i < 365; i++) {
-      if (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
+      if (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY && Hour != 15) {
         Calendar d = (Calendar) calendar.clone();
         weekdays.add(d);
       }
@@ -254,7 +262,6 @@ public class OrderFragment extends Fragment {
     }
 
     Calendar[] weekdayDays = weekdays.toArray(new Calendar[weekdays.size()]);
-    //dpd.setMinDate(now);
     dpd.setSelectableDays(weekdayDays);
     dpd.show(getFragmentManager(), "");
   }

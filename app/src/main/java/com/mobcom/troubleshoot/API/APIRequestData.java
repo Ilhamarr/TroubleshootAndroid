@@ -1,6 +1,7 @@
 package com.mobcom.troubleshoot.API;
 
 import com.mobcom.troubleshoot.models.Login.Login;
+import com.mobcom.troubleshoot.models.ResponseOrderHistory;
 import com.mobcom.troubleshoot.models.Register.Register;
 import com.mobcom.troubleshoot.models.ResponseHeaderOrder;
 import com.mobcom.troubleshoot.models.ResponseOrder;
@@ -64,4 +65,11 @@ public interface APIRequestData {
           @Field("jumlah") String jumlah,
           @Field("total_harga") String total_harga
   );
+
+  @FormUrlEncoded
+  @POST("orderhistory")
+  Call<ResponseOrderHistory> getListOrderHistory (
+          @Field("account_id") String accountId
+  );
+
 }

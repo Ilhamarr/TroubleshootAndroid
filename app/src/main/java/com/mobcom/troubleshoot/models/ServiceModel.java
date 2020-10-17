@@ -30,6 +30,13 @@ public class  ServiceModel {
   @SerializedName("image")
   private String image;
 
+  public ServiceModel(String kerusakan_id, int biaya, String jenis, String nama_kerusakan) {
+    this.kerusakan_id = kerusakan_id;
+    this.biaya = biaya;
+    this.jenis = jenis;
+    this.nama_kerusakan = nama_kerusakan;
+  }
+
   public String getKeterangan() {
     return keterangan;
   }
@@ -46,12 +53,6 @@ public class  ServiceModel {
     this.image = image;
   }
 
-  public ServiceModel(String kerusakan_id, int biaya, String jenis, String nama_kerusakan) {
-    this.kerusakan_id = kerusakan_id;
-    this.biaya = biaya;
-    this.jenis = jenis;
-    this.nama_kerusakan = nama_kerusakan;
-  }
 
   public String getKerusakan_id() {
     return kerusakan_id;

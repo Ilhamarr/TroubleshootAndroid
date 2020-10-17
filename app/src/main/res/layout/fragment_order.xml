@@ -185,12 +185,6 @@
                             android:textSize="14sp"
                             android:textAlignment="center" />
 
-                        <View
-                            android:id="@+id/divider2"
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/colortrb" />
-
                         <EditText
                             android:id="@+id/Edt_Jam"
                             android:layout_width="match_parent"
