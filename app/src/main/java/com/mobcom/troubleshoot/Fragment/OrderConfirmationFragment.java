@@ -122,7 +122,7 @@ public class OrderConfirmationFragment extends Fragment {
       String trackKey = tracking_key(account_id,mereklaptop);
       //headerOrder(account_id, laptop_Id, detail,phone,tanggal,jam,tempat,seriLaptop,totalHarga,trackKey);
       ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
-      Call<ResponseHeaderOrder> headerOrderCall = ardData.HeaderOrderResponse(account_id, laptop_Id, detail,phone,tanggal,jam,tempat,seriLaptop,totalHarga,trackKey);
+      Call<ResponseHeaderOrder> headerOrderCall = ardData.HeaderOrderResponse(account_id, nama, email, laptop_Id, detail, phone, tanggal, jam, tempat, seriLaptop, totalHarga, trackKey);
       headerOrderCall.enqueue(new Callback<ResponseHeaderOrder>() {
         @Override
         public void onResponse(Call<ResponseHeaderOrder> call, Response<ResponseHeaderOrder> response) {
@@ -166,26 +166,6 @@ public class OrderConfirmationFragment extends Fragment {
       }
     });
 
-  }
-
-  public void headerOrder (String accountId, String merekLaptop, String Detail, String phone, String tanggal, String jam, String tempat, String tipeLaptop, String biayaTotal, String trackingKey){
-    ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
-    Call<ResponseHeaderOrder> headerOrderCall = ardData.HeaderOrderResponse(accountId,merekLaptop,Detail,phone,tanggal,jam,tempat,tipeLaptop,biayaTotal,trackingKey);
-    headerOrderCall.enqueue(new Callback<ResponseHeaderOrder>() {
-      @Override
-      public void onResponse(Call<ResponseHeaderOrder> call, Response<ResponseHeaderOrder> response) {
-        if (response.body() != null && response.isSuccessful()) {
-          Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-        } else {
-          Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-        }
-      }
-
-      @Override
-      public void onFailure(Call<ResponseHeaderOrder> call, Throwable t) {
-        Toast.makeText(getContext(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-      }
-    });
   }
 
   public String tracking_key(String accountId, String merekLaptop){

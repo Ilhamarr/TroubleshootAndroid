@@ -41,6 +41,8 @@ public interface APIRequestData {
   @POST("headerorder")
   Call<ResponseHeaderOrder> HeaderOrderResponse(
           @Field("account_id") String account_id,
+          @Field("nama") String nama,
+          @Field("email") String email,
           @Field("merk_laptop") String merk_laptop,
           @Field("keterangan") String keterangan,
           @Field("nomor_hp") String nomor_hp,

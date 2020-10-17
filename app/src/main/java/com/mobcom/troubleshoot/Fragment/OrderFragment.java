@@ -1,7 +1,5 @@
 package com.mobcom.troubleshoot.Fragment;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -26,6 +24,9 @@ import com.mobcom.troubleshoot.models.CartItem;
 import com.mobcom.troubleshoot.models.LaptopModel;
 import com.mobcom.troubleshoot.models.ResponseLaptopModel;
 import com.mobcom.troubleshoot.viewmodels.ServiceViewModel;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+import com.wdullaer.materialdatetimepicker.date.YearPickerView;
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -216,19 +217,46 @@ public class OrderFragment extends Fragment {
     int HOUR = calendar.get(Calendar.HOUR_OF_DAY);
     int Minute = calendar.get(Calendar.MINUTE);
 
-    TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), (view, hourOfDay, minute) -> fragmentOrderBinding.EdtJam.setText(hourOfDay + ":" + minute), HOUR, Minute, false);
-    timePickerDialog.show();
+    TimePickerDialog tpd = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
+      @Override
+      public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
+        fragmentOrderBinding.EdtJam.setText(hourOfDay + ":" + minute);
+      }
+    },HOUR,Minute,true);
+    tpd.setMinTime(10,0,0);
+    tpd.setMaxTime(17,0,0);
+    tpd.show(getFragmentManager(),"");
   }
 
   private void openDatePicker() {
     Calendar calendar = Calendar.getInstance();
-
     int YEAR = calendar.get(Calendar.YEAR);
     int MONTH = calendar.get(Calendar.MONTH);
     int Day = calendar.get(Calendar.DAY_OF_MONTH);
+    long now = calendar.getTimeInMillis();
 
-    DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), (view, year, month, dayOfMonth) -> fragmentOrderBinding.EdtTanggal.setText(dayOfMonth + "-" + (month + 1) + "-" + year), YEAR, MONTH, Day);
-    datePickerDialog.show();
+    DatePickerDialog dpd = DatePickerDialog.newInstance(new DatePickerDialog.OnDateSetListener() {
+      @Override
+      public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+        String date = dayOfMonth+"-"+(++monthOfYear)+"-"+year;
+        fragmentOrderBinding.EdtTanggal.setText(date);
+      }
+    },YEAR,MONTH,Day);
+
+    // restrict to weekdays only
+    ArrayList<Calendar> weekdays = new ArrayList<Calendar>();
+    for (int i=0; i < 365; i++) {
+      if (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
+        Calendar d = (Calendar) calendar.clone();
+        weekdays.add(d);
+      }
+      calendar.add(Calendar.DATE, 1);
+    }
+
+    Calendar[] weekdayDays = weekdays.toArray(new Calendar[weekdays.size()]);
+    //dpd.setMinDate(now);
+    dpd.setSelectableDays(weekdayDays);
+    dpd.show(getFragmentManager(), "");
   }
 
   private Boolean validateSeriLaptop (){
@@ -239,7 +267,6 @@ public class OrderFragment extends Fragment {
     }
     return true;
   }
-
   private Boolean validateDetail (){
     String val = fragmentOrderBinding.EdtDetailPemesanan.getText().toString();
     if(val.isEmpty()){
@@ -248,7 +275,6 @@ public class OrderFragment extends Fragment {
     }
     return true;
   }
-
   private Boolean validateTanggal(){
     String val = fragmentOrderBinding.EdtTanggal.getText().toString();
     if(val.isEmpty()){

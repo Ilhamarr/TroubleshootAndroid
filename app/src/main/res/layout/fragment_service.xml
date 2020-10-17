@@ -52,14 +52,10 @@
         app:layout_constraintTop_toTopOf="@+id/cardView"
         app:layout_constraintVertical_bias="0.47000003" />
 
-    <ScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/scrollView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="5dp"
-        android:fillViewport="true"
-        android:foregroundGravity="center"
-        android:paddingTop="15dp"
         app:layout_constraintBottom_toTopOf="@id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -67,16 +63,27 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.0">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/serviceRecyclerView"
+        <ScrollView
+
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:layout_editor_absoluteX="-65dp"
-            tools:layout_editor_absoluteY="-59dp"
-            tools:listitem="@layout/card_item_layanan" />
-    </ScrollView>
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:fillViewport="true"
+            android:foregroundGravity="center"
+            android:paddingTop="15dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/serviceRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:layout_editor_absoluteX="-65dp"
+                tools:layout_editor_absoluteY="-59dp"
+                tools:listitem="@layout/card_item_layanan" />
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
