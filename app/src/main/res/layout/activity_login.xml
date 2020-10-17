@@ -11,7 +11,6 @@
         android:layout_width="0dp"
         android:layout_height="150dp"
         android:background="@color/colorPrimary"
-        app:layout_constraintBottom_toTopOf="@id/viewWave"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,19 +36,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/invertlogos" />
 
+
     <TextView
         android:id="@+id/topText"
         android:layout_width="184dp"
         android:layout_height="147dp"
         android:layout_marginStart="45dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="40dp"
+        android:gravity="center_vertical"
         android:text="Already Have an Account?"
         android:textColor="@android:color/white"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/imageViewRight"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.725"
         app:layout_constraintStart_toStartOf="@+id/topView"
         app:layout_constraintTop_toTopOf="parent" />
 

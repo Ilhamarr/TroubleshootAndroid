@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="177dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/logosampling"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_baseline_arrow_back_ios_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:text="Edit Profil"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageView2"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/teamwork" />
+
+    <ImageButton
+        android:id="@+id/icon_ubahgambar"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_baseline_add_photo_alternate_24"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.617"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:paddingTop="200dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="214dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp">
+
+                <!--     Nama     -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_username" />
+
+                    <TextView
+                        android:id="@+id/Txt_fullname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="16dp"
+                        android:text="full name" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/Txt_editnama"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="40dp"
+                    android:hint="Your Name"
+                    android:textColor="#434040"
+                    android:textColorHint="#434040"
+                    android:textSize="13sp" />
+
+                <!--    Email      -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_baseline_email_24" />
+
+                    <TextView
+                        android:id="@+id/Txt_Email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="16dp"
+                        android:text="Email" />
+                </LinearLayout>
+
+
+                <EditText
+                    android:id="@+id/Txt_editemail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="40dp"
+                    android:hint="Your email Address"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#434040"
+                    android:textColorHint="#434040"
+                    android:textSize="13sp" />
+
+                <!--    Telepon      -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_baseline_local_phone_24" />
+
+                    <TextView
+                        android:id="@+id/Txt_NomorTelepom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="16dp"
+                        android:text="Phone" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/Txt_editelepon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="40dp"
+                    android:hint="Phone Number"
+                    android:inputType="phone"
+                    android:textColor="#434040"
+                    android:textColorHint="#434040"
+                    android:textSize="13sp" />
+
+                <!--    Telepon      -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_baseline_location_on_24" />
+
+                    <TextView
+                        android:id="@+id/Txt_Alamat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="16dp"
+                        android:text="Address" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/Txt_editalamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="40dp"
+                    android:hint="Your Address"
+                    android:inputType="textLongMessage"
+                    android:textColor="#434040"
+                    android:textColorHint="#434040"
+                    android:textSize="13sp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_simpaneditprofil"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/btn_rounded"
+            android:text="save change"
+            android:textColor="@color/colordivider"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btn_ubahpassword"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/btn_rounded"
+            android:text="Change Password"
+            android:textColor="@color/colordivider"
+            android:textSize="13sp" />
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
