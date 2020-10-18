@@ -1,103 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="133dp"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginLeft="25dp"
-    android:layout_marginStart="25dp"
-    android:layout_marginTop="10dp"
-    android:layout_width="365dp"
-    app:cardCornerRadius="10dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <data>
+
+        <variable
+            name="history"
+            type="com.mobcom.troubleshoot.models.OrderHistoryModel" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:background="#2382CD"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="270dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="90dp"
-            android:paddingStart="10dp"
-            android:text="On Process"
-            android:textColor="#ffffff" />
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="10dp">
 
         <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_height="70dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="-5dp"
-                android:layout_width="90dp"
-                android:src="@drawable/logotrb" />
 
             <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:orientation="vertical">
+                android:gravity="right"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_ohNamaLayanan"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="6dp"
                     android:layout_width="wrap_content"
-                    android:text="Penggantian LCD"
-                    android:textColor="#333131"
-                    android:textSize="18dp" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="#2382CD"
+                    android:padding="5dp"
+                    android:text="@{history.statusTracking}"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-5dp"
+                    android:src="@drawable/logotrb" />
 
                 <LinearLayout
-                    android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="11dp"
+                        android:id="@+id/tv_ohNamaLayanan"
                         android:layout_width="wrap_content"
-                        android:text="Asus"
-                        android:textSize="15dp" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="6dp"
+                        android:text="@{history.trackingKey}"
+                        android:textColor="#333131"
+                        android:textSize="18dp" />
 
-                    <TextView
-                        android:layout_height="wrap_content"
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:text=" | layar retak"
-                        android:textSize="15dp" />
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="11dp"
+                            android:text="@{history.merk}"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" | "
+                            android:textSize="15dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{history.tipeLaptop}"
+                            android:textSize="15dp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
 
-
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="23dp"
-                android:layout_marginTop="7dp"
-                android:layout_width="wrap_content"
-                android:text="25 Februari 2020"
-                android:textSize="12dp" />
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
 
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="210dp"
-                android:layout_marginTop="7dp"
-                android:layout_width="wrap_content"
-                android:text="Detail"
-                android:textColor="#0C81B6"
-                android:textSize="12dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginTop="7dp"
+                    android:text="@{history.tanggalPengambilan}"
+                    android:textSize="12dp" />
 
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginEnd="20dp"
+                        android:text="Detail"
+                        android:textColor="#0C81B6"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</layout>

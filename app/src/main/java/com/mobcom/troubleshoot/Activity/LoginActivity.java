@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputLayout;
 import com.mobcom.troubleshoot.API.APIRequestData;
 import com.mobcom.troubleshoot.API.RetroServer;
+import com.mobcom.troubleshoot.databinding.ActivityLoginBinding;
 import com.mobcom.troubleshoot.models.Login.Login;
 import com.mobcom.troubleshoot.models.Login.LoginData;
 import com.mobcom.troubleshoot.R;
@@ -21,46 +22,44 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-  private TextInputLayout etEmail, etPassword;
-  private Button btnLogin;
-  private TextView tvRegist;
+public class LoginActivity extends AppCompatActivity{
   private String email, password;
-  APIRequestData ardData;
-  SessionManager sessionManager;
+  APIRequestData ardData; // (webservice)
+  SessionManager sessionManager; // buat create session dll
+  ActivityLoginBinding activityLoginBinding; // bindview jadi ga usah lagi find view by id
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_login);
+    // karna pake bind view jadi inflate nya kaya gini
+    // sebelumnya kan pake R.id.activity_login sekarang di ubah
+    activityLoginBinding = ActivityLoginBinding.inflate(getLayoutInflater());
+    View view = activityLoginBinding.getRoot();
+    setContentView(view);
+    // end inflate
 
     //    status bar hide start
     //getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
     //    status bar hide end
 
-    etEmail = findViewById(R.id.etEmailLogin);
-    etPassword = findViewById(R.id.etPasswordLogin);
-    btnLogin = findViewById(R.id.btnLogin);
-    tvRegist = findViewById(R.id.gotoRegister);
-    btnLogin.setOnClickListener(this);
-    tvRegist.setOnClickListener(this);
-
-  }
-
-  @Override
-  public void onClick(View v) {
-    switch (v.getId()) {
-      case R.id.btnLogin:
-        email = etEmail.getEditText().getText().toString();
-        password = etPassword.getEditText().getText().toString();
+    // ini cara manggil id dari layoutnya
+    activityLoginBinding.btnLogin.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        email = activityLoginBinding.etEmailLogin.getEditText().getText().toString();
+        password = activityLoginBinding.etPasswordLogin.getEditText().getText().toString();
         login(email, password);
-        break;
-      case R.id.gotoRegister:
-        Intent intent = new Intent(this, RegisterActivity.class);
+      }
+    });
+
+    activityLoginBinding.gotoRegister.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(intent);
-        finish();
-        break;
-    }
+      }
+    });
+
   }
 
   private void login(String email, String password) {
@@ -70,6 +69,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
       return;
     }
 
+    // manggil werbservice buat get data dll
     Call<Login> loginCall = ardData.loginResponse(email, password);
     loginCall.enqueue(new Callback<Login>() {
       @Override
@@ -94,27 +94,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
       }
     });
+    // end webservice
 
   }
 
   private Boolean validateEmail() {
-    String val = etEmail.getEditText().getText().toString();
+    String val = activityLoginBinding.etEmailLogin.getEditText().getText().toString();
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     if (val.isEmpty()) {
-      etEmail.setError("Field cannot be empty");
+      activityLoginBinding.etEmailLogin.setError("Field cannot be empty");
       return false;
     } else if (!val.matches(emailPattern)) {
-      etEmail.setError("Invalid email address");
+      activityLoginBinding.etEmailLogin.setError("Invalid email address");
       return false;
     } else {
-      etEmail.setError(null);
-      etEmail.setErrorEnabled(false);
+      activityLoginBinding.etEmailLogin.setError(null);
+      activityLoginBinding.etEmailLogin.setErrorEnabled(false);
       return true;
     }
   }
 
   private Boolean validatePassword() {
-    String val = etPassword.getEditText().getText().toString();
+    String val = activityLoginBinding.etPasswordLogin.getEditText().getText().toString();
     String passwordVal = "^" +
             //"(?=.*[0-9])" +         //at least 1 digit
             //"(?=.*[a-z])" +         //at least 1 lower case letter
@@ -126,20 +127,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             "$";
     String noWhiteSpace = "\\A\\w{4,20}\\z";
     if (val.isEmpty()) {
-      etPassword.setError("Field cannot be empty");
+      activityLoginBinding.etPasswordLogin.setError("Field cannot be empty");
       return false;
     } else if (val.length() > 16) {
-      etPassword.setError("Password too long");
+      activityLoginBinding.etPasswordLogin.setError("Password too long");
       return false;
     } else if (!val.matches(passwordVal)) {
-      etPassword.setError("Password is too weak");
+      activityLoginBinding.etPasswordLogin.setError("Password is too weak");
       return false;
     } else if (!val.matches(noWhiteSpace)) {
-      etPassword.setError("White Spaces are not allowed");
+      activityLoginBinding.etPasswordLogin.setError("White Spaces are not allowed");
       return false;
     } else {
-      etPassword.setError(null);
-      etPassword.setErrorEnabled(false);
+      activityLoginBinding.etPasswordLogin.setError(null);
+      activityLoginBinding.etPasswordLogin.setErrorEnabled(false);
       return true;
     }
   }

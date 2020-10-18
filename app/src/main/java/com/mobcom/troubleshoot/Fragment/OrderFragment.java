@@ -1,49 +1,35 @@
 package com.mobcom.troubleshoot.Fragment;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import android.text.Editable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.RadioGroup;
-import android.widget.Switch;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.mobcom.troubleshoot.API.APIRequestData;
 import com.mobcom.troubleshoot.API.RetroServer;
-import com.mobcom.troubleshoot.Activity.KategoriPemesananActivity;
-import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.SessionManager;
 import com.mobcom.troubleshoot.databinding.FragmentOrderBinding;
 import com.mobcom.troubleshoot.models.CartItem;
 import com.mobcom.troubleshoot.models.LaptopModel;
 import com.mobcom.troubleshoot.models.ResponseLaptopModel;
-import com.mobcom.troubleshoot.repositories.LaptopRepo;
-import com.mobcom.troubleshoot.viewmodels.LaptopViewModel;
 import com.mobcom.troubleshoot.viewmodels.ServiceViewModel;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+import com.wdullaer.materialdatetimepicker.date.YearPickerView;
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
-import java.text.SimpleDateFormat;
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -165,6 +151,11 @@ public class OrderFragment extends Fragment {
 
     //tombol lanjut
     fragmentOrderBinding.LanjutPembayaran.setOnClickListener(v -> {
+
+      if(!validateSeriLaptop() | !validateDetail() | !validateTanggal() | !validateJam() | !validateTempat() | !validateNama() | !validateEmail() | !validatePhone()){
+        return;
+      }
+
       //get all data in this fragment
       String seriLaptop = fragmentOrderBinding.EdtSeriLaptop.getText().toString();
       String detailPermasalahan = fragmentOrderBinding.EdtDetailPemesanan.getText().toString();
@@ -175,6 +166,8 @@ public class OrderFragment extends Fragment {
       String email = fragmentOrderBinding.EdtEmail.getText().toString();
       String phone = fragmentOrderBinding.EdtNomorTelepon.getText().toString();
       //end get all data
+
+
 
       //pass all data to next fragment
       OrderFragmentDirections.ActionOrderFragmentToOrderConfirmationFragment action = OrderFragmentDirections.actionOrderFragmentToOrderConfirmationFragment();
@@ -219,24 +212,123 @@ public class OrderFragment extends Fragment {
     });
   }
 
+  private String convertTime(int input){
+    if(input >= 10){
+      return String.valueOf(input);
+    } else {
+      return "0" + String.valueOf(input);
+    }
+  }
+
   private void openTimePicker() {
     Calendar calendar = Calendar.getInstance();
     int HOUR = calendar.get(Calendar.HOUR_OF_DAY);
     int Minute = calendar.get(Calendar.MINUTE);
 
-    TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), (view, hourOfDay, minute) -> fragmentOrderBinding.EdtJam.setText(hourOfDay + ":" + minute), HOUR, Minute, false);
-    timePickerDialog.show();
+    TimePickerDialog tpd = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
+      @Override
+      public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
+        fragmentOrderBinding.EdtJam.setText(convertTime(hourOfDay) + ":" + convertTime(minute));
+      }
+    },HOUR,Minute,true);
+    tpd.setMinTime(8,0,0);
+    tpd.setMaxTime(15,0,0);
+    tpd.show(getFragmentManager(),"");
   }
 
   private void openDatePicker() {
     Calendar calendar = Calendar.getInstance();
-
     int YEAR = calendar.get(Calendar.YEAR);
     int MONTH = calendar.get(Calendar.MONTH);
     int Day = calendar.get(Calendar.DAY_OF_MONTH);
+    int Hour = calendar.get(Calendar.HOUR_OF_DAY);
 
-    DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), (view, year, month, dayOfMonth) -> fragmentOrderBinding.EdtTanggal.setText(dayOfMonth + "-" + (month + 1) + "-" + year), YEAR, MONTH, Day);
-    datePickerDialog.show();
+    DatePickerDialog dpd = DatePickerDialog.newInstance(new DatePickerDialog.OnDateSetListener() {
+      @Override
+      public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+        String date = dayOfMonth+"-"+(++monthOfYear)+"-"+year;
+        fragmentOrderBinding.EdtTanggal.setText(date);
+      }
+    },YEAR,MONTH,Day);
+
+    // restrict to weekdays only
+    ArrayList<Calendar> weekdays = new ArrayList<Calendar>();
+    for (int i=0; i < 365; i++) {
+      if (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY && Hour != 15) {
+        Calendar d = (Calendar) calendar.clone();
+        weekdays.add(d);
+      }
+      calendar.add(Calendar.DATE, 1);
+    }
+
+    Calendar[] weekdayDays = weekdays.toArray(new Calendar[weekdays.size()]);
+    dpd.setSelectableDays(weekdayDays);
+    dpd.show(getFragmentManager(), "");
+  }
+
+  private Boolean validateSeriLaptop (){
+    String val = fragmentOrderBinding.EdtSeriLaptop.getText().toString();
+    if (val.isEmpty()) {
+      fragmentOrderBinding.EdtSeriLaptop.setError("Field cannot be empty");
+      return false;
+    }
+    return true;
+  }
+  private Boolean validateDetail (){
+    String val = fragmentOrderBinding.EdtDetailPemesanan.getText().toString();
+    if(val.isEmpty()){
+      fragmentOrderBinding.EdtDetailPemesanan.setError("Field cannot be empty");
+      return false;
+    }
+    return true;
+  }
+  private Boolean validateTanggal(){
+    String val = fragmentOrderBinding.EdtTanggal.getText().toString();
+    if(val.isEmpty()){
+      fragmentOrderBinding.EdtTanggal.setError("Field cannot be empty");
+      return false;
+    }
+    return true;
+  }
+  private Boolean validateJam (){
+    String val = fragmentOrderBinding.EdtJam.getText().toString();
+    if(val.isEmpty()){
+      fragmentOrderBinding.EdtJam.setError("Field cannot be empty");
+      return false;
+    }
+    return true;
+  }
+  private Boolean validateTempat (){
+    String val = fragmentOrderBinding.alamatTempatBertemu.getText().toString();
+    if(val.isEmpty()){
+      fragmentOrderBinding.alamatTempatBertemu.setError("Field cannot be empty");
+      return false;
+    }
+    return true;
+  }
+  private Boolean validateNama (){
+    String val = fragmentOrderBinding.EdtNama.getText().toString();
+    if(val.isEmpty()){
+      fragmentOrderBinding.EdtNama.setError("Field cannot be empty");
+      return false;
+    }
+    return true;
+  }
+  private Boolean validateEmail (){
+    String val = fragmentOrderBinding.EdtEmail.getText().toString();
+    if(val.isEmpty()){
+      fragmentOrderBinding.EdtEmail.setError("Field cannot be empty");
+      return false;
+    }
+    return true;
+  }
+  private Boolean validatePhone (){
+    String val = fragmentOrderBinding.EdtNomorTelepon.getText().toString();
+    if(val.isEmpty()){
+      fragmentOrderBinding.EdtNomorTelepon.setError("Field cannot be empty");
+      return false;
+    }
+    return true;
   }
 
 }

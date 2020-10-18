@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -49,18 +50,22 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
   }
 
   @Override
-  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+  public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-
     serviceListAdapter = new ServiceListAdapter(this);
     fragmentServiceBinding.serviceRecyclerView.setAdapter(serviceListAdapter);
     serviceViewModel = new ViewModelProvider(requireActivity()).get(ServiceViewModel.class);
-    serviceViewModel.getServices().observe(getViewLifecycleOwner(), new Observer<List<ServiceModel>>() {
+    fragmentServiceBinding.pbDataLayanan.setVisibility(View.VISIBLE);
+
+    fragmentServiceBinding.scrollView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
       @Override
-      public void onChanged(List<ServiceModel> service) {
-        serviceListAdapter.submitList(service);
+      public void onRefresh() {
+        fragmentServiceBinding.scrollView.setRefreshing(true);
+        retrieveData();
+        fragmentServiceBinding.scrollView.setRefreshing(false);
       }
     });
+
     serviceViewModel.getCart().observe(getViewLifecycleOwner(), new Observer<List<CartItem>>() {
       @Override
       public void onChanged(List<CartItem> cartItems) {
@@ -88,6 +93,23 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
     });
 
     fragmentServiceBinding.checkoutButton.setOnClickListener(v -> navController.navigate(R.id.action_serviceFragment_to_orderFragment));
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    retrieveData();
+  }
+
+  public void retrieveData(){
+    serviceViewModel.getServices().observe(getViewLifecycleOwner(), new Observer<List<ServiceModel>>() {
+      @Override
+      public void onChanged(List<ServiceModel> service) {
+        serviceListAdapter.submitList(service);
+        serviceListAdapter.notifyDataSetChanged();
+        fragmentServiceBinding.pbDataLayanan.setVisibility(View.INVISIBLE);
+      }
+    });
   }
 
   // add to cart ada disini
