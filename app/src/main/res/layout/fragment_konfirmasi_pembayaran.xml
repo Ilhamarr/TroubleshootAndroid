@@ -184,7 +184,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="64dp"
             android:layout_marginStart="25dp"
-            android:text="Konfirmasi Pembayaran"
+            android:text="Upload Bukti Pembayaran"
             android:textColor="#fff"
             android:background="@drawable/btn_rounded"
             android:layout_marginLeft="25dp" />
