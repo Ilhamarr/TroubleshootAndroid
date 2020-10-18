@@ -6,6 +6,12 @@ for a startup computer service, it can be make client trust about this businness
 
 ## SPRINT 5
 
+| Story            | Task                                          | Actor | Status   |
+|------------------|-----------------------------------------------|-------|----------|
+| Profile Segment  | Make Term And Condition Layout                | Ilham | Progress |
+|                  | Make Edit Profile Layout                      | Vivi  | Complete |
+| History Segment  | Connecting History Layout with Detail History | Bagus | Complete |
+|                  | Get data from database                        | Bagus | Complete |
 
 
 
