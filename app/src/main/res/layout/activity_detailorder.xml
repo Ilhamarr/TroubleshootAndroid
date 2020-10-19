@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Activity.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -282,8 +283,10 @@
         </LinearLayout>
     </ScrollView>
 
+
+    <!--    Button bayar sekarang     -->
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_bayarsekarang"
         android:layout_width="365dp"
         android:layout_height="40dp"
         android:layout_marginBottom="148dp"
@@ -296,7 +299,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
 
+    <!--    Button batalkan pesanan     -->
     <Button
+        android:id="@+id/btn_batalkanpesanan"
         android:layout_width="365dp"
         android:layout_height="40dp"
         android:background="@drawable/btn_red"
@@ -306,8 +311,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/btn_bayarsekarang"
         app:layout_constraintVertical_bias="0.162" />
 
 
+    <!--    Button batalkan pesanan     -->
+    <Button
+        android:id="@+id/btn_cetakinvoice"
+        android:layout_width="365dp"
+        android:layout_height="40dp"
+        android:background="@drawable/btn_green"
+        android:text="Cetak Invoice"
+        android:textColor="@color/colordivider"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_bayarsekarang"
+        app:layout_constraintVertical_bias="0.162"
+        android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
