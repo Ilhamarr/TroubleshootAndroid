@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,12 +48,33 @@ public class OrderHistoryFragment extends Fragment implements HistoryListAdapter
     account_id = sessionManager.getUserDetail().get(SessionManager.ACCOUNT_ID);
     historyListAdapter = new HistoryListAdapter();
     fragmentOrderHistoryBinding.rvDataOrderHistory.setAdapter(historyListAdapter);
-
     historyViewModel = new ViewModelProvider(requireActivity()).get(HistoryViewModel.class);
+    fragmentOrderHistoryBinding.pbDataLayanan.setVisibility(View.VISIBLE);
+
+    fragmentOrderHistoryBinding.scrollView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+      @Override
+      public void onRefresh() {
+        fragmentOrderHistoryBinding.scrollView.setRefreshing(true);
+        retrieveData();
+        fragmentOrderHistoryBinding.scrollView.setRefreshing(false);
+      }
+    });
+
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    retrieveData();
+  }
+
+  public void retrieveData(){
     historyViewModel.getHistories(account_id).observe(getViewLifecycleOwner(), new Observer<List<OrderHistoryModel>>() {
       @Override
       public void onChanged(List<OrderHistoryModel> orderHistory) {
         historyListAdapter.submitList(orderHistory);
+        historyListAdapter.notifyDataSetChanged();
+        fragmentOrderHistoryBinding.pbDataLayanan.setVisibility(View.INVISIBLE);
       }
     });
   }
