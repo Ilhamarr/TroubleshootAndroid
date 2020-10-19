@@ -254,11 +254,12 @@ public class OrderFragment extends Fragment {
     // restrict to weekdays only
     ArrayList<Calendar> weekdays = new ArrayList<Calendar>();
     for (int i=0; i < 365; i++) {
-      if (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY && Hour != 15) {
+      if (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY ) {
         Calendar d = (Calendar) calendar.clone();
         weekdays.add(d);
       }
       calendar.add(Calendar.DATE, 1);
+
     }
 
     Calendar[] weekdayDays = weekdays.toArray(new Calendar[weekdays.size()]);

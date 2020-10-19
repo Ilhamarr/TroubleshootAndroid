@@ -42,7 +42,11 @@
         android:id="@+id/orderHistoryFragment"
         android:name="com.mobcom.troubleshoot.Fragment.OrderHistoryFragment"
         android:label="fragment_order_history"
-        tools:layout="@layout/fragment_order_history" />
+        tools:layout="@layout/fragment_order_history" >
+        <action
+            android:id="@+id/action_orderHistoryFragment_to_orderDetailFragment"
+            app:destination="@id/orderDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.mobcom.troubleshoot.Fragment.ProfileFragment"
@@ -179,5 +183,44 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.OrderDetailFragment"
+        android:label="fragment_order_detail"
+        tools:layout="@layout/fragment_order_detail" >
+        <action
+            android:id="@+id/action_orderDetailFragment_to_paymentMethodFragment"
+            app:destination="@id/paymentMethodFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentMethodFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.PaymentMethodFragment"
+        android:label="fragment_payment_method"
+        tools:layout="@layout/fragment_payment_method" >
+        <action
+            android:id="@+id/action_paymentMethodFragment_to_danaFragment"
+            app:destination="@id/danaFragment" />
+        <action
+            android:id="@+id/action_paymentMethodFragment_to_bankFragment"
+            app:destination="@id/bankFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/danaFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.DanaFragment"
+        android:label="fragment_dana"
+        tools:layout="@layout/fragment_dana" >
+        <action
+            android:id="@+id/action_danaFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bankFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.BankFragment"
+        android:label="fragment_bank"
+        tools:layout="@layout/fragment_bank" >
+        <action
+            android:id="@+id/action_bankFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment" />
     </fragment>
 </navigation>

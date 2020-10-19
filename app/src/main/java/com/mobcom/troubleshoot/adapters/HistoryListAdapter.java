@@ -1,6 +1,7 @@
 package com.mobcom.troubleshoot.adapters;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -12,8 +13,10 @@ import com.mobcom.troubleshoot.models.OrderHistoryModel;
 
 public class HistoryListAdapter extends ListAdapter<OrderHistoryModel, HistoryListAdapter.HistoryViewHolder> {
 
-  public HistoryListAdapter() {
+  HistoryInterface historyInterface;
+  public HistoryListAdapter(HistoryInterface historyInterface) {
     super(OrderHistoryModel.itemCallback);
+    this.historyInterface = historyInterface;
   }
 
   @NonNull
@@ -21,6 +24,7 @@ public class HistoryListAdapter extends ListAdapter<OrderHistoryModel, HistoryLi
   public HistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
     CardItemOrderHistoryBinding cardItemOrderHistoryBinding = CardItemOrderHistoryBinding.inflate(layoutInflater, parent, false);
+    cardItemOrderHistoryBinding.setHistoryInterface(historyInterface);
     return new HistoryViewHolder(cardItemOrderHistoryBinding);
   }
 

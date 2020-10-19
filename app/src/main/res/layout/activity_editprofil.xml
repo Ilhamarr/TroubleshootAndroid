@@ -52,7 +52,6 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginBottom="20dp"
-        android:background="#FFFFF"
         android:src="@drawable/ic_baseline_add_photo_alternate_24"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
