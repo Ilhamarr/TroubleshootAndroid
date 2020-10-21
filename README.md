@@ -22,7 +22,7 @@ https://docs.google.com/spreadsheets/d/1l3uG52OoAbAXDz2HFyEmODxLGKXyCd1aa_SbZJHB
 
 
 
-## Mockup wireframe:
-mockup mobile apps Troubleshoot.id:<br>
-https://github.com/Ilhamarr/Troubleshoot_Design/blob/master/Documentation.md
+## Debug Application:
+for tested you cand download our debug app in this link:
+
 
