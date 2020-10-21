@@ -10,9 +10,13 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -30,10 +34,10 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
   private static final String TAG = "MainActivity";
-  SessionManager sessionManager;
-  BottomNavigationView bottomNavigationView;
-  ServiceViewModel serviceViewModel;
-  NavController navController;
+  private SessionManager sessionManager;
+  private BottomNavigationView bottomNavigationView;
+  private ServiceViewModel serviceViewModel;
+  private NavController navController;
 
 
   @Override
@@ -68,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
     startActivity(intent);
     finish();
+  }
+
+  public void updateStatusBarColor(String color){// Color must be in hexadecimal fromat
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      Window window = getWindow();
+      window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+      window.setStatusBarColor(Color.parseColor(color));
+    }
   }
 
 }

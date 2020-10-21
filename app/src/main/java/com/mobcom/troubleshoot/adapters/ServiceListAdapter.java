@@ -46,6 +46,5 @@ public class ServiceListAdapter extends ListAdapter<ServiceModel, ServiceListAda
 
   public interface ServiceInterface {
     void addItem(ServiceModel service);
-    void onItemClick(ServiceModel service);
   }
 }

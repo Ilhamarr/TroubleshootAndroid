@@ -20,8 +20,8 @@ import com.mobcom.troubleshoot.viewmodels.ServiceViewModel;
 public class CartFragment extends Fragment implements CartListAdapter.CartInterface {
 
   private static final String TAG = "CartFragment";
-  ServiceViewModel serviceViewModel;
-  FragmentCartBinding fragmentCartBinding;
+  private ServiceViewModel serviceViewModel;
+  private FragmentCartBinding fragmentCartBinding;
   private int cartQuantity = 0;
   private NavController navController;
 
@@ -41,10 +41,17 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
   public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
+    // setup navcontroller
+    navController = Navigation.findNavController(view);
+
+    // setup recyclerview
     CartListAdapter cartListAdapter = new CartListAdapter(this);
     fragmentCartBinding.cartRecyclerView.setAdapter(cartListAdapter);
-    navController = Navigation.findNavController(view);
+
+    // setup view model
     serviceViewModel = new ViewModelProvider(requireActivity()).get(ServiceViewModel.class);
+
+    // get jumlah produk di cart
     serviceViewModel.getCart().observe(getViewLifecycleOwner(), cartItems -> {
       cartListAdapter.submitList(cartItems);
       fragmentCartBinding.CheckoutButton.setEnabled(cartItems.size() > 0);
@@ -57,8 +64,13 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
       fragmentCartBinding.TxtTotalProdukSeluruh.setText(String.valueOf(cartQuantity));
     });
 
+    // get harga total di cart
     serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), integer -> fragmentCartBinding.orderTotalTextView.setText(integer.toString()));
 
+    // back button
+    fragmentCartBinding.backButton.setOnClickListener(v -> navController.popBackStack());
+
+    // checkout button (lanjutkan, ini menuju form order)
     fragmentCartBinding.CheckoutButton.setOnClickListener(v -> navController.navigate(R.id.action_cartFragment_to_orderFragment));
 
   }

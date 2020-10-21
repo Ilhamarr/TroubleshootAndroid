@@ -1,9 +1,11 @@
 package com.mobcom.troubleshoot.Fragment;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -20,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.mobcom.troubleshoot.Activity.MainActivity;
 import com.mobcom.troubleshoot.adapters.ServiceListAdapter;
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.models.CartItem;
@@ -31,7 +34,7 @@ import java.util.List;
 
 public class ServiceFragment extends Fragment implements ServiceListAdapter.ServiceInterface {
   private static final String TAG = "ServiceFragment";
-  FragmentServiceBinding fragmentServiceBinding;
+  private FragmentServiceBinding fragmentServiceBinding;
   private ServiceListAdapter serviceListAdapter;
   private ServiceViewModel serviceViewModel;
   private NavController navController;
@@ -52,20 +55,24 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
   @Override
   public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+
+    // setup navcontroller
+    navController = Navigation.findNavController(view);
+
+    // setup recyclerview
     serviceListAdapter = new ServiceListAdapter(this);
     fragmentServiceBinding.serviceRecyclerView.setAdapter(serviceListAdapter);
+
+    // setup view model
     serviceViewModel = new ViewModelProvider(requireActivity()).get(ServiceViewModel.class);
+
+    // first time load fragment bakal muncul loading (progress bar)
     fragmentServiceBinding.pbDataLayanan.setVisibility(View.VISIBLE);
 
-    fragmentServiceBinding.scrollView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-      @Override
-      public void onRefresh() {
-        fragmentServiceBinding.scrollView.setRefreshing(true);
-        retrieveData();
-        fragmentServiceBinding.scrollView.setRefreshing(false);
-      }
-    });
+    // load list layanan
+    retrieveData();
 
+    // get jumlah produk (didalem cart)
     serviceViewModel.getCart().observe(getViewLifecycleOwner(), new Observer<List<CartItem>>() {
       @Override
       public void onChanged(List<CartItem> cartItems) {
@@ -80,18 +87,28 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
       }
     });
 
-    navController = Navigation.findNavController(view);
-
+    // get total price (didalem cart)
     serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), new Observer<Integer>() {
       @Override
       public void onChanged(Integer integer) {
         fragmentServiceBinding.TxtHarga.setText(integer.toString());
       }
     });
+
+    // back button
+    fragmentServiceBinding.backButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        navController.popBackStack();
+      }
+    });
+
+    // cart button
     fragmentServiceBinding.cart.setOnClickListener((v) -> {
       navController.navigate(R.id.action_serviceFragment_to_cartFragment);
     });
 
+    // checkout button (pesan sekarang)
     fragmentServiceBinding.checkoutButton.setOnClickListener(v -> navController.navigate(R.id.action_serviceFragment_to_orderFragment));
   }
 
@@ -117,10 +134,5 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
   public void addItem(ServiceModel service) {
     //Log.d(TAG, "addItem: " + service.toString());
     boolean isAdded = serviceViewModel.addItemToCart(service);
-  }
-
-  @Override
-  public void onItemClick(ServiceModel service) {
-
   }
 }

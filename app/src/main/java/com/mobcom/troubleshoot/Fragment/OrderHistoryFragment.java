@@ -26,7 +26,7 @@ import com.mobcom.troubleshoot.viewmodels.HistoryViewModel;
 import java.util.List;
 
 public class OrderHistoryFragment extends Fragment implements HistoryListAdapter.HistoryInterface {
-  FragmentOrderHistoryBinding fragmentOrderHistoryBinding;
+  private FragmentOrderHistoryBinding fragmentOrderHistoryBinding;
   private HistoryListAdapter historyListAdapter;
   private HistoryViewModel historyViewModel;
   private SessionManager sessionManager;
@@ -50,23 +50,30 @@ public class OrderHistoryFragment extends Fragment implements HistoryListAdapter
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
+    // setup navcontroller
+    navController = Navigation.findNavController(view);
+
+    // setup sessionmanager
     sessionManager = new SessionManager(getActivity());
     account_id = sessionManager.getUserDetail().get(SessionManager.ACCOUNT_ID);
+
+    // setup recyclerview
     historyListAdapter = new HistoryListAdapter(this);
     fragmentOrderHistoryBinding.rvDataOrderHistory.setAdapter(historyListAdapter);
+
+    // setup view model
     historyViewModel = new ViewModelProvider(requireActivity()).get(HistoryViewModel.class);
+
+    // untuk first load bakal ada loading (progressbar)
     fragmentOrderHistoryBinding.pbDataLayanan.setVisibility(View.VISIBLE);
 
-    fragmentOrderHistoryBinding.scrollView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-      @Override
-      public void onRefresh() {
-        fragmentOrderHistoryBinding.scrollView.setRefreshing(true);
-        retrieveData();
-        fragmentOrderHistoryBinding.scrollView.setRefreshing(false);
-      }
-    });
 
-    navController = Navigation.findNavController(view);
+    // refresh listener
+    fragmentOrderHistoryBinding.scrollView.setOnRefreshListener(() -> {
+      fragmentOrderHistoryBinding.scrollView.setRefreshing(true);
+      retrieveData();
+      fragmentOrderHistoryBinding.scrollView.setRefreshing(false);
+    });
 
   }
 
@@ -80,16 +87,22 @@ public class OrderHistoryFragment extends Fragment implements HistoryListAdapter
     historyViewModel.getHistories(account_id).observe(getViewLifecycleOwner(), new Observer<List<OrderHistoryModel>>() {
       @Override
       public void onChanged(List<OrderHistoryModel> orderHistory) {
-        historyListAdapter.submitList(orderHistory);
-        historyListAdapter.notifyDataSetChanged();
-        fragmentOrderHistoryBinding.pbDataLayanan.setVisibility(View.INVISIBLE);
+        if (orderHistory == null){
+          fragmentOrderHistoryBinding.orderEmpty.setVisibility(View.VISIBLE);
+          fragmentOrderHistoryBinding.pbDataLayanan.setVisibility(View.INVISIBLE);
+        }
+        else{
+          historyListAdapter.submitList(orderHistory);
+          historyListAdapter.notifyDataSetChanged();
+          fragmentOrderHistoryBinding.pbDataLayanan.setVisibility(View.INVISIBLE);
+        }
+
       }
     });
   }
 
   @Override
   public void onItemClick(OrderHistoryModel history) {
-    Log.d(TAG, "onItemClick: " + history.toString());
     historyViewModel.setHistory(history);
     navController.navigate(R.id.action_orderHistoryFragment_to_orderDetailFragment);
   }

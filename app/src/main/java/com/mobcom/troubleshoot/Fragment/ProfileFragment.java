@@ -17,7 +17,7 @@ import com.mobcom.troubleshoot.databinding.FragmentProfileBinding;
 
 public class ProfileFragment extends Fragment {
   private SessionManager sessionManager;
-  FragmentProfileBinding fragmentProfileBinding;
+  private FragmentProfileBinding fragmentProfileBinding;
   private String firstName, lastName, telepon, email, alamat, fullName;
 
   public ProfileFragment() {

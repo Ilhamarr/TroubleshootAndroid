@@ -14,6 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
         tools:context=".Fragment.OrderDetailFragment">
 
         <ImageView
@@ -27,6 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="26dp"
             android:layout_marginStart="16dp"
@@ -37,9 +39,10 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="160dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             android:letterSpacing="0.098"
             android:text="Detail Order"
             android:textColor="@color/colortrb"
@@ -96,7 +99,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/Txt_kodeorder"
+                    android:id="@+id/kodeorder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -205,11 +208,12 @@
 
                 <!--    Nama Teknisi      -->
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/Txt_keterangan"
+                    android:id="@+id/rv_item_order_detail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    tools:listitem="@layout/item_listpesanan" />
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_pesanan_detail_order" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

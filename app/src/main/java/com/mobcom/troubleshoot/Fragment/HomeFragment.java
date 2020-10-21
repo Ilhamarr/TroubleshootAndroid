@@ -16,7 +16,7 @@ import com.mobcom.troubleshoot.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
   private SessionManager sessionManager;
-  FragmentHomeBinding fragmentHomeBinding;
+  private FragmentHomeBinding fragmentHomeBinding;
   private String firstName;
   private NavController navController;
 
@@ -34,11 +34,17 @@ public class HomeFragment extends Fragment {
 
   @Override
   public void onViewCreated(View view, Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+
+    // setup sessionmanager
     sessionManager = new SessionManager(getActivity());
     firstName = sessionManager.getUserDetail().get(SessionManager.FIRST_NAME);
     fragmentHomeBinding.tvfirstNameHome.setText(firstName);
 
+    // setup navcontroller
     navController = Navigation.findNavController(view);
+
+    // button pesan sekarang
     fragmentHomeBinding.btnPesanSekarang.setOnClickListener((v) -> {
       navController.navigate(R.id.action_homeFragment_to_serviceFragment);
     });

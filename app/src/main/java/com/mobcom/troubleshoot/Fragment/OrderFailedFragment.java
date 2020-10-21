@@ -17,7 +17,7 @@ import com.mobcom.troubleshoot.databinding.FragmentOrderFailedBinding;
 
 public class OrderFailedFragment extends Fragment {
 
-  FragmentOrderFailedBinding fragmentOrderFailedBinding;
+  private FragmentOrderFailedBinding fragmentOrderFailedBinding;
   private NavController navController;
 
   public OrderFailedFragment() {

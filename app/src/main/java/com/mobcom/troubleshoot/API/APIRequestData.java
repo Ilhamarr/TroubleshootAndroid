@@ -1,6 +1,7 @@
 package com.mobcom.troubleshoot.API;
 
 import com.mobcom.troubleshoot.models.Login.Login;
+import com.mobcom.troubleshoot.models.ResponseItemOrderDetail;
 import com.mobcom.troubleshoot.models.ResponseOrderHistory;
 import com.mobcom.troubleshoot.models.Register.Register;
 import com.mobcom.troubleshoot.models.ResponseHeaderOrder;
@@ -70,6 +71,12 @@ public interface APIRequestData {
   @POST("orderhistory")
   Call<ResponseOrderHistory> getListOrderHistory (
           @Field("account_id") String accountId
+  );
+
+  @FormUrlEncoded
+  @POST("orderhistory")
+  Call<ResponseItemOrderDetail> getListOrderLayanan (
+          @Field("tracking_key") String tracking_key
   );
 
 }

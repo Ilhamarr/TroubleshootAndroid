@@ -40,11 +40,11 @@ public class OrderFragment extends Fragment {
   private static final String TAG = "OrderFragment";
   private SessionManager sessionManager;
   private NavController navController;
-  FragmentOrderBinding fragmentOrderBinding;
-  ServiceViewModel serviceViewModel;
+  private FragmentOrderBinding fragmentOrderBinding;
+  private ServiceViewModel serviceViewModel;
   private int cartQuantity = 0;
   private String account_id, firstname, lastname, email, phone, fullname, laptop_Id, laptop_Merk;
-  List<LaptopModel> listLaptop = new ArrayList<>();
+  private List<LaptopModel> listLaptop = new ArrayList<>();
 
   public OrderFragment() {
     // Required empty public constructor
@@ -60,36 +60,36 @@ public class OrderFragment extends Fragment {
 
   @Override
   public void onViewCreated(View view, Bundle savedInstanceState) {
-    sessionManager = new SessionManager(getActivity());
+    super.onViewCreated(view, savedInstanceState);
+
+    // setup navcontroller
     navController = Navigation.findNavController(view);
+
+    // setup sessionmanager
+    sessionManager = new SessionManager(getActivity());
     account_id = sessionManager.getUserDetail().get(SessionManager.ACCOUNT_ID);
     firstname = sessionManager.getUserDetail().get(SessionManager.FIRST_NAME);
     lastname = sessionManager.getUserDetail().get(SessionManager.LAST_NAME);
     email = sessionManager.getUserDetail().get(SessionManager.EMAIL);
     phone = sessionManager.getUserDetail().get(SessionManager.NOMOR_HP);
+
+    // setup view model
     serviceViewModel = new ViewModelProvider(requireActivity()).get(ServiceViewModel.class);
 
-    //get banyaknya item di cart dan total harga
-    serviceViewModel.getCart().observe(getViewLifecycleOwner(), new Observer<List<CartItem>>() {
-      @Override
-      public void onChanged(List<CartItem> cartItems) {
-        int quantity = 0;
-        for (CartItem cartItem : cartItems) {
-          quantity += cartItem.getQuantity();
-        }
-        cartQuantity = quantity;
-        fragmentOrderBinding.TxtTotalProdukSeluruh.setText(String.valueOf(cartQuantity));
+    // get banyaknya item di cart
+    serviceViewModel.getCart().observe(getViewLifecycleOwner(), cartItems -> {
+      int quantity = 0;
+      for (CartItem cartItem : cartItems) {
+        quantity += cartItem.getQuantity();
       }
+      cartQuantity = quantity;
+      fragmentOrderBinding.TxtTotalProdukSeluruh.setText(String.valueOf(cartQuantity));
     });
-    serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), new Observer<Integer>() {
-      @Override
-      public void onChanged(Integer integer) {
-        fragmentOrderBinding.orderTotalTextView.setText(integer.toString());
-      }
-    });
-    //end
 
-    //spinner merk laptop
+    // get total harga di cart
+    serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), integer -> fragmentOrderBinding.orderTotalTextView.setText(integer.toString()));
+
+    // spinner merk laptop
     initSpinnerLaptop();
     fragmentOrderBinding.SpinnerMerkLaptop.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
@@ -108,48 +108,36 @@ public class OrderFragment extends Fragment {
 
       }
     });
-    //end spinner merk laptop
 
-    //DatetimePicker
-    fragmentOrderBinding.EdtTanggal.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        openDatePicker();
-      }
-    });
-    fragmentOrderBinding.EdtJam.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        openTimePicker();
-      }
-    });
-    //end DatetimePicker
+    // DatePicker
+    fragmentOrderBinding.EdtTanggal.setOnClickListener(v -> openDatePicker());
 
-    //radio button tempat bertemu
+    // timePicker
+    fragmentOrderBinding.EdtJam.setOnClickListener(v -> openTimePicker());
+
+    // radio button tempat bertemu
     fragmentOrderBinding.rgTempatBertemu.clearCheck();
-    fragmentOrderBinding.rgTempatBertemu.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-      @Override
-      public void onCheckedChanged(RadioGroup group, int checkedId) {
-        if (checkedId == fragmentOrderBinding.btnAntarJemput.getId()) {
-          fragmentOrderBinding.alamatTempatBertemu.getText().clear();
-          fragmentOrderBinding.alamatTempatBertemu.setHint("Masukan alamat anda");
-          fragmentOrderBinding.alamatTempatBertemu.setEnabled(true);
-        } else {
-          fragmentOrderBinding.alamatTempatBertemu.setText("Kampus A UNJ, Jl. Rawamangun Muka, Gedung Dewi Sartika Lt.5");
-          fragmentOrderBinding.alamatTempatBertemu.setEnabled(false);
-        }
+    fragmentOrderBinding.rgTempatBertemu.setOnCheckedChangeListener((group, checkedId) -> {
+      if (checkedId == fragmentOrderBinding.btnAntarJemput.getId()) {
+        fragmentOrderBinding.alamatTempatBertemu.getText().clear();
+        fragmentOrderBinding.alamatTempatBertemu.setHint("Masukan alamat anda");
+        fragmentOrderBinding.alamatTempatBertemu.setEnabled(true);
+      } else {
+        fragmentOrderBinding.alamatTempatBertemu.setText("Kampus A UNJ, Jl. Rawamangun Muka, Gedung Dewi Sartika Lt.5");
+        fragmentOrderBinding.alamatTempatBertemu.setEnabled(false);
       }
     });
-    //end radio button tempat bertemu
 
-    //form contact
+    // form contact
     fullname = firstname + " " + lastname;
     fragmentOrderBinding.EdtNama.setText(fullname);
     fragmentOrderBinding.EdtEmail.setText(email);
     fragmentOrderBinding.EdtNomorTelepon.setText(phone);
-    //end form contact
 
-    //tombol lanjut
+    // back button
+    fragmentOrderBinding.backButton.setOnClickListener(v -> navController.popBackStack());
+
+    // tombol lanjut (to order confirmation)
     fragmentOrderBinding.LanjutPembayaran.setOnClickListener(v -> {
 
       if(!validateSeriLaptop() | !validateDetail() | !validateTanggal() | !validateJam() | !validateTempat() | !validateNama() | !validateEmail() | !validatePhone()){
@@ -185,7 +173,6 @@ public class OrderFragment extends Fragment {
       //end pass
       navController.navigate(action);
     });
-    //end tombol lanjut
   }
 
   private void initSpinnerLaptop() {
@@ -225,12 +212,7 @@ public class OrderFragment extends Fragment {
     int HOUR = calendar.get(Calendar.HOUR_OF_DAY);
     int Minute = calendar.get(Calendar.MINUTE);
 
-    TimePickerDialog tpd = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
-      @Override
-      public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
-        fragmentOrderBinding.EdtJam.setText(convertTime(hourOfDay) + ":" + convertTime(minute));
-      }
-    },HOUR,Minute,true);
+    TimePickerDialog tpd = TimePickerDialog.newInstance((view, hourOfDay, minute, second) -> fragmentOrderBinding.EdtJam.setText(convertTime(hourOfDay) + ":" + convertTime(minute)),HOUR,Minute,true);
     tpd.setMinTime(8,0,0);
     tpd.setMaxTime(15,0,0);
     tpd.show(getFragmentManager(),"");
@@ -243,12 +225,9 @@ public class OrderFragment extends Fragment {
     int Day = calendar.get(Calendar.DAY_OF_MONTH);
     int Hour = calendar.get(Calendar.HOUR_OF_DAY);
 
-    DatePickerDialog dpd = DatePickerDialog.newInstance(new DatePickerDialog.OnDateSetListener() {
-      @Override
-      public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        String date = dayOfMonth+"-"+(++monthOfYear)+"-"+year;
-        fragmentOrderBinding.EdtTanggal.setText(date);
-      }
+    DatePickerDialog dpd = DatePickerDialog.newInstance((view, year, monthOfYear, dayOfMonth) -> {
+      String date = dayOfMonth+"-"+(++monthOfYear)+"-"+year;
+      fragmentOrderBinding.EdtTanggal.setText(date);
     },YEAR,MONTH,Day);
 
     // restrict to weekdays only

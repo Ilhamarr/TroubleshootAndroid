@@ -32,6 +32,7 @@ public class HistoryListAdapter extends ListAdapter<OrderHistoryModel, HistoryLi
   public void onBindViewHolder(@NonNull HistoryViewHolder holder, int position) {
     OrderHistoryModel history = getItem(position);
     holder.cardItemOrderHistoryBinding.setHistory(history);
+    holder.cardItemOrderHistoryBinding.executePendingBindings();
   }
 
   class HistoryViewHolder extends RecyclerView.ViewHolder{

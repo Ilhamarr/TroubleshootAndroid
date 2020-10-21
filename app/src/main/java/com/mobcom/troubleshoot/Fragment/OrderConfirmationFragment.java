@@ -37,13 +37,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class OrderConfirmationFragment extends Fragment {
-  FragmentOrderConfirmationBinding fragmentOrderConfirmationBinding;
-  String account_id, laptop_Id, mereklaptop, tipeLaptop, seriLaptop, detail, tanggal, jam, tempat, nama, email, phone, totalHarga;
-  ServiceViewModel serviceViewModel;
+  private FragmentOrderConfirmationBinding fragmentOrderConfirmationBinding;
+  private String account_id, laptop_Id, mereklaptop, tipeLaptop, seriLaptop, detail, tanggal, jam, tempat, nama, email, phone, totalHarga;
+  private ServiceViewModel serviceViewModel;
   private int cartQuantity = 0;
   private NavController navController;
   private SessionManager sessionManager;
-  APIRequestData ardData;
+  private APIRequestData ardData;
 
   public OrderConfirmationFragment() {
     // Required empty public constructor
@@ -61,14 +61,22 @@ public class OrderConfirmationFragment extends Fragment {
   public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
+    // setup recyclerview
     CartListConfirmAdapter cartListConfirmAdaptertAdapter = new CartListConfirmAdapter();
     fragmentOrderConfirmationBinding.rvKonfirmasiPemesanan.setAdapter(cartListConfirmAdaptertAdapter);
+
+    // setup sessionmanager
     sessionManager = new SessionManager(getActivity());
-    navController = Navigation.findNavController(view);
-    serviceViewModel = new ViewModelProvider(requireActivity()).get(ServiceViewModel.class);
     account_id = sessionManager.getUserDetail().get(SessionManager.ACCOUNT_ID);
 
-    //get data from previous fragment
+    // setup navcontroller
+    navController = Navigation.findNavController(view);
+
+    // setup view model
+    serviceViewModel = new ViewModelProvider(requireActivity()).get(ServiceViewModel.class);
+
+
+    // get data from previous fragment
     if (getArguments() != null){
       OrderConfirmationFragmentArgs args = OrderConfirmationFragmentArgs.fromBundle(getArguments());
       laptop_Id = args.getIdLaptop();
@@ -83,18 +91,16 @@ public class OrderConfirmationFragment extends Fragment {
       jam = args.getJam();
       tempat = args.getAlamat();
     }
-    //end get data
 
-    //view data
+    // view data
     fragmentOrderConfirmationBinding.TxtTanggal.setText(tanggal);
     fragmentOrderConfirmationBinding.TxtJam.setText(jam);
     fragmentOrderConfirmationBinding.TxtNamaLengkap.setText(nama);
     fragmentOrderConfirmationBinding.TxtEmail.setText(email);
     fragmentOrderConfirmationBinding.TxtNomorTelepom.setText(phone);
     fragmentOrderConfirmationBinding.TxtAlamat.setText(tempat);
-    //end view data
 
-    //get banyaknya item di cart dan total harga
+    // get banyaknya item di cart
     serviceViewModel.getCart().observe(getViewLifecycleOwner(), cartItems -> {
       cartListConfirmAdaptertAdapter.submitList(cartItems);
       int quantity = 0;
@@ -104,22 +110,26 @@ public class OrderConfirmationFragment extends Fragment {
       cartQuantity = quantity;
       fragmentOrderConfirmationBinding.TxtTotalProdukSeluruh.setText(String.valueOf(cartQuantity));
     });
-    serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), new Observer<Integer>() {
-      @Override
-      public void onChanged(Integer integer) {
-        totalHarga = integer.toString();
-        fragmentOrderConfirmationBinding.orderTotalTextView.setText(integer.toString());
-        fragmentOrderConfirmationBinding.tvorderTotalTextView.setText(integer.toString());
-      }
-    });
-    //end
 
+    // get total harga di cart
+    serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), integer -> {
+      totalHarga = integer.toString();
+      fragmentOrderConfirmationBinding.orderTotalTextView.setText(integer.toString());
+      fragmentOrderConfirmationBinding.tvorderTotalTextView.setText(integer.toString());
+    });
+
+    // button edit form order
     fragmentOrderConfirmationBinding.ubahDetailPesanan.setOnClickListener(v -> navController.navigate(R.id.action_orderConfirmationFragment_to_orderFragment));
 
+    // button edit cart
     fragmentOrderConfirmationBinding.ubahLayanan.setOnClickListener(v -> navController.navigate(R.id.action_orderConfirmationFragment_to_serviceFragment));
 
+    // button back
+    fragmentOrderConfirmationBinding.backButton.setOnClickListener(v -> navController.popBackStack());
+
+    // button submit
     fragmentOrderConfirmationBinding.buatPesanan.setOnClickListener(v -> {
-      String trackKey = tracking_key(account_id,mereklaptop);
+      String trackKey = tracking_key(account_id);
       //headerOrder(account_id, laptop_Id, detail,phone,tanggal,jam,tempat,seriLaptop,totalHarga,trackKey);
       ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
       Call<ResponseHeaderOrder> headerOrderCall = ardData.HeaderOrderResponse(account_id, nama, email, laptop_Id, detail, phone, tanggal, jam, tempat, seriLaptop, totalHarga, trackKey);
@@ -150,7 +160,6 @@ public class OrderConfirmationFragment extends Fragment {
       });
     });
 
-
   }
 
   public void order(String accountId, String trackingKey, String kerusakanId, String harga, String jumlah, String totalHarga){
@@ -168,19 +177,19 @@ public class OrderConfirmationFragment extends Fragment {
 
   }
 
-  public String tracking_key(String accountId, String merekLaptop){
+  public String tracking_key(String accountId){
     String randStr = getRandomString();
     // accountid + date dmY + merk + random
     SimpleDateFormat formatter = new SimpleDateFormat("ddMMyy");
     Date date = new Date();
     String dmY = formatter.format(date);
-    return accountId + dmY + merekLaptop + randStr;
+    return accountId + dmY + randStr;
   }
 
   public String getRandomString(){
     int leftLimit = 97; // letter 'a'
     int rightLimit = 122; // letter 'z'
-    int targetStringLength = 8;
+    int targetStringLength = 5;
     Random random = new Random();
     StringBuilder buffer = new StringBuilder(targetStringLength);
     for (int i = 0; i < targetStringLength; i++) {

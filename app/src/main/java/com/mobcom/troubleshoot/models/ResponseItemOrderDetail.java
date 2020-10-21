@@ -3,30 +3,19 @@ package com.mobcom.troubleshoot.models;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class ResponseOrderHistory {
+public class ResponseItemOrderDetail {
 
 	@SerializedName("data")
-	private List<OrderHistoryModel> data;
-
-	@SerializedName("message")
-	private String message;
+	private List<ItemOrderModel> data;
 
 	@SerializedName("status")
 	private boolean status;
 
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public void setData(List<OrderHistoryModel> data){
+	public void setData(List<ItemOrderModel> data){
 		this.data = data;
 	}
 
-	public List<OrderHistoryModel> getData(){
+	public List<ItemOrderModel> getData(){
 		return data;
 	}
 
