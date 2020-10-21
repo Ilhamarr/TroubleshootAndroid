@@ -47,17 +47,19 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.0">
 
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            app:cardCornerRadius="8dp">
+            android:layout_marginTop="30dp"
+            app:cardCornerRadius="10dp">
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="                                                                                   "
-                android:layout_marginTop="103dp"/>
+                android:layout_marginTop="103dp"
+                android:layout_marginLeft="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -106,8 +108,7 @@
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:layout_marginTop="195dp"
-                    android:layout_marginStart="110dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:textIsSelectable="true"/>
             </LinearLayout>
 
@@ -116,7 +117,6 @@
                 android:layout_height="wrap_content"
                 android:text="Transfer Ke Rekening"
                 android:textSize="17sp"
-                android:textColor="#3A3636"
                 android:layout_marginLeft="14dp"
                 android:layout_marginTop="165dp"/>
 
@@ -146,8 +146,8 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="8dp">
-
+            app:cardCornerRadius="8dp"
+            android:layout_marginTop="16dp">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -221,8 +221,6 @@
             android:text="Konfirmasi Pembayaran"
             android:textColor="#fff"
             android:background="@drawable/btn_rounded"/>
-
-
 
     </LinearLayout>
 
