@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.BankFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
@@ -42,16 +41,18 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0">
+
 
         <androidx.cardview.widget.CardView
-            android:layout_width="365dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="70dp"
-            app:cardCornerRadius="10dp"
-            android:layout_marginLeft="25dp">
+            android:layout_marginTop="30dp"
+            app:cardCornerRadius="10dp">
 
             <EditText
                 android:layout_width="wrap_content"
@@ -64,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lakukan Pembayaran"
-                android:textSize="19dp"
+                android:textSize="19sp"
                 android:layout_marginTop="12dp"
                 android:layout_marginLeft="14dp"
                 android:textColor="#000000"/>
@@ -73,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bayar Sebelum"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 android:textColor="#3A3636"
                 android:layout_marginTop="70dp"
                 android:layout_marginLeft="14dp"/>
@@ -83,7 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Kamis, 2 Januari 2020 | 13.50 WIB"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:layout_marginTop="97dp"
                 android:layout_marginLeft="14dp"/>
 
@@ -105,10 +106,9 @@
                     android:layout_height="wrap_content"
                     android:text="877 945 8228"
                     android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:layout_marginTop="195dp"
                     android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
                     android:textIsSelectable="true"/>
             </LinearLayout>
 
@@ -116,15 +116,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Transfer Ke Rekening"
-                android:textSize="17dp"
-                android:textColor="#3A3636"
+                android:textSize="17sp"
                 android:layout_marginLeft="14dp"
                 android:layout_marginTop="165dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="a/n Troubleshoot.id Cabang Pulogadung"
+                android:text="a/n Pradyanti"
                 android:layout_marginTop="223dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"/>
@@ -145,14 +144,10 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_marginTop="16dp"
-            android:layout_width="365dp"
-            android:layout_height="54dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginLeft="25dp"
-            android:background="#8C8888"
-            app:cardCornerRadius="12dp">
-
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            android:layout_marginTop="16dp">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -164,7 +159,7 @@
                     android:layout_height="wrap_content"
                     android:text="Jumlah dibayarkan"
                     android:textColor="#000"
-                    android:textSize="17dp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/txt_jumlahbayar"
@@ -173,7 +168,46 @@
                     android:layout_marginStart="72dp"
                     android:text="Rp 100.000"
                     android:textColor="#000"
-                    android:textSize="17dp" />
+                    android:textSize="17sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Informasi"
+                    android:textColor="#000"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="365dp"
+                    android:layout_height="wrap_content"
+                    android:text="Pastikan anda telah memeriksa nomor dan nama rekening tujuan dengan benar. Troubleshoot.id akan memeriksa bukti anda dalam waktu 24 jam"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <ImageButton
+                    android:id="@+id/btn_uploadbukti"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/gabarupload1"
+                    android:layout_marginTop="5dp"
+                    android:background="#fff"/>
 
             </LinearLayout>
 
@@ -181,14 +215,12 @@
 
         <Button
             android:id="@+id/btn_konfirmasibayar"
-            android:layout_width="367dp"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="64dp"
-            android:layout_marginStart="25dp"
-            android:text="Upload Bukti Pembayaran"
+            android:layout_marginTop="20dp"
+            android:text="Konfirmasi Pembayaran"
             android:textColor="#fff"
-            android:background="@drawable/btn_rounded"
-            android:layout_marginLeft="25dp" />
+            android:background="@drawable/btn_rounded"/>
 
     </LinearLayout>
 
