@@ -6,10 +6,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.databinding.FragmentPaymentMethodBinding;
@@ -18,6 +22,7 @@ import com.mobcom.troubleshoot.viewmodels.HistoryViewModel;
 public class PaymentMethodFragment extends Fragment {
   private FragmentPaymentMethodBinding fragmentPaymentMethodBinding;
   private HistoryViewModel historyViewModel;
+  private NavController navController;
 
   public PaymentMethodFragment() {
     // Required empty public constructor
@@ -35,8 +40,38 @@ public class PaymentMethodFragment extends Fragment {
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
+    // setup navcontroller
+    navController = Navigation.findNavController(view);
+
     // setup view model
     historyViewModel = new ViewModelProvider(requireActivity()).get(HistoryViewModel.class);
     fragmentPaymentMethodBinding.setHistoryViewModel(historyViewModel);
+
+    // back button
+    fragmentPaymentMethodBinding.backButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        navController.popBackStack();
+      }
+    });
+
+    // button bayar
+    fragmentPaymentMethodBinding.bayar.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        int selectedId = fragmentPaymentMethodBinding.rgPaymentMethod.getCheckedRadioButtonId();
+        if (selectedId == fragmentPaymentMethodBinding.tunai.getId()) {
+          Toast.makeText(getContext(), "tunai", Toast.LENGTH_SHORT).show();
+        } else if (selectedId == fragmentPaymentMethodBinding.bank.getId()) {
+          navController.navigate(R.id.action_paymentMethodFragment_to_bankFragment);
+          Toast.makeText(getContext(), "bank", Toast.LENGTH_SHORT).show();
+        } else {
+          navController.navigate(R.id.action_paymentMethodFragment_to_danaFragment);
+          Toast.makeText(getContext(), "dana", Toast.LENGTH_SHORT).show();
+        }
+
+      }
+    });
+
   }
 }

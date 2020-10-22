@@ -28,6 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="26dp"
             android:layout_marginStart="16dp"
@@ -51,18 +52,16 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginTop="24dp"
+            android:layout_marginBottom="20dp"
             android:orientation="vertical"
             android:padding="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints">
+            app:layout_constraintTop_toBottomOf="@+id/imageView">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -74,6 +73,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -89,14 +89,13 @@
                 </LinearLayout>
 
 
-
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="20dp"
                 app:cardBackgroundColor="#e8ffff"
                 app:cardCornerRadius="10dp">
 
@@ -113,14 +112,28 @@
                         android:textColor="#000000"
                         android:textSize="18dp" />
 
-                    <TextView
-                        android:id="@+id/txt_jumlahbayar"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="90dp"
-                        android:text="Rp 100.000"
-                        android:textColor="#000000"
-                        android:textSize="18dp" />
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="90dp"
+                            android:text="Rp "
+                            android:textColor="#000000"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{historyViewModel.history.biayaTotal}"
+                            android:textColor="#000000"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -128,30 +141,23 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="20dp"
                 app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="24dp"
-                        android:text="Metode Pembayaran"
-                        android:textColor="#000000"
-                        android:textSize="16dp" />
+                        android:orientation="vertical">
 
-                    <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <!-- Pembayaran Tunai-->
                         <LinearLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
@@ -167,24 +173,8 @@
                                 android:layout_marginStart="16dp"
                                 android:text="Tunai"
                                 android:textSize="16sp" />
-
-                            <RadioButton
-                                android:id="@+id/radio_tunai"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="96dp" />
                         </LinearLayout>
 
-                        <View
-                            android:id="@+id/dividertransfer"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="6dp"
-                            android:layout_marginBottom="6dp"
-                            android:background="?android:attr/listDivider" />
-
-                        <!-- Pembayaran ATM-->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -203,23 +193,8 @@
                                 android:text="Transfer Bank"
                                 android:textSize="16sp" />
 
-                            <RadioButton
-                                android:id="@+id/radio_transferBank"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="96dp" />
                         </LinearLayout>
 
-                        <View
-                            android:id="@+id/divider"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="6dp"
-                            android:layout_marginBottom="6dp"
-                            android:background="?android:attr/listDivider" />
-
-                        <!-- Pembayaran ATM-->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -238,25 +213,49 @@
                                 android:text="Dana"
                                 android:textSize="16sp" />
 
-                            <RadioButton
-                                android:id="@+id/radio_transferDana"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="96dp" />
                         </LinearLayout>
+                    </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                    </RadioGroup>
+                        <RadioGroup
+                            android:id="@+id/rgPaymentMethod"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
+                            <RadioButton
+                                android:id="@+id/tunai"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="96dp" />
+
+                            <RadioButton
+                                android:id="@+id/bank"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="96dp" />
+
+                            <RadioButton
+                                android:id="@+id/dana"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="96dp" />
+                        </RadioGroup>
+
+                    </LinearLayout>
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
             <Button
+                android:id="@+id/bayar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/btn_rounded"
                 android:text="Bayar Sekarang"
                 android:textColor="#fff" />

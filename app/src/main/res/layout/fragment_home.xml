@@ -50,6 +50,7 @@
             android:layout_marginEnd="15dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_notification"
+            android:clickable="true"
             app:layout_constraintBottom_toBottomOf="@id/textHello"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textHello"
@@ -146,6 +147,7 @@
             android:letterSpacing="0.15"
             android:padding="5dp"
             android:text="Pesan Sekarang"
+            android:clickable="true"
             android:textColor="@color/colordivider" />
 
         <TextView
@@ -164,6 +166,7 @@
             android:background="@drawable/btn_wa"
             android:letterSpacing="0.15"
             android:padding="5dp"
+            android:clickable="true"
             android:text="konsultasikan Sekarang"
             android:textColor="@color/colordivider" />
     </LinearLayout>
