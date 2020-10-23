@@ -61,13 +61,13 @@ public class PaymentMethodFragment extends Fragment {
       public void onClick(View v) {
         int selectedId = fragmentPaymentMethodBinding.rgPaymentMethod.getCheckedRadioButtonId();
         if (selectedId == fragmentPaymentMethodBinding.tunai.getId()) {
-          Toast.makeText(getContext(), "tunai", Toast.LENGTH_SHORT).show();
+
         } else if (selectedId == fragmentPaymentMethodBinding.bank.getId()) {
           navController.navigate(R.id.action_paymentMethodFragment_to_bankFragment);
-          Toast.makeText(getContext(), "bank", Toast.LENGTH_SHORT).show();
+
         } else {
           navController.navigate(R.id.action_paymentMethodFragment_to_danaFragment);
-          Toast.makeText(getContext(), "dana", Toast.LENGTH_SHORT).show();
+
         }
 
       }

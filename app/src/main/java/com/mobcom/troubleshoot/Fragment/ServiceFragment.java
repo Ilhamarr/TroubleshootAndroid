@@ -23,6 +23,7 @@ import android.widget.Button;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.mobcom.troubleshoot.Activity.MainActivity;
+import com.mobcom.troubleshoot.Helper;
 import com.mobcom.troubleshoot.adapters.ServiceListAdapter;
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.models.CartItem;
@@ -69,6 +70,9 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
     // first time load fragment bakal muncul loading (progress bar)
     fragmentServiceBinding.pbDataLayanan.setVisibility(View.VISIBLE);
 
+    // setup helper
+    Helper helper = new Helper();
+
     // load list layanan
     retrieveData();
 
@@ -91,7 +95,8 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
     serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), new Observer<Integer>() {
       @Override
       public void onChanged(Integer integer) {
-        fragmentServiceBinding.TxtHarga.setText(integer.toString());
+
+        fragmentServiceBinding.TxtHarga.setText(helper.formatRp(integer));
       }
     });
 

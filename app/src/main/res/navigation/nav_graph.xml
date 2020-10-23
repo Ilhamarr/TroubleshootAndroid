@@ -212,14 +212,16 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/orderHistoryFragment" />
         <action
             android:id="@+id/action_paymentMethodFragment_to_bankFragment"
             app:destination="@id/bankFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/orderHistoryFragment" />
         <action
             android:id="@+id/action_paymentMethodFragment_to_orderHistoryFragment"
             app:destination="@id/orderHistoryFragment" />
@@ -228,18 +230,10 @@
         android:id="@+id/danaFragment"
         android:name="com.mobcom.troubleshoot.Fragment.DanaFragment"
         android:label="fragment_dana"
-        tools:layout="@layout/fragment_dana" >
-        <action
-            android:id="@+id/action_danaFragment_to_orderHistoryFragment"
-            app:destination="@id/orderHistoryFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_dana" />
     <fragment
         android:id="@+id/bankFragment"
         android:name="com.mobcom.troubleshoot.Fragment.BankFragment"
         android:label="fragment_bank"
-        tools:layout="@layout/fragment_bank" >
-        <action
-            android:id="@+id/action_bankFragment_to_orderHistoryFragment"
-            app:destination="@id/orderHistoryFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_bank" />
 </navigation>

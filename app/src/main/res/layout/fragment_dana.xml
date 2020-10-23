@@ -27,6 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="26dp"
             android:layout_marginStart="16dp"
@@ -191,15 +192,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="90dp"
-                                android:text="Rp "
-                                android:textColor="#000000"
-                                android:textSize="14dp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@{historyViewModel.history.biayaTotal}"
+                                android:text="@{historyViewModel.history.formatRp}"
                                 android:textColor="#000000"
                                 android:textSize="14dp" />
                         </LinearLayout>

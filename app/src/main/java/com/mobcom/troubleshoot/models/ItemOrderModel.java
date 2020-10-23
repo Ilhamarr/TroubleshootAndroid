@@ -5,13 +5,17 @@ import androidx.recyclerview.widget.DiffUtil;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+import java.util.Objects;
+
 public class ItemOrderModel {
 
 	@SerializedName("account_id")
 	private String accountId;
 
 	@SerializedName("harga")
-	private String harga;
+	private int harga;
 
 	@SerializedName("jumlah")
 	private String jumlah;
@@ -37,7 +41,7 @@ public class ItemOrderModel {
 	@SerializedName("tracking_key")
 	private String trackingKey;
 
-	public ItemOrderModel(String accountId, String harga, String jumlah, String kerusakanId, String jenis, String createdAt, String totalHarga, String namaKerusakan, String orderId, String trackingKey) {
+	public ItemOrderModel(String accountId, int harga, String jumlah, String kerusakanId, String jenis, String createdAt, String totalHarga, String namaKerusakan, String orderId, String trackingKey) {
 		this.accountId = accountId;
 		this.harga = harga;
 		this.jumlah = jumlah;
@@ -58,11 +62,11 @@ public class ItemOrderModel {
 		return accountId;
 	}
 
-	public void setHarga(String harga){
+	public void setHarga(int harga){
 		this.harga = harga;
 	}
 
-	public String getHarga(){
+	public int getHarga(){
 		return harga;
 	}
 
@@ -130,6 +134,12 @@ public class ItemOrderModel {
 		return trackingKey;
 	}
 
+	public String formatRp(){
+		Locale localeID = new Locale("in", "ID");
+		NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+		return formatRupiah.format(this.harga);
+	}
+
 	@Override
 	public String toString() {
 		return "ItemOrderModel{" +
@@ -151,8 +161,8 @@ public class ItemOrderModel {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		ItemOrderModel that = (ItemOrderModel) o;
-		return getAccountId().equals(that.getAccountId()) &&
-						getHarga().equals(that.getHarga()) &&
+		return getHarga() == that.getHarga() &&
+						getAccountId().equals(that.getAccountId()) &&
 						getJumlah().equals(that.getJumlah()) &&
 						getKerusakanId().equals(that.getKerusakanId()) &&
 						getJenis().equals(that.getJenis()) &&
@@ -161,6 +171,11 @@ public class ItemOrderModel {
 						getNamaKerusakan().equals(that.getNamaKerusakan()) &&
 						getOrderId().equals(that.getOrderId()) &&
 						getTrackingKey().equals(that.getTrackingKey());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(getAccountId(), getHarga(), getJumlah(), getKerusakanId(), getJenis(), getCreatedAt(), getTotalHarga(), getNamaKerusakan(), getOrderId(), getTrackingKey());
 	}
 
 	public static DiffUtil.ItemCallback<ItemOrderModel> itemCallback = new DiffUtil.ItemCallback<ItemOrderModel>() {

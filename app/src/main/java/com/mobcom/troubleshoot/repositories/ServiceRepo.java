@@ -20,21 +20,21 @@ public class ServiceRepo {
   private MutableLiveData<List<ServiceModel>> mutableServiceList;
   List<ServiceModel> serviceList = new ArrayList<>();
 
-  public LiveData<List<ServiceModel>> getService(){
-    if (mutableServiceList == null){
+  public LiveData<List<ServiceModel>> getService() {
+    if (mutableServiceList == null) {
       mutableServiceList = new MutableLiveData<>();
       loadService();
     }
     return mutableServiceList;
   }
 
-  private void loadService(){
+  private void loadService() {
     APIRequestData ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
     Call<ResponseServiceModel> tampilDataLayanan = ardData.ambillistLayanan();
     tampilDataLayanan.enqueue(new Callback<ResponseServiceModel>() {
       @Override
       public void onResponse(Call<ResponseServiceModel> call, Response<ResponseServiceModel> response) {
-        if (response.isSuccessful()){
+        if (response.isSuccessful()) {
           serviceList = response.body().getListService();
           mutableServiceList.setValue(serviceList);
         }

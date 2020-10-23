@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.mobcom.troubleshoot.API.APIRequestData;
 import com.mobcom.troubleshoot.API.RetroServer;
+import com.mobcom.troubleshoot.Helper;
 import com.mobcom.troubleshoot.SessionManager;
 import com.mobcom.troubleshoot.databinding.FragmentOrderBinding;
 import com.mobcom.troubleshoot.models.CartItem;
@@ -65,6 +66,9 @@ public class OrderFragment extends Fragment {
     // setup navcontroller
     navController = Navigation.findNavController(view);
 
+    // setup helper
+    Helper helper = new Helper();
+
     // setup sessionmanager
     sessionManager = new SessionManager(getActivity());
     account_id = sessionManager.getUserDetail().get(SessionManager.ACCOUNT_ID);
@@ -87,7 +91,7 @@ public class OrderFragment extends Fragment {
     });
 
     // get total harga di cart
-    serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), integer -> fragmentOrderBinding.orderTotalTextView.setText(integer.toString()));
+    serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), integer -> fragmentOrderBinding.orderTotalTextView.setText(helper.formatRp(integer)));
 
     // spinner merk laptop
     initSpinnerLaptop();

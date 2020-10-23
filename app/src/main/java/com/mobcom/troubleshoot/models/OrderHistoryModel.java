@@ -5,6 +5,10 @@ import androidx.recyclerview.widget.DiffUtil;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+import java.util.Objects;
+
 public class OrderHistoryModel {
 
 	@SerializedName("tipe_laptop")
@@ -41,7 +45,7 @@ public class OrderHistoryModel {
 	private String tanggalPengembalian;
 
 	@SerializedName("biaya_total")
-	private String biayaTotal;
+	private int biayaTotal;
 
 	@SerializedName("tempat_bertemu")
 	private String tempatBertemu;
@@ -79,7 +83,7 @@ public class OrderHistoryModel {
 	@SerializedName("merk_laptop")
 	private String merkLaptop;
 
-	public OrderHistoryModel(String tipeLaptop, String totalItem, String keterangan, String merk, String teknisi, String createdAt, String jamPengembalian, String headerOrderId, String trackingKey, String tanggalPengambilan, String tanggalPengembalian, String biayaTotal, String tempatBertemu, String statusPayment, String accountId, String statusTracking, String nama, String imageOrder, String jamPengambilan, String modifiedAt, String email, String trackingId, String nomorHp, String merkLaptop) {
+	public OrderHistoryModel(String tipeLaptop, String totalItem, String keterangan, String merk, String teknisi, String createdAt, String jamPengembalian, String headerOrderId, String trackingKey, String tanggalPengambilan, String tanggalPengembalian, int biayaTotal, String tempatBertemu, String statusPayment, String accountId, String statusTracking, String nama, String imageOrder, String jamPengambilan, String modifiedAt, String email, String trackingId, String nomorHp, String merkLaptop) {
 		this.tipeLaptop = tipeLaptop;
 		this.totalItem = totalItem;
 		this.keterangan = keterangan;
@@ -194,11 +198,11 @@ public class OrderHistoryModel {
 		return tanggalPengembalian;
 	}
 
-	public void setBiayaTotal(String biayaTotal){
+	public void setBiayaTotal(int biayaTotal){
 		this.biayaTotal = biayaTotal;
 	}
 
-	public String getBiayaTotal(){
+	public int getBiayaTotal(){
 		return biayaTotal;
 	}
 
@@ -298,6 +302,12 @@ public class OrderHistoryModel {
 		return merkLaptop;
 	}
 
+	public String formatRp(){
+		Locale localeID = new Locale("in", "ID");
+		NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+		return formatRupiah.format(this.biayaTotal);
+	}
+
 	@Override
  	public String toString(){
 		return 
@@ -334,7 +344,8 @@ public class OrderHistoryModel {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		OrderHistoryModel that = (OrderHistoryModel) o;
-		return getTipeLaptop().equals(that.getTipeLaptop()) &&
+		return getBiayaTotal() == that.getBiayaTotal() &&
+						getTipeLaptop().equals(that.getTipeLaptop()) &&
 						getTotalItem().equals(that.getTotalItem()) &&
 						getKeterangan().equals(that.getKeterangan()) &&
 						getMerk().equals(that.getMerk()) &&
@@ -345,7 +356,6 @@ public class OrderHistoryModel {
 						getTrackingKey().equals(that.getTrackingKey()) &&
 						getTanggalPengambilan().equals(that.getTanggalPengambilan()) &&
 						getTanggalPengembalian().equals(that.getTanggalPengembalian()) &&
-						getBiayaTotal().equals(that.getBiayaTotal()) &&
 						getTempatBertemu().equals(that.getTempatBertemu()) &&
 						getStatusPayment().equals(that.getStatusPayment()) &&
 						getAccountId().equals(that.getAccountId()) &&
@@ -359,6 +369,7 @@ public class OrderHistoryModel {
 						getNomorHp().equals(that.getNomorHp()) &&
 						getMerkLaptop().equals(that.getMerkLaptop());
 	}
+
 
 	public static DiffUtil.ItemCallback<OrderHistoryModel> itemCallback = new DiffUtil.ItemCallback<OrderHistoryModel>() {
 		@Override

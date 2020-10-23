@@ -37,6 +37,7 @@ public class DetailListAdapter extends ListAdapter<ItemOrderModel, DetailListAda
   class DetailListViewHolder extends RecyclerView.ViewHolder {
 
     ItemPesananDetailOrderBinding itemPesananDetailOrderBinding;
+
     public DetailListViewHolder(ItemPesananDetailOrderBinding binding) {
       super(binding.getRoot());
       this.itemPesananDetailOrderBinding = binding;

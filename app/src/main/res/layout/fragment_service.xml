@@ -48,6 +48,9 @@
         android:layout_marginTop="15dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
+        android:paddingTop="8dp"
+        android:paddingRight="12dp"
+        android:paddingLeft="12dp"
         android:fillViewport="true"
         android:foregroundGravity="center"
         app:layout_constraintBottom_toTopOf="@id/bottomView"
@@ -145,19 +148,18 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp"
-                            android:textColor="@color/colordivider"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Rp"-->
+<!--                            android:textColor="@color/colordivider"-->
+<!--                            android:textSize="16sp"-->
+<!--                            android:textStyle="bold" />-->
 
                         <TextView
                             android:id="@+id/Txt_harga"
-                            android:layout_width="104dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="8dp"
                             android:text="200000"
                             android:textColor="@color/colordivider"
                             android:textSize="16sp"

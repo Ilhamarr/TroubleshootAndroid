@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mobcom.troubleshoot.Helper;
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.adapters.CartListAdapter;
 import com.mobcom.troubleshoot.databinding.FragmentCartBinding;
@@ -51,6 +52,9 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
     // setup view model
     serviceViewModel = new ViewModelProvider(requireActivity()).get(ServiceViewModel.class);
 
+    // setup helper
+    Helper helper = new Helper();
+
     // get jumlah produk di cart
     serviceViewModel.getCart().observe(getViewLifecycleOwner(), cartItems -> {
       cartListAdapter.submitList(cartItems);
@@ -65,7 +69,7 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
     });
 
     // get harga total di cart
-    serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), integer -> fragmentCartBinding.orderTotalTextView.setText(integer.toString()));
+    serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), integer -> fragmentCartBinding.orderTotalTextView.setText(helper.formatRp(integer)));
 
     // back button
     fragmentCartBinding.backButton.setOnClickListener(v -> navController.popBackStack());

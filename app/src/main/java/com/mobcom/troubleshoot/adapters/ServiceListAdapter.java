@@ -13,6 +13,7 @@ import com.mobcom.troubleshoot.databinding.CardItemLayananBinding;
 public class ServiceListAdapter extends ListAdapter<ServiceModel, ServiceListAdapter.ServiceViewHolder> {
 
   ServiceInterface serviceInterface;
+
   public ServiceListAdapter(ServiceInterface serviceInterface) {
     super(ServiceModel.itemCallback);
     this.serviceInterface = serviceInterface;

@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,8 +38,19 @@ public class BankFragment extends Fragment {
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
+    // setup navcontroller
+    navController = Navigation.findNavController(view);
+
     // setup view model
     historyViewModel = new ViewModelProvider(requireActivity()).get(HistoryViewModel.class);
     fragmentBankBinding.setHistoryViewModel(historyViewModel);
+
+    // tombol back
+    fragmentBankBinding.backButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        navController.popBackStack();
+      }
+    });
   }
 }

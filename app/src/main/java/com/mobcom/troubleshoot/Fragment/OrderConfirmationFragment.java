@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.mobcom.troubleshoot.API.APIRequestData;
 import com.mobcom.troubleshoot.API.RetroServer;
 import com.mobcom.troubleshoot.Activity.RegisterActivity;
+import com.mobcom.troubleshoot.Helper;
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.SessionManager;
 import com.mobcom.troubleshoot.adapters.CartListConfirmAdapter;
@@ -75,6 +76,9 @@ public class OrderConfirmationFragment extends Fragment {
     // setup view model
     serviceViewModel = new ViewModelProvider(requireActivity()).get(ServiceViewModel.class);
 
+    // setup helper
+    Helper helper = new Helper();
+
 
     // get data from previous fragment
     if (getArguments() != null){
@@ -114,8 +118,8 @@ public class OrderConfirmationFragment extends Fragment {
     // get total harga di cart
     serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), integer -> {
       totalHarga = integer.toString();
-      fragmentOrderConfirmationBinding.orderTotalTextView.setText(integer.toString());
-      fragmentOrderConfirmationBinding.tvorderTotalTextView.setText(integer.toString());
+      fragmentOrderConfirmationBinding.orderTotalTextView.setText(helper.formatRp(integer));
+      //fragmentOrderConfirmationBinding.tvorderTotalTextView.setText(helper.formatRp(integer));
     });
 
     // button edit form order

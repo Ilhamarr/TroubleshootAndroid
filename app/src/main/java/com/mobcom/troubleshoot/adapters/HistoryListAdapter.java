@@ -14,6 +14,7 @@ import com.mobcom.troubleshoot.models.OrderHistoryModel;
 public class HistoryListAdapter extends ListAdapter<OrderHistoryModel, HistoryListAdapter.HistoryViewHolder> {
 
   HistoryInterface historyInterface;
+
   public HistoryListAdapter(HistoryInterface historyInterface) {
     super(OrderHistoryModel.itemCallback);
     this.historyInterface = historyInterface;
@@ -35,7 +36,7 @@ public class HistoryListAdapter extends ListAdapter<OrderHistoryModel, HistoryLi
     holder.cardItemOrderHistoryBinding.executePendingBindings();
   }
 
-  class HistoryViewHolder extends RecyclerView.ViewHolder{
+  class HistoryViewHolder extends RecyclerView.ViewHolder {
 
     CardItemOrderHistoryBinding cardItemOrderHistoryBinding;
 

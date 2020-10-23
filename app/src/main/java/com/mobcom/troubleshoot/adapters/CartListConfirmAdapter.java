@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mobcom.troubleshoot.databinding.ItemListpesananBinding;
 import com.mobcom.troubleshoot.models.CartItem;
 
-public class CartListConfirmAdapter extends ListAdapter<CartItem, CartListConfirmAdapter.CartvH > {
+public class CartListConfirmAdapter extends ListAdapter<CartItem, CartListConfirmAdapter.CartvH> {
 
   public CartListConfirmAdapter() {
     super(CartItem.itemCallback);
@@ -22,7 +22,7 @@ public class CartListConfirmAdapter extends ListAdapter<CartItem, CartListConfir
   @Override
   public CartvH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-    ItemListpesananBinding itemListpesananBinding = ItemListpesananBinding.inflate(layoutInflater,parent,false);
+    ItemListpesananBinding itemListpesananBinding = ItemListpesananBinding.inflate(layoutInflater, parent, false);
     return new CartvH(itemListpesananBinding);
   }
 
@@ -35,6 +35,7 @@ public class CartListConfirmAdapter extends ListAdapter<CartItem, CartListConfir
   class CartvH extends RecyclerView.ViewHolder {
 
     ItemListpesananBinding itemListpesananBinding;
+
     public CartvH(@NonNull ItemListpesananBinding itemListpesananBinding) {
       super(itemListpesananBinding.getRoot());
       this.itemListpesananBinding = itemListpesananBinding;

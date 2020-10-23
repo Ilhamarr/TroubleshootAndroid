@@ -73,7 +73,7 @@ public class CartRepo {
   }
 
   public void addQuantity(CartItem cartItem) {
-    if (mutableCart.getValue() == null){
+    if (mutableCart.getValue() == null) {
       return;
     }
     List<CartItem> cartItemList = new ArrayList<>(mutableCart.getValue());
@@ -90,32 +90,31 @@ public class CartRepo {
 
     List<CartItem> cartItemList = new ArrayList<>(mutableCart.getValue());
 
-    if (cartItem.getQuantity() == 1){
+    if (cartItem.getQuantity() == 1) {
       cartItemList.remove(cartItem);
       mutableCart.setValue(cartItemList);
       calculateCartTotal();
-    }
-    else{
+    } else {
       CartItem updatedItem = new CartItem(cartItem.getService(), cartItem.getQuantity() - 1);
       cartItemList.set(cartItemList.indexOf(cartItem), updatedItem);
       mutableCart.setValue(cartItemList);
       calculateCartTotal();
     }
-    
+
   }
 
   private void calculateCartTotal() {
     if (mutableCart.getValue() == null) return;
     int total = 0;
     List<CartItem> cartItemList = mutableCart.getValue();
-    for (CartItem cartItem: cartItemList) {
+    for (CartItem cartItem : cartItemList) {
       total += cartItem.getService().getBiaya() * cartItem.getQuantity();
     }
     mutableTotalPrice.setValue(total);
   }
 
   public LiveData<Integer> getTotalPrice() {
-    if (mutableTotalPrice.getValue() == null){
+    if (mutableTotalPrice.getValue() == null) {
       mutableTotalPrice.setValue(0);
     }
     return mutableTotalPrice;

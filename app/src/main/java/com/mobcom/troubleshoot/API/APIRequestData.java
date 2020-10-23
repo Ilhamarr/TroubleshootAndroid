@@ -54,7 +54,7 @@ public interface APIRequestData {
           @Field("tipe_laptop") String tipe_laptop,
           @Field("biaya_total") String biaya_total,
           @Field("tracking_key") String tracking_key
-          );
+  );
 
   @FormUrlEncoded
   @POST("order")
@@ -69,13 +69,13 @@ public interface APIRequestData {
 
   @FormUrlEncoded
   @POST("orderhistory")
-  Call<ResponseOrderHistory> getListOrderHistory (
+  Call<ResponseOrderHistory> getListOrderHistory(
           @Field("account_id") String accountId
   );
 
   @FormUrlEncoded
   @POST("orderhistory")
-  Call<ResponseItemOrderDetail> getListOrderLayanan (
+  Call<ResponseItemOrderDetail> getListOrderLayanan(
           @Field("tracking_key") String tracking_key
   );
 

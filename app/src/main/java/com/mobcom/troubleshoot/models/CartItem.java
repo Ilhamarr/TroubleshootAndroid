@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Objects;
 
 public class CartItem {
@@ -32,6 +34,12 @@ public class CartItem {
 
   public void setQuantity(int quantity) {
     this.quantity = quantity;
+  }
+
+  public String formatRp(int number){
+    Locale localeID = new Locale("in", "ID");
+    NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+    return formatRupiah.format(number);
   }
 
   @Override

@@ -36,12 +36,11 @@ public class HistoryRepo {
     tampilOrderHistory.enqueue(new Callback<ResponseOrderHistory>() {
       @Override
       public void onResponse(Call<ResponseOrderHistory> call, Response<ResponseOrderHistory> response) {
-        if (response.isSuccessful() && response.body().isStatus()){
+        if (response.isSuccessful() && response.body().isStatus()) {
           historyList = response.body().getData();
           mutableHistoryList.setValue(historyList);
           Log.d(TAG, "onResponse: " + response.body().isStatus());
-        }
-        else{
+        } else {
           mutableHistoryList.setValue(null);
           Log.d(TAG, "onResponse: " + response.body().getMessage());
         }

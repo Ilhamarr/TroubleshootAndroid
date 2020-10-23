@@ -20,21 +20,21 @@ public class LaptopRepo {
   private MutableLiveData<List<LaptopModel>> mutableLaptopList;
   List<LaptopModel> laptopList = new ArrayList<>();
 
-  public LiveData<List<LaptopModel>> getLaptop(){
-    if (mutableLaptopList == null){
+  public LiveData<List<LaptopModel>> getLaptop() {
+    if (mutableLaptopList == null) {
       mutableLaptopList = new MutableLiveData<>();
       loadLaptop();
     }
     return mutableLaptopList;
   }
 
-  private void loadLaptop(){
+  private void loadLaptop() {
     APIRequestData ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
     Call<ResponseLaptopModel> tampilDataLaptop = ardData.ambilListLaptop();
     tampilDataLaptop.enqueue(new Callback<ResponseLaptopModel>() {
       @Override
       public void onResponse(Call<ResponseLaptopModel> call, Response<ResponseLaptopModel> response) {
-        if (response.isSuccessful()){
+        if (response.isSuccessful()) {
           laptopList = response.body().getListLaptop();
           mutableLaptopList.setValue(laptopList);
         }

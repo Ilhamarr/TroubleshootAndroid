@@ -26,11 +26,11 @@ public class HistoryViewModel extends ViewModel {
     mutableHistory.setValue(history);
   }
 
-  public LiveData<OrderHistoryModel> getHistory(){
+  public LiveData<OrderHistoryModel> getHistory() {
     return mutableHistory;
   }
 
-  public LiveData<List<ItemOrderModel>> getItemOrders(String tracking_key){
+  public LiveData<List<ItemOrderModel>> getItemOrders(String tracking_key) {
     return detailHistoryRepo.getItemOrders(tracking_key);
   }
 }

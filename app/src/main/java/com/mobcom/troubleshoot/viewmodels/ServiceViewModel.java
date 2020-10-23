@@ -19,7 +19,7 @@ public class ServiceViewModel extends ViewModel {
   MutableLiveData<ServiceModel> mutableService = new MutableLiveData<>();
 
   public LiveData<List<ServiceModel>> getServices() {
-      return serviceRepo.getService();
+    return serviceRepo.getService();
   }
 
   public void setService(ServiceModel service) {
@@ -38,19 +38,19 @@ public class ServiceViewModel extends ViewModel {
     return cartRepo.addItemToCart(service);
   }
 
-  public void removeItemFromCart(CartItem cartItem){
+  public void removeItemFromCart(CartItem cartItem) {
     cartRepo.removeItemFromCart(cartItem);
   }
 
-  public void changeQuantity(CartItem cartItem, int quantity){
+  public void changeQuantity(CartItem cartItem, int quantity) {
     cartRepo.changeQuantity(cartItem, quantity);
   }
 
-  public void addQuantity(CartItem cartItem){
+  public void addQuantity(CartItem cartItem) {
     cartRepo.addQuantity(cartItem);
   }
 
-  public void decreaseQuantity(CartItem cartItem){
+  public void decreaseQuantity(CartItem cartItem) {
     cartRepo.decreaseQuantity(cartItem);
   }
 

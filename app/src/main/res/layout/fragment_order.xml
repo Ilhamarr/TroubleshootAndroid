@@ -48,6 +48,10 @@
         android:layout_marginTop="15dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
+        android:paddingTop="8dp"
+        android:paddingRight="12dp"
+        android:paddingLeft="12dp"
+        android:paddingBottom="8dp"
         android:fillViewport="true"
         android:foregroundGravity="center"
         app:layout_constraintBottom_toTopOf="@id/cardView2"
@@ -59,9 +63,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
+            android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -463,18 +465,9 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/orderTotalTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rp"
-                        android:textColor="@color/colordivider"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/orderTotalTextView"
-                        android:layout_width="112dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
                         android:text="200000"
                         android:textColor="@color/colordivider"
                         android:textSize="16sp"

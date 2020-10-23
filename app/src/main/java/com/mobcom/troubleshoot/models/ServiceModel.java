@@ -9,9 +9,11 @@ import androidx.recyclerview.widget.DiffUtil;
 import com.bumptech.glide.Glide;
 import com.google.gson.annotations.SerializedName;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Objects;
 
-public class  ServiceModel {
+public class ServiceModel {
   @SerializedName("kerusakan_id")
   private String kerusakan_id;
 
@@ -86,6 +88,12 @@ public class  ServiceModel {
     this.nama_kerusakan = nama_kerusakan;
   }
 
+  public String getBiayaFormatRp() {
+    Locale localeID = new Locale("in", "ID");
+    NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+    return formatRupiah.format(this.biaya);
+  }
+
   @Override
   public String toString() {
     return "ServiceModel{" +
@@ -124,7 +132,7 @@ public class  ServiceModel {
   };
 
   @BindingAdapter("android:serviceImage")
-  public static void loadImage(ImageView imageView, String image){
+  public static void loadImage(ImageView imageView, String image) {
     Glide.with(imageView)
             .load(image)
             .fitCenter()

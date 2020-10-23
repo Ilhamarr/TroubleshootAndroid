@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     finish();
   }
 
-  public void updateStatusBarColor(String color){// Color must be in hexadecimal fromat
+  public void updateStatusBarColor(String color) {// Color must be in hexadecimal fromat
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       Window window = getWindow();
       window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
