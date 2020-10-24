@@ -1,5 +1,7 @@
 package com.mobcom.troubleshoot.Fragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -48,6 +50,19 @@ public class HomeFragment extends Fragment {
     fragmentHomeBinding.btnPesanSekarang.setOnClickListener((v) -> {
       navController.navigate(R.id.action_homeFragment_to_serviceFragment);
     });
+
+    // button konsultasi
+    fragmentHomeBinding.btnKonsul.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        goToUrl("https://www.instagram.com/troubleshoot.id/");
+      }
+    });
+  }
+
+  private void goToUrl(String s) {
+    Uri uri = Uri.parse(s);
+    startActivity(new Intent(Intent.ACTION_VIEW,uri));
   }
 
 }
