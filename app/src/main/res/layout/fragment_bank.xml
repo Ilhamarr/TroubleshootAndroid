@@ -96,7 +96,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
                             android:justificationMode="inter_word"
-                            android:text="Lakukan pembayaran sebelum pengambilan perangkat"
+                            android:text="Lakukan pembayaran sebelum proses pengembalian perangkat"
                             android:textSize="12sp" />
 
 
@@ -225,7 +225,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
                             android:justificationMode="inter_word"
-                            android:text="Pastikan anda telah memeriksa nomor dan nama rekening tujuan dengan benar. Troubleshoot.id akan memeriksa bukti anda dalam waktu 24 jam"
+                            android:text="Pastikan anda telah memeriksa nomor dan nama rekening tujuan dengan benar. Troubleshoot.id akan memeriksa bukti pembayaran anda dalam waktu 24 jam"
                             android:textSize="12sp" />
 
                         <View
@@ -249,10 +249,11 @@
 
                 <Button
                     android:id="@+id/btn_konfirmasibayar"
-                    android:layout_width="match_parent"
+                    android:layout_width="320dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="70dp"
+                    android:layout_gravity="center"
                     android:background="@drawable/btn_rounded"
                     android:text="Konfirmasi Pembayaran"
                     android:textColor="#fff" />
