@@ -53,6 +53,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
+
+        <!--    Button bayar sekarang     -->
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="0dp"
@@ -71,8 +73,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:background="@color/colorWhite"
+                android:orientation="vertical"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:paddingBottom="16dp">
@@ -168,16 +170,19 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="43dp"
                     android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{historyViewModel.history.merk}"
                         android:textSize="13sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" / "
                         android:textSize="13sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -212,10 +217,43 @@
                     android:id="@+id/rv_item_order_detail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="43dp"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginStart="43dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_pesanan_detail_order" />
+
+                <!--    Biaya perbaikan     -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_baseline_moneyy" />
+
+                    <TextView
+                        android:id="@+id/Txt_hargaa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="16dp"
+                        android:text="Biaya Perbaikan" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/Txt_biayaperbaikan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="43dp"
+                    android:text="@{historyViewModel.history.formatRp()}"
+                    android:textSize="13sp" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -276,12 +314,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="43dp"
-                    android:padding="5dp"
                     android:background="@drawable/btn_rounded"
+                    android:padding="5dp"
                     android:text="@{historyViewModel.history.statusTracking}"
                     android:textColor="@color/colorWhite"
                     android:textSize="13sp" />
 
+                <!-- Status pembayaran-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -292,33 +331,33 @@
                     <ImageView
                         android:layout_width="26dp"
                         android:layout_height="32dp"
-                        android:src="@drawable/ic_baseline_moneyy" />
+                        android:src="@drawable/ic_baseline_payments_24" />
 
                     <TextView
-                        android:id="@+id/Txt_hargaa"
+                        android:id="@+id/Txt_prosesbayar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="16dp"
-                        android:text="Biaya Perbaikan" />
+                        android:text="Status Pembayaran" />
                 </LinearLayout>
-                <!--    Biaya perbaikan     -->
 
                 <TextView
-                    android:id="@+id/Txt_biayaperbaikan"
+                    android:id="@+id/Txt_prosespembayaran"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="43dp"
-                    android:text="@{historyViewModel.history.formatRp()}"
+                    android:background="@drawable/btn_yellow"
+                    android:padding="5dp"
+                    android:text="Lunas"
+                    android:textColor="#000000"
                     android:textSize="13sp" />
 
 
             </LinearLayout>
         </ScrollView>
 
-
-        <!--    Button bayar sekarang     -->
         <Button
             android:id="@+id/btn_bayarsekarang"
             android:layout_width="320dp"
