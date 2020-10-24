@@ -1,6 +1,7 @@
 package com.mobcom.troubleshoot.Fragment;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -54,6 +55,13 @@ public class ProfileFragment extends Fragment {
         moveToLogin();
       }
     });
+
+    fragmentProfileBinding.feedback.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        goToUrl("https://g.page/troubleshootid/review?gm");
+      }
+    });
   }
 
   private void moveToLogin() {
@@ -62,4 +70,10 @@ public class ProfileFragment extends Fragment {
     startActivity(intent);
     getActivity().finish();
   }
+
+  private void goToUrl(String s) {
+    Uri uri = Uri.parse(s);
+    startActivity(new Intent(Intent.ACTION_VIEW,uri));
+  }
+
 }

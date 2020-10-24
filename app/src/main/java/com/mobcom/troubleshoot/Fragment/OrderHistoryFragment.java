@@ -90,11 +90,14 @@ public class OrderHistoryFragment extends Fragment implements HistoryListAdapter
         if (orderHistory == null){
           fragmentOrderHistoryBinding.orderEmpty.setVisibility(View.VISIBLE);
           fragmentOrderHistoryBinding.pbDataLayanan.setVisibility(View.INVISIBLE);
+          fragmentOrderHistoryBinding.rvDataOrderHistory.setVisibility(View.INVISIBLE);
         }
         else{
           historyListAdapter.submitList(orderHistory);
           historyListAdapter.notifyDataSetChanged();
+          fragmentOrderHistoryBinding.orderEmpty.setVisibility(View.INVISIBLE);
           fragmentOrderHistoryBinding.pbDataLayanan.setVisibility(View.INVISIBLE);
+          fragmentOrderHistoryBinding.rvDataOrderHistory.setVisibility(View.VISIBLE);
         }
 
       }

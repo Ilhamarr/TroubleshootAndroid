@@ -55,9 +55,20 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
     // setup helper
     Helper helper = new Helper();
 
-    // get jumlah produk di cart
+    // submit cart item dan get jumlah produk di cart
     serviceViewModel.getCart().observe(getViewLifecycleOwner(), cartItems -> {
-      cartListAdapter.submitList(cartItems);
+
+      if (cartItems.isEmpty()){
+        fragmentCartBinding.cartEmpty.setVisibility(View.VISIBLE);
+        fragmentCartBinding.cartRecyclerView.setVisibility(View.INVISIBLE);
+      }
+      else{
+        cartListAdapter.submitList(cartItems);
+        cartListAdapter.notifyDataSetChanged();
+        fragmentCartBinding.cartEmpty.setVisibility(View.INVISIBLE);
+        fragmentCartBinding.cartRecyclerView.setVisibility(View.VISIBLE);
+      }
+
       fragmentCartBinding.CheckoutButton.setEnabled(cartItems.size() > 0);
       int quantity = 0;
       for (CartItem cartItem: cartItems) {

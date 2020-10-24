@@ -55,7 +55,7 @@ public class HomeFragment extends Fragment {
     fragmentHomeBinding.btnKonsul.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        goToUrl("https://www.instagram.com/troubleshoot.id/");
+        goToUrl("https://api.whatsapp.com/send/?phone=6285156811345&text&app_absent=0");
       }
     });
   }
