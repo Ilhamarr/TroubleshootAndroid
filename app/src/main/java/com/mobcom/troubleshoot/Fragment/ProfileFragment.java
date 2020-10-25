@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ public class ProfileFragment extends Fragment {
   private SessionManager sessionManager;
   private FragmentProfileBinding fragmentProfileBinding;
   private String firstName, lastName, telepon, email, alamat, fullName;
+  private NavController navController;
 
   public ProfileFragment() {
     // Required empty public constructor
@@ -48,6 +51,9 @@ public class ProfileFragment extends Fragment {
     fragmentProfileBinding.alamatUser.setText(alamat);
     fragmentProfileBinding.teleponUser.setText(telepon);
 
+    // setup navcontroller
+    navController = Navigation.findNavController(view);
+
     fragmentProfileBinding.tvLogout.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -60,6 +66,13 @@ public class ProfileFragment extends Fragment {
       @Override
       public void onClick(View v) {
         goToUrl("https://g.page/troubleshootid/review?gm");
+      }
+    });
+
+    fragmentProfileBinding.buttonTC.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        navController.navigate(R.id.action_profileFragment_to_termConditionFragment);
       }
     });
   }

@@ -30,6 +30,7 @@ public class OrderDetailFragment extends Fragment {
   private DetailListAdapter detailListAdapter;
   private HistoryViewModel historyViewModel;
   private String trackingKey;
+  private int statusPayment;
   private NavController navController;
 
   public OrderDetailFragment() {
@@ -54,6 +55,8 @@ public class OrderDetailFragment extends Fragment {
     // setup view model
     historyViewModel = new ViewModelProvider(requireActivity()).get(HistoryViewModel.class);
     fragmentOrderDetailBinding.setHistoryViewModel(historyViewModel);
+    statusPayment = historyViewModel.getHistory().getValue().getStatusPayment();
+
 
     // setup recyclerview
     detailListAdapter = new DetailListAdapter();
@@ -67,6 +70,13 @@ public class OrderDetailFragment extends Fragment {
     fragmentOrderDetailBinding.backButton.setOnClickListener(v -> navController.popBackStack());
 
     // button bayar sekaang (to payment method)
+    if(statusPayment >= 2) {
+      fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.INVISIBLE);
+    }
+    if(statusPayment == 1){
+      fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.VISIBLE);
+    }
+
     fragmentOrderDetailBinding.btnBayarsekarang.setOnClickListener(v -> navController.navigate(R.id.action_orderDetailFragment_to_paymentMethodFragment));
   }
 }

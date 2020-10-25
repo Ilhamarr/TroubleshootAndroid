@@ -51,7 +51,7 @@ public class OrderHistoryModel {
 	private String tempatBertemu;
 
 	@SerializedName("status_payment")
-	private String statusPayment;
+	private int statusPayment;
 
 	@SerializedName("account_id")
 	private String accountId;
@@ -83,7 +83,7 @@ public class OrderHistoryModel {
 	@SerializedName("merk_laptop")
 	private String merkLaptop;
 
-	public OrderHistoryModel(String tipeLaptop, String totalItem, String keterangan, String merk, String teknisi, String createdAt, String jamPengembalian, String headerOrderId, String trackingKey, String tanggalPengambilan, String tanggalPengembalian, int biayaTotal, String tempatBertemu, String statusPayment, String accountId, String statusTracking, String nama, String imageOrder, String jamPengambilan, String modifiedAt, String email, String trackingId, String nomorHp, String merkLaptop) {
+	public OrderHistoryModel(String tipeLaptop, String totalItem, String keterangan, String merk, String teknisi, String createdAt, String jamPengembalian, String headerOrderId, String trackingKey, String tanggalPengambilan, String tanggalPengembalian, int biayaTotal, String tempatBertemu, int statusPayment, String accountId, String statusTracking, String nama, String imageOrder, String jamPengambilan, String modifiedAt, String email, String trackingId, String nomorHp, String merkLaptop) {
 		this.tipeLaptop = tipeLaptop;
 		this.totalItem = totalItem;
 		this.keterangan = keterangan;
@@ -214,11 +214,11 @@ public class OrderHistoryModel {
 		return tempatBertemu;
 	}
 
-	public void setStatusPayment(String statusPayment){
+	public void setStatusPayment(int statusPayment){
 		this.statusPayment = statusPayment;
 	}
 
-	public String getStatusPayment(){
+	public int getStatusPayment(){
 		return statusPayment;
 	}
 
@@ -345,6 +345,7 @@ public class OrderHistoryModel {
 		if (o == null || getClass() != o.getClass()) return false;
 		OrderHistoryModel that = (OrderHistoryModel) o;
 		return getBiayaTotal() == that.getBiayaTotal() &&
+						getStatusPayment() == that.getStatusPayment() &&
 						getTipeLaptop().equals(that.getTipeLaptop()) &&
 						getTotalItem().equals(that.getTotalItem()) &&
 						getKeterangan().equals(that.getKeterangan()) &&
@@ -357,7 +358,6 @@ public class OrderHistoryModel {
 						getTanggalPengambilan().equals(that.getTanggalPengambilan()) &&
 						getTanggalPengembalian().equals(that.getTanggalPengembalian()) &&
 						getTempatBertemu().equals(that.getTempatBertemu()) &&
-						getStatusPayment().equals(that.getStatusPayment()) &&
 						getAccountId().equals(that.getAccountId()) &&
 						getStatusTracking().equals(that.getStatusTracking()) &&
 						getNama().equals(that.getNama()) &&
@@ -370,6 +370,10 @@ public class OrderHistoryModel {
 						getMerkLaptop().equals(that.getMerkLaptop());
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(getTipeLaptop(), getTotalItem(), getKeterangan(), getMerk(), getTeknisi(), getCreatedAt(), getJamPengembalian(), getHeaderOrderId(), getTrackingKey(), getTanggalPengambilan(), getTanggalPengembalian(), getBiayaTotal(), getTempatBertemu(), getStatusPayment(), getAccountId(), getStatusTracking(), getNama(), getImageOrder(), getJamPengambilan(), getModifiedAt(), getEmail(), getTrackingId(), getNomorHp(), getMerkLaptop());
+	}
 
 	public static DiffUtil.ItemCallback<OrderHistoryModel> itemCallback = new DiffUtil.ItemCallback<OrderHistoryModel>() {
 		@Override

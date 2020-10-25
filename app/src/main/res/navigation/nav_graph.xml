@@ -55,7 +55,15 @@
         android:id="@+id/profileFragment"
         android:name="com.mobcom.troubleshoot.Fragment.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_termConditionFragment"
+            app:destination="@id/termConditionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.mobcom.troubleshoot.Fragment.CartFragment"
@@ -222,18 +230,36 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/orderHistoryFragment" />
-        <action
-            android:id="@+id/action_paymentMethodFragment_to_orderHistoryFragment"
-            app:destination="@id/orderHistoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/danaFragment"
         android:name="com.mobcom.troubleshoot.Fragment.DanaFragment"
         android:label="fragment_dana"
-        tools:layout="@layout/fragment_dana" />
+        tools:layout="@layout/fragment_dana" >
+        <action
+            android:id="@+id/action_danaFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/bankFragment"
         android:name="com.mobcom.troubleshoot.Fragment.BankFragment"
         android:label="fragment_bank"
-        tools:layout="@layout/fragment_bank" />
+        tools:layout="@layout/fragment_bank" >
+        <action
+            android:id="@+id/action_bankFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/termConditionFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.TermConditionFragment"
+        android:label="fragment_term_condition"
+        tools:layout="@layout/fragment_term_condition" />
 </navigation>

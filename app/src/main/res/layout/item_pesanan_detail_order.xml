@@ -21,7 +21,7 @@
 
                 <TextView
                     android:id="@+id/Txt_Product"
-                    android:layout_width="180dp"
+                    android:layout_width="170dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="@{itemOrder.namaKerusakan}"

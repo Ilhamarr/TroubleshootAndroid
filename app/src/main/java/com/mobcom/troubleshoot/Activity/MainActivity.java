@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
   private ServiceViewModel serviceViewModel;
   private NavController navController;
 
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

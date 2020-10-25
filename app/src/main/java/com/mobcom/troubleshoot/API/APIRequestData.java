@@ -2,6 +2,7 @@ package com.mobcom.troubleshoot.API;
 
 import com.mobcom.troubleshoot.models.Login.Login;
 import com.mobcom.troubleshoot.models.ResponseItemOrderDetail;
+import com.mobcom.troubleshoot.models.ResponseKonfirmasiBayar;
 import com.mobcom.troubleshoot.models.ResponseOrderHistory;
 import com.mobcom.troubleshoot.models.Register.Register;
 import com.mobcom.troubleshoot.models.ResponseHeaderOrder;
@@ -10,11 +11,15 @@ import com.mobcom.troubleshoot.models.ResponseServiceModel;
 
 import com.mobcom.troubleshoot.models.ResponseLaptopModel;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface APIRequestData {
   @GET("kerusakan")
@@ -78,5 +83,12 @@ public interface APIRequestData {
   Call<ResponseItemOrderDetail> getListOrderLayanan(
           @Field("tracking_key") String tracking_key
   );
+
+  @Multipart
+  @POST("konfirmasibayar")
+  Call<ResponseKonfirmasiBayar> konfirmasiBayar(
+          @Part("tracking_key") RequestBody tracking_key,
+          @Part MultipartBody.Part image_order
+          );
 
 }
