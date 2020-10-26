@@ -12,7 +12,7 @@ On sprint 6 the task is almost finish for key feature/
 | Profile Segment  | Make Term And Condition Layout               | Ilham | Complete |
 |                  |                                              |       | Complete |
 | Login            | Revision layout Login                        | Ilham | Complete |
-| Register         | Revision layout register                     | Ilham |          |
+| Register         | Revision layout register                     | Ilham | Complete |
 |                  |                                              |       |          |
 | Payment          | Revision Dana Fragment                       | Vivi  | Complete |
 |                  | Revision Transfer Fragment                   | Vivi  | Complete |
