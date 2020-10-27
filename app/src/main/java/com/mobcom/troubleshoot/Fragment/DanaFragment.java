@@ -140,7 +140,7 @@ public class DanaFragment extends Fragment {
         public void onResponse(Call<ResponseKonfirmasiBayar> call, Response<ResponseKonfirmasiBayar> response) {
           if (response.body() != null && response.isSuccessful()){
             //Log.d(TAG, "onResponse: "+response.body().getMessage());
-            navController.navigate(R.id.action_danaFragment_to_orderHistoryFragment);
+            navController.navigate(R.id.action_danaFragment_to_nonTunaiSuccessFragment);
             Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
           }
           else{

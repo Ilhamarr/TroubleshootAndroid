@@ -61,7 +61,7 @@ public class PaymentMethodFragment extends Fragment {
       public void onClick(View v) {
         int selectedId = fragmentPaymentMethodBinding.rgPaymentMethod.getCheckedRadioButtonId();
         if (selectedId == fragmentPaymentMethodBinding.tunai.getId()) {
-
+          navController.navigate(R.id.action_paymentMethodFragment_to_tunaiSuccessFragment);
         } else if (selectedId == fragmentPaymentMethodBinding.bank.getId()) {
           navController.navigate(R.id.action_paymentMethodFragment_to_bankFragment);
 

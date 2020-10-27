@@ -220,11 +220,17 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@id/orderHistoryFragment" />
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_paymentMethodFragment_to_bankFragment"
             app:destination="@id/bankFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_paymentMethodFragment_to_tunaiSuccessFragment"
+            app:destination="@id/tunaiSuccessFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -237,12 +243,13 @@
         android:label="fragment_dana"
         tools:layout="@layout/fragment_dana" >
         <action
-            android:id="@+id/action_danaFragment_to_orderHistoryFragment"
-            app:destination="@id/orderHistoryFragment"
+            android:id="@+id/action_danaFragment_to_nonTunaiSuccessFragment"
+            app:destination="@id/nonTunaiSuccessFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/orderHistoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/bankFragment"
@@ -250,7 +257,26 @@
         android:label="fragment_bank"
         tools:layout="@layout/fragment_bank" >
         <action
-            android:id="@+id/action_bankFragment_to_orderHistoryFragment"
+            android:id="@+id/action_bankFragment_to_nonTunaiSuccessFragment"
+            app:destination="@id/nonTunaiSuccessFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/orderHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/termConditionFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.TermConditionFragment"
+        android:label="fragment_term_condition"
+        tools:layout="@layout/fragment_term_condition" />
+    <fragment
+        android:id="@+id/nonTunaiSuccessFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.NonTunaiSuccessFragment"
+        android:label="fragment_non_tunai_success"
+        tools:layout="@layout/fragment_non_tunai_success" >
+        <action
+            android:id="@+id/action_nonTunaiSuccessFragment_to_orderHistoryFragment"
             app:destination="@id/orderHistoryFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -258,8 +284,16 @@
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
-        android:id="@+id/termConditionFragment"
-        android:name="com.mobcom.troubleshoot.Fragment.TermConditionFragment"
-        android:label="fragment_term_condition"
-        tools:layout="@layout/fragment_term_condition" />
+        android:id="@+id/tunaiSuccessFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.TunaiSuccessFragment"
+        android:label="fragment_tunai_success"
+        tools:layout="@layout/fragment_tunai_success" >
+        <action
+            android:id="@+id/action_tunaiSuccessFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 </navigation>

@@ -7,32 +7,32 @@
     android:background="@color/colorWhite"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".Fragment.OrderSuccessFragment">
+    tools:context=".Fragment.TunaiSuccessFragment">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/Txt_SplashPemesananBerhasil"
+        app:layout_constraintBottom_toTopOf="@id/backHistory"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/splashscreen_pemesanan" />
+        app:srcCompat="@drawable/splashscreen_pembayarantunai" />
 
 
     <TextView
-        android:id="@+id/Txt_SplashPemesananBerhasil"
+        android:id="@+id/backHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
-        android:text="Kembali ke Beranda"
+        android:text="Kembali ke Order History"
         android:textColor="@color/colortrb"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView2"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
         app:layout_constraintVertical_bias="0.957" />
 </androidx.constraintlayout.widget.ConstraintLayout>
