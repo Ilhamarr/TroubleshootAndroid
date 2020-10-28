@@ -13,6 +13,12 @@ for a startup computer service, it can be make client trust about this businness
 
 
 
+## Debug Aplication (For Tester):
+[DOWNLOAD HERE](https://drive.google.com/file/d/1aCAC7s_Z_6hycF4mZ6A3q3Xj4v2oU_QF/view?usp=sharing)
+
+<br>
+<br>
+
 ## Product Backlog
 
 
