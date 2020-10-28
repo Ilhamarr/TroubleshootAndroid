@@ -2,6 +2,8 @@ package com.mobcom.troubleshoot.Fragment;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -70,7 +72,7 @@ public class BankFragment extends Fragment {
     fragmentBankBinding.setHistoryViewModel(historyViewModel);
     trackingKey = historyViewModel.getHistory().getValue().getTrackingKey();
 
-    // tombol back
+    // button back
     fragmentBankBinding.backButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -78,7 +80,7 @@ public class BankFragment extends Fragment {
       }
     });
 
-    // tombol uploadbukti
+    // button uploadbukti
     fragmentBankBinding.btnUploadbukti.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -110,6 +112,10 @@ public class BankFragment extends Fragment {
       String picturePath = cursor.getString(columnIndex);
       imgDir = picturePath;
       cursor.close();
+
+      Bitmap bitmap = BitmapFactory.decodeFile(picturePath);
+      fragmentBankBinding.viewImage.setImageBitmap(bitmap);
+      fragmentBankBinding.btnUploadbukti.setVisibility(View.GONE);
     }
   }
 

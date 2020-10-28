@@ -6,6 +6,8 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.mobcom.troubleshoot.API.APIRequestData;
@@ -83,7 +86,7 @@ public class DanaFragment extends Fragment {
       }
     });
 
-    // tombol uploadbukti
+    // button uploadbukti
     fragmentDanaBinding.btnUploadbukti.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -107,9 +110,9 @@ public class DanaFragment extends Fragment {
   public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
 
-    if (requestCode == 2 && resultCode == RESULT_OK && null != data){
+    if (requestCode == 2 && resultCode == RESULT_OK && null != data) {
       Uri selectedImage = data.getData();
-      String[] filePathColumn = { MediaStore.Images.Media.DATA };
+      String[] filePathColumn = {MediaStore.Images.Media.DATA};
       Cursor cursor = getActivity().getContentResolver().query(selectedImage, filePathColumn, null, null, null);
       cursor.moveToFirst();
       int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
@@ -117,16 +120,18 @@ public class DanaFragment extends Fragment {
       imgDir = picturePath;
       cursor.close();
 
-      Log.d(TAG, "onActivityResult: " + imgDir + " " + trackingKey);
+      Bitmap bitmap = BitmapFactory.decodeFile(picturePath);
+      fragmentDanaBinding.viewImage.setImageBitmap(bitmap);
+      fragmentDanaBinding.btnUploadbukti.setVisibility(View.GONE);
+      //Log.d(TAG, "onActivityResult: " + imgDir + " " + trackingKey);
     }
   }
 
 
-  public void konfirmasiBayar(){
-    if(imgDir==null){
+  public void konfirmasiBayar() {
+    if (imgDir == null) {
       Toast.makeText(getContext(), "Pilih gambar terlebih dahulu", Toast.LENGTH_SHORT).show();
-    }
-    else {
+    } else {
       File file = new File(imgDir);
       RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
       MultipartBody.Part body = MultipartBody.Part.createFormData("image_order", file.getName(), requestFile);
@@ -138,12 +143,11 @@ public class DanaFragment extends Fragment {
       konfirmbayar.enqueue(new Callback<ResponseKonfirmasiBayar>() {
         @Override
         public void onResponse(Call<ResponseKonfirmasiBayar> call, Response<ResponseKonfirmasiBayar> response) {
-          if (response.body() != null && response.isSuccessful()){
+          if (response.body() != null && response.isSuccessful()) {
             //Log.d(TAG, "onResponse: "+response.body().getMessage());
             navController.navigate(R.id.action_danaFragment_to_nonTunaiSuccessFragment);
             Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-          }
-          else{
+          } else {
             //Log.d(TAG, "onResponse: "+response.body().getMessage());
             Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
           }
