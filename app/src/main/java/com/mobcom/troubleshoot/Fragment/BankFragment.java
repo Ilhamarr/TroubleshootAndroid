@@ -1,5 +1,7 @@
 package com.mobcom.troubleshoot.Fragment;
 
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -77,6 +79,18 @@ public class BankFragment extends Fragment {
       @Override
       public void onClick(View v) {
         navController.popBackStack();
+      }
+    });
+
+    // copy rekening
+    fragmentBankBinding.txtRekeningcopyBNI.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard != null) {
+          clipboard.setText("8779458228");
+        }
+        Toast.makeText(getContext(), "Nomor berhasil di copy", Toast.LENGTH_SHORT).show();
       }
     });
 

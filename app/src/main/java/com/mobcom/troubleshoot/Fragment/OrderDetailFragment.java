@@ -71,8 +71,9 @@ public class OrderDetailFragment extends Fragment {
 
     // button bayar sekaang (to payment method)
     if(statusPayment == 2 || statusPayment == 3) {
-      fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.INVISIBLE);
-      fragmentOrderDetailBinding.btnBatalkanpesanan.setVisibility(View.INVISIBLE);
+      fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.GONE);
+      fragmentOrderDetailBinding.btnBatalkanpesanan.setVisibility(View.GONE);
+
     }
     if(statusPayment == 1){
       fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.VISIBLE);

@@ -2,7 +2,9 @@ package com.mobcom.troubleshoot.Fragment;
 
 import android.Manifest;
 import android.app.DownloadManager;
+import android.content.ClipboardManager;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -83,6 +85,18 @@ public class DanaFragment extends Fragment {
       @Override
       public void onClick(View v) {
         navController.popBackStack();
+      }
+    });
+
+    // copy rekening
+    fragmentDanaBinding.txtRekeningcopyDANA.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard != null) {
+          clipboard.setText("081288795069");
+        }
+        Toast.makeText(getContext(), "Nomor berhasil di copy", Toast.LENGTH_SHORT).show();
       }
     });
 
