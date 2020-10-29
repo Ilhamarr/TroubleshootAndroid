@@ -73,7 +73,10 @@ public class OrderDetailFragment extends Fragment {
     if(statusPayment == 2 || statusPayment == 3) {
       fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.GONE);
       fragmentOrderDetailBinding.btnBatalkanpesanan.setVisibility(View.GONE);
+    }
 
+    if(statusPayment == 4){
+      fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.GONE);
     }
     if(statusPayment == 1){
       fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.VISIBLE);

@@ -91,4 +91,8 @@ public interface APIRequestData {
           @Part MultipartBody.Part image_order
           );
 
+  @FormUrlEncoded
+  @POST("cod")
+  Call<ResponseKonfirmasiBayar> konfirmasiCod(@Field("tracking_key") String tracking_key);
+
 }
