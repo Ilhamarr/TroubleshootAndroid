@@ -2,6 +2,7 @@ package com.mobcom.troubleshoot.Fragment;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,7 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.SessionManager;
@@ -21,6 +23,7 @@ public class HomeFragment extends Fragment {
   private FragmentHomeBinding fragmentHomeBinding;
   private String firstName;
   private NavController navController;
+  private Window window;
 
   public HomeFragment() {
     // Required empty public constructor
@@ -37,6 +40,12 @@ public class HomeFragment extends Fragment {
   @Override
   public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+
+    if (Build.VERSION.SDK_INT >= 21){
+      window = this.getActivity().getWindow();
+      window.setStatusBarColor(this.getActivity().getResources().getColor(R.color.colortrb));
+      window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+    }
 
     // setup sessionmanager
     sessionManager = new SessionManager(getActivity());

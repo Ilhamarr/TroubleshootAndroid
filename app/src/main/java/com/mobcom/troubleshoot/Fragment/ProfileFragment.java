@@ -2,6 +2,7 @@ package com.mobcom.troubleshoot.Fragment;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,7 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.TextView;
 
 import com.mobcom.troubleshoot.Activity.LoginActivity;
@@ -23,6 +25,7 @@ public class ProfileFragment extends Fragment {
   private FragmentProfileBinding fragmentProfileBinding;
   private String firstName, lastName, telepon, email, alamat, fullName;
   private NavController navController;
+  private Window window;
 
   public ProfileFragment() {
     // Required empty public constructor
@@ -38,6 +41,14 @@ public class ProfileFragment extends Fragment {
 
   @Override
   public void onViewCreated(View view, Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+
+    if (Build.VERSION.SDK_INT >= 21){
+      window = this.getActivity().getWindow();
+      window.setStatusBarColor(this.getActivity().getResources().getColor(R.color.colorLightGrey));
+      window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+    }
+
     sessionManager = new SessionManager(getActivity());
     firstName = sessionManager.getUserDetail().get(SessionManager.FIRST_NAME);
     lastName = sessionManager.getUserDetail().get(SessionManager.LAST_NAME);

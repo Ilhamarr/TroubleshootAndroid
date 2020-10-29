@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -40,6 +41,7 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
   private ServiceViewModel serviceViewModel;
   private NavController navController;
   private int cartQuantity = 0;
+  private Window window;
 
   public ServiceFragment() {
     // Required empty public constructor
@@ -56,6 +58,12 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
   @Override
   public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+
+    if (Build.VERSION.SDK_INT >= 21){
+      window = this.getActivity().getWindow();
+      window.setStatusBarColor(this.getActivity().getResources().getColor(R.color.colorLightGrey));
+      window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+    }
 
     // setup navcontroller
     navController = Navigation.findNavController(view);
@@ -97,14 +105,6 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
       public void onChanged(Integer integer) {
 
         fragmentServiceBinding.TxtHarga.setText(helper.formatRp(integer));
-      }
-    });
-
-    // back button
-    fragmentServiceBinding.backButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        navController.popBackStack();
       }
     });
 

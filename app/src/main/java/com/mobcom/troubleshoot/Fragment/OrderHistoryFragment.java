@@ -1,5 +1,6 @@
 package com.mobcom.troubleshoot.Fragment;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.SessionManager;
@@ -33,6 +35,7 @@ public class OrderHistoryFragment extends Fragment implements HistoryListAdapter
   private String account_id;
   private static final String TAG = "OrderHistoryFragment";
   private NavController navController;
+  private Window window;
 
   public OrderHistoryFragment() {
     // Required empty public constructor
@@ -49,6 +52,12 @@ public class OrderHistoryFragment extends Fragment implements HistoryListAdapter
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+
+    if (Build.VERSION.SDK_INT >= 21){
+      window = this.getActivity().getWindow();
+      window.setStatusBarColor(this.getActivity().getResources().getColor(R.color.colorLightGrey));
+      window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+    }
 
     // setup navcontroller
     navController = Navigation.findNavController(view);
