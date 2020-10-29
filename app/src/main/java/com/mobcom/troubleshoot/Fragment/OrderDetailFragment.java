@@ -70,8 +70,9 @@ public class OrderDetailFragment extends Fragment {
     fragmentOrderDetailBinding.backButton.setOnClickListener(v -> navController.popBackStack());
 
     // button bayar sekaang (to payment method)
-    if(statusPayment >= 2) {
+    if(statusPayment == 2 || statusPayment == 3) {
       fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.INVISIBLE);
+      fragmentOrderDetailBinding.btnBatalkanpesanan.setVisibility(View.INVISIBLE);
     }
     if(statusPayment == 1){
       fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.VISIBLE);

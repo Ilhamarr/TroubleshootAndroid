@@ -350,7 +350,7 @@
                     android:layout_marginStart="43dp"
                     android:background="@drawable/btn_yellow"
                     android:padding="5dp"
-                    android:text="Lunas"
+                    android:text="@{historyViewModel.history.paymentStatus}"
                     android:textColor="#000000"
                     android:textSize="13sp" />
 

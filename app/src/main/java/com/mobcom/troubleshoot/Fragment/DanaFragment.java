@@ -123,7 +123,7 @@ public class DanaFragment extends Fragment {
       Bitmap bitmap = BitmapFactory.decodeFile(picturePath);
       fragmentDanaBinding.viewImage.setImageBitmap(bitmap);
       fragmentDanaBinding.btnUploadbukti.setVisibility(View.GONE);
-      //Log.d(TAG, "onActivityResult: " + imgDir + " " + trackingKey);
+      Log.d(TAG, "onActivityResult: " + imgDir);
     }
   }
 

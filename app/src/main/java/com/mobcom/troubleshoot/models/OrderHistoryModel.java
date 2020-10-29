@@ -14,6 +14,9 @@ public class OrderHistoryModel {
 	@SerializedName("tipe_laptop")
 	private String tipeLaptop;
 
+	@SerializedName("payment_status")
+	private String paymentStatus;
+
 	@SerializedName("total_item")
 	private String totalItem;
 
@@ -83,31 +86,12 @@ public class OrderHistoryModel {
 	@SerializedName("merk_laptop")
 	private String merkLaptop;
 
-	public OrderHistoryModel(String tipeLaptop, String totalItem, String keterangan, String merk, String teknisi, String createdAt, String jamPengembalian, String headerOrderId, String trackingKey, String tanggalPengambilan, String tanggalPengembalian, int biayaTotal, String tempatBertemu, int statusPayment, String accountId, String statusTracking, String nama, String imageOrder, String jamPengambilan, String modifiedAt, String email, String trackingId, String nomorHp, String merkLaptop) {
-		this.tipeLaptop = tipeLaptop;
-		this.totalItem = totalItem;
-		this.keterangan = keterangan;
-		this.merk = merk;
-		this.teknisi = teknisi;
-		this.createdAt = createdAt;
-		this.jamPengembalian = jamPengembalian;
-		this.headerOrderId = headerOrderId;
-		this.trackingKey = trackingKey;
-		this.tanggalPengambilan = tanggalPengambilan;
-		this.tanggalPengembalian = tanggalPengembalian;
-		this.biayaTotal = biayaTotal;
-		this.tempatBertemu = tempatBertemu;
-		this.statusPayment = statusPayment;
-		this.accountId = accountId;
-		this.statusTracking = statusTracking;
-		this.nama = nama;
-		this.imageOrder = imageOrder;
-		this.jamPengambilan = jamPengambilan;
-		this.modifiedAt = modifiedAt;
-		this.email = email;
-		this.trackingId = trackingId;
-		this.nomorHp = nomorHp;
-		this.merkLaptop = merkLaptop;
+	public String getPaymentStatus() {
+		return paymentStatus;
+	}
+
+	public void setPaymentStatus(String paymentStatus) {
+		this.paymentStatus = paymentStatus;
 	}
 
 	public void setTipeLaptop(String tipeLaptop){
