@@ -95,4 +95,8 @@ public interface APIRequestData {
   @POST("cod")
   Call<ResponseKonfirmasiBayar> konfirmasiCod(@Field("tracking_key") String tracking_key);
 
+  @FormUrlEncoded
+  @POST("batalpesan")
+  Call<ResponseKonfirmasiBayar> batalpemesanan(@Field("tracking_key") String tracking_key);
+
 }

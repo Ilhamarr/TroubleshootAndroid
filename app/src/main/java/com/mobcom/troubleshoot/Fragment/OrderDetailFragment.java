@@ -14,15 +14,23 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.mobcom.troubleshoot.API.APIRequestData;
+import com.mobcom.troubleshoot.API.RetroServer;
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.adapters.DetailListAdapter;
 import com.mobcom.troubleshoot.adapters.HistoryListAdapter;
 import com.mobcom.troubleshoot.databinding.FragmentOrderDetailBinding;
 import com.mobcom.troubleshoot.models.ItemOrderModel;
+import com.mobcom.troubleshoot.models.ResponseKonfirmasiBayar;
 import com.mobcom.troubleshoot.viewmodels.HistoryViewModel;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class OrderDetailFragment extends Fragment {
   private static final String TAG = "OrderDetailFragment";
@@ -32,6 +40,7 @@ public class OrderDetailFragment extends Fragment {
   private String trackingKey;
   private int statusPayment;
   private NavController navController;
+  private APIRequestData ardData;
 
   public OrderDetailFragment() {
     // Required empty public constructor
@@ -70,7 +79,7 @@ public class OrderDetailFragment extends Fragment {
     fragmentOrderDetailBinding.backButton.setOnClickListener(v -> navController.popBackStack());
 
     // button bayar sekaang (to payment method)
-    if(statusPayment == 2 || statusPayment == 3) {
+    if(statusPayment == 2 || statusPayment == 3 || statusPayment == 5) {
       fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.GONE);
       fragmentOrderDetailBinding.btnBatalkanpesanan.setVisibility(View.GONE);
     }
@@ -82,6 +91,30 @@ public class OrderDetailFragment extends Fragment {
       fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.VISIBLE);
     }
 
+    // button menuju metode pembayaran
     fragmentOrderDetailBinding.btnBayarsekarang.setOnClickListener(v -> navController.navigate(R.id.action_orderDetailFragment_to_paymentMethodFragment));
+
+    // button batal
+    fragmentOrderDetailBinding.btnBatalkanpesanan.setOnClickListener(v -> batalPesanan());
+
+  }
+
+  public void batalPesanan(){
+    ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
+    Call<ResponseKonfirmasiBayar> batal = ardData.batalpemesanan(trackingKey);
+    batal.enqueue(new Callback<ResponseKonfirmasiBayar>() {
+      @Override
+      public void onResponse(Call<ResponseKonfirmasiBayar> call, Response<ResponseKonfirmasiBayar> response) {
+        if (response.body() != null && response.isSuccessful()) {
+          navController.navigate(R.id.action_orderDetailFragment_to_orderHistoryFragment);
+          Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+        }
+      }
+
+      @Override
+      public void onFailure(Call<ResponseKonfirmasiBayar> call, Throwable t) {
+        Log.d(TAG, "onFailure: " + t.getLocalizedMessage());
+      }
+    });
   }
 }
