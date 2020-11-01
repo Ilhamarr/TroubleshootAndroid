@@ -65,6 +65,20 @@ public class ProfileFragment extends Fragment {
     // setup navcontroller
     navController = Navigation.findNavController(view);
 
+    fragmentProfileBinding.orderhistory.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        navController.navigate(R.id.action_profileFragment_to_orderHistoryFragment);
+      }
+    });
+
+    fragmentProfileBinding.followUs.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        goToUrl("https://www.instagram.com/troubleshoot.id/");
+      }
+    });
+
     fragmentProfileBinding.tvLogout.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {

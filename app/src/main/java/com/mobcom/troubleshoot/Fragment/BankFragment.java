@@ -1,8 +1,12 @@
 package com.mobcom.troubleshoot.Fragment;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,6 +15,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -49,6 +55,7 @@ public class BankFragment extends Fragment {
   private NavController navController;
   private String trackingKey, imgDir;
   private APIRequestData ardData;
+  private static final int REQUEST_CODE = 123;
 
   public BankFragment() {
     // Required empty public constructor
@@ -99,7 +106,51 @@ public class BankFragment extends Fragment {
       @Override
       public void onClick(View v) {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(galleryIntent, 2);
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+          // when permission not granted
+          if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)){
+            ActivityCompat.requestPermissions(
+                    getActivity(),
+                    new String[] {
+                            Manifest.permission.READ_EXTERNAL_STORAGE
+                    },
+                    REQUEST_CODE
+            );
+            // create alertdialog
+//            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+//            builder.setTitle("Grant those Permission");
+//            builder.setMessage("Read Storage");
+//            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//              @Override
+//              public void onClick(DialogInterface dialog, int which) {
+//                ActivityCompat.requestPermissions(
+//                        getActivity(),
+//                        new String[] {
+//                                Manifest.permission.READ_EXTERNAL_STORAGE
+//                        },
+//                        REQUEST_CODE
+//                );
+//              }
+//            });
+//            builder.setNegativeButton("Cancel", null);
+//            AlertDialog alertDialog = builder.create();
+//            alertDialog.show();
+          }
+          else {
+            ActivityCompat.requestPermissions(
+                    getActivity(),
+                    new String[] {
+                            Manifest.permission.READ_EXTERNAL_STORAGE},
+                    REQUEST_CODE
+            );
+            startActivityForResult(galleryIntent, 2);
+          }
+        }
+        else {
+          //when permission already granted
+          //Toast.makeText(getContext(), "Permission already granted", Toast.LENGTH_SHORT).show();
+          startActivityForResult(galleryIntent, 2);
+        }
       }
     });
 
@@ -110,6 +161,19 @@ public class BankFragment extends Fragment {
         konfirmasiBayar();
       }
     });
+  }
+
+  @Override
+  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    if (requestCode == REQUEST_CODE) {
+      if ((grantResults.length > 0) && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        // permission are granted
+        Toast.makeText(getContext(), "Permission Granted...", Toast.LENGTH_SHORT).show();
+      } else{
+        // permission are denied
+        Toast.makeText(getContext(), "Permission Denid...", Toast.LENGTH_SHORT).show();
+      }
+    }
   }
 
   // akses izin ambil gambar dari storage

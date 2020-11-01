@@ -1,5 +1,7 @@
 package com.mobcom.troubleshoot.Fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -79,14 +81,14 @@ public class OrderDetailFragment extends Fragment {
     fragmentOrderDetailBinding.backButton.setOnClickListener(v -> navController.popBackStack());
 
     // button bayar sekaang (to payment method)
-    if(statusPayment == 2 || statusPayment == 3 || statusPayment == 5) {
+    if(statusPayment >= 2 ) {
       fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.GONE);
       fragmentOrderDetailBinding.btnBatalkanpesanan.setVisibility(View.GONE);
     }
 
-    if(statusPayment == 4){
-      fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.GONE);
-    }
+//    if(statusPayment == 4){
+//      fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.GONE);
+//    }
     if(statusPayment == 1){
       fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.VISIBLE);
     }
@@ -95,7 +97,24 @@ public class OrderDetailFragment extends Fragment {
     fragmentOrderDetailBinding.btnBayarsekarang.setOnClickListener(v -> navController.navigate(R.id.action_orderDetailFragment_to_paymentMethodFragment));
 
     // button batal
-    fragmentOrderDetailBinding.btnBatalkanpesanan.setOnClickListener(v -> batalPesanan());
+    //fragmentOrderDetailBinding.btnBatalkanpesanan.setOnClickListener(v -> batalPesanan());
+    fragmentOrderDetailBinding.btnBatalkanpesanan.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        // create alert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Yakin ingin membatalkan pesanan ini?");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which) {
+            batalPesanan();
+          }
+        });
+        builder.setNegativeButton("Cancel", null);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+      }
+    });
 
   }
 
