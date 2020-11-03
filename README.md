@@ -15,7 +15,7 @@ Fase 1 is already complete. yeaah !
 |               | get a copy text of bank number   | Bagus | Complete |
 |               | Revisi Database (for Engineer list and Payment status)   | Ilham | Complete |
 
-all the detail of product backlocg are in this link below : <br>
+all the detail of product backlog are in this link below : <br>
 https://docs.google.com/spreadsheets/d/1l3uG52OoAbAXDz2HFyEmODxLGKXyCd1aa_SbZJHBkXs/edit#gid=1386834576
 
 
