@@ -1,5 +1,7 @@
 package com.mobcom.troubleshoot.adapters;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +50,20 @@ public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartV
       cartRowBinding.deleteProductButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-          cartInterface.deleteItem(getItem(getAdapterPosition()));
+          AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+          builder.setMessage("Yakin ingin menghapus layanan ini?");
+          builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+              cartInterface.deleteItem(getItem(getAdapterPosition()));
+            }
+          });
+          builder.setNegativeButton("Cancel", null);
+          AlertDialog alertDialog = builder.create();
+          alertDialog.show();
+
+          //cartInterface.deleteItem(getItem(getAdapterPosition()));
+
         }
       });
 
