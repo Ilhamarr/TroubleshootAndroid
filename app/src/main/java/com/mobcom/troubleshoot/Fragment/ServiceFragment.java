@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.mobcom.troubleshoot.Activity.MainActivity;
@@ -88,7 +89,20 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
     serviceViewModel.getCart().observe(getViewLifecycleOwner(), new Observer<List<CartItem>>() {
       @Override
       public void onChanged(List<CartItem> cartItems) {
-        fragmentServiceBinding.checkoutButton.setEnabled(cartItems.size() > 0);
+        //fragmentServiceBinding.checkoutButton.setEnabled(cartItems.size() > 0);
+
+        fragmentServiceBinding.checkoutButton.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            if (cartItems.isEmpty()) {
+              Toast.makeText(getContext(), "Cart masih kosong", Toast.LENGTH_SHORT).show();
+            }
+            else {
+              navController.navigate(R.id.action_serviceFragment_to_orderFragment);
+            }
+          }
+        });
+
         int quantity = 0;
         for (CartItem cartItem: cartItems) {
           quantity += cartItem.getQuantity();
@@ -114,7 +128,7 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
     });
 
     // checkout button (pesan sekarang)
-    fragmentServiceBinding.checkoutButton.setOnClickListener(v -> navController.navigate(R.id.action_serviceFragment_to_orderFragment));
+    //fragmentServiceBinding.checkoutButton.setOnClickListener(v -> navController.navigate(R.id.action_serviceFragment_to_orderFragment));
   }
 
   @Override

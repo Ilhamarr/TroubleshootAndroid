@@ -10,6 +10,7 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.mobcom.troubleshoot.Helper;
 import com.mobcom.troubleshoot.R;
@@ -69,7 +70,20 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
         fragmentCartBinding.cartRecyclerView.setVisibility(View.VISIBLE);
       }
 
-      fragmentCartBinding.CheckoutButton.setEnabled(cartItems.size() > 0);
+      fragmentCartBinding.CheckoutButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          if (cartItems.isEmpty()){
+            Toast.makeText(getContext(), "Cart masih kosong", Toast.LENGTH_SHORT).show();
+          }
+          else{
+            navController.navigate(R.id.action_cartFragment_to_orderFragment);
+          }
+        }
+      });
+
+
+      //fragmentCartBinding.CheckoutButton.setEnabled(cartItems.size() > 0);
       int quantity = 0;
       for (CartItem cartItem: cartItems) {
         quantity += cartItem.getQuantity();
@@ -86,7 +100,7 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
     fragmentCartBinding.backButton.setOnClickListener(v -> navController.popBackStack());
 
     // checkout button (lanjutkan, ini menuju form order)
-    fragmentCartBinding.CheckoutButton.setOnClickListener(v -> navController.navigate(R.id.action_cartFragment_to_orderFragment));
+    //fragmentCartBinding.CheckoutButton.setOnClickListener(v -> navController.navigate(R.id.action_cartFragment_to_orderFragment));
 
   }
 
