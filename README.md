@@ -13,6 +13,7 @@ Fase 1 is already complete. yeaah !
 | Payment       | Revision to Add fragment after finish a payment | Bagus | Complete |
 |               | Revision add Image View after Upload      | Bagus | Complete |
 |               | get a copy text of bank number   | Bagus | Complete |
+|               | Revisi Database (for Engineer list and Payment status)   | Bagus | Complete |
 
 all the detail of product backlocg are in this link below : <br>
 https://docs.google.com/spreadsheets/d/1l3uG52OoAbAXDz2HFyEmODxLGKXyCd1aa_SbZJHBkXs/edit#gid=1386834576
