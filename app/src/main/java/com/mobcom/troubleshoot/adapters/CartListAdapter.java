@@ -51,8 +51,8 @@ public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartV
         @Override
         public void onClick(View v) {
           AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-          builder.setMessage("Yakin ingin menghapus layanan ini?");
-          builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+          builder.setMessage("Anda akan menghapus item layanan ini");
+          builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
               cartInterface.deleteItem(getItem(getAdapterPosition()));

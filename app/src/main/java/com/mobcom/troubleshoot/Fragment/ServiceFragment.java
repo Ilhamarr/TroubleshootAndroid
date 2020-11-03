@@ -95,7 +95,7 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
           @Override
           public void onClick(View v) {
             if (cartItems.isEmpty()) {
-              Toast.makeText(getContext(), "Cart masih kosong", Toast.LENGTH_SHORT).show();
+              Toast.makeText(getContext(), "Masukkan item layanan terlebih dahulu", Toast.LENGTH_SHORT).show();
             }
             else {
               navController.navigate(R.id.action_serviceFragment_to_orderFragment);
