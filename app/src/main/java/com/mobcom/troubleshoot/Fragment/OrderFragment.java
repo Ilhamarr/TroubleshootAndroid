@@ -1,11 +1,17 @@
 package com.mobcom.troubleshoot.Fragment;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -155,6 +161,15 @@ public class OrderFragment extends Fragment {
       }
     });
 
+    fragmentOrderBinding.locationButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        fragmentOrderBinding.alamatTempatBertemu.setEnabled(true);
+        fragmentOrderBinding.alamatTempatBertemu.setText("");
+        openPlacePicker();
+      }
+    });
+
     // form contact
     fullname = firstname + " " + lastname;
     fragmentOrderBinding.EdtNama.setText(fullname);
@@ -203,31 +218,23 @@ public class OrderFragment extends Fragment {
 
   private void openPlacePicker() {
 
-    Intent intent = new Intent(getContext(), MapActivity.class);
-    Bundle bundle = new Bundle();
+    if (hasPermissionInManifest(getActivity(),1, Manifest.permission.ACCESS_FINE_LOCATION)){
+      Intent intent = new Intent(getContext(), MapActivity.class);
+      Bundle bundle = new Bundle();
 
-    bundle.putString(SimplePlacePicker.API_KEY,Config.PLACE_API_KEY);
-    String country = "idn";
-    String language = "en";
-    bundle.putString(SimplePlacePicker.COUNTRY,country);
-    bundle.putString(SimplePlacePicker.LANGUAGE,language);
+      bundle.putString(SimplePlacePicker.API_KEY,Config.PLACE_API_KEY);
+      String country = "idn";
+      String language = "en";
+      bundle.putString(SimplePlacePicker.COUNTRY,country);
+      bundle.putString(SimplePlacePicker.LANGUAGE,language);
 
-    intent.putExtras(bundle);
-    startActivityForResult(intent, SimplePlacePicker.SELECT_LOCATION_REQUEST_CODE);
+      intent.putExtras(bundle);
+      startActivityForResult(intent, SimplePlacePicker.SELECT_LOCATION_REQUEST_CODE);
+    }
+
 
 //    PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
-//    try {
-//      startActivityForResult(builder.build(getActivity()), PLACE_PICKER_REQUEST);
-//
-//    } catch (GooglePlayServicesRepairableException e) {
-//      Log.d("Exception",e.getMessage());
-//
-//      e.printStackTrace();
-//    } catch (GooglePlayServicesNotAvailableException e) {
-//      Log.d("Exception",e.getMessage());
-//
-//      e.printStackTrace();
-//    }
+//    startActivityForResult(builder.build(getActivity()), PLACE_PICKER_REQUEST);
 
   }
 
@@ -413,6 +420,30 @@ public class OrderFragment extends Fragment {
       return false;
     }
     return true;
+  }
+
+  @Override
+  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    if (requestCode == 1) {
+      if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
+        openPlacePicker();
+    }
+  }
+
+  //check for location permission
+  public static boolean hasPermissionInManifest(Activity activity, int requestCode, String permissionName) {
+    if (ContextCompat.checkSelfPermission(activity,
+            permissionName)
+            != PackageManager.PERMISSION_GRANTED) {
+      // No explanation needed, we can request the permission.
+      ActivityCompat.requestPermissions(activity,
+              new String[]{permissionName},
+              requestCode);
+    } else {
+      return true;
+    }
+    return false;
   }
 
 }
