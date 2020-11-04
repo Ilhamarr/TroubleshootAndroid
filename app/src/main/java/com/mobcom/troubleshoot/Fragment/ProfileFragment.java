@@ -72,13 +72,6 @@ public class ProfileFragment extends Fragment {
       }
     });
 
-    fragmentProfileBinding.followUs.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        goToUrl("https://www.instagram.com/troubleshoot.id/");
-      }
-    });
-
     fragmentProfileBinding.tvLogout.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
