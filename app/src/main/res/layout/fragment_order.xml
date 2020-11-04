@@ -313,6 +313,22 @@
                             android:visibility="visible" />
 
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/mapsview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:id="@+id/selectedLoc"
+                            android:layout_gravity="center" />
+
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

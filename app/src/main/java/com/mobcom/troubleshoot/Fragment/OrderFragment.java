@@ -1,41 +1,61 @@
 package com.mobcom.troubleshoot.Fragment;
 
+import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.essam.simpleplacepicker.MapActivity;
+import com.essam.simpleplacepicker.utils.SimplePlacePicker;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.maps.model.LatLng;
 import com.mobcom.troubleshoot.API.APIRequestData;
 import com.mobcom.troubleshoot.API.RetroServer;
+import com.mobcom.troubleshoot.Config;
 import com.mobcom.troubleshoot.Helper;
+import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.SessionManager;
 import com.mobcom.troubleshoot.databinding.FragmentOrderBinding;
 import com.mobcom.troubleshoot.models.CartItem;
 import com.mobcom.troubleshoot.models.LaptopModel;
 import com.mobcom.troubleshoot.models.ResponseLaptopModel;
 import com.mobcom.troubleshoot.viewmodels.ServiceViewModel;
+import com.sucho.placepicker.AddressData;
+import com.sucho.placepicker.Constants;
+import com.sucho.placepicker.MapType;
+import com.sucho.placepicker.PlacePicker;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
-import com.wdullaer.materialdatetimepicker.date.YearPickerView;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.app.Activity.RESULT_OK;
 
 public class OrderFragment extends Fragment {
   private static final String TAG = "OrderFragment";
@@ -46,6 +66,7 @@ public class OrderFragment extends Fragment {
   private int cartQuantity = 0;
   private String account_id, firstname, lastname, email, phone, fullname, laptop_Id, laptop_Merk;
   private List<LaptopModel> listLaptop = new ArrayList<>();
+  private int PLACE_PICKER_REQUEST = 1;
 
   public OrderFragment() {
     // Required empty public constructor
@@ -123,9 +144,11 @@ public class OrderFragment extends Fragment {
     fragmentOrderBinding.rgTempatBertemu.clearCheck();
     fragmentOrderBinding.rgTempatBertemu.setOnCheckedChangeListener((group, checkedId) -> {
       if (checkedId == fragmentOrderBinding.btnAntarJemput.getId()) {
-        fragmentOrderBinding.alamatTempatBertemu.getText().clear();
-        fragmentOrderBinding.alamatTempatBertemu.setHint("Masukan alamat anda");
+//        fragmentOrderBinding.alamatTempatBertemu.getText().clear();
+//        fragmentOrderBinding.alamatTempatBertemu.setHint("Masukan alamat anda");
         fragmentOrderBinding.alamatTempatBertemu.setEnabled(true);
+        fragmentOrderBinding.alamatTempatBertemu.setText("");
+        openPlacePicker();
       } else {
         fragmentOrderBinding.alamatTempatBertemu.setText("Kampus A UNJ, Jl. Rawamangun Muka, Gedung Dewi Sartika Lt.5");
         fragmentOrderBinding.alamatTempatBertemu.setEnabled(false);
@@ -144,7 +167,7 @@ public class OrderFragment extends Fragment {
     // tombol lanjut (to order confirmation)
     fragmentOrderBinding.LanjutPembayaran.setOnClickListener(v -> {
 
-      if(!validateSeriLaptop() | !validateDetail() | !validateTanggal() | !validateJam() | !validateTempat() | !validateNama() | !validateEmail() | !validatePhone()){
+      if (!validateSeriLaptop() | !validateDetail() | !validateTanggal() | !validateJam() | !validateTempat() | !validateNama() | !validateEmail() | !validatePhone()) {
         return;
       }
 
@@ -158,7 +181,6 @@ public class OrderFragment extends Fragment {
       String email = fragmentOrderBinding.EdtEmail.getText().toString();
       String phone = fragmentOrderBinding.EdtNomorTelepon.getText().toString();
       //end get all data
-
 
 
       //pass all data to next fragment
@@ -178,6 +200,84 @@ public class OrderFragment extends Fragment {
       navController.navigate(action);
     });
   }
+
+  private void openPlacePicker() {
+
+    Intent intent = new Intent(getContext(), MapActivity.class);
+    Bundle bundle = new Bundle();
+
+    bundle.putString(SimplePlacePicker.API_KEY,Config.PLACE_API_KEY);
+    String country = "idn";
+    String language = "en";
+    bundle.putString(SimplePlacePicker.COUNTRY,country);
+    bundle.putString(SimplePlacePicker.LANGUAGE,language);
+
+    intent.putExtras(bundle);
+    startActivityForResult(intent, SimplePlacePicker.SELECT_LOCATION_REQUEST_CODE);
+
+//    PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+//    try {
+//      startActivityForResult(builder.build(getActivity()), PLACE_PICKER_REQUEST);
+//
+//    } catch (GooglePlayServicesRepairableException e) {
+//      Log.d("Exception",e.getMessage());
+//
+//      e.printStackTrace();
+//    } catch (GooglePlayServicesNotAvailableException e) {
+//      Log.d("Exception",e.getMessage());
+//
+//      e.printStackTrace();
+//    }
+
+  }
+
+  private String getAddress(LatLng latLng){
+
+    Geocoder geocoder;
+    List<Address> addresses;
+    geocoder = new Geocoder(getActivity(), Locale.getDefault());
+
+    try {
+      addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+      String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+      String city = addresses.get(0).getLocality();
+      String state = addresses.get(0).getAdminArea();
+      String country = addresses.get(0).getCountryName();
+      String postalCode = addresses.get(0).getPostalCode();
+      String knownName = addresses.get(0).getFeatureName();
+      return address;
+
+    } catch (IOException e) {
+      e.printStackTrace();
+      return "No Address Found";
+
+    }
+  }
+
+  @Override
+  public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+    if (requestCode == SimplePlacePicker.SELECT_LOCATION_REQUEST_CODE && resultCode == RESULT_OK){
+      if (data != null) {
+        String toastMsg = data.getStringExtra(SimplePlacePicker.SELECTED_ADDRESS);
+        fragmentOrderBinding.alamatTempatBertemu.setText(toastMsg);
+      }
+    }
+  }
+
+//  @Override
+//  public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//    super.onActivityResult(requestCode, resultCode, data);
+//
+//    if (requestCode == PLACE_PICKER_REQUEST) {
+//      if (resultCode == RESULT_OK) {
+//        Place place = PlacePicker.getPlace(data, getActivity());
+//        String toastMsg = getAddress(place.getLatLng());
+//        fragmentOrderBinding.alamatTempatBertemu.setText(toastMsg);
+//      }
+//    }
+//  }
 
   private void initSpinnerLaptop() {
     APIRequestData ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
