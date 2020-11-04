@@ -39,7 +39,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:background="#2382CD"
+                    android:background="@drawable/btn_rounded"
                     android:padding="5dp"
                     android:text="@{history.statusTracking}"
                     android:textColor="#ffffff" />
