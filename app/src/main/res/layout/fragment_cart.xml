@@ -162,18 +162,17 @@
 
     </androidx.cardview.widget.CardView>
 
-    <TextView
+    <ImageView
         android:id="@+id/cartEmpty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="290dp"
+        android:layout_height="505dp"
         android:layout_centerInParent="true"
+        android:src="@drawable/fragment_cartkosong"
         android:visibility="invisible"
-        android:text="Cart Kosong"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

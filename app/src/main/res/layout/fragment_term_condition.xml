@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
                 android:justificationMode="inter_word"
-                android:text="Troubleshoot.id adalah sebuah usaha yang bergerak dibidang servis komputer maupun laptop. Dengan hadirnya platform mobile aplikasi ini, dapat membuat pelanggan denganmudah untuk mendapatkan layanan service yang cepat dan terpercaya."
+                android:text="Troubleshoot.id adalah sebuah usaha yang bergerak dibidang servis komputer maupun laptop. Dengan hadirnya platform mobile aplikasi ini, dapat membuat pelanggan dengan mudah untuk mendapatkan layanan service yang cepat dan terpercaya."
                 android:textSize="11sp" />
 
 
