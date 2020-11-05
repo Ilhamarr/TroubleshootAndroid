@@ -15,7 +15,7 @@ Dalam perjalanannya, Troubleshoot.id menghadirkan sebuah sistem 'Troubleshoot Mo
 
 
 ## Gambaran dari Aplikasi
-![SplashScreen](/Gambaran/Screenshot_20201105-113730.jpg)
+<img src="Gambaran/Screenshot_20201105-113730.png" height="354px">
 
 
 
