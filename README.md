@@ -22,55 +22,17 @@ This Project is make mobile application of Troubleshoot.id. this app will give b
 
 When we make this application, every sunday we have a meeting to discuss that all what a member to do in a week and give a task to do in a week forward.
 
-
-#### SPRINT 1 :
-In this Sprint we start the project with a discussion about business process of the app. Then, we share about the task that we have to do in a week. the task is a make a mockup and update the database of the movile application.
-| Story         | TASK              | CONTRIBUTOR | STATUS   |
-|---------------|-------------------|-------------|----------|
-| Mockup        | Mockup in Adobe XD     | Ilham       | Complete |
-| Database      | Upgrade Database  | Ilham       | Complete |
-
-
-
-
-
-
-#### SPRINT 2 :
-In this Sprint 2 after we designing the mockup and update the database, we continue to implementing many layout to android studio and make REST API to connecting the application with a database.<br>
-The task on second week:
-| Story         | TASK              | CONTRIBUTOR | STATUS   |
-|---------------|-------------------|-------------|----------|
-| Home Dasboard | Layout Home       | Ilham       | Complete |
-|               | Bottom Navigation | Ilham       | Complete |
-|               | Splash Screen     | Vivi        | Complete |
-| Login         | Layout Login      | Ilham       | Complete |
-| SignUp        | Layout SignUp     | Ilham       | Complete |
-| API           | Rest API PHP      | Bagus       | Complete |
-
-
-
-
-
-
 #### SPRINT 3 :
 in Sprint 3, we continue the task, focusing the activity login-signup-logout and ordering activity.
 | Story             | TASK                                      | CONTRIBUTOR | STATUS   |
 |-------------------|-------------------------------------------|-------------|----------|
-| Sign In Activity  | Logical Sign in \(Create Session\)        | Bagus       | Complete |
-|                   | Connection to Database \(Chechk\)         | Bagus       | Complete |
-| Sign Up Activity  | Logical Signup                            | Bagus       | Complete |
-|                   | Connection to Database \(Store Data\)     | Bagus       | Complete |
-| Sign Out Activity | Check Session User in application         | Bagus       | Complete |
+| Masuk ke dalam aplikasi  | Membuat Logical Sign in \(Create Session\)        | Bagus       | Complete |
+|                   | Mengkoneksikan ke Database \(Chechk\)         | Bagus       | Complete |
+| | Membuat Logical Signup                            | Bagus       | Complete |
+|                   | Mengkoneksikan ke Database \(Store Data\)     | Bagus       | Complete |
+| Keluar Aplikasi | Check Session User in application         | Bagus       | Complete |
 | Order Activity    | Make Order Layout                         | Ilham       | Complete |
-|                   | Make Confirm Order Layout                 | Ilham       | Complete |
-|                   | Choose Product                              | Bagus       | Progress | 
-|                   | Add to cart                                 | Bagus       | To Do | 
-|                   | Fill form order                             | Bagus       | To Do|   |
-|                   | pick date and time picker                   | Bagus       | To Do    |  
-|                   | Checkout                                    | Bagus       | To Do    | 
-| Payment Activity  | Make Payment Method Layout                | Vivi        | Complete |
-|                   | Make Confirmation Payment Layout          | Vivi        | Complete |
-
+| Memilih Layanan Servis   | Membuat layout order/pemesanan                         | Ilham       | Complete |
 
 
 
