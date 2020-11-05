@@ -23,67 +23,6 @@ This Project is make mobile application of Troubleshoot.id. this app will give b
 When we make this application, every sunday we have a meeting to discuss that all what a member to do in a week and give a task to do in a week forward.
 
 
-#### SPRINT 1 :
-In this Sprint we start the project with a discussion about business process of the app. Then, we share about the task that we have to do in a week. the task is a make a mockup and update the database of the movile application.
-| Story         | TASK              | CONTRIBUTOR | STATUS   |
-|---------------|-------------------|-------------|----------|
-| Mockup        | Mockup in Adobe XD     | Ilham       | Complete |
-<<<<<<< HEAD
-| Database      | Upgrade Database  | Ilham       | Complete |
-=======
-| Database      | Upgrade Database  | Bagus      | Complete |
->>>>>>> b0eaa03b4517c40169b8c59795344aae88f62a20
-
-
-
-
-
-
-#### SPRINT 2 :
-In this Sprint 2 after we designing the mockup and update the database, we continue to implementing many layout to android studio and make REST API to connecting the application with a database.<br>
-The task on second week:
-| Story         | TASK              | CONTRIBUTOR | STATUS   |
-|---------------|-------------------|-------------|----------|
-| Home Dasboard | Layout Home       | Ilham       | Complete |
-|               | Bottom Navigation | Ilham       | Complete |
-|               | Splash Screen     | Vivi        | Complete |
-| Login         | Layout Login      | Ilham       | Complete |
-| SignUp        | Layout SignUp     | Ilham       | Complete |
-| API           | Rest API PHP      | Bagus       | Complete |
-
-
-
-
-
-
-#### SPRINT 3 :
-in Sprint 3, we continue the task, focusing the activity login-signup-logout and ordering activity.
-| Story             | TASK                                      | CONTRIBUTOR | STATUS   |
-|-------------------|-------------------------------------------|-------------|----------|
-| Sign In Activity  | Logical Sign in \(Create Session\)        | Bagus       | Complete |
-|                   | Connection to Database \(Chechk\)         | Bagus       | Complete |
-| Sign Up Activity  | Logical Signup                            | Bagus       | Complete |
-|                   | Connection to Database \(Store Data\)     | Bagus       | Complete |
-| Sign Out Activity | Check Session User in application         | Bagus       | Complete |
-| Order Activity    | Make Order Layout                         | Ilham       | Complete |
-|                   | Make Confirm Order Layout                 | Ilham       | Complete |
-<<<<<<< HEAD
-|                   | Logical add to Cart                       | Bagus       | Complete |
-|                   | Logical to get time with time picker      | Bagus       | Progress |
-|                   | Logical to get date with date picker      | Bagus       | To Do |
-|                   | Logical to get location with place picker | Bagus       | To Do |
-|                   | Store and get data from database          | Bagus       | Complete |
-=======
-|                   | Choose Product                              | Bagus       | Progress | 
-|                   | Add to cart                                 | Bagus       | To Do | 
-|                   | Fill form order                             | Bagus       | To Do|   |
-|                   | pick date and time picker                   | Bagus       | To Do    |  
-|                   | Checkout                                    | Bagus       | To Do    | 
->>>>>>> b0eaa03b4517c40169b8c59795344aae88f62a20
-| Payment Activity  | Make Payment Method Layout                | Vivi        | Complete |
-|                   | Make Confirmation Payment Layout          | Vivi        | Complete |
-
-
 #### SPRINT4:
 this sprint, we focused on order flow, how to push the prooduct to cart, and give more information to ordering.
 <<<<<<< HEAD
@@ -99,14 +38,13 @@ we usually discus about our project task in the first day of the week, below is 
 focus work sprint 4:
 | Story         | TASK                                        | CONTRIBUTOR | STATUS   |   
 |---------------|---------------------------------------------|-------------|----------|
-| Order History | Choose Product                              | Bagus       | Complete |   
-|               | Add to cart                                 | Bagus       | Complete |   
-|               | Fill form order                             | Bagus       | Progress |   
-|               | pick date and time picker                   | Bagus       | To Do    |   
+| Mengisi Form Pesanan | Membuat layout konfirmasi pesanan                              | Ilham       | Complete |   
+|               | Membuat logical add to cart                                 | Bagus       | Complete |   
+| Melanjutkan ke Proses Pembayaran              | Membuat Layout Konfirmasi Pembayaran                            | Vivi      | Complete |   
+|               | Membuat Layout Metode Pembayaran                  | Vivi      | Complete   |   
 |               | Checkout                                    | Bagus       | To Do    |   
-|               | Revision Bottom Navigation                  | Ilham       | Complete |   
-| Complete      | Make Detail History Layout \(Bottom Sheet\) | Vivi        | Complete |   
->>>>>>> b0eaa03b4517c40169b8c59795344aae88f62a20
+| Revisi Navigation              | Revision Bottom Navigation                  | Ilham       | Complete |   
+| Complete      | Make Detail History Layout \(Bottom Sheet\) | Vivi        | Complete | 
 
 
 
