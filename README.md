@@ -13,6 +13,9 @@ Dalam perjalanannya, Troubleshoot.id menghadirkan sebuah sistem 'Troubleshoot Mo
 | 2  | Bagus Nugraha  | 1313617002 | Back End Developer  |
 | 3  | Ilham Arrosyid | 1313617018 | Project Leader      |
 
+## Product Backlog
+[LIHAT DISINI](https://drive.google.com/file/d/1tAw_0VnchsDlhi_rwpmGFem3s4aY-afY/view?usp=sharing)
+
 
 ## Gambaran dari Aplikasi
 <img src="Gambaran/Screenshot_20201105-113730.png" height="354px">  <img src="Gambaran/Screenshot_20201105-113743.png" height="354px">  <img src="Gambaran/Screenshot_20201105-113749.png" height="354px">  <img src="Gambaran/Screenshot_20201105-113829.png" height="354px">  <img src="Gambaran/Screenshot_20201105-113939.png" height="354px">  <img src="Gambaran/Screenshot_20201105-113756.png" height="354px">   <img src="Gambaran/Screenshot_20201105-113808.png" height="354px">   
