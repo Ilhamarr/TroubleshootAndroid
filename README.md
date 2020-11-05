@@ -21,7 +21,7 @@ Dalam perjalanannya, Troubleshoot.id menghadirkan sebuah sistem 'Troubleshoot Mo
 
 
 ## Debug Aplication (For Tester):
-[DOWNLOAD HERE](https://drive.google.com/file/d/1aCAC7s_Z_6hycF4mZ6A3q3Xj4v2oU_QF/view?usp=sharing)
+[DOWNLOAD HERE](https://drive.google.com/uc?export=view&id=1aCAC7s_Z_6hycF4mZ6A3q3Xj4v2oU_QF)
 
 <br>
 <br>
