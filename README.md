@@ -9,10 +9,10 @@ Fase 1 is already complete. yeaah !
 
 | Story         | Task                             | Actor | Status   |
 |---------------|----------------------------------|-------|----------|
-| History Order | Backend of cancel order          | Bagus | Complete |
-| Payment       | Revision to Add fragment after finish a payment | Bagus | Complete |
-|               | Revision add Image View after Upload      | Bagus | Complete |
-|               | get a copy text of bank number   | Bagus | Complete |
+| Bisa Membatalkan Order/pemesanan | Membuat fungsi batalkan pemesanan        | Bagus | Complete |
+| Melanjutkan ke proses pembayaran        | Revisi menambahkan fragment setelah selesai pembayaran | Bagus | Complete |
+|               | Revisi Menambahkan Image view setelah upload gambat     | Bagus | Complete |
+|               | Membuat fungsi copy text to clipboard(dana & bank)   | Bagus | Complete |
 |               | Revisi Database (for Engineer list and Payment status)   | Ilham | Complete |
 
 all the detail of product backlog are in this link below : <br>
