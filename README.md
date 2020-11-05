@@ -40,12 +40,13 @@ In this Sprint 2 after we designing the mockup and update the database, we conti
 The task on second week:
 | Story         | TASK              | CONTRIBUTOR | STATUS   |
 |---------------|-------------------|-------------|----------|
-| saya bisa masuk kedalam Aplikasi| Membuat Layout Home       | Ilham       | Complete |
+|Mengkoneksikan Database dengan sistem mobile application | Membuat Rest API PHP      | Bagus       | Complete |
+|Membuat Account |Membuat Layout Login       | ilham       | Complete |
+|         | Membuat layout SignUp      | Ilham       | Complete |
+| Masuk kedalam Aplikasi| Membuat Layout Home       | Ilham       | Complete |
 |               | Membuat Bottom Navigation | Ilham       | Complete |
 |               | Membuat Splash Screen     | Vivi        | Complete |
-|         | Membuat layout Login      | Ilham       | Complete |
-|         | Membuat layout SignUp     | Ilham       | Complete |
-|API | Rest API PHP      | Bagus       | Complete |
+|         | Membuat layout Order History    | Vivi       | Complete |
 
 
 
