@@ -25,12 +25,6 @@ When we make this application, every sunday we have a meeting to discuss that al
 
 #### SPRINT4:
 this sprint, we focused on order flow, how to push the prooduct to cart, and give more information to ordering.
-<<<<<<< HEAD
-we usually discus about our project task in the first day of the week, below is the record of our meeting
-<figure class="video_container">
-  <iframe src="https://youtu.be/TZcxWRS6IcQ" frameborder="0" allowfullscreen="true"> </iframe>
-</figure>
-=======
 we usually discus about our project task in the first day of the week, below is the record of our meeting <br>
 * [MEETING VIDEO - START SPRINT4](https://youtu.be/TZcxWRS6IcQ) 
 * [MEETING VIDEO - END SPRINT4](https://youtu.be/NHC1xL2pDXM)
