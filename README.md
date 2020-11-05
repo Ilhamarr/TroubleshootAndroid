@@ -42,10 +42,10 @@ The task on second week:
 |---------------|-------------------|-------------|----------|
 |Mengkoneksikan Database dengan sistem mobile application | Membuat Rest API PHP      | Bagus       | Complete |
 |Membuat Account |Membuat Layout Login       | ilham       | Complete |
-|         | Membuat layout SignUp      | Ilham       | Complete |
-| Masuk kedalam Aplikasi| Membuat Layout Home       | Ilham       | Complete |
+|Masuk kedalam Aplikasi| Membuat Layout Home       | Ilham       | Complete |
 |               | Membuat Bottom Navigation | Ilham       | Complete |
 |               | Membuat Splash Screen     | Vivi        | Complete |
+|Keluar Aplikasi         | Membuat layout SignUp      | Ilham       | Complete |
 |         | Membuat layout Order History    | Vivi       | Complete |
 
 
