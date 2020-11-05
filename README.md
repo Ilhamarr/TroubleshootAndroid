@@ -8,9 +8,9 @@ for a startup computer service, it can be make client trust about this businness
 
 | Story            | Task                                          | Actor | Status   |
 |------------------|-----------------------------------------------|-------|----------|
-| Memilih layanan service  | Membuat fragment order history               | Ilham | Progress |
+| Memilih layanan service  | Membuat fragment order history               | Bagus | Progress |
 | Bisa Merubah Profil                 | Membuat Layout Edit Profil                     | Vivi  | Complete |
-| Revisi   | Revisi beberapa layout, layout login - edit profil | Bagus | Complete |
+| Revisi   | Revisi beberapa layout, layout login - edit profil | Ilham | Complete |
 | Mengisi Form Pesanan                 | Membuat Datepicker (waktu kunjungan dan hari libur)                         | Bagus | Complete |
 
 
