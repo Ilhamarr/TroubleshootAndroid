@@ -31,7 +31,6 @@ in Sprint 3, we continue the task, focusing the activity login-signup-logout and
 | | Membuat Logical Signup                            | Bagus       | Complete |
 |                   | Mengkoneksikan ke Database \(Store Data\)     | Bagus       | Complete |
 | Keluar Aplikasi | Check Session User in application         | Bagus       | Complete |
-| Order Activity    | Make Order Layout                         | Ilham       | Complete |
 | Memilih Layanan Servis   | Membuat layout order/pemesanan                         | Ilham       | Complete |
 
 
