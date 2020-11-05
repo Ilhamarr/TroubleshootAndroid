@@ -4,7 +4,7 @@ Troubleshoot.id merupakan sebuah usaha yang bergerak dibidang jasa service cente
 2. Perbaikan Software
 3. Konsultasi IT
 <br>
-Dalam perjalanannya, Troubleshoot.id menghadirkan sebuah sistem  **Troubleshoot Mobile Application**  yang dapat mempermudah para pelanggan setianya untuk mendapat</div>
+Dalam perjalanannya, Troubleshoot.id menghadirkan sebuah sistem 'Troubleshoot Mobile Application' yang dapat mempermudah para pelanggan setianya untuk mendapat</div>
 
 ## Developer Team
 | No | NAMA           | NIM        | ROLE                |
@@ -15,6 +15,8 @@ Dalam perjalanannya, Troubleshoot.id menghadirkan sebuah sistem  **Troubleshoot 
 
 
 ## Gambaran dari Aplikasi
+![SplashScreen](https://drive.google.com/file/d/1UiFTygba1U2Nziy0sNb2QApkp33hgXe5/view?usp=sharing)
+
 
 
 
