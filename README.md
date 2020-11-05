@@ -8,10 +8,10 @@ for a startup computer service, it can be make client trust about this businness
 
 | Story            | Task                                          | Actor | Status   |
 |------------------|-----------------------------------------------|-------|----------|
-| Profile Segment  | Make Term And Condition Layout                | Ilham | Progress |
-|                  | Make Edit Profile Layout                      | Vivi  | Complete |
-| History Segment  | Connecting History Layout with Detail History | Bagus | Complete |
-|                  | Get data from database                        | Bagus | Complete |
+| Memilih layanan service  | Membuat fragment order history               | Ilham | Progress |
+| Bisa Merubah Profil                 | Membuat Layout Edit Profil                     | Vivi  | Complete |
+| Revisi   | Revisi beberapa layout, layout login - edit profil | Bagus | Complete |
+| Mengisi Form Pesanan                 | Membuat Datepicker (waktu kunjungan dan hari libur)                         | Bagus | Complete |
 
 
 
