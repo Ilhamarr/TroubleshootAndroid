@@ -9,17 +9,18 @@ On sprint 6 the task is almost finish for key feature/
 
 | Story            | Task                                         | Actor | Status   |
 |------------------|----------------------------------------------|-------|----------|
-| Profile Segment  | Make Term And Condition Layout               | Ilham | Complete |
+| Bisa Merubah Profil  | Membuat layout dan fragment syarat dan ketentuan pemesanan               | Ilham | Complete |
 |                  |                                              |       | Complete |
-| Login            | Revision layout Login                        | Ilham | Complete |
+| Revisi Layout            | Revision layout Login                        | Ilham | Complete |
 | Register         | Revision layout register                     | Ilham | Complete |
 |                  |                                              |       |          |
-| Payment          | Revision Dana Fragment                       | Vivi  | Complete |
+| Melanjutkan ke Proses Pembayaran         | Revision Dana Fragment                       | Vivi  | Complete |
 |                  | Revision Transfer Fragment                   | Vivi  | Complete |
 |                  | Revision Payment Method                      | Vivi  | Complete |
-|                  | Connecting layout to database payment method | Bagus | Complete |
-|                  | Upload Image to confrimation                 | Bagus | Complete |
-|                  | Make Design Splashscreen Information payment | Ilham | Complete |
+|                  | Mengkoneksikan layout database ke metode pembayaran | Bagus | Complete |
+|                  | Membuat konfirmasi upload gambar                | Bagus | Complete |
+|                  | Membuat fragment bank, dana, dan metode pembayaran | Ilham | Complete |
+|                  | Membuat desain splashscreen informasi pembayaran | Ilham | Complete |
 
 
 all the detail of product backlocg are in this link below : <br>
