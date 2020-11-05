@@ -6,7 +6,7 @@ Troubleshoot.id merupakan sebuah usaha yang bergerak dibidang jasa service cente
 <br>
 Dalam perjalanannya, Troubleshoot.id menghadirkan sebuah sistem 'Troubleshoot Mobile Application' yang dapat mempermudah para pelanggan setianya untuk mendapat</div>
 
-## Developer Team
+## Tim Pengembang
 | No | NAMA           | NIM        | ROLE                |
 |----|----------------|------------|---------------------|
 | 1  | Vivi Rofiah    | 1313617001 | Front End Developer |
@@ -22,7 +22,7 @@ Dalam perjalanannya, Troubleshoot.id menghadirkan sebuah sistem 'Troubleshoot Mo
 
 
 
-## Debug Aplication (For Tester):
+## Unduh Tester Aplikasi:
 [DOWNLOAD HERE](https://drive.google.com/uc?export=view&id=1UiFTygba1U2Nziy0sNb2QApkp33hgXe5)
 
 <br>
