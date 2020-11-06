@@ -31,12 +31,12 @@ we usually discus about our project task in the first day of the week, below is 
 
 focus work sprint 4:
 | Story         | TASK                                        | CONTRIBUTOR | STATUS   |   
-|---------------|---------------------------------------------|-------------|----------|
+|----------------------------------------------|---------------------------------------|-------------|----------|
 | Mengisi Form Pesanan | Membuat layout konfirmasi pesanan                              | Ilham       | Complete |   
-|               | Membuat logical add to cart                                 | Bagus       | Complete |   
+| Memilih Layanan service              | Membuat logical add to cart                                 | Bagus       | Complete |   
 | Melanjutkan ke Proses Pembayaran              | Membuat Layout Konfirmasi Pembayaran                            | Vivi      | Complete |   
 |               | Membuat Layout Metode Pembayaran                  | Vivi      | Complete   |    
-| Revisi Navigation              | Revision Bottom Navigation                  | Ilham       | Complete |   
+| Melihat tampilan awal masuk kedalam aplikasi              | Revision Bottom Navigation                  | Ilham       | Complete |   
 | Melihat Transaksi Pemesanan     | Membuat Layout Detail Order \(Bottom Sheet\) | Vivi        | Complete | 
 
 
