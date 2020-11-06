@@ -389,8 +389,7 @@ public class OrderFragment extends Fragment {
     } else if (!val.matches(anyletter)) {
       fragmentOrderBinding.EdtNama.setError("Hanya huruf yang diperbolehkan");
       return false;
-    }
-    else{
+    } else {
       fragmentOrderBinding.EdtNama.setError(null);
       return true;
     }
@@ -406,8 +405,7 @@ public class OrderFragment extends Fragment {
     } else if (!val.matches(emailPattern)) {
       fragmentOrderBinding.EdtEmail.setError("Alamat email tidak valid");
       return false;
-    }
-    else {
+    } else {
       fragmentOrderBinding.EdtEmail.setError(null);
       return true;
     }
