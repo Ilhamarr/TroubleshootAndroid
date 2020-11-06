@@ -60,7 +60,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha05'
 
     //Material library
-    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'com.google.android.material:material:1.0.0'
 
     //ViewModel & Livedata
     def lifecycle_version = "2.2.0"
@@ -80,11 +80,11 @@ dependencies {
     implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
 
     //maps
-    implementation 'com.sucho:placepicker:1.1.2'
+    //implementation 'com.sucho:placepicker:1.1.2'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     //implementation 'com.google.android.gms:play-services-places:16.1.0'
     implementation 'com.google.android.libraries.places:places:2.4.0'
 
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.61'
+    //implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.61'
 
 }

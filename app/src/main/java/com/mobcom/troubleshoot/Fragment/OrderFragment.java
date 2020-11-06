@@ -42,10 +42,6 @@ import com.mobcom.troubleshoot.models.CartItem;
 import com.mobcom.troubleshoot.models.LaptopModel;
 import com.mobcom.troubleshoot.models.ResponseLaptopModel;
 import com.mobcom.troubleshoot.viewmodels.ServiceViewModel;
-import com.sucho.placepicker.AddressData;
-import com.sucho.placepicker.Constants;
-import com.sucho.placepicker.MapType;
-import com.sucho.placepicker.PlacePicker;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
@@ -217,28 +213,23 @@ public class OrderFragment extends Fragment {
   }
 
   private void openPlacePicker() {
-
-    if (hasPermissionInManifest(getActivity(),1, Manifest.permission.ACCESS_FINE_LOCATION)){
+    if (hasPermissionInManifest(getActivity(), 1, Manifest.permission.ACCESS_FINE_LOCATION)) {
       Intent intent = new Intent(getContext(), MapActivity.class);
       Bundle bundle = new Bundle();
 
-      bundle.putString(SimplePlacePicker.API_KEY,Config.PLACE_API_KEY);
+      bundle.putString(SimplePlacePicker.API_KEY, Config.PLACE_API_KEY);
       String country = "idn";
       String language = "en";
-      bundle.putString(SimplePlacePicker.COUNTRY,country);
-      bundle.putString(SimplePlacePicker.LANGUAGE,language);
+      bundle.putString(SimplePlacePicker.COUNTRY, country);
+      bundle.putString(SimplePlacePicker.LANGUAGE, language);
 
       intent.putExtras(bundle);
       startActivityForResult(intent, SimplePlacePicker.SELECT_LOCATION_REQUEST_CODE);
     }
 
-
-//    PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
-//    startActivityForResult(builder.build(getActivity()), PLACE_PICKER_REQUEST);
-
   }
 
-  private String getAddress(LatLng latLng){
+  private String getAddress(LatLng latLng) {
 
     Geocoder geocoder;
     List<Address> addresses;
@@ -265,26 +256,13 @@ public class OrderFragment extends Fragment {
   public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
 
-    if (requestCode == SimplePlacePicker.SELECT_LOCATION_REQUEST_CODE && resultCode == RESULT_OK){
+    if (requestCode == SimplePlacePicker.SELECT_LOCATION_REQUEST_CODE && resultCode == RESULT_OK) {
       if (data != null) {
         String toastMsg = data.getStringExtra(SimplePlacePicker.SELECTED_ADDRESS);
         fragmentOrderBinding.alamatTempatBertemu.setText(toastMsg);
       }
     }
   }
-
-//  @Override
-//  public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//    super.onActivityResult(requestCode, resultCode, data);
-//
-//    if (requestCode == PLACE_PICKER_REQUEST) {
-//      if (resultCode == RESULT_OK) {
-//        Place place = PlacePicker.getPlace(data, getActivity());
-//        String toastMsg = getAddress(place.getLatLng());
-//        fragmentOrderBinding.alamatTempatBertemu.setText(toastMsg);
-//      }
-//    }
-//  }
 
   private void initSpinnerLaptop() {
     APIRequestData ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
@@ -310,8 +288,8 @@ public class OrderFragment extends Fragment {
     });
   }
 
-  private String convertTime(int input){
-    if(input >= 10){
+  private String convertTime(int input) {
+    if (input >= 10) {
       return String.valueOf(input);
     } else {
       return "0" + String.valueOf(input);
@@ -323,10 +301,10 @@ public class OrderFragment extends Fragment {
     int HOUR = calendar.get(Calendar.HOUR_OF_DAY);
     int Minute = calendar.get(Calendar.MINUTE);
 
-    TimePickerDialog tpd = TimePickerDialog.newInstance((view, hourOfDay, minute, second) -> fragmentOrderBinding.EdtJam.setText(convertTime(hourOfDay) + ":" + convertTime(minute)),HOUR,Minute,true);
-    tpd.setMinTime(8,0,0);
-    tpd.setMaxTime(15,0,0);
-    tpd.show(getFragmentManager(),"");
+    TimePickerDialog tpd = TimePickerDialog.newInstance((view, hourOfDay, minute, second) -> fragmentOrderBinding.EdtJam.setText(convertTime(hourOfDay) + ":" + convertTime(minute)), HOUR, Minute, true);
+    tpd.setMinTime(8, 0, 0);
+    tpd.setMaxTime(15, 0, 0);
+    tpd.show(getFragmentManager(), "");
   }
 
   private void openDatePicker() {
@@ -337,14 +315,14 @@ public class OrderFragment extends Fragment {
     int Hour = calendar.get(Calendar.HOUR_OF_DAY);
 
     DatePickerDialog dpd = DatePickerDialog.newInstance((view, year, monthOfYear, dayOfMonth) -> {
-      String date = dayOfMonth+"-"+(++monthOfYear)+"-"+year;
+      String date = dayOfMonth + "-" + (++monthOfYear) + "-" + year;
       fragmentOrderBinding.EdtTanggal.setText(date);
-    },YEAR,MONTH,Day);
+    }, YEAR, MONTH, Day);
 
     // restrict to weekdays only
     ArrayList<Calendar> weekdays = new ArrayList<Calendar>();
-    for (int i=0; i < 365; i++) {
-      if (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY ) {
+    for (int i = 0; i < 365; i++) {
+      if (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
         Calendar d = (Calendar) calendar.clone();
         weekdays.add(d);
       }
@@ -357,7 +335,7 @@ public class OrderFragment extends Fragment {
     dpd.show(getFragmentManager(), "");
   }
 
-  private Boolean validateSeriLaptop (){
+  private Boolean validateSeriLaptop() {
     String val = fragmentOrderBinding.EdtSeriLaptop.getText().toString();
     if (val.isEmpty()) {
       fragmentOrderBinding.EdtSeriLaptop.setError("Field cannot be empty");
@@ -365,68 +343,81 @@ public class OrderFragment extends Fragment {
     }
     return true;
   }
-  private Boolean validateDetail (){
+
+  private Boolean validateDetail() {
     String val = fragmentOrderBinding.EdtDetailPemesanan.getText().toString();
-    if(val.isEmpty()){
+    if (val.isEmpty()) {
       fragmentOrderBinding.EdtDetailPemesanan.setError("Field cannot be empty");
       return false;
     }
     return true;
   }
-  private Boolean validateTanggal(){
+
+  private Boolean validateTanggal() {
     String val = fragmentOrderBinding.EdtTanggal.getText().toString();
-    if(val.isEmpty()){
+    if (val.isEmpty()) {
       fragmentOrderBinding.EdtTanggal.setError("Field cannot be empty");
       return false;
     }
     return true;
   }
-  private Boolean validateJam (){
+
+  private Boolean validateJam() {
     String val = fragmentOrderBinding.EdtJam.getText().toString();
-    if(val.isEmpty()){
+    if (val.isEmpty()) {
       fragmentOrderBinding.EdtJam.setError("Field cannot be empty");
       return false;
     }
     return true;
   }
-  private Boolean validateTempat (){
+
+  private Boolean validateTempat() {
     String val = fragmentOrderBinding.alamatTempatBertemu.getText().toString();
-    if(val.isEmpty()){
+    if (val.isEmpty()) {
       fragmentOrderBinding.alamatTempatBertemu.setError("Field cannot be empty");
       return false;
     }
     return true;
   }
-  private Boolean validateNama (){
+
+  private Boolean validateNama() {
     String val = fragmentOrderBinding.EdtNama.getText().toString();
-    if(val.isEmpty()){
+    if (val.isEmpty()) {
       fragmentOrderBinding.EdtNama.setError("Field cannot be empty");
       return false;
     }
     return true;
   }
-  private Boolean validateEmail (){
+
+  private Boolean validateEmail() {
     String val = fragmentOrderBinding.EdtEmail.getText().toString();
-    if(val.isEmpty()){
+    if (val.isEmpty()) {
       fragmentOrderBinding.EdtEmail.setError("Field cannot be empty");
       return false;
     }
     return true;
   }
-  private Boolean validatePhone (){
+
+  private Boolean validatePhone() {
     String val = fragmentOrderBinding.EdtNomorTelepon.getText().toString();
-    if(val.isEmpty()){
+    String phoneformat = "^[0-9]{12,13}$";
+    if (val.isEmpty()) {
       fragmentOrderBinding.EdtNomorTelepon.setError("Field cannot be empty");
       return false;
+    } else if (!val.matches(phoneformat)) {
+      fragmentOrderBinding.EdtNomorTelepon.setError("Nomor telepon tidak valid");
+      return false;
+    } else {
+      fragmentOrderBinding.EdtNomorTelepon.setError(null);
+      return true;
     }
-    return true;
   }
 
   @Override
   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
     super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     if (requestCode == 1) {
-      if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
+      if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
         openPlacePicker();
     }
   }
