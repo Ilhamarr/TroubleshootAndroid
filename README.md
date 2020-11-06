@@ -25,12 +25,12 @@ When we make this application, every sunday we have a meeting to discuss that al
 #### SPRINT 3 :
 in Sprint 3, we continue the task, focusing the activity login-signup-logout and ordering activity.
 | Story             | TASK                                      | CONTRIBUTOR | STATUS   |
-|-------------------|-------------------------------------------|-------------|----------|
-| Masuk ke dalam aplikasi  | Membuat Logical Sign in \(Create Session\)        | Bagus       | Complete |
+|-------------------------------------|-------------------------------------------|-------------|----------|
+| Membuat Account  | Membuat Logical Sign in \(Create Session\)        | Bagus       | Complete |
 |                   | Mengkoneksikan ke Database \(Chechk\)         | Bagus       | Complete |
 | | Membuat Logical Signup                            | Bagus       | Complete |
 |                   | Mengkoneksikan ke Database \(Store Data\)     | Bagus       | Complete |
-| Keluar Aplikasi | Check Session User in application         | Bagus       | Complete |
+| Logout Account | Check Session User in application         | Bagus       | Complete |
 | Memilih Layanan Servis   | Membuat layout order/pemesanan                         | Ilham       | Complete |
 
 
