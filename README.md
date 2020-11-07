@@ -13,15 +13,6 @@ for a startup computer service, it can be make client trust about this businness
 
 
 
-## Product Backlog
-
-
-### Story of Product
-
-This Project is make mobile application of Troubleshoot.id. this app will give best experience for user to order the service easily. the step for make this application are, discuss about the business process of this app, make a design mockup in adobe XD (wireframe), Implement the design to layouting in android studio, Updating the database from website (already have a website), Make an API to connecting the database to application, Connecting all (layout, Controller, Database) same a business process that hve been discussed, Testing the application and Realease to user.
-
-When we make this application, every sunday we have a meeting to discuss that all what a member to do in a week and give a task to do in a week forward.
-
 #### SPRINT 3 :
 in Sprint 3, we continue the task, focusing the activity login-signup-logout and ordering activity.
 | Story             | TASK                                      | CONTRIBUTOR | STATUS   |
