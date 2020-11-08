@@ -37,7 +37,6 @@ for a startup computer service, it can be make client trust about this businness
 |Melihat tampilan awal masuk kedalam Aplikasi| Membuat Layout Home       | Ilham       | Complete |
 |               | Membuat Bottom Navigation | Ilham       | Complete |
 |               | Membuat Splash Screen     | Vivi        | Complete |
-|Melihat Transaksi Pemesanan         | Membuat layout Order History    | Vivi       | Complete |
 
 
 
