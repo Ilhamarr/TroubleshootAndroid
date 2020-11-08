@@ -13,7 +13,7 @@ Now, continue to Fase 2 Development:
 | Melihat Transaksi pemesanan      | Revisi Label proses perbaikan                                | Vivi  | Complete |
 | Mengisi Form Pemesanan           | \(Revisi\) membuat form validation nomor telepon             | Bagus | Complete |
 | Saya Bisa Memilih Tempat Bertemu | Menambahkan Google Maps \(Place picker\) pada form pemesanan | Bagus | Complete |
-| Melihat profil                   | \(Revisi\) Menghapus Bagian 'follow us'                      | Vivi  | Complete |
+| Melihat tampilan profil                   | \(Revisi\) Menghapus Bagian 'follow us'                      | Vivi  | Complete |
 
 
 ## Debug Application:
