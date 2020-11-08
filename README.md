@@ -14,5 +14,11 @@ for a startup computer service, it can be make client trust about this businness
 |Membuat Account|Revisi Layout Sign Up|Ilham |Complete|
 |Masuk ke Aplikasi|Revisi Layout Login|Ilham |Complete|
 |Melihat Tampilan Awal Aplikasi|Revisi Layout Home|Ilham|Complete|
-
-
+|Menambahkan produk Service|membuat form menambahkan produk service di website admin|Ilham|Complete|
+|Mengedit Produk Service|Merubah harga produk|Ilham|Complete|
+||Merubah nama produk|Ilham|Complete|
+||Merubah deskripsi produk|Ilham|Complete|
+||Merubah gambar produk|Ilham|Complete|
+|Melihat order masuk|membuatlayout order|Ilham|Complete|
+||mengganti status perbaikan|Ilham|Complete|
+||mengganti status pembayaran|Ilham|Complete|
