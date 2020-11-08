@@ -32,8 +32,8 @@ for a startup computer service, it can be make client trust about this businness
 | Story         | TASK              | CONTRIBUTOR | STATUS   |
 |------------------------------|-------------------|-------------|----------|
 |Mengkoneksikan Database dengan sistem mobile application | Membuat Rest API PHP      | Bagus       | Complete |
-|Membuat Account |Membuat Layout Login       | ilham       | Complete |
-|         | Membuat layout SignUp      | Ilham       | Complete |
+|Masuk ke Aplikasi |Membuat Layout Login       | ilham       | Complete |
+|membuat Account   | Membuat layout SignUp      | Ilham       | Complete |
 |Melihat tampilan awal masuk kedalam Aplikasi| Membuat Layout Home       | Ilham       | Complete |
 |               | Membuat Bottom Navigation | Ilham       | Complete |
 |               | Membuat Splash Screen     | Vivi        | Complete |
