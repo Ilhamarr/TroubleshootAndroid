@@ -10,10 +10,6 @@ On sprint 6 the task is almost finish for key feature/
 | Story            | Task                                         | Actor | Status   |
 |------------------|----------------------------------------------|-------|----------|
 | Melihat Syarat dan Ketentuan pemesanan | Membuat layout dan fragment syarat dan ketentuan pemesanan               | Ilham | Complete |
-|                  |                                              |       | Complete |
-| Membuat account            | Revision layout Login                        | Ilham | Complete |
-|          | Revision layout register                     | Ilham | Complete |
-|                  |                                              |       |          |
 | Melanjutkan ke Proses Pembayaran         | Revision Dana Fragment                       | Vivi  | Complete |
 |                  | Revision Transfer Fragment                   | Vivi  | Complete |
 |                  | Revision Payment Method                      | Vivi  | Complete |
