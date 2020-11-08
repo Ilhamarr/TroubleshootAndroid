@@ -9,7 +9,7 @@ for a startup computer service, it can be make client trust about this businness
 |----|----------------|------------|---------------------|
 | 1  | Vivi Rofiah    | 1313617001 | Front End Developer |
 | 2  | Bagus Nugraha  | 1313617002 | Back End Developer  |
-| 3  | Ilham Arrosyid | 1313617018 | Project Leader        |
+| 3  | Ilham Arrosyid | 1313617018 | Project Leader       |
 
 
 
@@ -25,7 +25,7 @@ in Sprint 3, we continue the task, focusing the activity login-signup-logout and
 | Memilih Layanan Servis   | Membuat layout order/pemesanan | Ilham       | Complete |
 | Mengisi Form Pemesanan   | Membuat layout form pemesanan | Ilham       | Complete |
 | Melanjutkan Konfirmasi pembayaran   | Membuat layout konfirmasi pembayarab | Ilham       | Complete |
-
+| Melihat isi keranjang  | Membuat layout cart | Ilham       | Complete |
 
 
 
