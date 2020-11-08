@@ -9,18 +9,18 @@ Now, continue to Fase 2 Development:
 
 | Story                 | Task                                                              | Actor | Status   |
 |-----------------------|-------------------------------------------------------------------|-------|----------|
-| Halaman Cart          | alert konfirmasi pada saat akan hapus cart                        | Bagus | Progress |
-| Halaman Pemesanan     | Shadow pada cart\(bottom\) berlebihan                             | Ilham | To do    |
-| Form Detail Pemesanan | Koreksi Bahasa \(waktu kunjungan\)                                | Vivi  | To do    |
-|                       | Nomor telepon langsung dari kontak \(format kusus nomor telepon\) | Bagus | To do    |
-|                       | pemberitahuan saat klik ‘lanjutkan’ ketika cart masih kosong      | Bagus | To do    |
-|                       | Perbaikan Typo Term And Condition                                 | Ilham | To do    |
-| lain lain             | Font didecrese                                                    | Ilham | To do    |
-|                       | Perubahan bentuk Label Status                                     | Vivi  | To do    |
-|                       | Hapus‘Follow us' di profil                                        | Vivi  | To do    |
+| Melihat Isi Keranjang          | Membuat alert konfirmasi pada saat akan hapus cart       | Bagus | Complete |
+| Melihat Transaksi pemesanan      | Revisi Label proses perbaikan                                | Vivi  | Complete |
+| Mengisi Form Pemesanan           | \(Revisi\) membuat form validation nomor telepon             | Bagus | Complete |
+| Saya Bisa Memilih Tempat Bertemu | Menambahkan Google Maps \(Place picker\) pada form pemesanan | Bagus | Complete |
+| Melihat profil                   | \(Revisi\) Menghapus Bagian 'follow us'                      | Vivi  | Complete |
+|                                  |                                                              |       |          |
+|                                  |                                                              |       |          |
+|                                  |                                                              |       |          |
+|                                  |                                                              |       |          |
+|                                  |                                                              |       |          |
+|                                  |                                                              |       |          |
 
-all the detail of product backlog are in this link below : <br>
-https://docs.google.com/spreadsheets/d/1l3uG52OoAbAXDz2HFyEmODxLGKXyCd1aa_SbZJHBkXs/edit#gid=1386834576
 
 
 
