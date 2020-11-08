@@ -16,11 +16,6 @@ Fase 1 is already complete. yeaah !
 
 
 
-all the detail of product backlog are in this link below : <br>
-https://docs.google.com/spreadsheets/d/1l3uG52OoAbAXDz2HFyEmODxLGKXyCd1aa_SbZJHBkXs/edit#gid=1386834576
-
-
-
 ## Debug Application:
 for tested you cand download our debug app in this link:
 ###Debug Aplication (For Tester):
