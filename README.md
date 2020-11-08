@@ -22,7 +22,7 @@ focus work sprint 4:
 | Story         | TASK                                        | CONTRIBUTOR | STATUS   |   
 |----------------------------------------------|---------------------------------------|-------------|----------|
 | Melanjutkan konfirmasi pesanan | Membuat layout konfirmasi pesanan                              | Ilham       | Complete |   
-| Menambahkan product service              | Membuat logical add to cart                                 | Bagus       | Complete |   
+| Melihat isi Keranjang             | Membuat logical add to cart                                 | Bagus       | Complete |   
 | Melanjutkan ke Proses Pembayaran              | Membuat Layout Metode Pembayaran                          | Vivi      | Complete |   
 |               | Membuat Layout Konfirmasi Pembayaran                  | Vivi      | Complete   |    
 | Melihat tampilan awal masuk kedalam aplikasi              | Revision Bottom Navigation                  | Ilham       | Complete |   
