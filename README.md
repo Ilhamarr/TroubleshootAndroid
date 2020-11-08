@@ -13,7 +13,8 @@ Fase 1 is already complete. yeaah !
 | Melanjutkan ke proses pembayaran        | Revisi menambahkan fragment setelah selesai pembayaran | Bagus | Complete |
 |               | Revisi Menambahkan Image view setelah upload gambat     | Bagus | Complete |
 |               | Membuat fungsi copy text to clipboard(dana & bank)   | Bagus | Complete |
-|               | Revisi Database (for Engineer list and Payment status)   | Ilham | Complete |
+
+
 
 all the detail of product backlog are in this link below : <br>
 https://docs.google.com/spreadsheets/d/1l3uG52OoAbAXDz2HFyEmODxLGKXyCd1aa_SbZJHBkXs/edit#gid=1386834576
@@ -22,7 +23,5 @@ https://docs.google.com/spreadsheets/d/1l3uG52OoAbAXDz2HFyEmODxLGKXyCd1aa_SbZJHB
 
 ## Debug Application:
 for tested you cand download our debug app in this link:
-## Debug Aplication (For Tester):
+###Debug Aplication (For Tester):
 [DOWNLOAD HERE](https://drive.google.com/file/d/1sXkFDJ8xAq57hSua2y926RhHR0yPsgqs/view?usp=sharing)
-<br>
-<br>
