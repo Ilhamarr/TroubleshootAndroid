@@ -28,10 +28,3 @@ focus work sprint 4:
 | Melihat tampilan awal masuk kedalam aplikasi              | Revision Bottom Navigation                  | Ilham       | Complete |   
 | Melihat Transaksi Pemesanan     | Membuat Layout Detail Order \(Bottom Sheet\) | Vivi        | Complete | 
 
-
-
-
-
-
-all the detail of product backlocg are in this link below : <br>
-https://docs.google.com/spreadsheets/d/1l3uG52OoAbAXDz2HFyEmODxLGKXyCd1aa_SbZJHBkXs/edit#gid=1386834576
