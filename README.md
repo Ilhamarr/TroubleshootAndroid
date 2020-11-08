@@ -14,7 +14,7 @@ Dalam perjalanannya, Troubleshoot.id menghadirkan sebuah sistem 'Troubleshoot Mo
 | 3  | Ilham Arrosyid | 1313617018 | Project Leader      |
 
 ## Product Backlog
-[LIHAT DISINI](https://drive.google.com/file/d/1tAw_0VnchsDlhi_rwpmGFem3s4aY-afY/view?usp=sharing)
+[LIHAT DISINI](https://docs.google.com/spreadsheets/d/1tAw_0VnchsDlhi_rwpmGFem3s4aY-afY/edit#gid=966213186)
 
 
 ## Gambaran dari Aplikasi
