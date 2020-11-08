@@ -27,5 +27,5 @@ focus work sprint 4:
 | Melanjutkan ke Proses Pembayaran              | Membuat Layout Metode Pembayaran                          | Vivi      | Complete |   
 |               | Membuat Layout Konfirmasi Pembayaran                  | Vivi      | Complete   |    
 | Melihat tampilan awal masuk kedalam aplikasi              | Revision Bottom Navigation                  | Ilham       | Complete |   
-| Melihat Transaksi Pemesanan     | Membuat Layout Detail Order \(Bottom Sheet\) | Vivi        | Complete | 
+| Melihat Transaksi Pemesanan     | Membuat Layout Detail Order | Vivi        | Complete | 
 
