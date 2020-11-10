@@ -5,27 +5,37 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.mobcom.troubleshoot.Activity.LoginActivity;
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.SessionManager;
 import com.mobcom.troubleshoot.databinding.FragmentProfileBinding;
 
 public class ProfileFragment extends Fragment {
+  private static final String TAG = "ProfileFragment";
   private SessionManager sessionManager;
   private FragmentProfileBinding fragmentProfileBinding;
   private String firstName, lastName, telepon, email, alamat, fullName;
   private NavController navController;
   private Window window;
+  private GoogleSignInClient mGoogleSignInClient;
+  private GoogleSignInOptions gso;
 
   public ProfileFragment() {
     // Required empty public constructor
@@ -65,34 +75,26 @@ public class ProfileFragment extends Fragment {
     // setup navcontroller
     navController = Navigation.findNavController(view);
 
-    fragmentProfileBinding.orderhistory.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        navController.navigate(R.id.action_profileFragment_to_orderHistoryFragment);
-      }
+    // if account google
+     gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .build();
+
+    mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);
+
+
+    fragmentProfileBinding.orderhistory.setOnClickListener(v -> navController.navigate(R.id.action_profileFragment_to_orderHistoryFragment));
+
+    fragmentProfileBinding.tvLogout.setOnClickListener(v -> {
+      sessionManager.logoutSession();
+      signOutGoogle();
+      moveToLogin();
+      Toast.makeText(getContext(), "Anda berhasil keluar", Toast.LENGTH_SHORT).show();
     });
 
-    fragmentProfileBinding.tvLogout.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        sessionManager.logoutSession();
-        moveToLogin();
-      }
-    });
+    fragmentProfileBinding.feedback.setOnClickListener(v -> goToUrl("https://g.page/troubleshootid/review?gm"));
 
-    fragmentProfileBinding.feedback.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        goToUrl("https://g.page/troubleshootid/review?gm");
-      }
-    });
-
-    fragmentProfileBinding.buttonTC.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        navController.navigate(R.id.action_profileFragment_to_termConditionFragment);
-      }
-    });
+    fragmentProfileBinding.buttonTC.setOnClickListener(v -> navController.navigate(R.id.action_profileFragment_to_termConditionFragment));
   }
 
   private void moveToLogin() {
@@ -105,6 +107,20 @@ public class ProfileFragment extends Fragment {
   private void goToUrl(String s) {
     Uri uri = Uri.parse(s);
     startActivity(new Intent(Intent.ACTION_VIEW,uri));
+  }
+
+  private void signOutGoogle() {
+    mGoogleSignInClient.signOut()
+            .addOnCompleteListener(getActivity(), task -> {
+              Log.d(TAG, "onComplete: " + "google account has been sign out");
+            });
+  }
+
+  private void revokeAccessGoogle() {
+    mGoogleSignInClient.revokeAccess()
+            .addOnCompleteListener(getActivity(), task -> {
+              // ...
+            });
   }
 
 }
