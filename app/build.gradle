@@ -83,6 +83,7 @@ dependencies {
     //implementation 'com.sucho:placepicker:1.1.2'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     //implementation 'com.google.android.gms:play-services-places:16.1.0'
+    implementation 'com.google.android.gms:play-services-auth:18.1.0'
     implementation 'com.google.android.libraries.places:places:2.4.0'
 
     //implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.61'

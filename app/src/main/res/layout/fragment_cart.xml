@@ -155,7 +155,7 @@
                     android:padding="10dp"
                     android:text="Lanjutkan"
                     android:textAllCaps="false"
-                    android:textColor="@color/green" />
+                    android:textColor="@color/darkblue" />
             </LinearLayout>
 
         </LinearLayout>
@@ -164,8 +164,8 @@
 
     <ImageView
         android:id="@+id/cartEmpty"
-        android:layout_width="290dp"
-        android:layout_height="505dp"
+        android:layout_width="match_parent"
+        android:layout_height="673dp"
         android:layout_centerInParent="true"
         android:src="@drawable/fragment_cartkosong"
         android:visibility="invisible"

@@ -36,6 +36,16 @@ public interface APIRequestData {
   );
 
   @FormUrlEncoded
+  @POST("logingoogle")
+  Call<Login> loginGoogleResponse(
+          @Field("email") String email,
+          @Field("oauth_id") String oauth_id,
+          @Field("first_name") String first_name,
+          @Field("last_name") String last_name,
+          @Field("picture") String picture
+  );
+
+  @FormUrlEncoded
   @POST("account")
   Call<Register> registerResponse(
           @Field("first_name") String firstName,

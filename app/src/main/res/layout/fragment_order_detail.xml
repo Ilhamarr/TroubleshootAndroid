@@ -389,10 +389,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_bayarsekarang"
-            app:layout_constraintVertical_bias="0.162" />
+            app:layout_constraintVertical_bias="0.162"
+            android:visibility="invisible"/>
 
 
-        <!--    Button batalkan pesanan     -->
+        <!--    Button Cetak Invoice     -->
         <Button
             android:id="@+id/btn_cetakinvoice"
             android:layout_width="320dp"
@@ -404,8 +405,28 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_bayarsekarang"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView"
             app:layout_constraintVertical_bias="0.162"
-            android:visibility="gone" />
+            android:visibility="invisible" />
+
+
+        <!--    Button Complain     -->
+        <Button
+            android:id="@+id/btn_Complain"
+            android:layout_width="320dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_red"
+            android:text="Ajukan Klaim Garansi"
+            android:textColor="@color/colordivider"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.509"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_bayarsekarang"
+            app:layout_constraintVertical_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -62,6 +62,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewWave"
         app:layout_constraintBottom_toBottomOf="parent">
+
         <LinearLayout
             android:id="@+id/formLogin"
             android:layout_width="match_parent"
@@ -71,7 +72,6 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:orientation="vertical">
-
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/etEmailLogin"
@@ -139,32 +139,11 @@
                 android:layout_gravity="center_horizontal"
                 android:text="@string/or" />
 
-            <LinearLayout
-                android:id="@+id/linearSosmed"
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/sign_in_button"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content" />
 
-                <ImageView
-                    android:id="@+id/googleLogin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:contentDescription="@string/google_icon"
-                    app:srcCompat="@drawable/google" />
-
-                <ImageView
-                    android:id="@+id/facebookLogin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:contentDescription="@string/facebook_icon"
-                    app:srcCompat="@drawable/facebook" />
-            </LinearLayout>
 
             <TextView
                 android:id="@+id/gotoRegister"
