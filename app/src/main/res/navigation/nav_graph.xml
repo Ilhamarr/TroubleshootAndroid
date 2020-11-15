@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_serviceFragment"
+            app:destination="@id/serviceFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/serviceFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.ServiceFragment"
+        android:label="fragment_service"
+        tools:layout="@layout/fragment_service" >
+        <action
+            android:id="@+id/action_serviceFragment_to_cartFragment"
+            app:destination="@id/cartFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_serviceFragment_to_orderFragment"
+            app:destination="@id/orderFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderHistoryFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.OrderHistoryFragment"
+        android:label="fragment_order_history"
+        tools:layout="@layout/fragment_order_history" >
+        <action
+            android:id="@+id/action_orderHistoryFragment_to_orderDetailFragment"
+            app:destination="@id/orderDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_termConditionFragment"
+            app:destination="@id/termConditionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_orderFragment"
+            app:destination="@id/orderFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.OrderFragment"
+        android:label="fragment_order"
+        tools:layout="@layout/fragment_order" >
+        <action
+            android:id="@+id/action_orderFragment_to_orderConfirmationFragment"
+            app:destination="@id/orderConfirmationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderConfirmationFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.OrderConfirmationFragment"
+        android:label="fragment_order_confirmation"
+        tools:layout="@layout/fragment_order_confirmation" >
+        <action
+            android:id="@+id/action_orderConfirmationFragment_to_serviceFragment"
+            app:destination="@id/serviceFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="merkLaptop"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="seriLaptop"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="detail"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="tanggal"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="jam"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="alamat"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="nama"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="phone"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="idLaptop"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="tipeLaptop"
+            app:argType="string"
+            android:defaultValue="default" />
+        <action
+            android:id="@+id/action_orderConfirmationFragment_to_orderFragment"
+            app:destination="@id/orderFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_orderConfirmationFragment_to_orderSuccessFragment"
+            app:destination="@id/orderSuccessFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_orderConfirmationFragment_to_orderFailedFragment"
+            app:destination="@id/orderFailedFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderSuccessFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.OrderSuccessFragment"
+        android:label="fragment_order_success"
+        tools:layout="@layout/fragment_order_success" >
+        <action
+            android:id="@+id/action_orderSuccessFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderFailedFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.OrderFailedFragment"
+        android:label="fragment_order_failed"
+        tools:layout="@layout/fragment_order_failed" >
+        <action
+            android:id="@+id/action_orderFailedFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.OrderDetailFragment"
+        android:label="fragment_order_detail"
+        tools:layout="@layout/fragment_order_detail" >
+        <action
+            android:id="@+id/action_orderDetailFragment_to_paymentMethodFragment"
+            app:destination="@id/paymentMethodFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_orderDetailFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentMethodFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.PaymentMethodFragment"
+        android:label="fragment_payment_method"
+        tools:layout="@layout/fragment_payment_method" >
+        <action
+            android:id="@+id/action_paymentMethodFragment_to_danaFragment"
+            app:destination="@id/danaFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_paymentMethodFragment_to_bankFragment"
+            app:destination="@id/bankFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_paymentMethodFragment_to_tunaiSuccessFragment"
+            app:destination="@id/tunaiSuccessFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/orderHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/danaFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.DanaFragment"
+        android:label="fragment_dana"
+        tools:layout="@layout/fragment_dana" >
+        <action
+            android:id="@+id/action_danaFragment_to_nonTunaiSuccessFragment"
+            app:destination="@id/nonTunaiSuccessFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/orderHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bankFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.BankFragment"
+        android:label="fragment_bank"
+        tools:layout="@layout/fragment_bank" >
+        <action
+            android:id="@+id/action_bankFragment_to_nonTunaiSuccessFragment"
+            app:destination="@id/nonTunaiSuccessFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/orderHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/termConditionFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.TermConditionFragment"
+        android:label="fragment_term_condition"
+        tools:layout="@layout/fragment_term_condition" />
+    <fragment
+        android:id="@+id/nonTunaiSuccessFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.NonTunaiSuccessFragment"
+        android:label="fragment_non_tunai_success"
+        tools:layout="@layout/fragment_non_tunai_success" >
+        <action
+            android:id="@+id/action_nonTunaiSuccessFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/tunaiSuccessFragment"
+        android:name="com.mobcom.troubleshoot.Fragment.TunaiSuccessFragment"
+        android:label="fragment_tunai_success"
+        tools:layout="@layout/fragment_tunai_success" >
+        <action
+            android:id="@+id/action_tunaiSuccessFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+</navigation>

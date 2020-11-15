@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.TermConditionFragment">
+
+
+    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_baseline_arrow_back_ios_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="177dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/logosampling"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="20dp"
+        android:text="Term Condition"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:justificationMode="inter_word"
+                android:text="Troubleshoot.id"
+                android:textAlignment="inherit"
+                android:textColor="@color/colortrb"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:justificationMode="inter_word"
+                android:text="Troubleshoot.id adalah sebuah usaha yang bergerak dibidang servis komputer maupun laptop. Dengan hadirnya platform mobile aplikasi ini, dapat membuat pelanggan dengan mudah untuk mendapatkan layanan service yang cepat dan terpercaya."
+                android:textSize="11sp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                android:justificationMode="inter_word"
+                android:text="Saat ini para pelanggan tidak perlu lagi pergi jauh ke gerai servis untuk memperbaiki maupun upgrade laptop atau komputer kesayangan. Hanya dengan klik di aplikasi Troubleshoot.id, permasalahan pelanggan akan langsung ditangani oleh teknisi yang datang kerumah."
+                android:textSize="11sp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:justificationMode="inter_word"
+                android:text="Kontak"
+                android:textAlignment="inherit"
+                android:textColor="@color/colortrb"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_phone_small"
+                android:gravity="center_vertical"
+                android:justificationMode="inter_word"
+                android:text=" 085156811345"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_email_small"
+                android:gravity="center_vertical"
+                android:justificationMode="inter_word"
+                android:text=" troubleshootdotid@gmail.com"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                android:drawableLeft="@drawable/ic_location_small"
+                android:justificationMode="inter_word"
+                android:text="Universitas Negeri Jakarta Kampus A, Gedung Dewi Sartika Lt.5, Jl. Rawamangun Muka No.18,RT.11/RW.14 Rawamangun, Jakarta Timur 13220"
+                android:textSize="11sp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:justificationMode="inter_word"
+                android:text="Waktu Pelayanan"
+                android:textAlignment="inherit"
+                android:textColor="@color/colortrb"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                android:gravity="center_vertical"
+                android:justificationMode="inter_word"
+                android:text="Waktu pelayanan Troubleshoot.id dimulai dari hari senin – jum’at pukul 08.00 – 15.00 WIB. "
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:justificationMode="inter_word"
+                android:text="Konsultasi dan Pemesanan"
+                android:textAlignment="inherit"
+                android:textColor="@color/colortrb"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                android:gravity="center_vertical"
+                android:justificationMode="inter_word"
+                android:text="Waktu konsultasi permasalahan bisa dilakukan selama 7x24 jam melalui whatsapp. Waktu pemesanan dan pelayanan servis Troubleshoot.id dimulai dari hari senin – jum’at pukul 08.00 – 15.00 WIB."
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:justificationMode="inter_word"
+                android:text="Cara Memesan Layanan Servis"
+                android:textAlignment="inherit"
+                android:textColor="@color/colortrb"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                android:gravity="center_vertical"
+                android:justificationMode="inter_word"
+                android:text="Pemesanan dapat dilakukan melalui website ataupun mobile aplikasi dengan memilih layanan yang diinginkan dan mengisi form. Lalu silahkan menunggu hingga teknisi datang untuk melakukan pengecekan dan perbaikan. Perubahan status perbaikan bisa dilihat pada order history. Ketika perbaikan dalam status 'sedang dalam proses', maka pemesanan tidak bisa dibatalkan.  "
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:justificationMode="inter_word"
+                android:text="Pembayaran"
+                android:textAlignment="inherit"
+                android:textColor="@color/colortrb"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:gravity="center_vertical"
+                android:justificationMode="inter_word"
+                android:text="Pembayaran bisa dilakukan dengan 2 cara:"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:justificationMode="inter_word"
+                android:text="1. Cash"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="4dp"
+                android:gravity="center_vertical"
+                android:justificationMode="inter_word"
+                android:text="Pembayaran diberikan kepada teknisi saat pengembalian perangkat sesuai dengan jumlah yang tertera di invoice."
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:justificationMode="inter_word"
+                android:text="2. Transfer Bank"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="18dp"
+                android:gravity="center_vertical"
+                android:justificationMode="inter_word"
+                android:text="Pembayaran bisa dilakukan dimulai saat status pengerjaan 'sedang proses pengerjaan' hingga perangkat akan diantar kembali. saat barang diterima oleh pelanggan, pembayaran harus sudah dalam statud LUNAS"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:justificationMode="inter_word"
+                android:text="Pembatalan Pesanan"
+                android:textAlignment="inherit"
+                android:textColor="@color/colortrb"
+                android:textSize="14sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:gravity="center_vertical"
+                android:justificationMode="inter_word"
+                android:text="Pembatalan pesanan bisa dilakukan setidaknya 5 Jam sebelum pengecekan laptop/komputer"
+                android:textSize="11sp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

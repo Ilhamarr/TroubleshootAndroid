@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".Fragment.ProfileFragment">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/teamwork" />
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="-74dp"
+                android:src="@drawable/invertlogos" />
+
+            <TextView
+                android:id="@+id/nama_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/FullName"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/telepon_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/Telepon"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/email_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/email"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/alamat_user"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="2dp"
+                android:drawableBottom="@color/colorPrimaryDark"
+                android:text="@string/Alamat"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="44dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Account"
+                android:textColor="@color/colortrb"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/txt_editprofil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/ic_profile2"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/ic_chevron_right_"
+                android:padding="8dp"
+                android:text="Edit Profile"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/orderhistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/ic_dorder"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/ic_chevron_right_"
+                android:padding="8dp"
+                android:text="Order History"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/tv_logout"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/ic_exit"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/ic_chevron_right_"
+                android:padding="8dp"
+                android:text="Logout"
+                android:textColor="#D44638"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:focusable="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="44dp"
+                android:drawableBottom="@color/colorPrimaryDark"
+                android:fontFamily="sans-serif-medium"
+                android:text="General"
+                android:textColor="@color/colortrb"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/buttonTC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/ic_security"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/ic_chevron_right_"
+                android:padding="8dp"
+                android:text="Term and Condition"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/feedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/ic_star_border_"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/ic_chevron_right_"
+                android:padding="8dp"
+                android:text="Feedback Troubleshoot.id"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
