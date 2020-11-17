@@ -138,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
           startActivity(intent);
           finish();
         } else {
-          Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+          Toast.makeText(LoginActivity.this, "Terjadi kesalahan masuk", Toast.LENGTH_SHORT).show();
         }
       }
 
