@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Fragment.EditProfileFragment">
 
     <ImageView
         android:id="@+id/imageView"
@@ -16,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="26dp"
         android:layout_marginStart="16dp"
@@ -107,7 +109,7 @@
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/Txt_editnama"
+                    android:id="@+id/Edt_Nama"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_gravity="center_vertical"
@@ -141,7 +143,7 @@
 
 
                 <EditText
-                    android:id="@+id/Txt_editemail"
+                    android:id="@+id/Edt_Email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -175,7 +177,7 @@
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/Txt_editelepon"
+                    android:id="@+id/Edt_NomorTelepon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -209,7 +211,7 @@
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/Txt_editalamat"
+                    android:id="@+id/Edt_Alamat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -226,7 +228,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_simpaneditprofil"
+            android:id="@+id/Simpan_perubahan"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:layout_marginStart="45dp"
