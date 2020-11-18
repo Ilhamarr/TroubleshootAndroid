@@ -1,6 +1,7 @@
 package com.mobcom.troubleshoot.API;
 
 import com.mobcom.troubleshoot.models.Login.Login;
+import com.mobcom.troubleshoot.models.ResponseEditProfile;
 import com.mobcom.troubleshoot.models.ResponseItemOrderDetail;
 import com.mobcom.troubleshoot.models.ResponseKonfirmasiBayar;
 import com.mobcom.troubleshoot.models.ResponseOrderHistory;
@@ -109,4 +110,24 @@ public interface APIRequestData {
   @POST("batalpesan")
   Call<ResponseKonfirmasiBayar> batalpemesanan(@Field("tracking_key") String tracking_key);
 
+  @Multipart
+  @POST("Editprofile")
+  Call<ResponseEditProfile> editProfile(
+          @Part("account_id") RequestBody account_id,
+          @Part("firstname") RequestBody firstname,
+          @Part("lastname") RequestBody lastname,
+          @Part("email") RequestBody email,
+          @Part("phone") RequestBody phone,
+          @Part("address") RequestBody address
+  );
+  @POST("Editprofile")
+  Call<ResponseEditProfile> editProfileWithPicture(
+          @Part("account_id") RequestBody account_id,
+          @Part("firstname") RequestBody firstname,
+          @Part("lastname") RequestBody lastname,
+          @Part("email") RequestBody email,
+          @Part("phone") RequestBody phone,
+          @Part("address") RequestBody address,
+          @Part MultipartBody.Part picture
+  );
 }

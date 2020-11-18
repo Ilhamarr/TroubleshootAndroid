@@ -25,12 +25,18 @@
                 android:layout_height="200dp"
                 android:src="@drawable/teamwork" />
 
-            <ImageView
+            <androidx.cardview.widget.CardView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="-74dp"
-                android:src="@drawable/invertlogos" />
+                app:cardCornerRadius="150dp">
+                <ImageView
+                    android:id="@+id/fotoProfile"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/invertlogos" />
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/nama_user"
@@ -81,7 +87,7 @@
                 android:textSize="18dp" />
 
             <TextView
-                android:id="@+id/txt_editprofil"
+                android:id="@+id/editProfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -157,6 +163,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="15dp"
                 android:drawableLeft="@drawable/ic_star_border_"
                 android:drawablePadding="10dp"
                 android:drawableRight="@drawable/ic_chevron_right_"

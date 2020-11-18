@@ -51,6 +51,7 @@
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_notification"
             android:clickable="true"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@id/textHello"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textHello"

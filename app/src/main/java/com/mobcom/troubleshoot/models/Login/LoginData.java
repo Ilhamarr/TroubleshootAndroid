@@ -20,7 +20,7 @@ public class LoginData {
 	private String locale;
 
 	@SerializedName("picture")
-	private Object picture;
+	private String picture;
 
 	@SerializedName("password")
 	private String password;
@@ -105,11 +105,11 @@ public class LoginData {
 		return locale;
 	}
 
-	public void setPicture(Object picture){
+	public void setPicture(String picture){
 		this.picture = picture;
 	}
 
-	public Object getPicture(){
+	public String getPicture(){
 		return picture;
 	}
 

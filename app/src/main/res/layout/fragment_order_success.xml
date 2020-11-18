@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorWhite"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".Fragment.OrderSuccessFragment">
@@ -18,7 +17,7 @@
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/splashscreen_pemesanan" />
+        app:srcCompat="@drawable/pembayaran_berhasil" />
 
 
     <TextView
