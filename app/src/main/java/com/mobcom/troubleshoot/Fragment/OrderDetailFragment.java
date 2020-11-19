@@ -89,23 +89,27 @@ public class OrderDetailFragment extends Fragment {
     fragmentOrderDetailBinding.backButton.setOnClickListener(v -> navController.popBackStack());
 
     // button bayar sekaang (to payment method)
-    if(statusPayment >= 2 ) {
+    if(statusPayment == 5) {
+      fragmentOrderDetailBinding.btnCetakinvoice.setVisibility(View.GONE);
+      fragmentOrderDetailBinding.btnComplain.setVisibility(View.GONE);
       fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.GONE);
       fragmentOrderDetailBinding.btnBatalkanpesanan.setVisibility(View.GONE);
     }
 
-//    if(statusPayment == 4){
-//      fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.GONE);
-//    }
-    if(statusPayment == 1){
+    else if(statusPayment >= 2 && statusPayment<=4 ) {
+      fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.GONE);
+      fragmentOrderDetailBinding.btnBatalkanpesanan.setVisibility(View.GONE);
+      fragmentOrderDetailBinding.btnCetakinvoice.setVisibility(View.VISIBLE);
+      fragmentOrderDetailBinding.btnComplain.setVisibility(View.VISIBLE);
+    } else {
       fragmentOrderDetailBinding.btnBayarsekarang.setVisibility(View.VISIBLE);
+      fragmentOrderDetailBinding.btnBatalkanpesanan.setVisibility(View.VISIBLE);
     }
 
     // button menuju metode pembayaran
     fragmentOrderDetailBinding.btnBayarsekarang.setOnClickListener(v -> navController.navigate(R.id.action_orderDetailFragment_to_paymentMethodFragment));
 
     // button batal
-    //fragmentOrderDetailBinding.btnBatalkanpesanan.setOnClickListener(v -> batalPesanan());
     fragmentOrderDetailBinding.btnBatalkanpesanan.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {

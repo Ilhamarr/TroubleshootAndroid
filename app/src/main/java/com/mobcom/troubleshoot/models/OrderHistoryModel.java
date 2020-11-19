@@ -78,7 +78,7 @@ public class OrderHistoryModel {
 	private String email;
 
 	@SerializedName("tracking_id")
-	private String trackingId;
+	private int trackingId;
 
 	@SerializedName("nomor_hp")
 	private String nomorHp;
@@ -262,11 +262,11 @@ public class OrderHistoryModel {
 		return email;
 	}
 
-	public void setTrackingId(String trackingId){
+	public void setTrackingId(int trackingId){
 		this.trackingId = trackingId;
 	}
 
-	public String getTrackingId(){
+	public int getTrackingId(){
 		return trackingId;
 	}
 
@@ -349,7 +349,6 @@ public class OrderHistoryModel {
 						getJamPengambilan().equals(that.getJamPengambilan()) &&
 						getModifiedAt().equals(that.getModifiedAt()) &&
 						getEmail().equals(that.getEmail()) &&
-						getTrackingId().equals(that.getTrackingId()) &&
 						getNomorHp().equals(that.getNomorHp()) &&
 						getMerkLaptop().equals(that.getMerkLaptop());
 	}

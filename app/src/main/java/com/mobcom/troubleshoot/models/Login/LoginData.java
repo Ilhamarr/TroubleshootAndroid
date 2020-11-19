@@ -168,4 +168,25 @@ public class LoginData {
 	public String getEmail(){
 		return email;
 	}
+
+	@Override
+	public String toString() {
+		return "LoginData{" +
+						"role='" + role + '\'' +
+						", lastName='" + lastName + '\'' +
+						", createdAt='" + createdAt + '\'' +
+						", active='" + active + '\'' +
+						", locale='" + locale + '\'' +
+						", picture='" + picture + '\'' +
+						", password='" + password + '\'' +
+						", oauthProvider='" + oauthProvider + '\'' +
+						", accountsId='" + accountsId + '\'' +
+						", oauthId='" + oauthId + '\'' +
+						", modifiedAt='" + modifiedAt + '\'' +
+						", firstName='" + firstName + '\'' +
+						", email='" + email + '\'' +
+						", nomor_hp='" + nomor_hp + '\'' +
+						", alamat='" + alamat + '\'' +
+						'}';
+	}
 }
