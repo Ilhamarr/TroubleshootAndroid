@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -31,7 +32,7 @@ public class ProfileFragment extends Fragment {
   private static final String TAG = "ProfileFragment";
   private SessionManager sessionManager;
   private FragmentProfileBinding fragmentProfileBinding;
-  private String firstName, lastName, telepon, email, alamat, fullName;
+  private String firstName, lastName, telepon, email, alamat, fullName, picture, provider;
   private NavController navController;
   private Window window;
   private GoogleSignInClient mGoogleSignInClient;
@@ -65,12 +66,25 @@ public class ProfileFragment extends Fragment {
     email = sessionManager.getUserDetail().get(SessionManager.EMAIL);
     alamat = sessionManager.getUserDetail().get(SessionManager.ALAMAT);
     telepon = sessionManager.getUserDetail().get(SessionManager.NOMOR_HP);
+    picture = sessionManager.getUserDetail().get(SessionManager.PICTURE);
+    provider = sessionManager.getUserDetail().get(SessionManager.PROVIDER);
+    Log.d(TAG, "onViewCreated: provider : "+ provider);
 
     fullName = firstName + " " +lastName;
     fragmentProfileBinding.namaUser.setText(fullName);
     fragmentProfileBinding.emailUser.setText(email);
     fragmentProfileBinding.alamatUser.setText(alamat);
     fragmentProfileBinding.teleponUser.setText(telepon);
+    
+    // set foto profile
+    if (picture != null){
+      try {
+        Glide.with(getContext()).load(picture).into(fragmentProfileBinding.fotoProfile);
+      } catch (NullPointerException e){
+        Toast.makeText(getContext(), "image not found", Toast.LENGTH_SHORT).show();
+      }
+    }
+
 
     // setup navcontroller
     navController = Navigation.findNavController(view);
@@ -82,12 +96,16 @@ public class ProfileFragment extends Fragment {
 
     mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);
 
+    fragmentProfileBinding.editProfil.setOnClickListener(v -> navController.navigate(R.id.action_profileFragment_to_editProfileFragment));
 
     fragmentProfileBinding.orderhistory.setOnClickListener(v -> navController.navigate(R.id.action_profileFragment_to_orderHistoryFragment));
 
     fragmentProfileBinding.tvLogout.setOnClickListener(v -> {
       sessionManager.logoutSession();
-      signOutGoogle();
+      if (provider.equals("google")){
+        signOutGoogle();
+      }
+
       moveToLogin();
       Toast.makeText(getContext(), "Anda berhasil keluar", Toast.LENGTH_SHORT).show();
     });

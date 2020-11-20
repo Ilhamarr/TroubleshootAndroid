@@ -53,8 +53,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-
-        <!--    Button bayar sekarang     -->
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="0dp"
@@ -68,7 +66,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2">
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintVertical_bias="0.0">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -357,6 +356,7 @@
             </LinearLayout>
         </ScrollView>
 
+        <!--    Button bayar sekarang     -->
         <Button
             android:id="@+id/btn_bayarsekarang"
             android:layout_width="320dp"
@@ -371,7 +371,8 @@
             app:layout_constraintBottom_toTopOf="@+id/btn_batalkanpesanan"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scrollView" />
+            app:layout_constraintTop_toBottomOf="@+id/scrollView"
+            android:visibility="visible"/>
 
         <!--    Button batalkan pesanan     -->
         <Button
@@ -389,8 +390,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_bayarsekarang"
-            app:layout_constraintVertical_bias="0.162"
-            android:visibility="invisible"/>
+            android:visibility="visible"/>
 
 
         <!--    Button Cetak Invoice     -->
@@ -398,15 +398,17 @@
             android:id="@+id/btn_cetakinvoice"
             android:layout_width="320dp"
             android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/btn_green"
             android:text="Cetak Invoice"
             android:textColor="@color/colordivider"
             android:textSize="17sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_Complain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/scrollView"
-            app:layout_constraintVertical_bias="0.162"
             android:visibility="invisible" />
 
 
@@ -424,9 +426,8 @@
             android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.509"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_bayarsekarang"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_cetakinvoice"
+            android:visibility="invisible"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

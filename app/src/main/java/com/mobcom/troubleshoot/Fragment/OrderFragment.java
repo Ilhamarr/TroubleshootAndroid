@@ -195,20 +195,20 @@ public class OrderFragment extends Fragment {
 
 
       //pass all data to next fragment
-      //OrderFragmentDirections.ActionOrderFragmentToOrderConfirmationFragment action = OrderFragmentDirections.actionOrderFragmentToOrderConfirmationFragment();
-      //action.setIdLaptop(laptop_Id);
-      //action.setMerkLaptop(laptop_Merk);
-      //action.setSeriLaptop(seriLaptop);
-      //action.setDetail(detailPermasalahan);
-      //action.setTanggal(tanggal);
-      //action.setJam(jam);
-      //action.setAlamat(tempat);
-      //action.setNama(nama);
-      //action.setEmail(email);
-      //action.setPhone(phone);
+      OrderFragmentDirections.ActionOrderFragmentToOrderConfirmationFragment action = OrderFragmentDirections.actionOrderFragmentToOrderConfirmationFragment();
+      action.setIdLaptop(laptop_Id);
+      action.setMerkLaptop(laptop_Merk);
+      action.setSeriLaptop(seriLaptop);
+      action.setDetail(detailPermasalahan);
+      action.setTanggal(tanggal);
+      action.setJam(jam);
+      action.setAlamat(tempat);
+      action.setNama(nama);
+      action.setEmail(email);
+      action.setPhone(phone);
 
       //end pass
-      //navController.navigate(action);
+      navController.navigate(action);
     });
   }
 

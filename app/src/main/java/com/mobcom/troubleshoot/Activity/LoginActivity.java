@@ -110,8 +110,16 @@ public class LoginActivity extends AppCompatActivity {
         String personId = acct.getId();
         Uri personPhoto = acct.getPhotoUrl();
 
-        //Log.d(TAG, "handleSignInResult: "+personName +" "+personGivenName+" "+personFamilyName+" "+personId);
-        loginGoogle(personEmail, personId, personGivenName, personFamilyName, personPhoto.toString());
+        Log.d(TAG, "handleSignInResult: "+personEmail +" "+personGivenName+" "+personFamilyName+" "+personId+" "+personPhoto);
+
+        if (personPhoto == null){
+          loginGoogle(personEmail, personId, personGivenName, personFamilyName, null);
+        } else{
+          loginGoogle(personEmail, personId, personGivenName, personFamilyName, personPhoto.toString());
+        }
+
+
+
       }
 
       // Signed in successfully, show authenticated UI.
@@ -128,9 +136,10 @@ public class LoginActivity extends AppCompatActivity {
     loginGoogleCall.enqueue(new Callback<Login>() {
       @Override
       public void onResponse(Call<Login> call, Response<Login> response) {
-        if (response.body() != null && response.isSuccessful()) {
+        if (response.body().isStatus() && response.isSuccessful()) {
           sessionManager = new SessionManager(LoginActivity.this);
           LoginData loginData = response.body().getLoginData();
+          Log.d(TAG, "onResponse: " + loginData.toString());
           sessionManager.createLoginSession(loginData);
 
           Toast.makeText(LoginActivity.this, "Anda berhasil masuk", Toast.LENGTH_SHORT).show();
@@ -138,7 +147,9 @@ public class LoginActivity extends AppCompatActivity {
           startActivity(intent);
           finish();
         } else {
+          //Toast.makeText(LoginActivity.this, "Terjadi kesalahan masuk", Toast.LENGTH_SHORT).show();
           Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+          signOutGoogle();
         }
       }
 
@@ -161,7 +172,7 @@ public class LoginActivity extends AppCompatActivity {
     loginCall.enqueue(new Callback<Login>() {
       @Override
       public void onResponse(Call<Login> call, Response<Login> response) {
-        if (response.body() != null && response.isSuccessful() && response.body().isStatus()) {
+        if (response.body() != null && response.isSuccessful()) {
           sessionManager = new SessionManager(LoginActivity.this);
           LoginData loginData = response.body().getLoginData();
           sessionManager.createLoginSession(loginData);
@@ -182,6 +193,14 @@ public class LoginActivity extends AppCompatActivity {
     });
     // end webservice
   }
+
+  private void signOutGoogle() {
+    mGoogleSignInClient.signOut()
+            .addOnCompleteListener(this, task -> {
+              Log.d(TAG, "onComplete: " + "google account has been sign out");
+            });
+  }
+
 
   private Boolean validateEmail() {
     String val = activityLoginBinding.etEmailLogin.getEditText().getText().toString();

@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="19dp"
         android:background="?attr/selectableItemBackground"
         android:onClick="@{() -> historyInterface.onItemClick(history)}">
 
@@ -38,9 +38,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:background="@drawable/btn_rounded"
-                    android:padding="5dp"
+                    android:backgroundTint="@{history.trackingId == 5 ? @color/colorDarkGrey : @color/colortrb}"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="1dp"
+                    android:padding="6dp"
                     android:text="@{history.statusTracking}"
                     android:textColor="#ffffff" />
             </LinearLayout>
