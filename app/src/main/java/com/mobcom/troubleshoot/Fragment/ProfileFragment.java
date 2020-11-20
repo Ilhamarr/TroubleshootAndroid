@@ -92,6 +92,7 @@ public class ProfileFragment extends Fragment {
       Toast.makeText(getContext(), "Anda berhasil keluar", Toast.LENGTH_SHORT).show();
     });
 
+    fragmentProfileBinding.AboutUs.setOnClickListener(v -> navController.navigate(R.id.action_profileFragment_to_aboutUsFragment));
     fragmentProfileBinding.feedback.setOnClickListener(v -> goToUrl("https://g.page/troubleshootid/review?gm"));
 
     fragmentProfileBinding.buttonTC.setOnClickListener(v -> navController.navigate(R.id.action_profileFragment_to_termConditionFragment));
