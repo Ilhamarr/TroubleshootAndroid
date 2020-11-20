@@ -217,7 +217,7 @@ public class OrderFragment extends Fragment {
       Intent intent = new Intent(getContext(), MapActivity.class);
       Bundle bundle = new Bundle();
 
-      bundle.putString(SimplePlacePicker.API_KEY, Config.PLACE_API_KEY);
+      bundle.putString(SimplePlacePicker.API_KEY, getString(R.string.maps_api_key));
       String country = "idn";
       String language = "en";
       bundle.putString(SimplePlacePicker.COUNTRY, country);

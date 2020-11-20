@@ -19,11 +19,11 @@
         android:usesCleartextTraffic="true">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDFB8LaF0_5FqlxNwTXGUCRbc4-4VqHZcM" />
+            android:value="@string/maps_api_key" />
 
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+<!--        <meta-data-->
+<!--            android:name="com.google.android.gms.version"-->
+<!--            android:value="@integer/google_play_services_version" />-->
 
         <activity android:name=".Activity.RegisterActivity"></activity>
         <activity android:name=".Activity.LoginActivity" />
@@ -36,9 +36,9 @@
         </activity>
         <activity android:name=".Activity.MainActivity"
             android:windowSoftInputMode="adjustPan">
-            <meta-data
-                android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyDFB8LaF0_5FqlxNwTXGUCRbc4-4VqHZcM" />
+<!--            <meta-data-->
+<!--                android:name="com.google.android.geo.API_KEY"-->
+<!--                android:value="AIzaSyDFB8LaF0_5FqlxNwTXGUCRbc4-4VqHZcM" />-->
         </activity>
     </application>
 
