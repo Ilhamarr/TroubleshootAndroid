@@ -13,7 +13,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,21 +23,30 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:src="@drawable/teamwork" />
 
-            <androidx.cardview.widget.CardView
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/fotoProfile"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginLeft="24dp"
-                android:layout_marginTop="-74dp"
-                app:cardCornerRadius="150dp">
-                <ImageView
-                    android:id="@+id/fotoProfile"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/invertlogos" />
-            </androidx.cardview.widget.CardView>
+                android:layout_marginTop="-70dp"
+                android:src="@drawable/invertlogos" />
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="150dp"-->
+<!--                android:layout_marginLeft="24dp"-->
+<!--                android:layout_marginTop="-74dp"-->
+<!--                app:cardCornerRadius="150dp">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/fotoProfile"-->
+<!--                    android:layout_width="150dp"-->
+<!--                    android:layout_height="150dp"-->
+<!--                    android:src="@drawable/invertlogos" />-->
+<!--            </androidx.cardview.widget.CardView>-->
 
             <TextView
                 android:id="@+id/nama_user"
@@ -93,8 +103,8 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:drawableLeft="@drawable/ic_profile2"
-                android:drawablePadding="10dp"
                 android:drawableRight="@drawable/ic_chevron_right_"
+                android:drawablePadding="10dp"
                 android:padding="8dp"
                 android:text="Edit Profile"
                 android:textSize="16dp"
@@ -107,8 +117,8 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:drawableLeft="@drawable/ic_dorder"
-                android:drawablePadding="10dp"
                 android:drawableRight="@drawable/ic_chevron_right_"
+                android:drawablePadding="10dp"
                 android:padding="8dp"
                 android:text="Order History"
                 android:textSize="16dp"
@@ -117,20 +127,20 @@
 
             <TextView
                 android:id="@+id/tv_logout"
-                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
+                android:clickable="true"
                 android:drawableLeft="@drawable/ic_exit"
-                android:drawablePadding="10dp"
                 android:drawableRight="@drawable/ic_chevron_right_"
+                android:drawablePadding="10dp"
+                android:focusable="true"
                 android:padding="8dp"
                 android:text="Logout"
                 android:textColor="#D44638"
                 android:textSize="16dp"
-                android:textStyle="bold"
-                android:focusable="true" />
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -150,8 +160,8 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:drawableLeft="@drawable/ic_security"
-                android:drawablePadding="10dp"
                 android:drawableRight="@drawable/ic_chevron_right_"
+                android:drawablePadding="10dp"
                 android:padding="8dp"
                 android:text="Term and Condition"
                 android:textSize="16dp"
@@ -165,8 +175,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="15dp"
                 android:drawableLeft="@drawable/ic_star_border_"
-                android:drawablePadding="10dp"
                 android:drawableRight="@drawable/ic_chevron_right_"
+                android:drawablePadding="10dp"
                 android:padding="8dp"
                 android:text="Feedback Troubleshoot.id"
                 android:textSize="16dp"
