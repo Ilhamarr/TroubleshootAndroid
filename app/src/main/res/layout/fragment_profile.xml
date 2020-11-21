@@ -154,6 +154,20 @@
                 android:textSize="18dp" />
 
             <TextView
+                android:id="@+id/About_Us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/ic_baseline_info_24"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/ic_chevron_right_"
+                android:padding="8dp"
+                android:text="About us"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/buttonTC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
