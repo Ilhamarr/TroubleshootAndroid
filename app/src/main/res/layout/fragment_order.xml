@@ -120,6 +120,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:hint="Seri Laptop"
+                        android:inputType="textCapSentences"
                         android:textSize="14sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -150,7 +151,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:hint="Detail Permasalahan"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:inputType="textCapSentences"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -371,6 +373,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="12sp"
                             android:hint="Nama"
+                            android:inputType="textPersonName"
                             android:textSize="12sp" />
                     </LinearLayout>
 
@@ -391,6 +394,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="12sp"
                             android:hint="Email"
+                            android:inputType="textEmailAddress"
                             android:textSize="12sp" />
                     </LinearLayout>
 
@@ -411,6 +415,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="12sp"
                             android:hint="Nomor Telepon"
+                            android:inputType="phone"
                             android:textSize="12sp" />
                     </LinearLayout>
                 </LinearLayout>

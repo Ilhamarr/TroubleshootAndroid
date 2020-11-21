@@ -124,13 +124,13 @@
         android:id="@+id/ourService"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageBanner"
-        app:layout_constraintVertical_bias="0.322">
+        app:layout_constraintTop_toBottomOf="@id/imageBanner">
 
         <TextView
             android:layout_width="match_parent"
@@ -140,15 +140,15 @@
 
         <Button
             android:id="@+id/btnPesanSekarang"
-            android:layout_width="320dp"
+            android:layout_width="325dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:background="@drawable/btn_rounded"
+            android:clickable="true"
             android:letterSpacing="0.15"
             android:padding="5dp"
             android:text="Pesan Sekarang"
-            android:clickable="true"
             android:textColor="@color/colordivider" />
 
         <TextView
@@ -165,9 +165,9 @@
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:background="@drawable/btn_wa"
+            android:clickable="true"
             android:letterSpacing="0.15"
             android:padding="5dp"
-            android:clickable="true"
             android:text="konsultasikan Sekarang"
             android:textColor="@color/colordivider" />
     </LinearLayout>

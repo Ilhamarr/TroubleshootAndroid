@@ -172,7 +172,7 @@ public class LoginActivity extends AppCompatActivity {
     loginCall.enqueue(new Callback<Login>() {
       @Override
       public void onResponse(Call<Login> call, Response<Login> response) {
-        if (response.body() != null && response.isSuccessful()) {
+        if (response.body().isStatus() && response.isSuccessful()) {
           sessionManager = new SessionManager(LoginActivity.this);
           LoginData loginData = response.body().getLoginData();
           sessionManager.createLoginSession(loginData);

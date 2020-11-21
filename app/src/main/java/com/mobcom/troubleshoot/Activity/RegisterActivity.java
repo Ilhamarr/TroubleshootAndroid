@@ -69,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
     registerCall.enqueue(new Callback<Register>() {
       @Override
       public void onResponse(Call<Register> call, Response<Register> response) {
-        if (response.body() != null && response.isSuccessful() && response.body().isStatus()) {
+        if (response.body().isStatus() && response.isSuccessful()) {
           Toast.makeText(RegisterActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
         } else {
           Toast.makeText(RegisterActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();

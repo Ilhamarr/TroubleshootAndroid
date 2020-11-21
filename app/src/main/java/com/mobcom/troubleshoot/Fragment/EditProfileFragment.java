@@ -74,6 +74,10 @@ public class EditProfileFragment extends Fragment {
     picture = sessionManager.getUserDetail().get(SessionManager.PICTURE);
     provider = sessionManager.getUserDetail().get(SessionManager.PROVIDER);
 
+    if (provider.equals("google")){
+      fragmentEditProfileBinding.EdtEmail.setEnabled(false);
+    }
+
     if (picture != null) {
       try {
         Glide.with(getContext()).load(picture).into(fragmentEditProfileBinding.edtFotoProfile);

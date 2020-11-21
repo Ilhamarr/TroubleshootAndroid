@@ -1,5 +1,7 @@
 package com.mobcom.troubleshoot.Fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -101,13 +103,24 @@ public class ProfileFragment extends Fragment {
     fragmentProfileBinding.orderhistory.setOnClickListener(v -> navController.navigate(R.id.action_profileFragment_to_orderHistoryFragment));
 
     fragmentProfileBinding.tvLogout.setOnClickListener(v -> {
-      sessionManager.logoutSession();
-      if (provider.equals("google")){
-        signOutGoogle();
-      }
+      AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+      builder.setMessage("Anda akan keluar dari akun ini");
+      builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+          sessionManager.logoutSession();
+          if (provider.equals("google")){
+            signOutGoogle();
+          }
 
-      moveToLogin();
-      Toast.makeText(getContext(), "Anda berhasil keluar", Toast.LENGTH_SHORT).show();
+          moveToLogin();
+          Toast.makeText(getContext(), "Anda berhasil keluar", Toast.LENGTH_SHORT).show();
+        }
+      });
+      builder.setNegativeButton("Cancel", null);
+      AlertDialog alertDialog = builder.create();
+      alertDialog.show();
+
     });
 
     fragmentProfileBinding.feedback.setOnClickListener(v -> goToUrl("https://g.page/troubleshootid/review?gm"));
