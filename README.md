@@ -11,7 +11,7 @@ Now, continue to Fase 2 Development:
 |-----------------------|-------------------------------------------------------------------|-------|----------|
 | Saya bisa Login Menggunakan Google          | Integrasi login google       | Bagus | Complete |
 | Bisa Merubah isi profil      | Integrasi edit profil                                | Vivi  | To do |
-| Saya bisa cetak Invoice setelah Perbaikan Selesai           | integrasi cetak invoice            | Ilham | Invoice |
+| Saya bisa cetak Invoice setelah Perbaikan Selesai           | integrasi cetak invoice            | Ilham | Progress|
 
 
 ## Debug Application:
