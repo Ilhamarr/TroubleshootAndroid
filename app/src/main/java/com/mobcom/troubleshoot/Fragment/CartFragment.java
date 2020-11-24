@@ -26,6 +26,7 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
   private FragmentCartBinding fragmentCartBinding;
   private int cartQuantity = 0;
   private NavController navController;
+  private int kondisi = 1;
 
   public CartFragment() {
     // Required empty public constructor
@@ -56,6 +57,15 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
     // setup helper
     Helper helper = new Helper();
 
+    if (getArguments() != null){
+      CartFragmentArgs args = CartFragmentArgs.fromBundle(getArguments());
+      kondisi = args.getKondisi();
+    }
+
+    if (kondisi == 2) {
+      fragmentCartBinding.CheckoutButton.setText("Kembali");
+    }
+
     // submit cart item dan get jumlah produk di cart
     serviceViewModel.getCart().observe(getViewLifecycleOwner(), cartItems -> {
 
@@ -77,7 +87,12 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
             Toast.makeText(getContext(), "Masukkan item layanan terlebih dahulu", Toast.LENGTH_SHORT).show();
           }
           else{
-            navController.navigate(R.id.action_cartFragment_to_orderFragment);
+            if (kondisi == 1) {
+              navController.navigate(R.id.action_cartFragment_to_orderFragment);
+            }
+            else{
+              navController.popBackStack();
+            }
           }
         }
       });

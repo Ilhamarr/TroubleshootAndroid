@@ -43,6 +43,7 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
   private NavController navController;
   private int cartQuantity = 0;
   private Window window;
+  private int kondisi = 1;
 
   public ServiceFragment() {
     // Required empty public constructor
@@ -85,6 +86,15 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
     // load list layanan
     retrieveData();
 
+    if (getArguments() != null){
+      ServiceFragmentArgs args = ServiceFragmentArgs.fromBundle(getArguments());
+      kondisi = args.getKondisi();
+    }
+
+    if (kondisi == 2) {
+      fragmentServiceBinding.checkoutButton.setText("Pesan Sekarang");
+    }
+
     // get jumlah produk (didalem cart)
     serviceViewModel.getCart().observe(getViewLifecycleOwner(), new Observer<List<CartItem>>() {
       @Override
@@ -98,7 +108,13 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
               Toast.makeText(getContext(), "Masukkan item layanan terlebih dahulu", Toast.LENGTH_SHORT).show();
             }
             else {
-              navController.navigate(R.id.action_serviceFragment_to_orderFragment);
+              if (kondisi == 1) {
+                navController.navigate(R.id.action_serviceFragment_to_orderFragment);
+              }
+              else{
+                navController.popBackStack();
+              }
+
             }
           }
         });
@@ -124,7 +140,12 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
 
     // cart button
     fragmentServiceBinding.cart.setOnClickListener((v) -> {
-      navController.navigate(R.id.action_serviceFragment_to_cartFragment);
+      //navController.navigate(R.id.action_serviceFragment_to_cartFragment);
+      //OrderConfirmationFragmentDirections.ActionOrderConfirmationFragmentToServiceFragment action = OrderConfirmationFragmentDirections.actionOrderConfirmationFragmentToServiceFragment();
+      //ServiceFragmentDirections.ActionServiceFragmentToCartFragment action = ServiceFragmentDirections.actionServiceFragmentToCartFragment();
+      ServiceFragmentDirections.ActionServiceFragmentToCartFragment action = ServiceFragmentDirections.actionServiceFragmentToCartFragment();
+      action.setKondisi(kondisi);
+      navController.navigate(action);
     });
 
     // checkout button (pesan sekarang)
@@ -153,5 +174,18 @@ public class ServiceFragment extends Fragment implements ServiceListAdapter.Serv
   public void addItem(ServiceModel service) {
     //Log.d(TAG, "addItem: " + service.toString());
     boolean isAdded = serviceViewModel.addItemToCart(service);
+    if (isAdded) {
+      Snackbar.make(requireView(), "'" +service.getNama_kerusakan()+"'" + " ditambahkan ke keranjang.", Snackbar.LENGTH_LONG)
+              .setAction("keranjang", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                  navController.navigate(R.id.action_serviceFragment_to_cartFragment);
+                }
+              })
+              .show();
+    } else {
+      Snackbar.make(requireView(), "Sudah ada di keranjang.", Snackbar.LENGTH_LONG)
+              .show();
+    }
   }
 }

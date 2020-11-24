@@ -79,6 +79,7 @@ public class ProfileFragment extends Fragment {
     fragmentProfileBinding.teleponUser.setText(telepon);
     
     // set foto profile
+    Log.d(TAG, "onViewCreated: picture :" +picture);
     if (picture != null){
       try {
         Glide.with(getContext()).load(picture).into(fragmentProfileBinding.fotoProfile);

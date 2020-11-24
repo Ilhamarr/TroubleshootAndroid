@@ -93,7 +93,6 @@
                             android:layout_marginRight="10dp"
                             android:background="@drawable/btn_rounded"
                             android:clickable="true"
-                            android:onClick="@{() -> serviceInterface.addItem(service)}"
                             android:padding="3dp"
                             android:text="Tambah"
                             android:textAllCaps="false"

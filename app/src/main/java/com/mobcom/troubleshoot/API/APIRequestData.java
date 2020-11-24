@@ -42,8 +42,7 @@ public interface APIRequestData {
           @Field("email") String email,
           @Field("oauth_id") String oauth_id,
           @Field("first_name") String first_name,
-          @Field("last_name") String last_name,
-          @Field("picture") String picture
+          @Field("last_name") String last_name
   );
 
   @FormUrlEncoded
@@ -120,6 +119,8 @@ public interface APIRequestData {
           @Part("phone") RequestBody phone,
           @Part("address") RequestBody address
   );
+
+  @Multipart
   @POST("Editprofile")
   Call<ResponseEditProfile> editProfileWithPicture(
           @Part("account_id") RequestBody account_id,

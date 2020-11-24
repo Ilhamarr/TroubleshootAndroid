@@ -48,7 +48,6 @@
         android:layout_marginTop="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView"
         app:layout_constraintVertical_bias="0.0">
@@ -71,60 +70,60 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-<!--            <TextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginBottom="6dp"-->
-<!--                android:justificationMode="inter_word"-->
-<!--                android:text="Troubleshoot.id adalah sebuah usaha yang bergerak dibidang servis komputer maupun laptop. Dengan hadirnya platform mobile aplikasi ini, dapat membuat pelanggan dengan mudah untuk mendapatkan layanan service yang cepat dan terpercaya."-->
-<!--                android:textSize="11sp" />-->
+            <!--            <TextView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginBottom="6dp"-->
+            <!--                android:justificationMode="inter_word"-->
+            <!--                android:text="Troubleshoot.id adalah sebuah usaha yang bergerak dibidang servis komputer maupun laptop. Dengan hadirnya platform mobile aplikasi ini, dapat membuat pelanggan dengan mudah untuk mendapatkan layanan service yang cepat dan terpercaya."-->
+            <!--                android:textSize="11sp" />-->
 
 
-<!--            <TextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginBottom="18dp"-->
-<!--                android:justificationMode="inter_word"-->
-<!--                android:text="Saat ini para pelanggan tidak perlu lagi pergi jauh ke gerai servis untuk memperbaiki maupun upgrade laptop atau komputer kesayangan. Hanya dengan klik di aplikasi Troubleshoot.id, permasalahan pelanggan akan langsung ditangani oleh teknisi yang datang kerumah."-->
-<!--                android:textSize="11sp" />-->
+            <!--            <TextView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginBottom="18dp"-->
+            <!--                android:justificationMode="inter_word"-->
+            <!--                android:text="Saat ini para pelanggan tidak perlu lagi pergi jauh ke gerai servis untuk memperbaiki maupun upgrade laptop atau komputer kesayangan. Hanya dengan klik di aplikasi Troubleshoot.id, permasalahan pelanggan akan langsung ditangani oleh teknisi yang datang kerumah."-->
+            <!--                android:textSize="11sp" />-->
 
 
-<!--            <TextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginBottom="6dp"-->
-<!--                android:justificationMode="inter_word"-->
-<!--                android:text="Kontak"-->
-<!--                android:textAlignment="inherit"-->
-<!--                android:textColor="@color/colortrb"-->
-<!--                android:textSize="14sp" />-->
+            <!--            <TextView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginBottom="6dp"-->
+            <!--                android:justificationMode="inter_word"-->
+            <!--                android:text="Kontak"-->
+            <!--                android:textAlignment="inherit"-->
+            <!--                android:textColor="@color/colortrb"-->
+            <!--                android:textSize="14sp" />-->
 
-<!--            <TextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:drawableLeft="@drawable/ic_phone_small"-->
-<!--                android:gravity="center_vertical"-->
-<!--                android:justificationMode="inter_word"-->
-<!--                android:text=" 085156811345"-->
-<!--                android:textSize="11sp" />-->
+            <!--            <TextView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:drawableLeft="@drawable/ic_phone_small"-->
+            <!--                android:gravity="center_vertical"-->
+            <!--                android:justificationMode="inter_word"-->
+            <!--                android:text=" 085156811345"-->
+            <!--                android:textSize="11sp" />-->
 
-<!--            <TextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:drawableLeft="@drawable/ic_email_small"-->
-<!--                android:gravity="center_vertical"-->
-<!--                android:justificationMode="inter_word"-->
-<!--                android:text=" troubleshootdotid@gmail.com"-->
-<!--                android:textSize="11sp" />-->
+            <!--            <TextView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:drawableLeft="@drawable/ic_email_small"-->
+            <!--                android:gravity="center_vertical"-->
+            <!--                android:justificationMode="inter_word"-->
+            <!--                android:text=" troubleshootdotid@gmail.com"-->
+            <!--                android:textSize="11sp" />-->
 
-<!--            <TextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginBottom="18dp"-->
-<!--                android:drawableLeft="@drawable/ic_location_small"-->
-<!--                android:justificationMode="inter_word"-->
-<!--                android:text="Universitas Negeri Jakarta Kampus A, Gedung Dewi Sartika Lt.5, Jl. Rawamangun Muka No.18,RT.11/RW.14 Rawamangun, Jakarta Timur 13220"-->
-<!--                android:textSize="11sp" />-->
+            <!--            <TextView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginBottom="18dp"-->
+            <!--                android:drawableLeft="@drawable/ic_location_small"-->
+            <!--                android:justificationMode="inter_word"-->
+            <!--                android:text="Universitas Negeri Jakarta Kampus A, Gedung Dewi Sartika Lt.5, Jl. Rawamangun Muka No.18,RT.11/RW.14 Rawamangun, Jakarta Timur 13220"-->
+            <!--                android:textSize="11sp" />-->
 
 
             <TextView
@@ -248,6 +247,7 @@
                 android:textAlignment="inherit"
                 android:textColor="@color/colortrb"
                 android:textSize="14sp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

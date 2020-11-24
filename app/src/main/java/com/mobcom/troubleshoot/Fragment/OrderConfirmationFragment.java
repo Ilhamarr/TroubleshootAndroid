@@ -123,10 +123,15 @@ public class OrderConfirmationFragment extends Fragment {
     });
 
     // button edit form order
-    fragmentOrderConfirmationBinding.ubahDetailPesanan.setOnClickListener(v -> navController.navigate(R.id.action_orderConfirmationFragment_to_orderFragment));
+    fragmentOrderConfirmationBinding.ubahDetailPesanan.setOnClickListener(v -> navController.popBackStack());
 
     // button edit cart
-    fragmentOrderConfirmationBinding.ubahLayanan.setOnClickListener(v -> navController.navigate(R.id.action_orderConfirmationFragment_to_serviceFragment));
+    fragmentOrderConfirmationBinding.ubahLayanan.setOnClickListener(v -> {
+      //navController.navigate(R.id.action_orderConfirmationFragment_to_serviceFragment);
+      OrderConfirmationFragmentDirections.ActionOrderConfirmationFragmentToServiceFragment action = OrderConfirmationFragmentDirections.actionOrderConfirmationFragmentToServiceFragment();
+      action.setKondisi(2);
+      navController.navigate(action);
+    });
 
     // button back
     fragmentOrderConfirmationBinding.backButton.setOnClickListener(v -> navController.popBackStack());

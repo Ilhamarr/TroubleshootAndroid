@@ -112,11 +112,13 @@ public class LoginActivity extends AppCompatActivity {
 
         Log.d(TAG, "handleSignInResult: "+personEmail +" "+personGivenName+" "+personFamilyName+" "+personId+" "+personPhoto);
 
-        if (personPhoto == null){
-          loginGoogle(personEmail, personId, personGivenName, personFamilyName, null);
-        } else{
-          loginGoogle(personEmail, personId, personGivenName, personFamilyName, personPhoto.toString());
-        }
+//        if (personPhoto == null){
+//          loginGoogle(personEmail, personId, personGivenName, personFamilyName, null);
+//        } else{
+//          loginGoogle(personEmail, personId, personGivenName, personFamilyName, personPhoto.toString());
+//        }
+
+        loginGoogle(personEmail, personId, personGivenName, personFamilyName);
 
 
 
@@ -130,9 +132,9 @@ public class LoginActivity extends AppCompatActivity {
     }
   }
 
-  private void loginGoogle(String email, String oauth_id, String firstname, String lastname, String picture){
+  private void loginGoogle(String email, String oauth_id, String firstname, String lastname){
     ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
-    Call<Login> loginGoogleCall = ardData.loginGoogleResponse(email,oauth_id,firstname,lastname,picture);
+    Call<Login> loginGoogleCall = ardData.loginGoogleResponse(email,oauth_id,firstname,lastname);
     loginGoogleCall.enqueue(new Callback<Login>() {
       @Override
       public void onResponse(Call<Login> call, Response<Login> response) {

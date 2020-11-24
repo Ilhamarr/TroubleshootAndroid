@@ -32,6 +32,7 @@
     <string name="Telepon">telepon</string>
     <string name="Alamat">alamat</string>
     <string name="order_service">Service</string>
+    <string name="toast_image_intent_null">Image picker option is missing!</string>
 
     <string-array name="quantity_string_array">
         <item>1</item>

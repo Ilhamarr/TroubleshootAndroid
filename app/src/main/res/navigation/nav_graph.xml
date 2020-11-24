@@ -37,6 +37,10 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="kondisi"
+            app:argType="integer"
+            android:defaultValue="1" />
     </fragment>
     <fragment
         android:id="@+id/orderHistoryFragment"
@@ -89,6 +93,10 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="kondisi"
+            app:argType="integer"
+            android:defaultValue="1" />
     </fragment>
     <fragment
         android:id="@+id/orderFragment"
@@ -108,13 +116,6 @@
         android:name="com.mobcom.troubleshoot.Fragment.OrderConfirmationFragment"
         android:label="fragment_order_confirmation"
         tools:layout="@layout/fragment_order_confirmation" >
-        <action
-            android:id="@+id/action_orderConfirmationFragment_to_serviceFragment"
-            app:destination="@id/serviceFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
         <argument
             android:name="merkLaptop"
             app:argType="string"
@@ -160,13 +161,6 @@
             app:argType="string"
             android:defaultValue="default" />
         <action
-            android:id="@+id/action_orderConfirmationFragment_to_orderFragment"
-            app:destination="@id/orderFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
             android:id="@+id/action_orderConfirmationFragment_to_orderSuccessFragment"
             app:destination="@id/orderSuccessFragment"
             app:enterAnim="@anim/slide_in_right"
@@ -182,6 +176,13 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_orderConfirmationFragment_to_serviceFragment"
+            app:destination="@id/serviceFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/orderSuccessFragment"

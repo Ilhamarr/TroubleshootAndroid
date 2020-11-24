@@ -36,24 +36,18 @@ public class RegisterActivity extends AppCompatActivity {
     //getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
     //    status bar hide end
 
-    activityRegisterBinding.btnRegister.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        firstName = activityRegisterBinding.etFirstNameReg.getEditText().getText().toString();
-        lastname = activityRegisterBinding.etLastNameReg.getEditText().getText().toString();
-        email = activityRegisterBinding.etEmailReg.getEditText().getText().toString();
-        password = activityRegisterBinding.etPasswordReg.getEditText().getText().toString();
-        register(firstName, lastname, email, password);
-      }
+    activityRegisterBinding.btnRegister.setOnClickListener(v -> {
+      firstName = activityRegisterBinding.etFirstNameReg.getEditText().getText().toString();
+      lastname = activityRegisterBinding.etLastNameReg.getEditText().getText().toString();
+      email = activityRegisterBinding.etEmailReg.getEditText().getText().toString();
+      password = activityRegisterBinding.etPasswordReg.getEditText().getText().toString();
+      register(firstName, lastname, email, password);
     });
 
-    activityRegisterBinding.gotoLogin.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-        startActivity(intent);
-        finish();
-      }
+    activityRegisterBinding.gotoLogin.setOnClickListener(v -> {
+      Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+      startActivity(intent);
+      finish();
     });
 
   }

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
@@ -65,6 +66,37 @@ public class MainActivity extends AppCompatActivity {
     bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
     navController = Navigation.findNavController(this, R.id.nav_host_fragment);
     NavigationUI.setupWithNavController(bottomNavigationView, navController);
+
+    // coba coba
+    NavOptions navOptions = new NavOptions.Builder()
+            .setLaunchSingleTop(true)
+            .setEnterAnim(R.anim.slide_in_right)
+            .setExitAnim(R.anim.slide_out_left)
+            .setPopEnterAnim(R.anim.slide_in_right)
+            .setPopExitAnim(R.anim.slide_out_left)
+            .setPopUpTo(navController.getGraph().getStartDestination(), false)
+            .build();
+
+//    bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+//      boolean handled = false;
+//
+//      if (navController.getGraph().findNode(item.getItemId()) != null) {
+//        navController.navigate(item.getItemId());
+//        handled = true;
+//      }
+//      return handled;
+//    });
+
+    bottomNavigationView.setOnNavigationItemReselectedListener(Item -> {
+      bottomNavigationView.findViewById(Item.getItemId()).setEnabled(false);
+    });
+
+  }
+
+  @Override
+  public void onBackPressed() {
+    bottomNavigationView.getMenu().getItem(0).setChecked(true);
+    super.onBackPressed();
   }
 
   private void moveToLogin() {

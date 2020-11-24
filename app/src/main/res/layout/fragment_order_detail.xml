@@ -312,10 +312,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="43dp"
-                    android:background="@drawable/btn_rounded"
                     android:padding="5dp"
                     android:text="@{historyViewModel.history.statusTracking}"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="@{historyViewModel.history.trackingId == 5 ? @color/colorRed : @color/colortrb}"
                     android:textSize="13sp" />
 
                 <!-- Status pembayaran-->
@@ -346,10 +345,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="43dp"
-                    android:background="@drawable/btn_yellow"
                     android:padding="5dp"
                     android:text="@{historyViewModel.history.paymentStatus}"
-                    android:textColor="#000000"
+                    android:textColor="@{historyViewModel.history.statusPayment == 5 ? @color/colorRed : @color/colortrb}"
                     android:textSize="13sp" />
 
 

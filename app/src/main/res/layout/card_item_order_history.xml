@@ -38,13 +38,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/btn_rounded"
-                    android:backgroundTint="@{history.trackingId == 5 ? @color/colorDarkGrey : @color/colortrb}"
                     android:layout_marginTop="2dp"
                     android:layout_marginRight="1dp"
                     android:padding="6dp"
                     android:text="@{history.statusTracking}"
-                    android:textColor="#ffffff" />
+                    android:textColor="@{history.trackingId == 5 ? @color/colorRed : @color/colortrb}" />
             </LinearLayout>
 
 
