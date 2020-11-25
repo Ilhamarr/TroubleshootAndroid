@@ -10,7 +10,7 @@ Now, continue to Fase 2 Development:
 | Story                 | Task                                                              | Actor | Status   |
 |-----------------------|-------------------------------------------------------------------|-------|----------|
 | Saya bisa Login Menggunakan Google          | Integrasi login google       | Bagus | Complete |
-| Bisa Merubah isi profil      | Integrasi edit profil                                | Vivi  | To do |
+| Bisa Merubah isi profil      | Integrasi edit profil                                | Vivi  | Finish |
 | Saya bisa cetak Invoice setelah Perbaikan Selesai           | integrasi cetak invoice            | Ilham | Invoice |
 
 
