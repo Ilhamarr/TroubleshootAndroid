@@ -94,7 +94,7 @@
                             android:src="@drawable/ic_baseline_code" />
 
                         <TextView
-                            android:id="@+id/Txt_kodebooking"
+                            android:id="@+id/Txt_kode"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -156,7 +156,7 @@
                             android:src="@drawable/ic_baseline_local_phone_24" />
 
                         <TextView
-                            android:id="@+id/Txt_NomorTelepom"
+                            android:id="@+id/Txt_NomorTelepon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
