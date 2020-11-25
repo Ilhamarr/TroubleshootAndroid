@@ -148,10 +148,12 @@ public class OrderFragment extends Fragment {
       if (checkedId == fragmentOrderBinding.btnAntarJemput.getId()) {
 //        fragmentOrderBinding.alamatTempatBertemu.getText().clear();
 //        fragmentOrderBinding.alamatTempatBertemu.setHint("Masukan alamat anda");
+        fragmentOrderBinding.locationButton.setEnabled(true);
         fragmentOrderBinding.alamatTempatBertemu.setEnabled(true);
         fragmentOrderBinding.alamatTempatBertemu.setText("");
         openPlacePicker();
       } else {
+        fragmentOrderBinding.locationButton.setEnabled(false);
         fragmentOrderBinding.alamatTempatBertemu.setText("Kampus A UNJ, Jl. Rawamangun Muka, Gedung Dewi Sartika Lt.5");
         fragmentOrderBinding.alamatTempatBertemu.setEnabled(false);
       }
