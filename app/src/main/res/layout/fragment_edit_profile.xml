@@ -237,19 +237,24 @@
         </LinearLayout>
     </LinearLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/Simpan_perubahan"
         android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:background="@drawable/btn_rounded"
+        android:layout_height="wrap_content"
+        app:cornerRadius="20dp"
+        android:padding="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:letterSpacing="0.15"
         android:text="save change"
         android:textColor="@color/colordivider"
-        android:textSize="13sp"
+        app:backgroundTint="@color/colortrb"
+        app:rippleColor="?attr/colorOnSecondary"
         app:layout_constraintBottom_toTopOf="@id/btn_ubahpassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.120000005" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btn_ubahpassword"

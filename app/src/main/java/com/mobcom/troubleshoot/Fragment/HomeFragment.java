@@ -27,7 +27,6 @@ public class HomeFragment extends Fragment {
 
   public HomeFragment() {
     // Required empty public constructor
-
   }
 
   @Override
@@ -56,17 +55,10 @@ public class HomeFragment extends Fragment {
     navController = Navigation.findNavController(view);
 
     // button pesan sekarang
-    fragmentHomeBinding.btnPesanSekarang.setOnClickListener((v) -> {
-      navController.navigate(R.id.action_homeFragment_to_serviceFragment);
-    });
+    fragmentHomeBinding.btnPesanSekarang.setOnClickListener(v -> navController.navigate(R.id.action_homeFragment_to_serviceFragment));
 
     // button konsultasi
-    fragmentHomeBinding.btnKonsul.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        goToUrl("https://api.whatsapp.com/send/?phone=6285156811345&text&app_absent=0");
-      }
-    });
+    fragmentHomeBinding.btnKonsul.setOnClickListener(v -> goToUrl("https://api.whatsapp.com/send/?phone=6285156811345&text&app_absent=0"));
   }
 
   private void goToUrl(String s) {

@@ -15,7 +15,8 @@
         android:layout_marginTop="16dp"
         android:src="@drawable/logosampling"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/logo_trb" />
 
     <ImageView
         android:id="@+id/backButton"
@@ -25,7 +26,8 @@
         android:layout_marginTop="16dp"
         android:src="@drawable/ic_baseline_arrow_back_ios_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/tombol_back" />
 
     <TextView
         android:id="@+id/textView"
@@ -33,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="20dp"
-        android:text="Konfirmasi"
+        android:text="@string/konfirmasi"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +87,8 @@
                             android:layout_width="160dp"
                             android:layout_height="wrap_content"
                             android:letterSpacing="0.098"
-                            android:text="Jadwal Service"
+                            android:layout_gravity="center"
+                            android:text="@string/jadwal_service"
                             android:textColor="@color/colortrb"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -93,19 +96,22 @@
                         <LinearLayout
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="right"
+                            android:gravity="end"
                             android:orientation="horizontal">
 
-                            <Button
+                            <com.google.android.material.button.MaterialButton
                                 android:id="@+id/ubah_detail_pesanan"
-                                android:layout_width="64dp"
-                                android:layout_height="28dp"
-                                android:layout_gravity="right"
-                                android:layout_marginRight="10dp"
-                                android:background="@drawable/btn_rounded"
-                                android:text="Ubah"
-                                android:textColor="@color/colordivider"
-                                android:textSize="12sp" />
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:clickable="true"
+                                android:focusable="true"
+                                app:cornerRadius="15dp"
+                                android:layout_marginEnd="10dp"
+                                android:text="@string/ubah"
+                                app:rippleColor="?attr/colorOnSecondary"
+                                app:shapeAppearance="?attr/shapeAppearanceSmallComponent"
+                                android:textColor="@color/colordivider" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -135,7 +141,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginStart="12dp"
-                                android:text="Jum'at, 20-4-2020" />
+                                android:text="@string/tanggal" />
 
                             <TextView
                                 android:id="@+id/Txt_Jam"
@@ -143,7 +149,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginStart="12dp"
-                                android:text="16:00" />
+                                android:text="@string/jam" />
                         </LinearLayout>
 
                         <!--     Nama     -->
@@ -165,7 +171,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginStart="12dp"
-                                android:text="Ilham Arrosyid" />
+                                android:text="@string/nama" />
                         </LinearLayout>
                         <!--    Email      -->
                         <LinearLayout
@@ -186,7 +192,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginStart="12dp"
-                                android:text="Ilhamarr40gmail.com" />
+                                android:text="@string/email" />
                         </LinearLayout>
                         <!--    Telepon      -->
                         <LinearLayout
@@ -207,7 +213,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginStart="12dp"
-                                android:text="081288795069" />
+                                android:text="@string/nomor_telepon" />
                         </LinearLayout>
                         <!--    Telepon      -->
                         <LinearLayout
@@ -228,7 +234,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginStart="12dp"
-                                android:text="Kampus A UNJ, Jl. Rawamangun Muka, Gedung Dewi Sartika Lt.5" />
+                                android:text="@string/Alamat" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -258,7 +264,8 @@
                             android:layout_width="160dp"
                             android:layout_height="wrap_content"
                             android:letterSpacing="0.098"
-                            android:text="Pesanan"
+                            android:text="@string/pesanan"
+                            android:layout_gravity="center"
                             android:textColor="@color/colortrb"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -266,19 +273,22 @@
                         <LinearLayout
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="right"
+                            android:gravity="end"
                             android:orientation="horizontal">
 
-                            <Button
+                            <com.google.android.material.button.MaterialButton
                                 android:id="@+id/ubah_layanan"
-                                android:layout_width="64dp"
-                                android:layout_height="28dp"
-                                android:layout_gravity="right"
-                                android:layout_marginRight="10dp"
-                                android:background="@drawable/btn_rounded"
-                                android:text="Ubah"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:clickable="true"
+                                android:focusable="true"
+                                app:cornerRadius="15dp"
+                                android:text="@string/ubah"
                                 android:textColor="@color/colordivider"
-                                android:textSize="12sp" />
+                                app:rippleColor="?attr/colorOnSecondary"
+                                app:shapeAppearance="?attr/shapeAppearanceSmallComponent"
+                                />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -306,55 +316,6 @@
                         </androidx.core.widget.NestedScrollView>
                     </LinearLayout>
 
-
-<!--                    <View-->
-<!--                        android:id="@+id/divider5"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="1dp"-->
-<!--                        android:background="@color/colortrb" />-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:paddingBottom="16dp">-->
-
-
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_gravity="center_vertical"-->
-<!--                            android:orientation="horizontal"-->
-<!--                            android:paddingLeft="16dp"-->
-<!--                            android:paddingTop="16dp"-->
-<!--                            android:paddingRight="16dp">-->
-
-<!--                            <TextView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:text="TOTAL"-->
-<!--                                android:textSize="16dp"-->
-<!--                                android:textStyle="bold" />-->
-
-
-<!--                            <LinearLayout-->
-<!--                                android:layout_width="fill_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:gravity="right"-->
-<!--                                android:orientation="horizontal">-->
-<!--                                <TextView-->
-<!--                                    android:id="@+id/tvorderTotalTextView"-->
-<!--                                    android:layout_width="wrap_content"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:layout_gravity="right"-->
-<!--                                    android:text="110.000"-->
-<!--                                    android:textSize="16dp"-->
-<!--                                    android:textStyle="bold" />-->
-<!--                            </LinearLayout>-->
-
-
-<!--                        </LinearLayout>-->
-
-<!--                    </LinearLayout>-->
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -374,7 +335,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Dengan memencet tombol 'Pesan Sekarang' Anda setuju dengan Syarat dan Ketentuan yang Berlaku." />
+                        android:text="@string/ketentuan" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
@@ -405,8 +366,10 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:orientation="vertical"
-                android:paddingLeft="10dp">
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -416,22 +379,22 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Total"
+                        android:text="@string/total"
                         android:textColor="@color/colordivider" />
 
                     <TextView
                         android:id="@+id/TxtTotalProdukSeluruh"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:text="1"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/pcs"
                         android:textColor="@color/colordivider" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:text="Produk"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/produk"
                         android:textColor="@color/colordivider" />
                 </LinearLayout>
 
@@ -444,7 +407,7 @@
                         android:id="@+id/orderTotalTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="200000"
+                        android:text="@string/total_harga"
                         android:textColor="@color/colordivider"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -455,18 +418,22 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:orientation="horizontal"
-                android:paddingRight="10dp">
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/buat_pesanan"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@drawable/btn_white"
-                    android:padding="10dp"
-                    android:text="Pesan Sekarang"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:cornerRadius="20dp"
+                    app:backgroundTint="@color/colorWhite"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:rippleColor="?attr/colorOnSecondary"
+                    android:text="@string/pesan_sekarang"
                     android:textAllCaps="false"
                     android:textColor="@color/darkblue" />
             </LinearLayout>

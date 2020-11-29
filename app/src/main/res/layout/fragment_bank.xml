@@ -252,16 +252,22 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_konfirmasibayar"
                     android:layout_width="320dp"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="70dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/btn_rounded"
-                    android:text="Konfirmasi Pembayaran"
-                    android:textColor="#fff" />
+                    app:cornerRadius="20dp"
+                    android:padding="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:letterSpacing="0.15"
+                    android:text="@string/konfirmasi_pembayaran"
+                    android:textColor="@color/colordivider"
+                    app:backgroundTint="@color/colortrb"
+                    app:rippleColor="?attr/colorOnSecondary"/>
 
             </LinearLayout>
         </ScrollView>

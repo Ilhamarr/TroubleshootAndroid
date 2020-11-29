@@ -1,5 +1,6 @@
 package com.mobcom.troubleshoot.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -34,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
   private SessionManager sessionManager; // buat create session dll
   private ActivityLoginBinding activityLoginBinding; // bindview jadi ga usah lagi find view by id
   private GoogleSignInClient mGoogleSignInClient;
-  private static int RC_SIGN_IN = 100;
+  private static final int RC_SIGN_IN = 100;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +45,6 @@ public class LoginActivity extends AppCompatActivity {
     activityLoginBinding = ActivityLoginBinding.inflate(getLayoutInflater());
     View view = activityLoginBinding.getRoot();
     setContentView(view);
-    // end inflate
-
-    //    status bar hide start
-    //getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    //    status bar hide end
 
     // Configure sign-in to request the user's ID, email address, and basic
     // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -103,7 +99,6 @@ public class LoginActivity extends AppCompatActivity {
 
       GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
       if (acct != null) {
-        String personName = acct.getDisplayName();
         String personGivenName = acct.getGivenName();
         String personFamilyName = acct.getFamilyName();
         String personEmail = acct.getEmail();
@@ -112,16 +107,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Log.d(TAG, "handleSignInResult: "+personEmail +" "+personGivenName+" "+personFamilyName+" "+personId+" "+personPhoto);
 
-//        if (personPhoto == null){
-//          loginGoogle(personEmail, personId, personGivenName, personFamilyName, null);
-//        } else{
-//          loginGoogle(personEmail, personId, personGivenName, personFamilyName, personPhoto.toString());
-//        }
-
         loginGoogle(personEmail, personId, personGivenName, personFamilyName);
-
-
-
       }
 
       // Signed in successfully, show authenticated UI.
@@ -137,7 +123,8 @@ public class LoginActivity extends AppCompatActivity {
     Call<Login> loginGoogleCall = ardData.loginGoogleResponse(email,oauth_id,firstname,lastname);
     loginGoogleCall.enqueue(new Callback<Login>() {
       @Override
-      public void onResponse(Call<Login> call, Response<Login> response) {
+      public void onResponse(@NonNull Call<Login> call, @NonNull Response<Login> response) {
+        assert response.body() != null;
         if (response.body().isStatus() && response.isSuccessful()) {
           sessionManager = new SessionManager(LoginActivity.this);
           LoginData loginData = response.body().getLoginData();
@@ -149,14 +136,13 @@ public class LoginActivity extends AppCompatActivity {
           startActivity(intent);
           finish();
         } else {
-          //Toast.makeText(LoginActivity.this, "Terjadi kesalahan masuk", Toast.LENGTH_SHORT).show();
           Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
           signOutGoogle();
         }
       }
 
       @Override
-      public void onFailure(Call<Login> call, Throwable t) {
+      public void onFailure(@NonNull Call<Login> call, @NonNull Throwable t) {
         Toast.makeText(LoginActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
       }
     });
@@ -173,7 +159,8 @@ public class LoginActivity extends AppCompatActivity {
     Call<Login> loginCall = ardData.loginResponse(email, password);
     loginCall.enqueue(new Callback<Login>() {
       @Override
-      public void onResponse(Call<Login> call, Response<Login> response) {
+      public void onResponse(@NonNull Call<Login> call, @NonNull Response<Login> response) {
+        assert response.body() != null;
         if (response.body().isStatus() && response.isSuccessful()) {
           sessionManager = new SessionManager(LoginActivity.this);
           LoginData loginData = response.body().getLoginData();
@@ -189,20 +176,16 @@ public class LoginActivity extends AppCompatActivity {
       }
 
       @Override
-      public void onFailure(Call<Login> call, Throwable t) {
+      public void onFailure(@NonNull Call<Login> call, @NonNull Throwable t) {
         Toast.makeText(LoginActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
       }
     });
-    // end webservice
   }
 
   private void signOutGoogle() {
     mGoogleSignInClient.signOut()
-            .addOnCompleteListener(this, task -> {
-              Log.d(TAG, "onComplete: " + "google account has been sign out");
-            });
+            .addOnCompleteListener(this, task -> Log.d(TAG, "onComplete: " + "google account has been sign out"));
   }
-
 
   private Boolean validateEmail() {
     String val = activityLoginBinding.etEmailLogin.getEditText().getText().toString();

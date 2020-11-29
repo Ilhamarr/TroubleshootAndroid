@@ -3,11 +3,8 @@ package com.mobcom.troubleshoot.Fragment;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ContentResolver;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -16,9 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import android.os.Environment;
 import android.provider.MediaStore;
-import android.provider.OpenableColumns;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,23 +30,16 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.mobcom.troubleshoot.API.APIRequestData;
 import com.mobcom.troubleshoot.API.RetroServer;
 import com.mobcom.troubleshoot.Activity.ImagePickerActivity;
-import com.mobcom.troubleshoot.Helper;
-import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.SessionManager;
 import com.mobcom.troubleshoot.databinding.FragmentEditProfileBinding;
-import com.mobcom.troubleshoot.databinding.FragmentOrderBinding;
-import com.mobcom.troubleshoot.models.LaptopModel;
 import com.mobcom.troubleshoot.models.Login.LoginData;
 import com.mobcom.troubleshoot.models.ResponseEditProfile;
-import com.mobcom.troubleshoot.viewmodels.ServiceViewModel;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.MediaType;
@@ -131,10 +119,9 @@ public class EditProfileFragment extends Fragment {
         return;
       }
 
-      if (fileImage == null){
+      if (fileImage == null) {
         editProfile();
-      }
-      else{
+      } else {
         editProfileWithPicture();
       }
 
@@ -222,7 +209,7 @@ public class EditProfileFragment extends Fragment {
       if (resultCode == Activity.RESULT_OK) {
         Uri uri = data.getParcelableExtra("path");
         imgDir = uri.toString();
-        String filename=imgDir.substring(imgDir.lastIndexOf("/")+1);
+        String filename = imgDir.substring(imgDir.lastIndexOf("/") + 1);
         //Log.d(TAG, "onActivityResult: "+imgDir);
 
         try {
@@ -230,8 +217,8 @@ public class EditProfileFragment extends Fragment {
           Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
           //fileImage = bitmapToFile(bitmap, filename);
           //Log.d(TAG, "onActivityResult: " + fileImage.toURI());
-          bitmapToFile(bitmap,filename);
-          Log.d(TAG, "onActivityResult: "+fileImage);
+          bitmapToFile(bitmap, filename);
+          Log.d(TAG, "onActivityResult: " + fileImage);
 
           // loading profile image from local cache
           loadProfile(uri.toString());
@@ -311,15 +298,11 @@ public class EditProfileFragment extends Fragment {
       @Override
       public void onResponse(Call<ResponseEditProfile> call, Response<ResponseEditProfile> response) {
         if (response.body() != null && response.isSuccessful()) {
-          //Log.d(TAG, "onResponse: "+response.body().getMessage());
           LoginData loginData = response.body().getLoginData();
           sessionManager.createLoginSession(loginData);
           navController.popBackStack();
-          Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-        } else {
-          //Log.d(TAG, "onResponse: "+response.body().getMessage());
-          Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
         }
+        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
       }
 
       @Override

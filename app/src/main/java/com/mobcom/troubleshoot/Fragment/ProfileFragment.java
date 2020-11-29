@@ -1,7 +1,6 @@
 package com.mobcom.troubleshoot.Fragment;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -23,8 +22,6 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.mobcom.troubleshoot.Activity.LoginActivity;
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.SessionManager;
@@ -45,7 +42,7 @@ public class ProfileFragment extends Fragment {
   }
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+  public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
     // Inflate the layout for this fragment
     fragmentProfileBinding = FragmentProfileBinding.inflate(inflater, container, false);
@@ -53,7 +50,7 @@ public class ProfileFragment extends Fragment {
   }
 
   @Override
-  public void onViewCreated(View view, Bundle savedInstanceState) {
+  public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
     if (Build.VERSION.SDK_INT >= 21){
@@ -106,17 +103,14 @@ public class ProfileFragment extends Fragment {
     fragmentProfileBinding.tvLogout.setOnClickListener(v -> {
       AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
       builder.setMessage("Anda akan keluar dari akun ini");
-      builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-          sessionManager.logoutSession();
-          if (provider.equals("google")){
-            signOutGoogle();
-          }
-
-          moveToLogin();
-          Toast.makeText(getContext(), "Anda berhasil keluar", Toast.LENGTH_SHORT).show();
+      builder.setPositiveButton("Ok", (dialog, which) -> {
+        sessionManager.logoutSession();
+        if (provider.equals("google")){
+          signOutGoogle();
         }
+
+        moveToLogin();
+        Toast.makeText(getContext(), "Anda berhasil keluar", Toast.LENGTH_SHORT).show();
       });
       builder.setNegativeButton("Cancel", null);
       AlertDialog alertDialog = builder.create();
@@ -144,9 +138,7 @@ public class ProfileFragment extends Fragment {
 
   private void signOutGoogle() {
     mGoogleSignInClient.signOut()
-            .addOnCompleteListener(getActivity(), task -> {
-              Log.d(TAG, "onComplete: " + "google account has been sign out");
-            });
+            .addOnCompleteListener(getActivity(), task -> Log.d(TAG, "onComplete: " + "google account has been sign out"));
   }
 
   private void revokeAccessGoogle() {

@@ -1,20 +1,17 @@
 package com.mobcom.troubleshoot.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputLayout;
 import com.mobcom.troubleshoot.API.APIRequestData;
 import com.mobcom.troubleshoot.API.RetroServer;
 import com.mobcom.troubleshoot.databinding.ActivityRegisterBinding;
 import com.mobcom.troubleshoot.models.Register.Register;
-import com.mobcom.troubleshoot.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,10 +28,6 @@ public class RegisterActivity extends AppCompatActivity {
     activityRegisterBinding = ActivityRegisterBinding.inflate(getLayoutInflater());
     View view = activityRegisterBinding.getRoot();
     setContentView(view);
-
-    //    status bar hide start
-    //getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    //    status bar hide end
 
     activityRegisterBinding.btnRegister.setOnClickListener(v -> {
       firstName = activityRegisterBinding.etFirstNameReg.getEditText().getText().toString();
@@ -62,7 +55,8 @@ public class RegisterActivity extends AppCompatActivity {
     Call<Register> registerCall = ardData.registerResponse(firstName, lastname, email, password);
     registerCall.enqueue(new Callback<Register>() {
       @Override
-      public void onResponse(Call<Register> call, Response<Register> response) {
+      public void onResponse(@NonNull Call<Register> call, @NonNull Response<Register> response) {
+        assert response.body() != null;
         if (response.body().isStatus() && response.isSuccessful()) {
           Toast.makeText(RegisterActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
         } else {
@@ -71,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
       }
 
       @Override
-      public void onFailure(Call<Register> call, Throwable t) {
+      public void onFailure(@NonNull Call<Register> call, @NonNull Throwable t) {
         Toast.makeText(RegisterActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
       }
     });

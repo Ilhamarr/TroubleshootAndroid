@@ -25,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
+            android:focusable="true"
             android:orientation="horizontal"
             android:padding="16dp">
 
@@ -33,13 +34,14 @@
                 android:layout_width="68dp"
                 android:layout_height="68dp"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/invertlogos" />
+                android:src="@drawable/invertlogos"
+                android:contentDescription="@string/gambar_layanan" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -83,21 +85,22 @@
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="right"
+                        android:gravity="end"
                         android:orientation="horizontal">
-                        <Button
+                        <com.google.android.material.button.MaterialButton
                             android:id="@+id/addToCartButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="28dp"
-                            android:layout_gravity="right"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/btn_rounded"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
                             android:clickable="true"
-                            android:padding="3dp"
-                            android:text="Tambah"
+                            android:focusable="true"
+                            app:cornerRadius="15dp"
+                            android:text="@string/tambah"
                             android:textAllCaps="false"
                             android:textColor="@color/colordivider"
-                            android:textSize="14dp" />
+                            app:rippleColor="?attr/colorOnSecondary"
+                            app:shapeAppearance="?attr/shapeAppearanceSmallComponent"
+                            />
                     </LinearLayout>
 
 

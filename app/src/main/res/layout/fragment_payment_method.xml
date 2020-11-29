@@ -243,14 +243,20 @@
 
             </androidx.cardview.widget.CardView>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/bayar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/btn_rounded"
-                android:text="Bayar Sekarang"
-                android:textColor="#fff" />
+                android:padding="10dp"
+                app:cornerRadius="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/bayar_sekarang"
+                android:letterSpacing="0.15"
+                android:textColor="@color/colordivider"
+                app:backgroundTint="@color/colortrb"
+                app:rippleColor="?attr/colorOnSecondary"/>
 
         </LinearLayout>
 
