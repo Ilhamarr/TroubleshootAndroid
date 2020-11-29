@@ -4,7 +4,7 @@ for a startup computer service, it can be make client trust about this businness
 
 <hr>
 
-## SPRINT 9
+## SPRINT 10
 Now, continue to Fase 2 Development:
 
 | Story                 | Task                                                              | Actor | Status   |
