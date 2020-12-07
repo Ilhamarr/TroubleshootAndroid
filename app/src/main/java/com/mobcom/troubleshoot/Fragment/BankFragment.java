@@ -1,8 +1,6 @@
 package com.mobcom.troubleshoot.Fragment;
 
 import android.Manifest;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +10,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
@@ -22,36 +19,20 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.MultiplePermissionsReport;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.mobcom.troubleshoot.API.APIRequestData;
 import com.mobcom.troubleshoot.API.RetroServer;
-import com.mobcom.troubleshoot.Activity.ImagePickerActivity;
 import com.mobcom.troubleshoot.R;
+import com.mobcom.troubleshoot.SessionManager;
 import com.mobcom.troubleshoot.databinding.FragmentBankBinding;
 import com.mobcom.troubleshoot.models.ResponseKonfirmasiBayar;
 import com.mobcom.troubleshoot.viewmodels.HistoryViewModel;
-
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.List;
-
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -67,9 +48,10 @@ public class BankFragment extends Fragment {
   private FragmentBankBinding fragmentBankBinding;
   private HistoryViewModel historyViewModel;
   private NavController navController;
-  private String trackingKey, imgDir;
+  private String trackingKey, imgDir, email;
   private APIRequestData ardData;
   private static final int REQUEST_CODE = 123;
+  private SessionManager sessionManager;
 
   public BankFragment() {
     // Required empty public constructor
@@ -86,6 +68,9 @@ public class BankFragment extends Fragment {
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+
+    sessionManager = new SessionManager(getActivity());
+    email = sessionManager.getUserDetail().get(SessionManager.EMAIL);
 
     // setup navcontroller
     navController = Navigation.findNavController(view);
@@ -107,34 +92,6 @@ public class BankFragment extends Fragment {
       Toast.makeText(getContext(), "Nomor berhasil di copy", Toast.LENGTH_SHORT).show();
     });
 
-    // button uploadbukti
-//    fragmentBankBinding.btnUploadbukti.setOnClickListener(v -> {
-//      Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//      if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//        // when permission not granted
-//        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)) {
-//          ActivityCompat.requestPermissions(
-//                  getActivity(),
-//                  new String[]{
-//                          Manifest.permission.READ_EXTERNAL_STORAGE
-//                  },
-//                  REQUEST_CODE
-//          );
-//        } else {
-//          ActivityCompat.requestPermissions(
-//                  getActivity(),
-//                  new String[]{
-//                          Manifest.permission.READ_EXTERNAL_STORAGE},
-//                  REQUEST_CODE
-//          );
-//          startActivityForResult(galleryIntent, 2);
-//        }
-//      } else {
-//        //when permission already granted
-//        startActivityForResult(galleryIntent, 2);
-//      }
-//    });
-
     fragmentBankBinding.btnUploadbukti.setOnClickListener(v -> openGallery());
 
     // button konfirmasi
@@ -152,7 +109,6 @@ public class BankFragment extends Fragment {
     if (ContextCompat.checkSelfPermission(activity,
             permissionName)
             != PackageManager.PERMISSION_GRANTED) {
-      // No explanation needed, we can request the permission.
       ActivityCompat.requestPermissions(activity,
               new String[]{permissionName},
               i);
@@ -170,19 +126,6 @@ public class BankFragment extends Fragment {
         openGallery();
     }
   }
-
-//  @Override
-//  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//    if (requestCode == REQUEST_CODE) {
-//      if ((grantResults.length > 0) && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//        // permission are granted
-//        Toast.makeText(getContext(), "Permission Granted...", Toast.LENGTH_SHORT).show();
-//      } else {
-//        // permission are denied
-//        Toast.makeText(getContext(), "Permission Denid...", Toast.LENGTH_SHORT).show();
-//      }
-//    }
-//  }
 
   // akses izin ambil gambar dari storage
   @Override
@@ -213,9 +156,10 @@ public class BankFragment extends Fragment {
       RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
       MultipartBody.Part body = MultipartBody.Part.createFormData("image_order", file.getName(), requestFile);
       RequestBody tracking_key = RequestBody.create(MediaType.parse("multipart/form-data"), trackingKey);
+      RequestBody email_req = RequestBody.create(MediaType.parse("multipart/form-data"), email);
 
       ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
-      Call<ResponseKonfirmasiBayar> konfirmbayar = ardData.konfirmasiBayar(tracking_key, body);
+      Call<ResponseKonfirmasiBayar> konfirmbayar = ardData.konfirmasiBayar(tracking_key, email_req, body);
       konfirmbayar.enqueue(new Callback<ResponseKonfirmasiBayar>() {
         @Override
         public void onResponse(Call<ResponseKonfirmasiBayar> call, Response<ResponseKonfirmasiBayar> response) {

@@ -32,14 +32,11 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    // cek apakah user login apa engga
-    // klo belom login, bakal di lempar ke login activity
     sessionManager = new SessionManager(MainActivity.this);
     if (!sessionManager.isLoggedin()) {
       moveToLogin();
     }
 
-    // cek cart item
     serviceViewModel = new ViewModelProvider(this).get(ServiceViewModel.class);
     serviceViewModel.getCart().observe(this, new Observer<List<CartItem>>() {
       @Override
@@ -48,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
-    // bottom navigasi
     bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
     navController = Navigation.findNavController(this, R.id.nav_host_fragment);
     NavigationUI.setupWithNavController(bottomNavigationView, navController);

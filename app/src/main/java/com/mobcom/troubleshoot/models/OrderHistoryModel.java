@@ -323,50 +323,15 @@ public class OrderHistoryModel {
 			"}";
 		}
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		OrderHistoryModel that = (OrderHistoryModel) o;
-		return getBiayaTotal() == that.getBiayaTotal() &&
-						getStatusPayment() == that.getStatusPayment() &&
-						getTipeLaptop().equals(that.getTipeLaptop()) &&
-						getTotalItem().equals(that.getTotalItem()) &&
-						getKeterangan().equals(that.getKeterangan()) &&
-						getMerk().equals(that.getMerk()) &&
-						getTeknisi().equals(that.getTeknisi()) &&
-						getCreatedAt().equals(that.getCreatedAt()) &&
-						getJamPengembalian().equals(that.getJamPengembalian()) &&
-						getHeaderOrderId().equals(that.getHeaderOrderId()) &&
-						getTrackingKey().equals(that.getTrackingKey()) &&
-						getTanggalPengambilan().equals(that.getTanggalPengambilan()) &&
-						getTanggalPengembalian().equals(that.getTanggalPengembalian()) &&
-						getTempatBertemu().equals(that.getTempatBertemu()) &&
-						getAccountId().equals(that.getAccountId()) &&
-						getStatusTracking().equals(that.getStatusTracking()) &&
-						getNama().equals(that.getNama()) &&
-						getImageOrder().equals(that.getImageOrder()) &&
-						getJamPengambilan().equals(that.getJamPengambilan()) &&
-						getModifiedAt().equals(that.getModifiedAt()) &&
-						getEmail().equals(that.getEmail()) &&
-						getNomorHp().equals(that.getNomorHp()) &&
-						getMerkLaptop().equals(that.getMerkLaptop());
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(getTipeLaptop(), getTotalItem(), getKeterangan(), getMerk(), getTeknisi(), getCreatedAt(), getJamPengembalian(), getHeaderOrderId(), getTrackingKey(), getTanggalPengambilan(), getTanggalPengembalian(), getBiayaTotal(), getTempatBertemu(), getStatusPayment(), getAccountId(), getStatusTracking(), getNama(), getImageOrder(), getJamPengambilan(), getModifiedAt(), getEmail(), getTrackingId(), getNomorHp(), getMerkLaptop());
-	}
-
 	public static DiffUtil.ItemCallback<OrderHistoryModel> itemCallback = new DiffUtil.ItemCallback<OrderHistoryModel>() {
 		@Override
 		public boolean areItemsTheSame(@NonNull OrderHistoryModel oldItem, @NonNull OrderHistoryModel newItem) {
-			return oldItem.getHeaderOrderId().equals(newItem.getHeaderOrderId());
+			return false;
 		}
 
 		@Override
 		public boolean areContentsTheSame(@NonNull OrderHistoryModel oldItem, @NonNull OrderHistoryModel newItem) {
-			return oldItem.equals(newItem);
+			return false;
 		}
 	};
 

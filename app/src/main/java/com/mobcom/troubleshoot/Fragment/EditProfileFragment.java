@@ -362,7 +362,7 @@ public class EditProfileFragment extends Fragment {
     String val = fragmentEditProfileBinding.EdtFirstName.getText().toString();
     String anyletter = "(^[a-zA-Z\\s]+$)";
     if (val.isEmpty()) {
-      fragmentEditProfileBinding.EdtFirstName.setError("Form tidak boleh kosong");
+      fragmentEditProfileBinding.EdtFirstName.setError("Tidak boleh kosong");
       return false;
     } else if (!val.matches(anyletter)) {
       fragmentEditProfileBinding.EdtFirstName.setError("Hanya huruf yang diperbolehkan");
@@ -377,7 +377,7 @@ public class EditProfileFragment extends Fragment {
     String val = fragmentEditProfileBinding.EdtLastName.getText().toString();
     String anyletter = "(^[a-zA-Z\\s]+$)";
     if (val.isEmpty()) {
-      fragmentEditProfileBinding.EdtLastName.setError("Form tidak boleh kosong");
+      fragmentEditProfileBinding.EdtLastName.setError("Tidak boleh kosong");
       return false;
     } else if (!val.matches(anyletter)) {
       fragmentEditProfileBinding.EdtLastName.setError("Hanya huruf yang diperbolehkan");
@@ -393,7 +393,7 @@ public class EditProfileFragment extends Fragment {
     String val = fragmentEditProfileBinding.EdtEmail.getText().toString();
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     if (val.isEmpty()) {
-      fragmentEditProfileBinding.EdtEmail.setError("Form tidak boleh kosong");
+      fragmentEditProfileBinding.EdtEmail.setError("Tidak boleh kosong");
       return false;
     } else if (!val.matches(emailPattern)) {
       fragmentEditProfileBinding.EdtEmail.setError("Alamat email tidak valid");
@@ -406,9 +406,9 @@ public class EditProfileFragment extends Fragment {
 
   private boolean validatePhone() {
     String val = fragmentEditProfileBinding.EdtNomorTelepon.getText().toString();
-    String phoneformat = "^[0-9]{12,13}$";
+    String phoneformat = "^[0-9]{11,13}$";
     if (val.isEmpty()) {
-      fragmentEditProfileBinding.EdtNomorTelepon.setError("Form tidak boleh kosong");
+      fragmentEditProfileBinding.EdtNomorTelepon.setError("Tidak boleh kosong");
       return false;
     } else if (!val.matches(phoneformat)) {
       fragmentEditProfileBinding.EdtNomorTelepon.setError("Nomor telepon tidak valid");
@@ -422,7 +422,7 @@ public class EditProfileFragment extends Fragment {
   private boolean validateAlamat() {
     String val = fragmentEditProfileBinding.EdtAlamat.getText().toString();
     if (val.isEmpty()) {
-      fragmentEditProfileBinding.EdtAlamat.setError("Form tidak boleh kosong");
+      fragmentEditProfileBinding.EdtAlamat.setError("Tidak boleh kosong");
       return false;
     }
     return true;

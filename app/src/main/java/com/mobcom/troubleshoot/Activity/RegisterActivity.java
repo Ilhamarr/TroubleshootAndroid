@@ -47,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
 
   private void register(String firstName, String lastname, String email, String password) {
     ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
-    //form validation
+
     if (!validateFirstName() | !validateLastName() | !validateEmail() | !validatePassword()) {
       return;
     }
@@ -77,17 +77,20 @@ public class RegisterActivity extends AppCompatActivity {
 
   private Boolean validateFirstName() {
     String val = activityRegisterBinding.etFirstNameReg.getEditText().getText().toString();
-    String noWhiteSpace = "\\A\\w{4,20}\\z";
-    String anyletter = "(^[a-zA-Z]+$)";
+    String anyletter = "^" +
+            "([a-zA-Z]*)" +      //any letter
+//            "(?=\\S+$)" +
+//            ".{2,}" +
+            "$";
 
     if (val.isEmpty()) {
-      activityRegisterBinding.etFirstNameReg.setError("Field cannot be empty");
+      activityRegisterBinding.etFirstNameReg.setError("Tidak boleh kosong");
+      return false;
+    } else if (val.length() < 2) {
+      activityRegisterBinding.etFirstNameReg.setError("Minimal 2 karakter");
       return false;
     } else if (!val.matches(anyletter)) {
-      activityRegisterBinding.etFirstNameReg.setError("Otherwise letters are not allowed");
-      return false;
-    } else if (!val.matches(noWhiteSpace)) {
-      activityRegisterBinding.etFirstNameReg.setError("White Spaces are not allowed");
+      activityRegisterBinding.etFirstNameReg.setError("Selain huruf tidak diperbolehkan, misal spasi, angka");
       return false;
     } else {
       activityRegisterBinding.etFirstNameReg.setError(null);
@@ -98,17 +101,18 @@ public class RegisterActivity extends AppCompatActivity {
 
   private Boolean validateLastName() {
     String val = activityRegisterBinding.etLastNameReg.getEditText().getText().toString();
-    String anyletter = "(^[a-zA-Z]+$)";
-    String noWhiteSpace = "\\A\\w{4,20}\\z";
+    String anyletter = "^" +
+            "([a-zA-Z]*)" +      //any letter
+            "$";
 
     if (val.isEmpty()) {
-      activityRegisterBinding.etLastNameReg.setError("Field cannot be empty");
+      activityRegisterBinding.etLastNameReg.setError("Tidak boleh kosong");
+      return false;
+    } else if (val.length() < 2) {
+      activityRegisterBinding.etLastNameReg.setError("Minimal 2 karakter");
       return false;
     } else if (!val.matches(anyletter)) {
-      activityRegisterBinding.etLastNameReg.setError("Otherwise letters are not allowed");
-      return false;
-    } else if (!val.matches(noWhiteSpace)) {
-      activityRegisterBinding.etLastNameReg.setError("White Spaces are not allowed");
+      activityRegisterBinding.etLastNameReg.setError("Selain huruf tidak diperbolehkan, misal spasi, angka");
       return false;
     } else {
       activityRegisterBinding.etLastNameReg.setError(null);
@@ -121,10 +125,10 @@ public class RegisterActivity extends AppCompatActivity {
     String val = activityRegisterBinding.etEmailReg.getEditText().getText().toString();
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     if (val.isEmpty()) {
-      activityRegisterBinding.etEmailReg.setError("Field cannot be empty");
+      activityRegisterBinding.etEmailReg.setError("Tidak boleh kosong");
       return false;
     } else if (!val.matches(emailPattern)) {
-      activityRegisterBinding.etEmailReg.setError("Invalid email address");
+      activityRegisterBinding.etEmailReg.setError("Alamat email salah");
       return false;
     } else {
       activityRegisterBinding.etEmailReg.setError(null);
@@ -136,26 +140,24 @@ public class RegisterActivity extends AppCompatActivity {
   private Boolean validatePassword() {
     String val = activityRegisterBinding.etPasswordReg.getEditText().getText().toString();
     String passwordVal = "^" +
-            //"(?=.*[0-9])" +         //at least 1 digit
-            //"(?=.*[a-z])" +         //at least 1 lower case letter
-            //"(?=.*[A-Z])" +         //at least 1 upper case letter
             "(?=.*[a-zA-Z])" +      //any letter
-            //"(?=.*[@#$%^&+=])" +    //at least 1 special character
-            //"\\A\\w{4,20}\\z" +           //no white spaces
+            "(?=.*[0-9])" +         //at least 1 digit
+            "(?=.*[A-Z])" +         //at least 1 upper case letter
+            "(?=\\S+$)" +
             ".{6,}" +               //at least 6 characters
             "$";
-    String noWhiteSpace = "\\A\\w{4,20}\\z";
+
     if (val.isEmpty()) {
-      activityRegisterBinding.etPasswordReg.setError("Field cannot be empty");
+      activityRegisterBinding.etPasswordReg.setError("Tidak boleh kosong");
       return false;
     } else if (val.length() > 16) {
-      activityRegisterBinding.etPasswordReg.setError("Password too long");
+      activityRegisterBinding.etPasswordReg.setError("Kata sandi terlalu panjang");
+      return false;
+    } else if (val.length() < 6) {
+      activityRegisterBinding.etPasswordReg.setError("Minimal 6 karakter");
       return false;
     } else if (!val.matches(passwordVal)) {
-      activityRegisterBinding.etPasswordReg.setError("Password is too weak");
-      return false;
-    } else if (!val.matches(noWhiteSpace)) {
-      activityRegisterBinding.etPasswordReg.setError("White Spaces are not allowed");
+      activityRegisterBinding.etPasswordReg.setError("Minimal 1 huruf besar, 1 angka, dan tidak boleh ada spasi");
       return false;
     } else {
       activityRegisterBinding.etPasswordReg.setError(null);

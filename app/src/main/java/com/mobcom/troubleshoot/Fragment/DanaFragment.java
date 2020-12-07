@@ -31,6 +31,7 @@ import android.widget.Toast;
 import com.mobcom.troubleshoot.API.APIRequestData;
 import com.mobcom.troubleshoot.API.RetroServer;
 import com.mobcom.troubleshoot.R;
+import com.mobcom.troubleshoot.SessionManager;
 import com.mobcom.troubleshoot.databinding.FragmentDanaBinding;
 import com.mobcom.troubleshoot.models.ResponseKonfirmasiBayar;
 import com.mobcom.troubleshoot.viewmodels.HistoryViewModel;
@@ -52,9 +53,10 @@ public class DanaFragment extends Fragment {
   private FragmentDanaBinding fragmentDanaBinding;
   private HistoryViewModel historyViewModel;
   private NavController navController;
-  private String trackingKey, imgDir;
+  private String trackingKey, imgDir, email;
   private APIRequestData ardData;
   private static final int REQUEST_CODE = 123;
+  private SessionManager sessionManager;
 
   public DanaFragment() {
     // Required empty public constructor
@@ -71,6 +73,9 @@ public class DanaFragment extends Fragment {
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+
+    sessionManager = new SessionManager(getActivity());
+    email = sessionManager.getUserDetail().get(SessionManager.EMAIL);
 
     // setup navcontroller
     navController = Navigation.findNavController(view);
@@ -92,53 +97,12 @@ public class DanaFragment extends Fragment {
       Toast.makeText(getContext(), "Nomor berhasil di copy", Toast.LENGTH_SHORT).show();
     });
 
-    // button uploadbukti
-//    fragmentDanaBinding.btnUploadbukti.setOnClickListener(v -> {
-//      Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//      if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//        // when permission not granted
-//        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)) {
-//          ActivityCompat.requestPermissions(
-//                  getActivity(),
-//                  new String[]{
-//                          Manifest.permission.READ_EXTERNAL_STORAGE
-//                  },
-//                  REQUEST_CODE
-//          );
-//        } else {
-//          ActivityCompat.requestPermissions(
-//                  getActivity(),
-//                  new String[]{
-//                          Manifest.permission.READ_EXTERNAL_STORAGE},
-//                  REQUEST_CODE
-//          );
-//          startActivityForResult(galleryIntent, 2);
-//        }
-//      } else {
-//        //when permission already granted
-//        startActivityForResult(galleryIntent, 2);
-//      }
-//    });
-
     fragmentDanaBinding.btnUploadbukti.setOnClickListener(v -> openGallery());
 
     // button konfirmasi
     fragmentDanaBinding.btnKonfirmasibayar.setOnClickListener(v -> konfirmasiBayar());
 
   }
-
-//  @Override
-//  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//    if (requestCode == REQUEST_CODE) {
-//      if ((grantResults.length > 0) && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//        // permission are granted
-//        Toast.makeText(getContext(), "Permission Granted...", Toast.LENGTH_SHORT).show();
-//      } else {
-//        // permission are denied
-//        Toast.makeText(getContext(), "Permission Denid...", Toast.LENGTH_SHORT).show();
-//      }
-//    }
-//  }
 
   private void openGallery() {
     if (hasPermissionInManifest(getActivity(), 1, Manifest.permission.READ_EXTERNAL_STORAGE)) {
@@ -151,7 +115,6 @@ public class DanaFragment extends Fragment {
     if (ContextCompat.checkSelfPermission(activity,
             permissionName)
             != PackageManager.PERMISSION_GRANTED) {
-      // No explanation needed, we can request the permission.
       ActivityCompat.requestPermissions(activity,
               new String[]{permissionName},
               i);
@@ -200,10 +163,10 @@ public class DanaFragment extends Fragment {
       RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
       MultipartBody.Part body = MultipartBody.Part.createFormData("image_order", file.getName(), requestFile);
       RequestBody tracking_key = RequestBody.create(MediaType.parse("multipart/form-data"), trackingKey);
-
+      RequestBody email_req = RequestBody.create(MediaType.parse("multipart/form-data"), email);
 
       ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
-      Call<ResponseKonfirmasiBayar> konfirmbayar = ardData.konfirmasiBayar(tracking_key, body);
+      Call<ResponseKonfirmasiBayar> konfirmbayar = ardData.konfirmasiBayar(tracking_key,email_req, body);
       konfirmbayar.enqueue(new Callback<ResponseKonfirmasiBayar>() {
         @Override
         public void onResponse(Call<ResponseKonfirmasiBayar> call, Response<ResponseKonfirmasiBayar> response) {
@@ -220,5 +183,4 @@ public class DanaFragment extends Fragment {
       });
     }
   }
-
 }

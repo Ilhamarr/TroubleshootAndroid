@@ -98,16 +98,23 @@ public interface APIRequestData {
   @POST("konfirmasibayar")
   Call<ResponseKonfirmasiBayar> konfirmasiBayar(
           @Part("tracking_key") RequestBody tracking_key,
+          @Part("email") RequestBody email,
           @Part MultipartBody.Part image_order
           );
 
   @FormUrlEncoded
   @POST("cod")
-  Call<ResponseKonfirmasiBayar> konfirmasiCod(@Field("tracking_key") String tracking_key);
+  Call<ResponseKonfirmasiBayar> konfirmasiCod(
+          @Field("tracking_key") String tracking_key,
+          @Field("email") String email
+  );
 
   @FormUrlEncoded
   @POST("batalpesan")
-  Call<ResponseKonfirmasiBayar> batalpemesanan(@Field("tracking_key") String tracking_key);
+  Call<ResponseKonfirmasiBayar> batalpemesanan(
+          @Field("tracking_key") String tracking_key,
+          @Field("email") String email
+  );
 
   @Multipart
   @POST("Editprofile")

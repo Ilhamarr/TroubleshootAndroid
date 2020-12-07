@@ -1,7 +1,7 @@
 package com.mobcom.troubleshoot;
 
 public class Config {
-  //URL REST API
+  // URL REST API
   //public static final String BASE_URL = "http://192.168.1.2/troubleshoot/restapi/api/";
   public static final String BASE_URL = "https://troubleshoot.id/restapi/api/";
 }

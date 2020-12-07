@@ -124,7 +124,6 @@ public class OrderFragment extends Fragment {
         LaptopModel selectedLaptop = (LaptopModel) fragmentOrderBinding.SpinnerMerkLaptop.getSelectedItem();
         String laptop_id = String.valueOf(selectedLaptop.getLaptop_id());
         String laptop_merk = selectedLaptop.getMerk();
-        String laptop_tipe = selectedLaptop.getTipe();
         laptop_Id = laptop_id;
         laptop_Merk = laptop_merk;
         //Toast.makeText(getContext(), laptop_id + ". " + laptop_merk + " " + laptop_tipe, Toast.LENGTH_SHORT).show();
@@ -279,7 +278,7 @@ public class OrderFragment extends Fragment {
           adapterLaptop.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
           fragmentOrderBinding.SpinnerMerkLaptop.setAdapter(adapterLaptop);
         } else {
-          Toast.makeText(getContext(), "Gagal mengambil list kerusakan", Toast.LENGTH_SHORT).show();
+          Toast.makeText(getContext(), "Gagal mengambil list laptop", Toast.LENGTH_SHORT).show();
         }
       }
 
@@ -340,7 +339,7 @@ public class OrderFragment extends Fragment {
   private Boolean validateSeriLaptop() {
     String val = fragmentOrderBinding.EdtSeriLaptop.getText().toString();
     if (val.isEmpty()) {
-      fragmentOrderBinding.EdtSeriLaptop.setError("Form tidak boleh kosong");
+      fragmentOrderBinding.EdtSeriLaptop.setError("Tidak boleh kosong");
       return false;
     }
     return true;
@@ -349,7 +348,7 @@ public class OrderFragment extends Fragment {
   private Boolean validateDetail() {
     String val = fragmentOrderBinding.EdtDetailPemesanan.getText().toString();
     if (val.isEmpty()) {
-      fragmentOrderBinding.EdtDetailPemesanan.setError("Form tidak boleh kosong");
+      fragmentOrderBinding.EdtDetailPemesanan.setError("Tidak boleh kosong");
       return false;
     }
     return true;
@@ -358,7 +357,7 @@ public class OrderFragment extends Fragment {
   private Boolean validateTanggal() {
     String val = fragmentOrderBinding.EdtTanggal.getText().toString();
     if (val.isEmpty()) {
-      fragmentOrderBinding.EdtTanggal.setError("Form tidak boleh kosong");
+      fragmentOrderBinding.EdtTanggal.setError("Tidak boleh kosong");
       return false;
     }
     return true;
@@ -367,7 +366,7 @@ public class OrderFragment extends Fragment {
   private Boolean validateJam() {
     String val = fragmentOrderBinding.EdtJam.getText().toString();
     if (val.isEmpty()) {
-      fragmentOrderBinding.EdtJam.setError("Form tidak boleh kosong");
+      fragmentOrderBinding.EdtJam.setError("Tidak boleh kosong");
       return false;
     }
     return true;
@@ -376,7 +375,7 @@ public class OrderFragment extends Fragment {
   private Boolean validateTempat() {
     String val = fragmentOrderBinding.alamatTempatBertemu.getText().toString();
     if (val.isEmpty()) {
-      fragmentOrderBinding.alamatTempatBertemu.setError("Form tidak boleh kosong");
+      fragmentOrderBinding.alamatTempatBertemu.setError("Tidak boleh kosong");
       return false;
     }
     return true;
@@ -386,7 +385,7 @@ public class OrderFragment extends Fragment {
     String val = fragmentOrderBinding.EdtNama.getText().toString();
     String anyletter = "(^[a-zA-Z\\s]+$)";
     if (val.isEmpty()) {
-      fragmentOrderBinding.EdtNama.setError("Form tidak boleh kosong");
+      fragmentOrderBinding.EdtNama.setError("Tidak boleh kosong");
       return false;
     } else if (!val.matches(anyletter)) {
       fragmentOrderBinding.EdtNama.setError("Hanya huruf yang diperbolehkan");
@@ -402,10 +401,10 @@ public class OrderFragment extends Fragment {
     String val = fragmentOrderBinding.EdtEmail.getText().toString();
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     if (val.isEmpty()) {
-      fragmentOrderBinding.EdtEmail.setError("Form tidak boleh kosong");
+      fragmentOrderBinding.EdtEmail.setError("Tidak boleh kosong");
       return false;
     } else if (!val.matches(emailPattern)) {
-      fragmentOrderBinding.EdtEmail.setError("Alamat email tidak valid");
+      fragmentOrderBinding.EdtEmail.setError("Alamat email salah");
       return false;
     } else {
       fragmentOrderBinding.EdtEmail.setError(null);
@@ -415,9 +414,9 @@ public class OrderFragment extends Fragment {
 
   private Boolean validatePhone() {
     String val = fragmentOrderBinding.EdtNomorTelepon.getText().toString();
-    String phoneformat = "^[0-9]{12,13}$";
+    String phoneformat = "^[0-9]{11,13}$";
     if (val.isEmpty()) {
-      fragmentOrderBinding.EdtNomorTelepon.setError("Form tidak boleh kosong");
+      fragmentOrderBinding.EdtNomorTelepon.setError("Tidak boleh kosong");
       return false;
     } else if (!val.matches(phoneformat)) {
       fragmentOrderBinding.EdtNomorTelepon.setError("Nomor telepon tidak valid");
