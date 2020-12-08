@@ -30,8 +30,8 @@
 
             <ImageView
                 android:id="@+id/gambarLayanan"
-                android:layout_width="68dp"
-                android:layout_height="68dp"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/invertlogos" />
 
@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@{service.nama_kerusakan}"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@{service.jenis}"
-                    android:textSize="12sp" />
+                    android:textSize="10sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -77,7 +77,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:text="@{service.biayaFormatRp}"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -88,16 +88,17 @@
                         <Button
                             android:id="@+id/addToCartButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="28dp"
+                            android:layout_height="24dp"
                             android:layout_gravity="right"
                             android:layout_marginRight="10dp"
                             android:background="@drawable/btn_rounded"
                             android:clickable="true"
-                            android:padding="3dp"
+                            android:paddingRight="4dp"
+                            android:paddingLeft="4dp"
                             android:text="Tambah"
                             android:textAllCaps="false"
                             android:textColor="@color/colordivider"
-                            android:textSize="14dp" />
+                            android:textSize="10dp" />
                     </LinearLayout>
 
 

@@ -316,6 +316,30 @@
                             android:visibility="visible" />
 
                     </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:text="Biaya antar jemput"/>
+                        <TextView
+                            android:id="@+id/jarak"
+                            android:layout_marginStart="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5 KM"/>
+                        <TextView
+                            android:id="@+id/OngkosKirim"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:text="Rp50.000"
+                            android:gravity="right"/>
+                    </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/mapsview"
@@ -429,7 +453,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="0dp"
-        android:layout_height="68dp"
+        android:layout_height="52dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
@@ -463,6 +487,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Total"
+                        android:textSize="12sp"
                         android:textColor="@color/colordivider" />
 
                     <TextView
@@ -470,6 +495,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
+                        android:textSize="12sp"
                         android:text="1"
                         android:textColor="@color/colordivider" />
 
@@ -478,6 +504,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
                         android:text="Produk"
+                        android:textSize="12sp"
                         android:textColor="@color/colordivider" />
                 </LinearLayout>
 
@@ -489,10 +516,10 @@
                     <TextView
                         android:id="@+id/orderTotalTextView"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="200000"
                         android:textColor="@color/colordivider"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -508,12 +535,16 @@
                 <Button
                     android:id="@+id/Lanjut_Pembayaran"
                     android:layout_width="wrap_content"
-                    android:layout_height="38dp"
+                    android:layout_height="32dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="56dp"
                     android:background="@drawable/btn_white"
-                    android:padding="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     android:text="Lanjutkan"
+                    android:textSize="11sp"
                     android:textAllCaps="false"
                     android:textColor="@color/darkblue" />
             </LinearLayout>

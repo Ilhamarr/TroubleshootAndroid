@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -69,6 +70,9 @@ public class OrderFragment extends Fragment {
   private String account_id, firstname, lastname, email, phone, fullname, laptop_Id, laptop_Merk;
   private List<LaptopModel> listLaptop = new ArrayList<>();
   private int PLACE_PICKER_REQUEST = 1;
+  private Double endlatitude, endlongtitude;
+  private int HargaOngkir = 0;
+  private Double Jarak = 0.0;
 
   public OrderFragment() {
     // Required empty public constructor
@@ -114,7 +118,10 @@ public class OrderFragment extends Fragment {
     });
 
     // get total harga di cart
-    serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), integer -> fragmentOrderBinding.orderTotalTextView.setText(helper.formatRp(integer)));
+    serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), integer -> {
+      fragmentOrderBinding.orderTotalTextView.setText(helper.formatRp(integer + HargaOngkir));
+      Log.d(TAG, "onViewCreated: " + String.valueOf(integer + HargaOngkir));
+    });
 
     // spinner merk laptop
     initSpinnerLaptop();
@@ -261,6 +268,9 @@ public class OrderFragment extends Fragment {
     if (requestCode == SimplePlacePicker.SELECT_LOCATION_REQUEST_CODE && resultCode == RESULT_OK) {
       if (data != null) {
         String toastMsg = data.getStringExtra(SimplePlacePicker.SELECTED_ADDRESS);
+        endlatitude = data.getDoubleExtra(SimplePlacePicker.LOCATION_LAT_EXTRA, -1);
+        endlongtitude = data.getDoubleExtra(SimplePlacePicker.LOCATION_LNG_EXTRA,-1);
+        Ongkir();
         fragmentOrderBinding.alamatTempatBertemu.setText(toastMsg);
       }
     }
@@ -450,6 +460,44 @@ public class OrderFragment extends Fragment {
       return true;
     }
     return false;
+  }
+
+  //menentukan harga ongkos kirim
+ private void Ongkir(){
+    double lat_unj = -6.1944545 ;
+    double long_unj= 106.8765061;
+    int hargadasar = 3500;
+    double R = 6371;
+
+   if (endlatitude != null && endlongtitude != null ){
+     //rumus
+     double latrad1 = endlatitude * (Math.PI/180);
+     double latrad2 = lat_unj * (Math.PI/180);
+     double deltalatRad = (lat_unj - endlatitude) * (Math.PI/180);
+     double deltalongRad = (long_unj - endlongtitude) * (Math.PI/180);
+
+     // menghitung jarak
+     Double a = (Math.sin(deltalatRad/2)* Math.sin(deltalatRad/2)) + Math.cos(latrad1)*Math.cos(latrad2) * (Math.sin(deltalongRad/2) * Math.sin(deltalongRad/2));
+     Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+     Double J = R * c; // hasil jarak dalam meter
+     Jarak = Double.valueOf(Math.round(J));
+     //hitung ongkir
+     if (Jarak <= 3){
+       HargaOngkir = 0;
+
+     } else if (Jarak > 3 ){
+       HargaOngkir = (int) Math.ceil((int) (hargadasar * Jarak * 3/2));
+     }
+     else{
+       HargaOngkir =0;
+       Jarak = 0.0;
+     }
+   }else{
+     HargaOngkir =0;
+     Jarak = 0.0;
+
+   }
+
   }
 
 }

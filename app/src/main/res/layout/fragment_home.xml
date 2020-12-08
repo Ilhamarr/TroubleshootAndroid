@@ -23,10 +23,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:text="Hello"
             android:textColor="@color/colordivider"
-            android:textSize="25sp"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,10 +35,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:text="@string/firstName"
             android:textColor="@color/colordivider"
-            android:textSize="25sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/textHello"
             app:layout_constraintTop_toTopOf="parent" />
@@ -61,14 +61,11 @@
             android:id="@+id/Trbdashboard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="5dp"
             android:text="Selamat Datang di Troubleshoot.id"
             android:textColor="@color/colordivider"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/textHello"
-            app:layout_constraintTop_toBottomOf="@id/tvfirstNameHome" />
+            app:layout_constraintTop_toBottomOf="@id/textHello" />
 
         <!--        <LinearLayout-->
         <!--            android:layout_width="match_parent"-->

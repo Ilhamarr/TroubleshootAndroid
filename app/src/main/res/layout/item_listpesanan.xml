@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="@{cartItem.service.nama_kerusakan}"
-                    android:textSize="13sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="@{cartItem.service.jenis}"
-                    android:textSize="10sp" />
+                    android:textSize="9sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="@{cartItem.formatRp(cartItem.service.biaya * cartItem.quantity)}"
-                    android:textSize="13sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
