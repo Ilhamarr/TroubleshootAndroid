@@ -1,19 +1,14 @@
 package com.mobcom.troubleshoot.Fragment;
 
 import android.Manifest;
-import android.app.AlertDialog;
-import android.app.DownloadManager;
 import android.content.ClipboardManager;
-import android.content.ContentResolver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -30,12 +26,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.mobcom.troubleshoot.API.APIRequestData;
 import com.mobcom.troubleshoot.API.RetroServer;
 import com.mobcom.troubleshoot.R;
+import com.mobcom.troubleshoot.SessionManager;
 import com.mobcom.troubleshoot.databinding.FragmentDanaBinding;
 import com.mobcom.troubleshoot.models.ResponseKonfirmasiBayar;
 import com.mobcom.troubleshoot.viewmodels.HistoryViewModel;
@@ -57,9 +53,10 @@ public class DanaFragment extends Fragment {
   private FragmentDanaBinding fragmentDanaBinding;
   private HistoryViewModel historyViewModel;
   private NavController navController;
-  private String trackingKey, imgDir;
+  private String trackingKey, imgDir, email;
   private APIRequestData ardData;
   private static final int REQUEST_CODE = 123;
+  private SessionManager sessionManager;
 
   public DanaFragment() {
     // Required empty public constructor
@@ -77,6 +74,9 @@ public class DanaFragment extends Fragment {
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
+    sessionManager = new SessionManager(getActivity());
+    email = sessionManager.getUserDetail().get(SessionManager.EMAIL);
+
     // setup navcontroller
     navController = Navigation.findNavController(view);
 
@@ -86,98 +86,50 @@ public class DanaFragment extends Fragment {
     trackingKey = historyViewModel.getHistory().getValue().getTrackingKey();
 
     // button back
-    fragmentDanaBinding.backButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        navController.popBackStack();
-      }
-    });
+    fragmentDanaBinding.backButton.setOnClickListener(v -> navController.popBackStack());
 
     // copy rekening
-    fragmentDanaBinding.txtRekeningcopyDANA.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-        if (clipboard != null) {
-          clipboard.setText("081288795069");
-        }
-        Toast.makeText(getContext(), "Nomor berhasil di copy", Toast.LENGTH_SHORT).show();
+    fragmentDanaBinding.txtRekeningcopyDANA.setOnClickListener(v -> {
+      ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+      if (clipboard != null) {
+        clipboard.setText("081288795069");
       }
+      Toast.makeText(getContext(), "Nomor berhasil di copy", Toast.LENGTH_SHORT).show();
     });
 
-    // button uploadbukti
-    fragmentDanaBinding.btnUploadbukti.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-          // when permission not granted
-          if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)){
-            ActivityCompat.requestPermissions(
-                    getActivity(),
-                    new String[] {
-                            Manifest.permission.READ_EXTERNAL_STORAGE
-                    },
-                    REQUEST_CODE
-            );
-            // create alertdialog
-//            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-//            builder.setTitle("Grant those Permission");
-//            builder.setMessage("Read Storage");
-//            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//              @Override
-//              public void onClick(DialogInterface dialog, int which) {
-//                ActivityCompat.requestPermissions(
-//                        getActivity(),
-//                        new String[] {
-//                                Manifest.permission.READ_EXTERNAL_STORAGE
-//                        },
-//                        REQUEST_CODE
-//                );
-//              }
-//            });
-//            builder.setNegativeButton("Cancel", null);
-//            AlertDialog alertDialog = builder.create();
-//            alertDialog.show();
-          }
-          else {
-            ActivityCompat.requestPermissions(
-                    getActivity(),
-                    new String[] {
-                            Manifest.permission.READ_EXTERNAL_STORAGE},
-                    REQUEST_CODE
-            );
-            startActivityForResult(galleryIntent, 2);
-          }
-        }
-        else {
-          //when permission already granted
-          //Toast.makeText(getContext(), "Permission already granted", Toast.LENGTH_SHORT).show();
-          startActivityForResult(galleryIntent, 2);
-        }
-      }
-    });
+    fragmentDanaBinding.btnUploadbukti.setOnClickListener(v -> openGallery());
 
     // button konfirmasi
-    fragmentDanaBinding.btnKonfirmasibayar.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        konfirmasiBayar();
-      }
-    });
+    fragmentDanaBinding.btnKonfirmasibayar.setOnClickListener(v -> konfirmasiBayar());
 
+  }
+
+  private void openGallery() {
+    if (hasPermissionInManifest(getActivity(), 1, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+      Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+      startActivityForResult(galleryIntent, 2);
+    }
+  }
+
+  private boolean hasPermissionInManifest(FragmentActivity activity, int i, String permissionName) {
+    if (ContextCompat.checkSelfPermission(activity,
+            permissionName)
+            != PackageManager.PERMISSION_GRANTED) {
+      ActivityCompat.requestPermissions(activity,
+              new String[]{permissionName},
+              i);
+    } else {
+      return true;
+    }
+    return false;
   }
 
   @Override
   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-    if (requestCode == REQUEST_CODE) {
-      if ((grantResults.length > 0) && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-        // permission are granted
-        Toast.makeText(getContext(), "Permission Granted...", Toast.LENGTH_SHORT).show();
-      } else{
-        // permission are denied
-        Toast.makeText(getContext(), "Permission Denid...", Toast.LENGTH_SHORT).show();
-      }
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    if (requestCode == 1) {
+      if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
+        openGallery();
     }
   }
 
@@ -199,7 +151,6 @@ public class DanaFragment extends Fragment {
       Bitmap bitmap = BitmapFactory.decodeFile(picturePath);
       fragmentDanaBinding.viewImage.setImageBitmap(bitmap);
       fragmentDanaBinding.btnUploadbukti.setVisibility(View.GONE);
-      Log.d(TAG, "onActivityResult: " + imgDir);
     }
   }
 
@@ -212,21 +163,17 @@ public class DanaFragment extends Fragment {
       RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
       MultipartBody.Part body = MultipartBody.Part.createFormData("image_order", file.getName(), requestFile);
       RequestBody tracking_key = RequestBody.create(MediaType.parse("multipart/form-data"), trackingKey);
-
+      RequestBody email_req = RequestBody.create(MediaType.parse("multipart/form-data"), email);
 
       ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
-      Call<ResponseKonfirmasiBayar> konfirmbayar = ardData.konfirmasiBayar(tracking_key, body);
+      Call<ResponseKonfirmasiBayar> konfirmbayar = ardData.konfirmasiBayar(tracking_key,email_req, body);
       konfirmbayar.enqueue(new Callback<ResponseKonfirmasiBayar>() {
         @Override
         public void onResponse(Call<ResponseKonfirmasiBayar> call, Response<ResponseKonfirmasiBayar> response) {
           if (response.body() != null && response.isSuccessful()) {
-            //Log.d(TAG, "onResponse: "+response.body().getMessage());
             navController.navigate(R.id.action_danaFragment_to_nonTunaiSuccessFragment);
-            Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-          } else {
-            //Log.d(TAG, "onResponse: "+response.body().getMessage());
-            Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
           }
+          Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -236,5 +183,4 @@ public class DanaFragment extends Fragment {
       });
     }
   }
-
 }

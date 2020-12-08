@@ -1,31 +1,17 @@
 package com.mobcom.troubleshoot.Activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.FrameLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.mobcom.troubleshoot.Fragment.HomeFragment;
-import com.mobcom.troubleshoot.Fragment.OrderHistoryFragment;
-import com.mobcom.troubleshoot.Fragment.ProfileFragment;
-import com.mobcom.troubleshoot.Fragment.ServiceFragment;
 import com.mobcom.troubleshoot.R;
 import com.mobcom.troubleshoot.SessionManager;
 import com.mobcom.troubleshoot.models.CartItem;
@@ -46,14 +32,11 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    // cek apakah user login apa engga
-    // klo belom login, bakal di lempar ke login activity
     sessionManager = new SessionManager(MainActivity.this);
     if (!sessionManager.isLoggedin()) {
       moveToLogin();
     }
 
-    // cek cart item
     serviceViewModel = new ViewModelProvider(this).get(ServiceViewModel.class);
     serviceViewModel.getCart().observe(this, new Observer<List<CartItem>>() {
       @Override
@@ -62,30 +45,9 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
-    // bottom navigasi
     bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
     navController = Navigation.findNavController(this, R.id.nav_host_fragment);
     NavigationUI.setupWithNavController(bottomNavigationView, navController);
-
-    // coba coba
-    NavOptions navOptions = new NavOptions.Builder()
-            .setLaunchSingleTop(true)
-            .setEnterAnim(R.anim.slide_in_right)
-            .setExitAnim(R.anim.slide_out_left)
-            .setPopEnterAnim(R.anim.slide_in_right)
-            .setPopExitAnim(R.anim.slide_out_left)
-            .setPopUpTo(navController.getGraph().getStartDestination(), false)
-            .build();
-
-//    bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-//      boolean handled = false;
-//
-//      if (navController.getGraph().findNode(item.getItemId()) != null) {
-//        navController.navigate(item.getItemId());
-//        handled = true;
-//      }
-//      return handled;
-//    });
 
     bottomNavigationView.setOnNavigationItemReselectedListener(Item -> {
       bottomNavigationView.findViewById(Item.getItemId()).setEnabled(false);

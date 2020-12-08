@@ -32,14 +32,14 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="end"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:layout_marginRight="1dp"
+                    android:layout_marginEnd="1dp"
                     android:padding="6dp"
                     android:text="@{history.statusTracking}"
                     android:textColor="@{history.trackingId == 5 ? @color/colorRed : @color/colortrb}" />
@@ -55,7 +55,7 @@
                 <ImageView
                     android:layout_width="90dp"
                     android:layout_height="70dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="-5dp"
                     android:src="@drawable/logotrb" />
 
@@ -68,11 +68,11 @@
                         android:id="@+id/tv_ohNamaLayanan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
                         android:layout_marginTop="6dp"
                         android:text="@{history.trackingKey}"
                         android:textColor="#333131"
-                        android:textSize="18dp" />
+                        android:textSize="18sp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -82,20 +82,20 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="11dp"
+                            android:layout_marginStart="11dp"
                             android:text="@{history.merk}"
-                            android:textSize="15dp" />
+                            android:textSize="15sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" | "
-                            android:textSize="15dp" />
+                            android:text="@string/divider1"
+                            android:textSize="15sp" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@{history.tipeLaptop}"
-                            android:textSize="15dp" />
+                            android:textSize="15sp" />
 
                     </LinearLayout>
 
@@ -113,26 +113,25 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="23dp"
+                    android:layout_marginStart="23dp"
                     android:layout_marginTop="7dp"
                     android:text="@{history.tanggalPengambilan}"
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
+                    android:gravity="end"
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:layout_marginEnd="20dp"
-                        android:text="Detail"
+                        android:text="@string/detail"
                         android:textColor="#0C81B6"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
-
 
             </LinearLayout>
         </LinearLayout>

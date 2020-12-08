@@ -1,5 +1,6 @@
 package com.mobcom.troubleshoot.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -30,25 +31,19 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
   private static final String TAG = "LoginActivity";
   private String email, password;
-  private APIRequestData ardData; // (webservice)
-  private SessionManager sessionManager; // buat create session dll
-  private ActivityLoginBinding activityLoginBinding; // bindview jadi ga usah lagi find view by id
+  private APIRequestData ardData;
+  private SessionManager sessionManager;
+  private ActivityLoginBinding activityLoginBinding;
   private GoogleSignInClient mGoogleSignInClient;
-  private static int RC_SIGN_IN = 100;
+  private static final int RC_SIGN_IN = 100;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    // karna pake bind view jadi inflate nya kaya gini
-    // sebelumnya kan pake R.id.activity_login sekarang di ubah
+
     activityLoginBinding = ActivityLoginBinding.inflate(getLayoutInflater());
     View view = activityLoginBinding.getRoot();
     setContentView(view);
-    // end inflate
-
-    //    status bar hide start
-    //getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    //    status bar hide end
 
     // Configure sign-in to request the user's ID, email address, and basic
     // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -63,10 +58,9 @@ public class LoginActivity extends AppCompatActivity {
     // the GoogleSignInAccount will be non-null.
     GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
 
-    activityLoginBinding.signInButton.setSize(SignInButton.SIZE_STANDARD);
+    activityLoginBinding.signInButton.setSize(SignInButton.SIZE_WIDE);
     activityLoginBinding.signInButton.setOnClickListener(v -> signInGoogle());
 
-    // ini cara manggil id dari layoutnya
     activityLoginBinding.btnLogin.setOnClickListener(v -> {
       email = activityLoginBinding.etEmailLogin.getEditText().getText().toString();
       password = activityLoginBinding.etPasswordLogin.getEditText().getText().toString();
@@ -103,25 +97,15 @@ public class LoginActivity extends AppCompatActivity {
 
       GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
       if (acct != null) {
-        String personName = acct.getDisplayName();
         String personGivenName = acct.getGivenName();
         String personFamilyName = acct.getFamilyName();
         String personEmail = acct.getEmail();
         String personId = acct.getId();
         Uri personPhoto = acct.getPhotoUrl();
 
-        Log.d(TAG, "handleSignInResult: "+personEmail +" "+personGivenName+" "+personFamilyName+" "+personId+" "+personPhoto);
-
-//        if (personPhoto == null){
-//          loginGoogle(personEmail, personId, personGivenName, personFamilyName, null);
-//        } else{
-//          loginGoogle(personEmail, personId, personGivenName, personFamilyName, personPhoto.toString());
-//        }
+        Log.d(TAG, "handleSignInResult: " + personEmail + " " + personGivenName + " " + personFamilyName + " " + personId + " " + personPhoto);
 
         loginGoogle(personEmail, personId, personGivenName, personFamilyName);
-
-
-
       }
 
       // Signed in successfully, show authenticated UI.
@@ -132,12 +116,13 @@ public class LoginActivity extends AppCompatActivity {
     }
   }
 
-  private void loginGoogle(String email, String oauth_id, String firstname, String lastname){
+  private void loginGoogle(String email, String oauth_id, String firstname, String lastname) {
     ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
-    Call<Login> loginGoogleCall = ardData.loginGoogleResponse(email,oauth_id,firstname,lastname);
+    Call<Login> loginGoogleCall = ardData.loginGoogleResponse(email, oauth_id, firstname, lastname);
     loginGoogleCall.enqueue(new Callback<Login>() {
       @Override
-      public void onResponse(Call<Login> call, Response<Login> response) {
+      public void onResponse(@NonNull Call<Login> call, @NonNull Response<Login> response) {
+        assert response.body() != null;
         if (response.body().isStatus() && response.isSuccessful()) {
           sessionManager = new SessionManager(LoginActivity.this);
           LoginData loginData = response.body().getLoginData();
@@ -149,14 +134,13 @@ public class LoginActivity extends AppCompatActivity {
           startActivity(intent);
           finish();
         } else {
-          //Toast.makeText(LoginActivity.this, "Terjadi kesalahan masuk", Toast.LENGTH_SHORT).show();
           Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
           signOutGoogle();
         }
       }
 
       @Override
-      public void onFailure(Call<Login> call, Throwable t) {
+      public void onFailure(@NonNull Call<Login> call, @NonNull Throwable t) {
         Toast.makeText(LoginActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
       }
     });
@@ -169,11 +153,11 @@ public class LoginActivity extends AppCompatActivity {
       return;
     }
 
-    // manggil werbservice buat get data dll
     Call<Login> loginCall = ardData.loginResponse(email, password);
     loginCall.enqueue(new Callback<Login>() {
       @Override
-      public void onResponse(Call<Login> call, Response<Login> response) {
+      public void onResponse(@NonNull Call<Login> call, @NonNull Response<Login> response) {
+        assert response.body() != null;
         if (response.body().isStatus() && response.isSuccessful()) {
           sessionManager = new SessionManager(LoginActivity.this);
           LoginData loginData = response.body().getLoginData();
@@ -189,29 +173,25 @@ public class LoginActivity extends AppCompatActivity {
       }
 
       @Override
-      public void onFailure(Call<Login> call, Throwable t) {
+      public void onFailure(@NonNull Call<Login> call, @NonNull Throwable t) {
         Toast.makeText(LoginActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
       }
     });
-    // end webservice
   }
 
   private void signOutGoogle() {
     mGoogleSignInClient.signOut()
-            .addOnCompleteListener(this, task -> {
-              Log.d(TAG, "onComplete: " + "google account has been sign out");
-            });
+            .addOnCompleteListener(this, task -> Log.d(TAG, "onComplete: " + "google account has been sign out"));
   }
-
 
   private Boolean validateEmail() {
     String val = activityLoginBinding.etEmailLogin.getEditText().getText().toString();
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     if (val.isEmpty()) {
-      activityLoginBinding.etEmailLogin.setError("Field cannot be empty");
+      activityLoginBinding.etEmailLogin.setError("Tidak boleh kosong");
       return false;
     } else if (!val.matches(emailPattern)) {
-      activityLoginBinding.etEmailLogin.setError("Invalid email address");
+      activityLoginBinding.etEmailLogin.setError("Alamat email salah");
       return false;
     } else {
       activityLoginBinding.etEmailLogin.setError(null);
@@ -223,26 +203,19 @@ public class LoginActivity extends AppCompatActivity {
   private Boolean validatePassword() {
     String val = activityLoginBinding.etPasswordLogin.getEditText().getText().toString();
     String passwordVal = "^" +
-            //"(?=.*[0-9])" +         //at least 1 digit
-            //"(?=.*[a-z])" +         //at least 1 lower case letter
-            //"(?=.*[A-Z])" +         //at least 1 upper case letter
             "(?=.*[a-zA-Z])" +      //any letter
-            //"(?=.*[@#$%^&+=])" +    //at least 1 special character
-            //"\\A\\w{4,20}\\z" +           //no white spaces
+            "(?=\\S+$)" +
             ".{6,}" +               //at least 6 characters
             "$";
-    String noWhiteSpace = "\\A\\w{4,20}\\z";
+
     if (val.isEmpty()) {
-      activityLoginBinding.etPasswordLogin.setError("Field cannot be empty");
+      activityLoginBinding.etPasswordLogin.setError("Tidak boleh kosong");
       return false;
     } else if (val.length() > 16) {
-      activityLoginBinding.etPasswordLogin.setError("Password too long");
+      activityLoginBinding.etPasswordLogin.setError("Kata sandi terlalu panjang");
       return false;
     } else if (!val.matches(passwordVal)) {
-      activityLoginBinding.etPasswordLogin.setError("Password is too weak");
-      return false;
-    } else if (!val.matches(noWhiteSpace)) {
-      activityLoginBinding.etPasswordLogin.setError("White Spaces are not allowed");
+      activityLoginBinding.etPasswordLogin.setError("Minimal 6 karakter");
       return false;
     } else {
       activityLoginBinding.etPasswordLogin.setError(null);

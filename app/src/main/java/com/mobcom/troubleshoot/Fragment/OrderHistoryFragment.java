@@ -83,7 +83,6 @@ public class OrderHistoryFragment extends Fragment implements HistoryListAdapter
       retrieveData();
       fragmentOrderHistoryBinding.scrollView.setRefreshing(false);
     });
-
   }
 
   @Override
@@ -108,7 +107,6 @@ public class OrderHistoryFragment extends Fragment implements HistoryListAdapter
           fragmentOrderHistoryBinding.pbDataLayanan.setVisibility(View.INVISIBLE);
           fragmentOrderHistoryBinding.rvDataOrderHistory.setVisibility(View.VISIBLE);
         }
-
       }
     });
   }

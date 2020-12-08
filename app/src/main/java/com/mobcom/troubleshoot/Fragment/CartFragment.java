@@ -114,9 +114,6 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
     // back button
     fragmentCartBinding.backButton.setOnClickListener(v -> navController.popBackStack());
 
-    // checkout button (lanjutkan, ini menuju form order)
-    //fragmentCartBinding.CheckoutButton.setOnClickListener(v -> navController.navigate(R.id.action_cartFragment_to_orderFragment));
-
   }
 
   @Override

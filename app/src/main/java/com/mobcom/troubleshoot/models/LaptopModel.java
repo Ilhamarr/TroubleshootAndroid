@@ -9,9 +9,6 @@ public class LaptopModel {
   @SerializedName("merk")
   private String merk;
 
-  @SerializedName("tipe")
-  private String tipe;
-
   public int getLaptop_id() {
     return laptop_id;
   }
@@ -28,16 +25,8 @@ public class LaptopModel {
     this.merk = merk;
   }
 
-  public String getTipe() {
-    return tipe;
-  }
-
-  public void setTipe(String tipe) {
-    this.tipe = tipe;
-  }
-
   @Override
   public String toString() {
-    return merk + " ("+tipe+")";
+    return merk;
   }
 }

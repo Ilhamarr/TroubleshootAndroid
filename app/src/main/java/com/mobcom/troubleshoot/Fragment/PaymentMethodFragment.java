@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.mobcom.troubleshoot.API.APIRequestData;
 import com.mobcom.troubleshoot.API.RetroServer;
 import com.mobcom.troubleshoot.R;
+import com.mobcom.troubleshoot.SessionManager;
 import com.mobcom.troubleshoot.databinding.FragmentPaymentMethodBinding;
 import com.mobcom.troubleshoot.models.ResponseKonfirmasiBayar;
 import com.mobcom.troubleshoot.viewmodels.HistoryViewModel;
@@ -33,8 +34,9 @@ public class PaymentMethodFragment extends Fragment {
   private FragmentPaymentMethodBinding fragmentPaymentMethodBinding;
   private HistoryViewModel historyViewModel;
   private NavController navController;
-  private String trackingKey;
+  private String trackingKey , email;
   private APIRequestData ardData;
+  private SessionManager sessionManager;
 
   public PaymentMethodFragment() {
     // Required empty public constructor
@@ -51,6 +53,9 @@ public class PaymentMethodFragment extends Fragment {
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+
+    sessionManager = new SessionManager(getActivity());
+    email = sessionManager.getUserDetail().get(SessionManager.EMAIL);
 
     // setup navcontroller
     navController = Navigation.findNavController(view);
@@ -92,7 +97,7 @@ public class PaymentMethodFragment extends Fragment {
 
   public void konfirmasiCod(){
     ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
-    Call<ResponseKonfirmasiBayar> konfirmasiCod = ardData.konfirmasiCod(trackingKey);
+    Call<ResponseKonfirmasiBayar> konfirmasiCod = ardData.konfirmasiCod(trackingKey, email);
     konfirmasiCod.enqueue(new Callback<ResponseKonfirmasiBayar>() {
       @Override
       public void onResponse(Call<ResponseKonfirmasiBayar> call, Response<ResponseKonfirmasiBayar> response) {
