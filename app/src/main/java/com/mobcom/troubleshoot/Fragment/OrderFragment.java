@@ -120,7 +120,7 @@ public class OrderFragment extends Fragment {
     // get total harga di cart
     serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), integer -> {
       fragmentOrderBinding.orderTotalTextView.setText(helper.formatRp(integer + HargaOngkir));
-      Log.d(TAG, "onViewCreated: " + String.valueOf(integer + HargaOngkir));
+      Log.d(TAG, "onViewCreated: " + String.valueOf(integer + HargaOngkir)); // ditambahkan harga ongkir
     });
 
     // spinner merk laptop
@@ -465,7 +465,7 @@ public class OrderFragment extends Fragment {
  private void Ongkir(){
     double lat_unj = -6.1944545 ;
     double long_unj= 106.8765061;
-    int hargadasar = 3500;
+    double hargadasar = 3500;
     double R = 6371;
 
    if (endlatitude != null && endlongtitude != null ){
@@ -478,14 +478,15 @@ public class OrderFragment extends Fragment {
      // menghitung jarak
      Double a = (Math.sin(deltalatRad/2)* Math.sin(deltalatRad/2)) + Math.cos(latrad1)*Math.cos(latrad2) * (Math.sin(deltalongRad/2) * Math.sin(deltalongRad/2));
      Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-     Double J = R * c; // hasil jarak dalam meter
-     Jarak = Double.valueOf(Math.round(J));
+     Jarak = R * c; // hasil jarak dalam km
+
      //hitung ongkir
      if (Jarak <= 3){
        HargaOngkir = 0;
 
      } else if (Jarak > 3 ){
-       HargaOngkir = (int) Math.ceil((int) (hargadasar * Jarak * 3/2));
+       Double Harga =  hargadasar * Jarak * 3/2;
+       HargaOngkir = (int) Math.ceil(Harga); //mendapatkan harga ongkir dengan pembulatan harga keatas
      }
      else{
        HargaOngkir =0;
