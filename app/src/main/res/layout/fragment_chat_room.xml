@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    tools:context=".Fragment.ChatRoomFragment">
+
+    <!-- HEADER  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="136dp"
+        android:background="@color/colortrb"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textHello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:text="Hello"
+            android:textColor="@color/colordivider"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvfirstNameHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/firstName"
+            android:textColor="@color/colordivider"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/textHello"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/Trbdashboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="5dp"
+            android:text="Selamat Datang di chat room Troubleshoot.id, ada yang bisa kami bantu kak?"
+            android:textColor="@color/colordivider"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/textHello"
+            app:layout_constraintTop_toBottomOf="@id/tvfirstNameHome" />
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="15dp"-->
+        <!--            android:layout_marginTop="15dp"-->
+        <!--            android:layout_marginEnd="15dp"-->
+        <!--            android:layout_marginBottom="10dp"-->
+        <!--            android:background="@drawable/white_rectangle_background"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/Trbdashboard">-->
+
+        <!--            <EditText-->
+        <!--                android:layout_width="0dp"-->
+        <!--                android:layout_height="40dp"-->
+        <!--                android:layout_weight="1"-->
+        <!--                android:background="@null"-->
+        <!--                android:hint="Search Elements"-->
+        <!--                android:imeOptions="actionSearch"-->
+        <!--                android:importantForAutofill="no"-->
+        <!--                android:inputType="text"-->
+        <!--                android:paddingStart="15dp"-->
+        <!--                android:paddingEnd="15dp"-->
+        <!--                android:textColor="@color/colorAccent"-->
+        <!--                android:textSize="16sp" />-->
+
+        <!--            <ImageView-->
+        <!--                android:layout_width="40dp"-->
+        <!--                android:layout_height="40dp"-->
+        <!--                android:background="@drawable/search_icon_background"-->
+        <!--                android:padding="6dp"-->
+        <!--                android:src="@drawable/ic_search"-->
+        <!--                app:tint="@color/colortrb" />-->
+        <!--        </LinearLayout>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- End HEADER-->
+
+    <!-- Banner-->
+    <!--    End banner-->
+
+    <LinearLayout
+        android:id="@+id/ourService"
+        android:layout_width="match_parent"
+        android:layout_height="592dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutHeader">
+
+        <TextView
+            android:id="@+id/tvResponseAgen"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:textAlignment="gravity"
+            android:text="Response"
+            android:textSize="18sp"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colortrb1"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="8dp"/>
+
+        <TextView
+            android:id="@+id/tvUserMessage"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:text="User message"
+            android:gravity="right"
+            android:textSize="18sp"
+            android:textColor="@color/colorWhite"
+            android:background="#DC5E36"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="203dp" />
+
+        <LinearLayout
+            android:layout_width="410dp"
+            android:layout_height="83dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="375dp"
+            android:background="@color/background_holo_light"
+            android:gravity="center">
+
+
+            <EditText
+                android:id="@+id/Edt_inputmessage"
+                android:layout_width="363dp"
+                android:layout_height="50dp"
+                android:textAlignment="gravity"
+                android:text="Type a message"
+                android:textSize="20sp"
+                android:textColor="@color/mdtp_transparent_black"
+                android:background="@drawable/btn_normal"
+                android:padding="10dp"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:id="@+id/btn_imageSend"
+                android:layout_width="35dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_baseline_send_24"
+                android:clickable="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="3dp"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
