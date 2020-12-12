@@ -139,7 +139,7 @@ public class OrderConfirmationFragment extends Fragment {
     fragmentOrderConfirmationBinding.backButton.setOnClickListener(v -> navController.popBackStack());
 
     // button to TC (tambahan dari vivi)
-    fragmentOrderConfirmationBinding.buttonTC.setOnClickListener(v -> navController.navigate(R.id.action_profileFragment_to_termConditionFragment));
+    fragmentOrderConfirmationBinding.buttonTC.setOnClickListener(v -> navController.navigate(R.id.action_orderConfirmationFragment_to_TermConditionFragment));
 
     // button submit
     fragmentOrderConfirmationBinding.buatPesanan.setOnClickListener(v -> {
