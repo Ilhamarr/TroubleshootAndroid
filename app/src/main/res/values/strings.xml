@@ -87,6 +87,7 @@
     <string name="detail">Detail</string>
     <string name="divider1">|</string>
     <string name="idlayanan">IdLayanan</string>
+    <string name="linksyarat_ketentuan">Klik untuk melihat Syarat dan Ketentuan</string>
 
     <string-array name="quantity_string_array">
         <item>1</item>

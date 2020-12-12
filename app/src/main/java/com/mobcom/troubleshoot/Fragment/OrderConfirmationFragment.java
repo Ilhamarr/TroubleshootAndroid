@@ -125,6 +125,8 @@ public class OrderConfirmationFragment extends Fragment {
     // button edit form order
     fragmentOrderConfirmationBinding.ubahDetailPesanan.setOnClickListener(v -> navController.popBackStack());
 
+
+
     // button edit cart
     fragmentOrderConfirmationBinding.ubahLayanan.setOnClickListener(v -> {
       //navController.navigate(R.id.action_orderConfirmationFragment_to_serviceFragment);
@@ -135,6 +137,9 @@ public class OrderConfirmationFragment extends Fragment {
 
     // button back
     fragmentOrderConfirmationBinding.backButton.setOnClickListener(v -> navController.popBackStack());
+
+    // button to TC (tambahan dari vivi)
+    fragmentOrderConfirmationBinding.buttonTC.setOnClickListener(v -> navController.navigate(R.id.action_profileFragment_to_termConditionFragment));
 
     // button submit
     fragmentOrderConfirmationBinding.buatPesanan.setOnClickListener(v -> {

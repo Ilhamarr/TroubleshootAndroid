@@ -100,6 +100,7 @@ public class ProfileFragment extends Fragment {
 
     fragmentProfileBinding.orderhistory.setOnClickListener(v -> navController.navigate(R.id.action_profileFragment_to_orderHistoryFragment));
 
+
     fragmentProfileBinding.tvLogout.setOnClickListener(v -> {
       AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
       builder.setMessage("Anda akan keluar dari akun ini");

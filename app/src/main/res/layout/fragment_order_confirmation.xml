@@ -415,6 +415,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/ketentuan" />
+
+                    <TextView
+                        android:id="@+id/buttonTC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/linksyarat_ketentuan"
+                        android:textColor="@color/colortrb1"
+                        />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
