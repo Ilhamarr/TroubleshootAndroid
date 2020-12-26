@@ -45,6 +45,7 @@ public class OrderConfirmationFragment extends Fragment {
   private NavController navController;
   private SessionManager sessionManager;
   private APIRequestData ardData;
+  private int ongkir,jarak;
 
   public OrderConfirmationFragment() {
     // Required empty public constructor
@@ -94,6 +95,8 @@ public class OrderConfirmationFragment extends Fragment {
       tanggal = args.getTanggal();
       jam = args.getJam();
       tempat = args.getAlamat();
+      jarak = args.getJarak();
+      ongkir = args.getOngkir();
     }
 
     // view data
@@ -115,10 +118,12 @@ public class OrderConfirmationFragment extends Fragment {
       fragmentOrderConfirmationBinding.TxtTotalProdukSeluruh.setText(String.valueOf(cartQuantity));
     });
 
+    fragmentOrderConfirmationBinding.OngkosKirim.setText(helper.formatRp(ongkir));
+
     // get total harga di cart
     serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), integer -> {
-      totalHarga = integer.toString();
-      fragmentOrderConfirmationBinding.orderTotalTextView.setText(helper.formatRp(integer));
+      totalHarga = String.valueOf(integer + ongkir);
+      fragmentOrderConfirmationBinding.orderTotalTextView.setText(helper.formatRp(integer + ongkir));
       //fragmentOrderConfirmationBinding.tvorderTotalTextView.setText(helper.formatRp(integer));
     });
 
@@ -141,7 +146,7 @@ public class OrderConfirmationFragment extends Fragment {
       String trackKey = tracking_key(account_id);
       //headerOrder(account_id, laptop_Id, detail,phone,tanggal,jam,tempat,seriLaptop,totalHarga,trackKey);
       ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
-      Call<ResponseHeaderOrder> headerOrderCall = ardData.HeaderOrderResponse(account_id, nama, email, laptop_Id, detail, phone, tanggal, jam, tempat, seriLaptop, totalHarga, trackKey);
+      Call<ResponseHeaderOrder> headerOrderCall = ardData.HeaderOrderResponse(account_id, nama, email, laptop_Id, detail, phone, tanggal, jam, tempat, seriLaptop, totalHarga, trackKey, String.valueOf(ongkir));
       headerOrderCall.enqueue(new Callback<ResponseHeaderOrder>() {
         @Override
         public void onResponse(Call<ResponseHeaderOrder> call, Response<ResponseHeaderOrder> response) {

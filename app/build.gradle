@@ -17,8 +17,8 @@ android {
         applicationId "com.mobcom.troubleshoot"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 7
-        versionName "1.0.3"
+        versionCode 8
+        versionName "1.0.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -100,5 +100,10 @@ dependencies {
 
     //dexter for permission
     implementation "com.karumi:dexter:6.2.2"
+
+    //chatbot komunicate + dialogflowES
+    implementation 'io.kommunicate.sdk:kommunicateui:2.1.0'
+
+
 
 }
