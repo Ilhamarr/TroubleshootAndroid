@@ -72,7 +72,8 @@ public class OrderFragment extends Fragment {
   private int PLACE_PICKER_REQUEST = 1;
   private Double endlatitude, endlongtitude;
   private int HargaOngkir = 0;
-  private Double Jarak = 0.0;
+  private int Jarak = 0;
+  private Helper helper;
 
   public OrderFragment() {
     // Required empty public constructor
@@ -94,7 +95,7 @@ public class OrderFragment extends Fragment {
     navController = Navigation.findNavController(view);
 
     // setup helper
-    Helper helper = new Helper();
+    helper = new Helper();
 
     // setup sessionmanager
     sessionManager = new SessionManager(getActivity());
@@ -106,6 +107,10 @@ public class OrderFragment extends Fragment {
 
     // setup view model
     serviceViewModel = new ViewModelProvider(requireActivity()).get(ServiceViewModel.class);
+
+    // jarak dan harga ongkir default
+    fragmentOrderBinding.jarak.setText(String.valueOf(Jarak) + " KM");
+    fragmentOrderBinding.OngkosKirim.setText(helper.formatRp(HargaOngkir));
 
     // get banyaknya item di cart
     serviceViewModel.getCart().observe(getViewLifecycleOwner(), cartItems -> {
@@ -120,7 +125,6 @@ public class OrderFragment extends Fragment {
     // get total harga di cart
     serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), integer -> {
       fragmentOrderBinding.orderTotalTextView.setText(helper.formatRp(integer + HargaOngkir));
-      Log.d(TAG, "onViewCreated: " + String.valueOf(integer + HargaOngkir)); // ditambahkan harga ongkir
     });
 
     // spinner merk laptop
@@ -152,26 +156,28 @@ public class OrderFragment extends Fragment {
     fragmentOrderBinding.rgTempatBertemu.clearCheck();
     fragmentOrderBinding.rgTempatBertemu.setOnCheckedChangeListener((group, checkedId) -> {
       if (checkedId == fragmentOrderBinding.btnAntarJemput.getId()) {
-//        fragmentOrderBinding.alamatTempatBertemu.getText().clear();
-//        fragmentOrderBinding.alamatTempatBertemu.setHint("Masukan alamat anda");
         fragmentOrderBinding.locationButton.setEnabled(true);
-        fragmentOrderBinding.alamatTempatBertemu.setEnabled(true);
+        fragmentOrderBinding.alamatTempatBertemu.setEnabled(false);
         fragmentOrderBinding.alamatTempatBertemu.setText("");
         openPlacePicker();
       } else {
         fragmentOrderBinding.locationButton.setEnabled(false);
         fragmentOrderBinding.alamatTempatBertemu.setText("Kampus A UNJ, Jl. Rawamangun Muka, Gedung Dewi Sartika Lt.5");
         fragmentOrderBinding.alamatTempatBertemu.setEnabled(false);
+        Jarak = 0;
+        HargaOngkir = 0;
+        fragmentOrderBinding.jarak.setText(String.valueOf(Jarak) + " KM");
+        fragmentOrderBinding.OngkosKirim.setText(helper.formatRp(HargaOngkir));
+        serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), integer -> {
+          fragmentOrderBinding.orderTotalTextView.setText(helper.formatRp(integer + HargaOngkir));
+        });
       }
     });
 
-    fragmentOrderBinding.locationButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        fragmentOrderBinding.alamatTempatBertemu.setEnabled(true);
-        fragmentOrderBinding.alamatTempatBertemu.setText("");
-        openPlacePicker();
-      }
+    fragmentOrderBinding.locationButton.setOnClickListener(v -> {
+      fragmentOrderBinding.alamatTempatBertemu.setEnabled(false);
+      fragmentOrderBinding.alamatTempatBertemu.setText("");
+      openPlacePicker();
     });
 
     // form contact
@@ -214,6 +220,8 @@ public class OrderFragment extends Fragment {
       action.setNama(nama);
       action.setEmail(email);
       action.setPhone(phone);
+      action.setOngkir(HargaOngkir);
+      action.setJarak(Jarak);
 
       //end pass
       navController.navigate(action);
@@ -268,9 +276,14 @@ public class OrderFragment extends Fragment {
       if (data != null) {
         String toastMsg = data.getStringExtra(SimplePlacePicker.SELECTED_ADDRESS);
         endlatitude = data.getDoubleExtra(SimplePlacePicker.LOCATION_LAT_EXTRA, -1);
-        endlongtitude = data.getDoubleExtra(SimplePlacePicker.LOCATION_LNG_EXTRA,-1);
+        endlongtitude = data.getDoubleExtra(SimplePlacePicker.LOCATION_LNG_EXTRA, -1);
         Ongkir();
         fragmentOrderBinding.alamatTempatBertemu.setText(toastMsg);
+        fragmentOrderBinding.jarak.setText(String.valueOf(Jarak) + " KM");
+        fragmentOrderBinding.OngkosKirim.setText(helper.formatRp(HargaOngkir));
+        serviceViewModel.getTotalPrice().observe(getViewLifecycleOwner(), integer -> {
+          fragmentOrderBinding.orderTotalTextView.setText(helper.formatRp(integer + HargaOngkir));
+        });
       }
     }
   }
@@ -462,41 +475,38 @@ public class OrderFragment extends Fragment {
   }
 
   //menentukan harga ongkos kirim
- private void Ongkir(){
-    double lat_unj = -6.1944545 ;
-    double long_unj= 106.8765061;
+  private void Ongkir() {
+    double lat_unj = -6.1944545;
+    double long_unj = 106.8765061;
     double hargadasar = 3500;
     double R = 6371;
 
-   if (endlatitude != null && endlongtitude != null ){
-     //rumus
-     double latrad1 = endlatitude * (Math.PI/180);
-     double latrad2 = lat_unj * (Math.PI/180);
-     double deltalatRad = (lat_unj - endlatitude) * (Math.PI/180);
-     double deltalongRad = (long_unj - endlongtitude) * (Math.PI/180);
+    if (endlatitude != null && endlongtitude != null) {
+      //rumus
+      double latrad1 = endlatitude * (Math.PI / 180);
+      double latrad2 = lat_unj * (Math.PI / 180);
+      double deltalatRad = (lat_unj - endlatitude) * (Math.PI / 180);
+      double deltalongRad = (long_unj - endlongtitude) * (Math.PI / 180);
 
-     // menghitung jarak
-     Double a = (Math.sin(deltalatRad/2)* Math.sin(deltalatRad/2)) + Math.cos(latrad1)*Math.cos(latrad2) * (Math.sin(deltalongRad/2) * Math.sin(deltalongRad/2));
-     Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-     Jarak = R * c; // hasil jarak dalam km
+      // menghitung jarak
+      double a = (Math.sin(deltalatRad / 2) * Math.sin(deltalatRad / 2)) + Math.cos(latrad1) * Math.cos(latrad2) * (Math.sin(deltalongRad / 2) * Math.sin(deltalongRad / 2));
+      double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      double jarak_raw = R * c; // hasil jarak dalam km
+      Jarak = (int) Math.round(jarak_raw);
 
-     //hitung ongkir
-     if (Jarak <= 3){
-       HargaOngkir = 0;
+      //hitung ongkir
+      if (Jarak <= 3) {
+        HargaOngkir = 0;
 
-     } else if (Jarak > 3 ){
-       Double Harga =  hargadasar * Jarak * 3/2;
-       HargaOngkir = (int) Math.ceil(Harga); //mendapatkan harga ongkir dengan pembulatan harga keatas
-     }
-     else{
-       HargaOngkir =0;
-       Jarak = 0.0;
-     }
-   }else{
-     HargaOngkir =0;
-     Jarak = 0.0;
+      } else {
+        double Harga = hargadasar * Jarak * 3 / 2;
+        HargaOngkir = (int) Math.ceil(Harga); //mendapatkan harga ongkir dengan pembulatan harga keatas
+      }
+    } else {
+      HargaOngkir = 0;
+      Jarak = 0;
 
-   }
+    }
 
   }
 

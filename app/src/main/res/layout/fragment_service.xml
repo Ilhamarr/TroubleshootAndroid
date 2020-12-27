@@ -67,20 +67,19 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:orientation="horizontal"
-        android:gravity="center_vertical"
+        android:foregroundGravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/scrollView"
-        app:layout_constraintVertical_bias="0.963">
+        app:layout_constraintVertical_bias="1.0">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_gravity="top"
             android:id="@+id/cart"
             android:layout_width="52dp"
             android:layout_height="52dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="10dp"
+            android:layout_gravity="center"
             app:backgroundTint="@color/darkblue"
             app:rippleColor="?attr/colorOnSecondary"
             app:srcCompat="@drawable/ic_baseline_shopping_cart_24"
@@ -97,11 +96,10 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:gravity="bottom"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="horizontal"
-                android:padding="8dp">
+                android:paddingHorizontal="10dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -161,8 +159,8 @@
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
                     android:gravity="end"
+                    android:layout_gravity="center"
                     android:orientation="horizontal"
                     android:paddingStart="10dp"
                     android:paddingEnd="10dp">
