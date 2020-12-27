@@ -117,52 +117,31 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:layout_marginTop="16dp"
+                            android:gravity="clip_horizontal">
 
                             <ImageView
-                                android:layout_width="110dp"
-                                android:layout_height="80dp"
+                                android:layout_width="130dp"
+                                android:layout_height="100dp"
                                 android:layout_marginTop="-12dp"
-                                android:src="@drawable/danalogo" />
+                                android:src="@drawable/danalogo"
+                                android:layout_gravity="left"/>
 
-                            <TextView
+                            <ImageView
                                 android:id="@+id/txt_rekeningDANA"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="24dp"
-                                android:layout_marginTop="-8dp"
-                                android:text="0812 8879 5069"
-                                android:textColor="#000000"
-                                android:textIsSelectable="true"
-                                android:textSize="20sp" />
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_marginStart="58dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/barcodedana" />
                         </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="-16dp"
-                            android:text="a/n Ilham Arrosyid" />
-
-                        <TextView
-                            android:id="@+id/txt_rekeningcopyDANA"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="6dp"
-                            android:clickable="true"
-                            android:text="Salin nomor dana"
-                            android:textColor="#1D7AC5" />
-
 
                     </LinearLayout>
 
-
                 </androidx.cardview.widget.CardView>
 
+                <!--Jumlah Bayar-->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -200,6 +179,72 @@
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
+
+                <!--tata cara pembayaran-->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    app:cardCornerRadius="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cara Pembayaran"
+                            android:textColor="#000"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12dp"
+                            android:layout_marginTop="8dp"
+                            android:text="1. Screenshoot halaman pembayaran ini"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12dp"
+                            android:layout_marginTop="4dp"
+                            android:text="2. Buka Aplikasi DANA"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12dp"
+                            android:layout_marginTop="4dp"
+                            android:text="3. Pilih Pembayaran dengan scan Qrcode"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12dp"
+                            android:layout_marginTop="4dp"
+                            android:text="4. Pilih gambar yang discreenshoot dari gallery" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12dp"
+                            android:layout_marginTop="4dp"
+                            android:text="5. Masukkan Jumlah Pembayaran dan click bayar" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12dp"
+                            android:layout_marginTop="4dp"
+                            android:text="6. Upload Tanda Bukti Pembayaran ke aplikasi Troubleshoot.id" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"

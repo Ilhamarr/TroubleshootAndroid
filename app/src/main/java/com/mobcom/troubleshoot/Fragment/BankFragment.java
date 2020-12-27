@@ -87,7 +87,7 @@ public class BankFragment extends Fragment {
     fragmentBankBinding.txtRekeningcopyBNI.setOnClickListener(v -> {
       ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
       if (clipboard != null) {
-        clipboard.setText("8779458228");
+        clipboard.setText("0870340387");
       }
       Toast.makeText(getContext(), "Nomor berhasil di copy", Toast.LENGTH_SHORT).show();
     });
