@@ -16,6 +16,12 @@ Dalam perjalanannya, Troubleshoot.id menghadirkan sebuah sistem 'Troubleshoot Mo
 ## Product Backlog
 [LIHAT DISINI](https://docs.google.com/spreadsheets/d/1tAw_0VnchsDlhi_rwpmGFem3s4aY-afY/edit#gid=966213186)
 
+## Final Report
+[final report document](http://bit.ly/final_report_troubleshootid)
+
+## Download Aplikasi:
+[DOWNLOAD HERE](http://bit.ly/Troubleshoot_apps)
+
 
 ## Gambaran dari Aplikasi
 <img src="Gambaran/Screenshot_20201105-113730.png" height="354px">  <img src="Gambaran/Screenshot_20201105-113743.png" height="354px">  <img src="Gambaran/Screenshot_20201105-113749.png" height="354px">  <img src="Gambaran/Screenshot_20201105-113829.png" height="354px">  <img src="Gambaran/Screenshot_20201105-113939.png" height="354px">  <img src="Gambaran/Screenshot_20201105-113756.png" height="354px">   <img src="Gambaran/Screenshot_20201105-113808.png" height="354px">   
