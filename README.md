@@ -13,10 +13,7 @@ Now, continue to Fase 2 Development:
 | Integrasi Dialog flow     | Integrasi dialogflow dengan communicate                            | Bagus  | Finish |
 
 
-
-## Debug Application:
-for tested you cand download our debug app in this link:
-## Debug Aplication (For Tester):
+## Download Aplikasi
 [DOWNLOAD HERE](https://play.google.com/store/apps/details?id=com.mobcom.troubleshoot)
 <br>
 <br>
