@@ -31,8 +31,8 @@ Dalam perjalanannya, Troubleshoot.id menghadirkan sebuah sistem 'Troubleshoot Mo
 
 
 
-## Unduh Tester Aplikasi:
-[DOWNLOAD HERE](https://drive.google.com/uc?export=view&id=1UiFTygba1U2Nziy0sNb2QApkp33hgXe5)
+## List Link Sprint:
+[Sprint 1](https://github.com/Ilhamarr/TroubleshootAndroid/edit/master/) : Menentukan product backlog, tampilan, sprint dan use case
 
 <br>
 <br>
