@@ -13,11 +13,9 @@ Dalam perjalanannya, Troubleshoot.id menghadirkan sebuah sistem 'Troubleshoot Mo
 | 2  | Bagus Nugraha  | 1313617002 | Back End Developer  |
 | 3  | Ilham Arrosyid | 1313617018 | Project Leader      |
 
-## Product Backlog
-[LIHAT DISINI](https://docs.google.com/spreadsheets/d/1tAw_0VnchsDlhi_rwpmGFem3s4aY-afY/edit#gid=966213186)
 
 ## Final Report
-[final report document](http://bit.ly/final_report_troubleshootid)
+[Final Report Document](http://bit.ly/FinalReport_Troubleshootid)
 
 ## Download Aplikasi:
 [DOWNLOAD HERE](http://bit.ly/Troubleshoot_apps)
@@ -31,8 +29,12 @@ Dalam perjalanannya, Troubleshoot.id menghadirkan sebuah sistem 'Troubleshoot Mo
 
 
 
+## Product Backlog
+[LIHAT DISINI](https://docs.google.com/spreadsheets/d/1tAw_0VnchsDlhi_rwpmGFem3s4aY-afY/edit#gid=966213186)
+
+
 ## List Link Sprint:
-<br>[Sprint 1](https://github.com/Ilhamarr/TroubleshootAndroid/edit/master/) : Menentukan product backlog, tampilan, sprint dan pembuatan database.<br>
+[Sprint 1](https://github.com/Ilhamarr/TroubleshootAndroid/edit/master/) : Menentukan product backlog, tampilan, sprint dan pembuatan database.<br>
 [Sprint 2](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint2) : Mengkoneksikan database(REST API PHP), pembuatan layout<br>
 [Sprint 3](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint3) : Melanjutkan pembuatan layout, pengintegrasian Login dan Register<br>
 [Sprint 4](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint4) : Melanjutkan pembuatan layout, pengintegrasian Order pesanan<br>
