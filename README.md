@@ -12,7 +12,7 @@ Now, continue to Fase 2 Development:
 | Saya Bisa klik T&C pada konfirmasi pesanan          | integrasi penambahan link T&C pada konfirmasi order       | Vivi | In Progress |
 | Saya Bisa Melihat biaya ongkir      | Integrasi Ongkir                         | Ilham  | Finish |
 | Melihat aktivitas user          | integrasi pembuatan logging        | Bagus | Finish |
-| Melakukan train data dialogflow       | melakukan train data pada dialogflow        | vivi | Finish |
+| Melakukan chat otomatis      | membuat fragment dan layout chatbot        | vivi | Finish |
 
 
 ## Download Aplikasi
