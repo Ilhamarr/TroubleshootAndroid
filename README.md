@@ -32,7 +32,22 @@ Dalam perjalanannya, Troubleshoot.id menghadirkan sebuah sistem 'Troubleshoot Mo
 
 
 ## List Link Sprint:
-[Sprint 1](https://github.com/Ilhamarr/TroubleshootAndroid/edit/master/) : Menentukan product backlog, tampilan, sprint dan use case
+[Sprint 1](https://github.com/Ilhamarr/TroubleshootAndroid/edit/master/) : Menentukan product backlog, tampilan, sprint dan pembuatan database.
+[Sprint 2](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint2) : Mengkoneksikan database(REST API PHP), pembuatan layout
+[Sprint 3](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint3) : Melanjutkan pembuatan layout, pengintegrasian Login dan Register
+[Sprint 4](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint4) : Melanjutkan pembuatan layout, pengintegrasian Order pesanan
+[Sprint 5](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint5) : Revisi beberapa layout order pesananan, integrasi transaksi pemesanan
+[Sprint 6](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint6) : integrasi proses pembayaran dan konfirmasi pembayaran, pembuatan T&C
+[Sprint 7](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint7) : integrasi pembatalan order, melanjutkan konfirmasi pembayaran dan beberapa revisi
+[Sprint 8](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint8) : Melihat pesanan dan history pesanan, integrasi form pesanan, integrasi maps
+[Sprint 9](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint9) : integrasi edit profil, cetak invoice, dan login google
+[Sprint 10](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint10) : Edit dan merapihkan beberapa layout, integrasi cetak invoice dan integrasi edit profil(foto)
+[Sprint 11](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint11) : melakukan fiksasi debug - debug pada sistem, merapihkan layout yang berantakan dan melanjutkan integrasi komplain
+[Sprint 12]() : Melakukan pengujian aplikasi dan melakukan review hasil pengujian
+[Sprint 13](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint13) : integrasi logging, ongkir dan perubahan konfirmasi order, layout dialogflow
+[Sprint 14]() : Melakukan publikasi aplikasi dan menulis laporan hasil uji aplikasi, melakukan train dialogflow
+[Sprint 15](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint15) : train dialogflow, integrasi logging, ongkir dan perubahan konfirmasi order
+
 
 <br>
 <br>
