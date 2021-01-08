@@ -4,20 +4,20 @@ for a startup computer service, it can be make client trust about this businness
 
 <hr>
 
-## SPRINT 11
+## SPRINT 15
 Now, continue to Fase 2 Development:
 
 | Story                                  | Task                                       | Actor | Status   |
 |----------------------------------------|---------------------------------------------------------|-------|----------|
-| Saya Bisa Komplain ketika masa garansi          | edit method dan layout komplain       | Vivi | In Progress |
-| Saya Bisa Edit Profil      | Integrasi fungsi edit foto pada edit profil                            | Bagus  | Finish |
-| Saya bisa cetak Invoice setelah Perbaikan Selesai           | integrasi cetak invoice            | Ilham | Invoice |
+| Merubah Layout Ongkir                  | Merubah layout ongkit     | Ilham | Finish |
+| Integrasi Dialog flow     | Integrasi dialogflow dengan communicate                            | Bagus  | Finish |
+
 
 
 ## Debug Application:
 for tested you cand download our debug app in this link:
 ## Debug Aplication (For Tester):
-[DOWNLOAD HERE](https://drive.google.com/file/d/1FtzZsp3WCAhUh7tuGghWAujCE3wAXEDD/view?usp=sharing)
+[DOWNLOAD HERE](https://play.google.com/store/apps/details?id=com.mobcom.troubleshoot)
 <br>
 <br>
 
