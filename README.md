@@ -9,9 +9,9 @@ Now, continue to Fase 2 Development:
 
 | Story                                  | Task                                       | Actor | Status   |
 |----------------------------------------|---------------------------------------------------------|-------|----------|
-| Saya Bisa Komplain ketika masa garansi          | edit method dan layout komplain       | Vivi | In Progress |
+| Saya Bisa Komplain ketika masa garansi          | edit method dan layout komplain       | Vivi | pending |
 | Saya Bisa Edit Profil      | Integrasi fungsi edit foto pada edit profil                            | Bagus  | Finish |
-| Saya bisa cetak Invoice setelah Perbaikan Selesai           | integrasi cetak invoice            | Ilham | Invoice |
+| Saya bisa cetak Invoice setelah Perbaikan Selesai           | integrasi cetak invoice            | Ilham | pending |
 
 
 ## Debug Application:
