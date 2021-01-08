@@ -32,8 +32,8 @@ Dalam perjalanannya, Troubleshoot.id menghadirkan sebuah sistem 'Troubleshoot Mo
 
 
 ## List Link Sprint:
-[Sprint 1](https://github.com/Ilhamarr/TroubleshootAndroid/edit/master/) : Menentukan product backlog, tampilan, sprint dan pembuatan database.
-[Sprint 2](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint2) : Mengkoneksikan database(REST API PHP), pembuatan layout
+<br>[Sprint 1](https://github.com/Ilhamarr/TroubleshootAndroid/edit/master/) : Menentukan product backlog, tampilan, sprint dan pembuatan database.<br>
+<br>[Sprint 2](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint2) : Mengkoneksikan database(REST API PHP), pembuatan layout<br>
 [Sprint 3](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint3) : Melanjutkan pembuatan layout, pengintegrasian Login dan Register
 [Sprint 4](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint4) : Melanjutkan pembuatan layout, pengintegrasian Order pesanan
 [Sprint 5](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint5) : Revisi beberapa layout order pesananan, integrasi transaksi pemesanan
