@@ -14,10 +14,8 @@ Now, continue to Fase 2 Development:
 | Melihat aktivitas user          | integrasi pembuatan logging        | Bagus | Finish |
 
 
-## Debug Application:
-for tested you cand download our debug app in this link:
-## Debug Aplication (For Tester):
-[DOWNLOAD HERE](https://drive.google.com/file/d/1FtzZsp3WCAhUh7tuGghWAujCE3wAXEDD/view?usp=sharing)
+## Download Aplikasi
+[DOWNLOAD HERE](https://play.google.com/store/apps/details?id=com.mobcom.troubleshoot)
 <br>
 <br>
 
