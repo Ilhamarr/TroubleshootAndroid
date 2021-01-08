@@ -4,7 +4,7 @@ for a startup computer service, it can be make client trust about this businness
 
 <hr>
 
-## SPRINT 11
+## SPRINT 13
 Now, continue to Fase 2 Development:
 
 | Story                                  | Task                                       | Actor | Status   |
@@ -13,6 +13,7 @@ Now, continue to Fase 2 Development:
 | Saya Bisa Melihat biaya ongkir      | Integrasi Ongkir                         | Ilham  | Finish |
 | Melihat aktivitas user          | integrasi pembuatan logging        | Bagus | Finish |
 | Melakukan chat otomatis      | membuat fragment dan layout chatbot        | vivi | Finish |
+| Melakukan chat otomatis      | training data di dialog flow        | vivi | progress |
 
 
 ## Download Aplikasi
