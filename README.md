@@ -17,7 +17,7 @@ Dalam perjalanannya, Troubleshoot.id menghadirkan sebuah sistem 'Troubleshoot Mo
 ## Final Report
 [Final Report Document](http://bit.ly/FinalReport_Troubleshootid)
 
-## Download Aplikasi:
+## Download Aplikasi (Playstore Link):
 [DOWNLOAD HERE](http://bit.ly/Troubleshoot_apps)
 
 
