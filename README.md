@@ -45,9 +45,9 @@ Dalam perjalanannya, Troubleshoot.id menghadirkan sebuah sistem 'Troubleshoot Mo
 [Sprint 9](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint9) : integrasi edit profil, cetak invoice, dan login google<br>
 [Sprint 10](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint10) : Edit dan merapihkan beberapa layout, integrasi cetak invoice dan integrasi edit profil(foto)<br>
 [Sprint 11](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint11) : melakukan fiksasi debug - debug pada sistem, merapihkan layout yang berantakan dan melanjutkan integrasi komplain<br>
-[Sprint 12]() : Melakukan pengujian aplikasi dan melakukan review hasil pengujian<br>
+Sprint 12() : Melakukan pengujian aplikasi dan melakukan review hasil pengujian<br>
 [Sprint 13](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint13) : integrasi logging, ongkir dan perubahan konfirmasi order, layout dialogflow<br>
-[Sprint 14]() : Melakukan publikasi aplikasi dan menulis laporan hasil uji aplikasi, melakukan train dialogflow<br>
+Sprint 14() : Melakukan publikasi aplikasi dan menulis laporan hasil uji aplikasi, melakukan train dialogflow<br>
 [Sprint 15](https://github.com/Ilhamarr/TroubleshootAndroid/tree/sprint15) : train dialogflow, integrasi logging, ongkir dan perubahan konfirmasi order<br>
 
 
